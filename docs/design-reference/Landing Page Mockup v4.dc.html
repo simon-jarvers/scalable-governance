@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&amp;family=Bitter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body { margin:0; background:oklch(0.97 0.003 260); }
+a { color: oklch(0.48 0.19 260); text-decoration:none; }
+a:hover { color: oklch(0.38 0.16 260); }
+</style>
+</helmet>
+
+<div style="position:relative; min-height:100vh;">
+  <canvas id="dotGrid" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0;"></canvas>
+
+  <!-- STICKY NAV -->
+  <nav id="mainNav" style="position:fixed; top:0; left:0; right:0; z-index:100;">
+    <div id="navInner" style="max-width:1280px; margin:0 auto; padding:0 24px;">
+      <div id="navBar" style="display:flex; align-items:center; justify-content:space-between; padding:20px 36px; background:oklch(0.97 0.003 260 / 0.55); backdrop-filter:blur(24px) saturate(1.5); -webkit-backdrop-filter:blur(24px) saturate(1.5); border:1px solid oklch(0.92 0.005 260 / 0.5); border-radius:16px; box-shadow:0 2px 20px oklch(0.20 0.02 260 / 0.06); margin-top:20px; transition:all 0.35s ease;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <div id="navLogo">
+            <svg viewBox="0 0 200 200" width="56" height="56"><circle cx="100" cy="110" r="85" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="14"></circle><circle cx="100" cy="142" r="53" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="12"></circle><circle cx="100" cy="160" r="33" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="11"></circle></svg>
+          </div>
+          <div id="navText">
+            <div style="font-family: Outfit,sans-serif; font-weight: 700; font-size: 20px; color: oklch(0.15 0.02 260); line-height: 1.1; transition: font-size 0.35s ease">Scalable Governance</div>
+            <div style="font-family:Bitter,Georgia,serif; font-size:12.5px; color:oklch(0.50 0.03 260); letter-spacing:0.03em; transition:font-size 0.35s ease;">Applied research on AI governance</div>
+          </div>
+        </div>
+        <div id="navLinks" style="display:flex; gap:28px; align-items:center;">
+          <span data-target="research" style="font-family:Bitter,Georgia,serif; font-size:15px; font-weight:500; color:oklch(0.35 0.02 260); cursor:pointer; transition:all 0.35s ease;" style-hover="color:oklch(0.48 0.19 260);">Research</span>
+          <span data-target="who-we-are" style="font-family:Bitter,Georgia,serif; font-size:15px; font-weight:500; color:oklch(0.35 0.02 260); cursor:pointer; transition:all 0.35s ease;" style-hover="color:oklch(0.48 0.19 260);">Who We Are</span>
+          <span data-target="what-comes-next" style="font-family:Bitter,Georgia,serif; font-size:15px; font-weight:500; color:oklch(0.35 0.02 260); cursor:pointer; transition:all 0.35s ease;" style-hover="color:oklch(0.48 0.19 260);">Vision</span>
+          <span data-target="contact" style="font-family:Bitter,Georgia,serif; font-size:15px; font-weight:500; color:oklch(0.35 0.02 260); cursor:pointer; transition:all 0.35s ease;" style-hover="color:oklch(0.48 0.19 260);">Contact</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div style="position:relative; z-index:1;">
+
+    <!-- ═══════ HERO (grid visible) ═══════ -->
+    <div data-grid-section="" style="position:relative; min-height:620px; overflow:visible;">
+      <!-- Watermark — 8a style, right side -->
+      <div style="position:absolute; right:-60px; top:50%; transform:translateY(-40%); width:560px; height:560px; opacity:0.055; z-index:1; pointer-events:none;">
+        <svg viewBox="0 0 200 200" width="560" height="560"><circle cx="100" cy="90" r="88" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="5.5"></circle><circle cx="100" cy="112" r="58" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="5"></circle><circle cx="100" cy="128" r="32" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="4.5"></circle></svg>
+      </div>
+      <div style="position:relative; z-index:2; max-width:1280px; margin:0 auto; padding:150px 48px 80px;">
+        <div style="max-width: 800px">
+          <h1 style="font-family:Outfit,sans-serif; font-weight:700; font-size:clamp(32px, 4.5vw, 52px); line-height:1.1; color:oklch(0.13 0.02 260); margin:0 0 24px; letter-spacing:-0.01em;">AI development and deployment are advancing faster than governance can follow.</h1>
+          <p style="font-family: Bitter,Georgia,serif; font-size: clamp(24px, 1.8vw, 19px); line-height: 1.6; color: oklch(0.35 0.02 260); margin: 0 0 12px; max-width: 700px">To match the pace, we need rigorous research and novel ideas.</p>
+          <p style="font-family: Bitter,Georgia,serif; font-size: 16px; color: oklch(0.50 0.03 260); margin: 0 0 40px">An applied research initiative from the TUM Professorship of Societal Computing</p>
+          <div style="display:flex; gap:16px; flex-wrap:wrap;">
+            <div style="font-family:Outfit,sans-serif; font-weight:600; font-size:14px; color:oklch(0.995 0 0); background:oklch(0.48 0.19 260); padding:13px 28px; border-radius:6px; cursor:pointer; transition:background 0.2s, transform 0.15s;" style-hover="background:oklch(0.43 0.20 260); transform:translateY(-1px);" style-active="transform:translateY(0px);">Read our research</div>
+            <div style="font-family:Outfit,sans-serif; font-weight:600; font-size:14px; color:oklch(0.48 0.19 260); padding:12px 28px; border-radius:6px; border:1.5px solid oklch(0.48 0.19 260); cursor:pointer; transition:background 0.2s, color 0.2s, transform 0.15s;" style-hover="background:oklch(0.48 0.19 260); color:oklch(0.995 0 0); transform:translateY(-1px);" style-active="transform:translateY(0px);">Get in touch</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ RESEARCH (no grid) ═══════ -->
+    <div id="research" style="border-top:1px solid oklch(0.92 0.005 260); background:oklch(0.97 0.003 260);">
+      <div style="max-width:1280px; margin:0 auto; padding:80px 48px;">
+        <h2 style="font-family: Outfit,sans-serif; font-weight: 700; font-size: clamp(30px, 4vw, 48px); line-height: 1.2; color: oklch(0.13 0.02 260); margin: 0 0 24px">Research</h2>
+        <p style="font-family: Bitter,Georgia,serif; font-size: 16px; line-height: 1.7; color: oklch(0.32 0.02 260); margin: 0 0 56px; max-width: 1100px">Our emperical research focuses on the impact and operationalisation of AI governance in practice. Using participatory methods like colloborative expert workshops, we investigate governance challenges and strategies for building safe and compliant AI systems. Next, we map stakeholders across the emerging AI governance ecosystem consisting of consultants, lawyers, auditors, and standard-setting organisations. Currently, we are developing scalable approaches for agentic AI governance to match the pace of accelerating AI system development and high-risk deployment.</p>
+
+        <!-- 13a-style: single card container, 3-col grid, no gaps -->
+        <div style="border-radius:14px; overflow:hidden; border:1px solid oklch(0.91 0.01 260); box-shadow:0 2px 16px oklch(0 0 0 / 0.06); max-width:1100px;">
+          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0;">
+            <!-- Card 1 -->
+            <div style="position:relative; overflow:hidden; min-height:360px; background:oklch(0.97 0.008 270); border-right:1px solid oklch(0.91 0.01 270); display:flex; flex-direction:column;">
+              <div style="position:absolute; left:-40px; top:-20px; width:400px; height:400px; opacity:0.18; filter:blur(3px); transform:perspective(400px) rotateY(35deg) rotateX(12deg);">
+                <svg viewBox="0 0 200 200" width="400" height="400"><circle cx="100" cy="110" r="85" fill="none" stroke="oklch(0.82 0.04 270)" stroke-width="5"></circle><circle cx="100" cy="142" r="53" fill="none" stroke="oklch(0.82 0.04 270)" stroke-width="4.5"></circle><circle cx="100" cy="160" r="33" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="4.5"></circle></svg>
+              </div>
+              <div style="position:absolute; bottom:0; left:0; right:0; height:50%; background:linear-gradient(to top, oklch(0.97 0.008 270), transparent);"></div>
+              <div style="position:relative; z-index:1; padding:36px 32px; display:flex; flex-direction:column; flex:1; box-sizing:border-box;">
+                <div style="flex:1;"></div>
+                <h3 style="font-family:Outfit,sans-serif; font-weight:700; font-size:24px; color:oklch(0.13 0.02 260); margin:0 0 12px; line-height:1.2;">Governance in practice</h3>
+                
+                <p style="font-family:Bitter,Georgia,serif; font-size:14px; line-height:1.65; color:oklch(0.35 0.02 260); margin:0 0 16px;">How can collaborative workshops empower technical teams to integrate AI governance requirements into their daily work?</p><div style="display:flex; align-items:flex-end; gap:16px;">
+                  <div style="flex:1; font-family:Bitter,Georgia,serif; font-size:12px; color:oklch(0.38 0.20 280); font-weight:500; line-height:1.5;">Paper publications at<br>FAccT '26 and EWAF '25</div>
+                  <div style="font-family:Outfit,sans-serif; font-weight:600; font-size:12px; color:oklch(0.48 0.19 260); padding:8px 20px; border:1.5px solid oklch(0.48 0.19 260); border-radius:6px; cursor:pointer; white-space:nowrap; transition:background 0.2s, color 0.2s;" style-hover="background:oklch(0.48 0.19 260); color:oklch(0.995 0 0);">Read more</div>
+                </div>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div style="position:relative; overflow:hidden; min-height:360px; background:oklch(0.97 0.008 250); border-right:1px solid oklch(0.91 0.01 250); display:flex; flex-direction:column;">
+              <div style="position:absolute; left:-40px; top:-20px; width:400px; height:400px; opacity:0.18; filter:blur(3px); transform:perspective(400px) rotateY(35deg) rotateX(12deg);">
+                <svg viewBox="0 0 200 200" width="400" height="400"><circle cx="100" cy="110" r="85" fill="none" stroke="oklch(0.82 0.04 250)" stroke-width="5"></circle><circle cx="100" cy="142" r="53" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="4.5"></circle><circle cx="100" cy="160" r="33" fill="none" stroke="oklch(0.82 0.04 250)" stroke-width="4.5"></circle></svg>
+              </div>
+              <div style="position:absolute; bottom:0; left:0; right:0; height:50%; background:linear-gradient(to top, oklch(0.97 0.008 250), transparent);"></div>
+              <div style="position:relative; z-index:1; padding:36px 32px; display:flex; flex-direction:column; flex:1; box-sizing:border-box;">
+                <div style="flex:1;"></div>
+                <h3 style="font-family:Outfit,sans-serif; font-weight:700; font-size:24px; color:oklch(0.13 0.02 260); margin:0 0 12px; line-height:1.2;">Who governs AI?</h3>
+                <p style="font-family:Bitter,Georgia,serif; font-size:14px; line-height:1.65; color:oklch(0.35 0.02 260); margin:0 0 16px;">Between regulator and regulated target sits a chain of actors that interpret requirements and shape what compliance means.</p>
+                <div style="display:flex; align-items:flex-end; gap:16px;">
+                  <div style="flex:1; font-family:Bitter,Georgia,serif; font-size:12px; color:oklch(0.38 0.20 280); font-weight:500; line-height:1.5;">Paper publication at<br>AIES '26</div>
+                  <div style="font-family:Outfit,sans-serif; font-weight:600; font-size:12px; color:oklch(0.48 0.19 260); padding:8px 20px; border:1.5px solid oklch(0.48 0.19 260); border-radius:6px; cursor:pointer; white-space:nowrap; transition:background 0.2s, color 0.2s;" style-hover="background:oklch(0.48 0.19 260); color:oklch(0.995 0 0);">Read more</div>
+                </div>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div style="position:relative; overflow:hidden; min-height:360px; background:oklch(0.97 0.008 280); display:flex; flex-direction:column;">
+              <div style="position:absolute; left:-40px; top:-20px; width:400px; height:400px; opacity:0.18; filter:blur(3px); transform:perspective(400px) rotateY(35deg) rotateX(12deg);">
+                <svg viewBox="0 0 200 200" width="400" height="400"><circle cx="100" cy="110" r="85" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="5"></circle><circle cx="100" cy="142" r="53" fill="none" stroke="oklch(0.82 0.04 280)" stroke-width="4.5"></circle><circle cx="100" cy="160" r="33" fill="none" stroke="oklch(0.82 0.04 280)" stroke-width="4.5"></circle></svg>
+              </div>
+              <div style="position:absolute; bottom:0; left:0; right:0; height:50%; background:linear-gradient(to top, oklch(0.97 0.008 280), transparent);"></div>
+              <div style="position:relative; z-index:1; padding:36px 32px; display:flex; flex-direction:column; flex:1; box-sizing:border-box;">
+                <div style="flex:1;"></div>
+                <h3 style="font-family:Outfit,sans-serif; font-weight:700; font-size:24px; color:oklch(0.13 0.02 260); margin:0 0 12px; line-height:1.2;">Making governance scale</h3>
+                <p style="font-family:Bitter,Georgia,serif; font-size:14px; line-height:1.65; color:oklch(0.35 0.02 260); margin:0 0 16px;">Methods that reduce the cost of compliance by embedding regulatory requirements in AI development workflows.</p>
+                <div style="display:flex; align-items:flex-end; gap:16px;">
+                  <div style="flex:1; font-family:Bitter,Georgia,serif; font-size:12px; color:oklch(0.38 0.20 280); font-weight:500; line-height:1.5;">Paper publications at<br>HICSS '27 and ECAF '26</div>
+                  <div style="font-family:Outfit,sans-serif; font-weight:600; font-size:12px; color:oklch(0.48 0.19 260); padding:8px 20px; border:1.5px solid oklch(0.48 0.19 260); border-radius:6px; cursor:pointer; white-space:nowrap; transition:background 0.2s, color 0.2s;" style-hover="background:oklch(0.48 0.19 260); color:oklch(0.995 0 0);">Read more</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ PEOPLE (grid visible) ═══════ -->
+    <div id="who-we-are" data-grid-section="" style="border-top:1px solid oklch(0.92 0.005 260); border-bottom:1px solid oklch(0.92 0.005 260);">
+      <div style="max-width:1280px; margin:0 auto; padding:80px 48px 120px;">
+        <h2 style="font-family: Outfit,sans-serif; font-weight: 700; font-size: clamp(30px, 4vw, 48px); line-height: 1.25; color: oklch(0.13 0.02 260); margin: 0 0 44px">Who we are</h2>
+        <div style="display:flex; gap:24px; margin-top:80px; flex-wrap:wrap;">
+          <div style="flex:1; min-width:min(100%, 380px); position:relative;">
+            <div style="background:oklch(0.995 0.002 260 / 0.9); backdrop-filter:blur(8px); border-radius:18px; box-shadow:0 1px 6px rgba(0,0,0,0.06); padding:36px; min-height:240px; box-sizing:border-box;">
+              <div style="max-width:55%;">
+                <div style="font-family:Outfit,sans-serif; font-weight:800; font-size:clamp(24px, 3vw, 32px); color:oklch(0.13 0.02 260); line-height:1.1;">Simon<br>Jarvers</div>
+                <div style="width:40px; height:3px; background:oklch(0.72 0.02 260); margin:18px 0;"></div>
+                <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:oklch(0.48 0.19 260); margin-bottom:6px;">Initiative Lead</div>
+                <p style="font-family:Bitter,Georgia,serif; font-size:13px; line-height:1.6; color:oklch(0.38 0.02 260); margin:0;">Researcher at TUM<br>AI Governance Officer</p>
+              </div>
+            </div>
+            <svg viewBox="0 0 180 220" width="220" height="320" style="position:absolute; right:16px; bottom:0; z-index:1;"><path d="M90 15C90 15 68 15 62 33C56 51 58 57 58 68C53 71 49 76 49 85C49 94 55 97 57 97C59 109 65 118 73 123L73 129C73 129 44 134 38 155C34 167 31 180 31 220L149 220C149 180 146 167 142 155C136 134 107 129 107 129L107 123C115 118 121 109 123 97C125 97 131 94 131 85C131 76 127 71 122 68C122 57 124 51 118 33C112 15 90 15 90 15Z" fill="oklch(0.55 0.02 250)"></path></svg>
+          </div>
+          <div style="flex:1; min-width:min(100%, 380px); position:relative;">
+            <div style="background:oklch(0.995 0.002 260 / 0.9); backdrop-filter:blur(8px); border-radius:18px; box-shadow:0 1px 6px rgba(0,0,0,0.06); padding:36px; min-height:240px; box-sizing:border-box;">
+              <div style="max-width:55%;">
+                <div style="font-family:Outfit,sans-serif; font-weight:800; font-size:clamp(24px, 3vw, 32px); color:oklch(0.13 0.02 260); line-height:1.1;">Orestis<br>Papakyriakopoulos</div>
+                <div style="width:40px; height:3px; background:oklch(0.72 0.02 260); margin:18px 0;"></div>
+                <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:oklch(0.48 0.19 260); margin-bottom:6px;">Advisor</div>
+                <p style="font-family:Bitter,Georgia,serif; font-size:13px; line-height:1.6; color:oklch(0.38 0.02 260); margin:0;">Professor of Societal Computing<br>Civic Machines Lab, TUM</p>
+              </div>
+            </div>
+            <svg viewBox="0 0 180 220" width="220" height="320" style="position:absolute; right:16px; bottom:0; z-index:1;"><path d="M90 15C90 15 68 15 62 33C56 51 58 57 58 68C53 71 49 76 49 85C49 94 55 97 57 97C59 109 65 118 73 123L73 129C73 129 44 134 38 155C34 167 31 180 31 220L149 220C149 180 146 167 142 155C136 134 107 129 107 129L107 123C115 118 121 109 123 97C125 97 131 94 131 85C131 76 127 71 122 68C122 57 124 51 118 33C112 15 90 15 90 15Z" fill="oklch(0.55 0.02 250)"></path></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ WHAT COMES NEXT (no grid) ═══════ -->
+    <div id="what-comes-next" style="border-bottom:1px solid oklch(0.92 0.005 260); background:oklch(0.97 0.003 260);">
+      <div style="max-width:1280px; margin:0 auto; padding:80px 48px;">
+        <h2 style="font-family: Outfit,sans-serif; font-weight: 700; font-size: clamp(30px, 4vw, 48px); line-height: 1.25; color: oklch(0.13 0.02 260); margin: 0 0 36px">Our Vision</h2>
+        <div style="max-width:1100px;">
+          <p style="font-family:Bitter,Georgia,serif; font-size:16px; line-height:1.7; color:oklch(0.30 0.02 260); margin:0 0 36px; text-wrap:pretty;">Across our studies a pattern emerges. Organisations that want to comply cannot easily tell what AI regulation requires, and the compliance artefacts they produce are often built to be evaluated by an auditor rather than to inform their own decisions. We argue that this has a structural cause: auditors and authorities have no direct way to verify that governance processes genuinely protect safety, health, and fundamental rights. This credence good property of AI governance creates a systemic pull toward symbolic compliance.</p>
+
+          <div style="display:flex; flex-wrap:wrap; gap:clamp(28px,4vw,56px); align-items:flex-start;">
+            <div style="flex: 1 1 420px; min-width: 280px; width: 680px; height: 369px">
+              <p style="font-family:Bitter,Georgia,serif; font-size:16px; line-height:1.7; color:oklch(0.30 0.02 260); margin:0 0 32px; text-wrap:pretty;">AI governance usually moves from regulator to regulated target: Standard-setting organisations (i.e., CEN-CENELEC) translate legal text into technical standards; other intermediaries (e.g., lawyers and consultants) then further interpret and facilitate the regulatory requirements for AI system providers and deployers. However, independent upstream feedback is rare.&nbsp;<b>We want to fill this gap by&nbsp;carrying insights back to the regulator since we believe in evidence-based policy making to ensure compliant AI systems are indeed safe</b>.</p>
+              <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:oklch(0.43 0.15 270); margin-bottom:14px;">THE INITIATIVE'S GOALS</div>
+              <div style="display:flex; flex-direction:column; gap:12px;">
+                <div style="display:flex; gap:14px; align-items:flex-start;">
+                  <div style="width:22px; height:22px; border-radius:50%; background:oklch(0.43 0.15 270); color:#fff; font-family:Outfit,sans-serif; font-weight:700; font-size:11px; display:flex; align-items:center; justify-content:center; flex:none; margin-top:3px;">1</div><p style="font-family:Bitter,Georgia,serif; font-size:16px; line-height:1.6; color:oklch(0.30 0.02 260); margin:0; text-wrap:pretty;">Assess more organisations' AI governance to better understand the impact of AI regulation in practice.</p>
+                  
+                </div>
+                <div style="display:flex; gap:14px; align-items:flex-start;">
+                  <div style="width:22px; height:22px; border-radius:50%; background:oklch(0.43 0.15 270); color:#fff; font-family:Outfit,sans-serif; font-weight:700; font-size:11px; display:flex; align-items:center; justify-content:center; flex:none; margin-top:3px;">2</div><p style="font-family:Bitter,Georgia,serif; font-size:16px; line-height:1.6; color:oklch(0.30 0.02 260); margin:0; text-wrap:pretty;">Build upward feedback streams to provide independent, scientific evidence to policymakers.</p>
+                  
+                </div>
+                <div style="display:flex; gap:14px; align-items:flex-start;">
+                  <div style="width:22px; height:22px; border-radius:50%; background:oklch(0.43 0.15 270); color:#fff; font-family:Outfit,sans-serif; font-weight:700; font-size:11px; display:flex; align-items:center; justify-content:center; flex:none; margin-top:3px;">3</div>
+                  <p style="font-family:Bitter,Georgia,serif; font-size:16px; line-height:1.6; color:oklch(0.30 0.02 260); margin:0; text-wrap:pretty;">Develop methods that reduce the cost of compliance without delegating the judgment or accountability it requires.</p>
+                </div>
+              </div>
+            </div>
+
+            <div style="flex: 1 1 250px; min-width: 200px; max-width: 260px; background: oklch(0.995 0.002 260); border: 1px solid oklch(0.92 0.005 260); border-radius: 12px; padding: 24px 20px 22px">
+              <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:10px; letter-spacing:0.09em; text-transform:uppercase; color:oklch(0.50 0.03 260); margin:0 0 20px; text-align:center;">Regulatory chain</div>
+              <div style="display:flex; align-items:stretch;">
+                <div style="flex:1; min-width:0; display:flex; flex-direction:column; align-items:center;">
+                  <div style="background:oklch(0.48 0.19 260); color:#fff; font-family:Outfit,sans-serif; font-weight:600; font-size:13px; line-height:1.2; padding:11px 14px; border-radius:8px; text-align:center; width:100%; max-width:158px; box-sizing:border-box;">Regulator</div>
+                  <div style="font-family:Bitter,Georgia,serif; font-size:10px; line-height:1.4; color:oklch(0.50 0.03 260); text-align:center; margin:6px 0 0; text-wrap:pretty;">EU AI Office, market surveillance authorities</div>
+                  <svg width="18" height="30" viewBox="0 0 18 30" style="margin:8px 0;"><line x1="9" y1="0" x2="9" y2="22" stroke="oklch(0.48 0.19 260)" stroke-width="2"></line><polygon points="4,20 9,29 14,20" fill="oklch(0.48 0.19 260)"></polygon></svg>
+                  <div style="background:oklch(0.38 0.20 280); color:#fff; font-family:Outfit,sans-serif; font-weight:600; font-size:13px; line-height:1.2; padding:11px 14px; border-radius:8px; text-align:center; width:100%; max-width:158px; box-sizing:border-box;">Intermediaries</div>
+                  <div style="font-family:Bitter,Georgia,serif; font-size:10px; line-height:1.4; color:oklch(0.50 0.03 260); text-align:center; margin:6px 0 0; text-wrap:pretty;">Auditors, consultants, standard-setters</div>
+                  <svg width="18" height="30" viewBox="0 0 18 30" style="margin:8px 0;"><line x1="9" y1="0" x2="9" y2="22" stroke="oklch(0.38 0.20 280)" stroke-width="2"></line><polygon points="4,20 9,29 14,20" fill="oklch(0.38 0.20 280)"></polygon></svg>
+                  <div style="background:oklch(0.43 0.15 270); color:#fff; font-family:Outfit,sans-serif; font-weight:600; font-size:13px; line-height:1.2; padding:11px 14px; border-radius:8px; text-align:center; width:100%; max-width:158px; box-sizing:border-box;">Regulated target</div>
+                  <div style="font-family:Bitter,Georgia,serif; font-size:10px; line-height:1.4; color:oklch(0.50 0.03 260); text-align:center; margin:6px 0 0;">AI providers &amp; deployers</div>
+                </div>
+                <div style="flex:none; width:46px; position:relative;">
+                  <div style="position:absolute; left:-12px; right:6px; top:19px; bottom:35px; border:1.5px dashed oklch(0.48 0.19 260); border-left:none; border-radius:0 10px 10px 0;"></div>
+                  <div style="position:absolute; left:-18px; top:14px; width:0; height:0; border-top:5px solid transparent; border-bottom:5px solid transparent; border-right:8px solid oklch(0.48 0.19 260);"></div>
+                  <div style="position:absolute; left:29px; top:22%; transform:translate(50%,-50%); writing-mode:vertical-rl; rotate:180deg; background:oklch(0.995 0.002 260); padding:6px 0; font-family:Outfit,sans-serif; font-weight:700; font-size:11px; letter-spacing:0.1em; color:oklch(0.48 0.19 260);">Feedback</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ GET IN CONTACT (grid visible) ═══════ -->
+    <div id="contact" data-grid-section="" style="border-bottom:1px solid oklch(0.92 0.005 260);">
+      <div style="max-width:1000px; margin:0 auto; padding:130px 48px; text-align:center;">
+        <h2 style="font-family:Outfit,sans-serif; font-weight:700; font-size:clamp(30px, 4vw, 48px); line-height:1.15; color:oklch(0.13 0.02 260); margin:0 0 48px; letter-spacing:-0.01em;">Get in contact</h2>
+        <div style="display:flex; gap:48px; justify-content:center; text-align:left; flex-wrap:wrap; border-top:1px solid oklch(0.90 0.005 260); border-bottom:1px solid oklch(0.90 0.005 260); padding:32px 24px; background:oklch(0.995 0.002 260 / 0.9); position:relative; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; width:100vw; box-sizing:border-box;">
+          <div style="flex:1; min-width:220px; max-width:280px;">
+            <div style="font-family:Outfit,sans-serif; font-weight:600; font-size:16px; color:oklch(0.13 0.02 260); margin-bottom:4px;">AI system providers</div>
+            <div style="font-family:Bitter,Georgia,serif; font-size:14px; line-height:1.6; color:oklch(0.45 0.02 260);">If your organisation is open to embedded research on AI regulation.</div>
+          </div>
+          <div style="flex:1; min-width:220px; max-width:280px;">
+            <div style="font-family:Outfit,sans-serif; font-weight:600; font-size:16px; color:oklch(0.13 0.02 260); margin-bottom:4px;">Research collaboration</div>
+            <div style="font-family:Bitter,Georgia,serif; font-size:14px; line-height:1.6; color:oklch(0.45 0.02 260);">If you work on AI governance, compliance, or regulatory design.</div>
+          </div>
+          <div style="flex:1; min-width:220px; max-width:280px;">
+            <div style="font-family:Outfit,sans-serif; font-weight:600; font-size:16px; color:oklch(0.13 0.02 260); margin-bottom:4px;">Funding</div>
+            <div style="font-family:Bitter,Georgia,serif; font-size:14px; line-height:1.6; color:oklch(0.45 0.02 260);">If you support independent research on AI governance.</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:48px;">
+          <a href="mailto:simon.jarvers@tum.de" style="display:inline-flex; align-items:center; gap:10px; font-family:Outfit,sans-serif; font-weight:600; font-size:16px; color:oklch(0.995 0 0); background:oklch(0.48 0.19 260); padding:16px 36px; border-radius:8px; transition:background 0.2s, transform 0.15s;" style-hover="background:oklch(0.43 0.20 260); transform:translateY(-1px);" style-active="transform:translateY(0px);">Write an email</a>
+          <a href="https://www.linkedin.com" target="_blank" style="display:inline-flex; align-items:center; gap:10px; font-family:Outfit,sans-serif; font-weight:600; font-size:16px; color:oklch(0.48 0.19 260); background:transparent; padding:15px 34px; border-radius:8px; border:1.5px solid oklch(0.48 0.19 260); transition:background 0.2s, color 0.2s, transform 0.15s;" style-hover="background:oklch(0.48 0.19 260); color:oklch(0.995 0 0); transform:translateY(-1px);" style-active="transform:translateY(0px);">Contact us on LinkedIn</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ FOOTER ═══════ -->
+    <div style="max-width:1280px; margin:0 auto; padding:48px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+      <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+        <svg viewBox="0 0 200 200" width="24" height="24"><circle cx="100" cy="110" r="85" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="14"></circle><circle cx="100" cy="142" r="53" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="12"></circle><circle cx="100" cy="160" r="33" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="11"></circle></svg>
+        <span style="font-family:Outfit,sans-serif; font-weight:600; font-size:13px; color:oklch(0.35 0.02 260);">Scalable Governance</span>
+        <span style="font-family:Bitter,Georgia,serif; font-size:12px; color:oklch(0.55 0.02 260); margin-left:8px;">An applied research initiative from the TUM Professorship of Societal Computing</span>
+      </div>
+      <div style="font-family:Bitter,Georgia,serif; font-size:12px; color:oklch(0.55 0.02 260);">© 2026</div>
+    </div>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+class Component extends DCLogic {
+  state = {};
+  componentDidMount() {
+    this.initScrollHeader();
+    this.initDotGrid();
+    this.initNavLinks();
+  }
+  initNavLinks() {
+    const scrollParent = document.querySelector('[data-dc-root]')?.closest('[style*="overflow"]') || window;
+    const links = document.querySelectorAll('#navLinks [data-target]');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        const target = document.getElementById(link.getAttribute('data-target'));
+        if (!target) return;
+        const navOffset = 100;
+        if (scrollParent === window) {
+          const top = target.getBoundingClientRect().top + window.scrollY - navOffset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        } else {
+          const top = target.getBoundingClientRect().top - scrollParent.getBoundingClientRect().top + scrollParent.scrollTop - navOffset;
+          scrollParent.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+  }
+  initScrollHeader() {
+    const scrollParent = document.querySelector('[data-dc-root]')?.closest('[style*="overflow"]') || window;
+    const getScrollTop = () => scrollParent === window ? (window.scrollY || 0) : scrollParent.scrollTop;
+    let ticking = false;
+    const update = () => {
+      const sy = getScrollTop();
+      const t = Math.min(sy / 100, 1);
+      const navBar = document.getElementById('navBar');
+      const navLogo = document.getElementById('navLogo');
+      const navText = document.getElementById('navText');
+      if (!navBar || !navLogo) return;
+      // Logo: 56px → 30px
+      const logoSize = 56 - t * 26;
+      const svg = navLogo.querySelector('svg');
+      svg.setAttribute('width', logoSize);
+      svg.setAttribute('height', logoSize);
+      // Margin: 20px → 8px (keep floating gap)
+      navBar.style.marginTop = (20 - t * 12) + 'px';
+      // Border radius: 16px → 10px (keep rounded)
+      navBar.style.borderRadius = (16 - t * 6) + 'px';
+      // Padding: 20px → 10px
+      const pad = 20 - t * 10;
+      navBar.style.paddingTop = pad + 'px';
+      navBar.style.paddingBottom = pad + 'px';
+      // Title: big at top, scales down with scroll (tagline keeps constant ratio to title)
+      if (navText) {
+        const titleSize = 20 - t * 5;
+        navText.children[0].style.fontSize = titleSize + 'px';
+        navText.children[1].style.fontSize = (titleSize * 15 / 24) + 'px';
+      }
+      // Nav links: scale down
+      const navLinks = document.getElementById('navLinks');
+      if (navLinks) {
+        const linkSize = 15 - t * 2;
+        const linkGap = 28 - t * 6;
+        navLinks.style.gap = linkGap + 'px';
+        for (let i = 0; i < navLinks.children.length; i++) {
+          navLinks.children[i].style.fontSize = linkSize + 'px';
+        }
+      }
+      // Background opacity
+      const bgAlpha = 0.55 + t * 0.35;
+      navBar.style.background = 'oklch(0.97 0.003 260 / ' + bgAlpha + ')';
+      const borderAlpha = 0.5 + t * 0.4;
+      navBar.style.borderColor = 'oklch(0.92 0.005 260 / ' + borderAlpha + ')';
+      ticking = false;
+    };
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+    scrollParent.addEventListener('scroll', onScroll, { passive: true });
+    update();
+    this._cleanupScroll = () => scrollParent.removeEventListener('scroll', onScroll);
+  }
+  initDotGrid() {
+    const canvas = document.getElementById('dotGrid');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const spacing = 30;
+    const dotRadius = 1.2;
+    const influenceRadius = 130;
+    const pullStrength = 0.35;
+    const returnSpeed = 0.08;
+    let dots = [];
+    let mouse = { x: -1000, y: -1000 };
+    let animId;
+    const scrollParent = document.querySelector('[data-dc-root]')?.closest('[style*="overflow"]') || window;
+    const getScrollTop = () => scrollParent === window ? (window.scrollY || 0) : scrollParent.scrollTop;
+    // Track which vertical bands (in viewport coords) should show dots
+    let gridBands = [];
+    const computeGridBands = () => {
+      gridBands = [];
+      const sections = document.querySelectorAll('[data-grid-section]');
+      sections.forEach(el => {
+        const r = el.getBoundingClientRect();
+        gridBands.push({ top: r.top, bottom: r.bottom });
+      });
+    };
+    const isInGridBand = (vy) => {
+      for (let i = 0; i < gridBands.length; i++) {
+        if (vy >= gridBands[i].top && vy <= gridBands[i].bottom) return true;
+      }
+      return false;
+    };
+    // Inverse proximity: less visible near text, more in empty space
+    const computeProximity = () => {
+      const els = document.querySelectorAll('h1, h2, h3, p, nav, [style*="border-radius:18px"], [style*="border-radius:14px"]');
+      const rects = [];
+      els.forEach(el => {
+        const r = el.getBoundingClientRect();
+        rects.push({ x: r.left, y: r.top, w: r.width, h: r.height });
+      });
+      for (let i = 0; i < dots.length; i++) {
+        const d = dots[i];
+        let minDist = 9999;
+        for (let j = 0; j < rects.length; j++) {
+          const r = rects[j];
+          const cx = Math.max(r.x, Math.min(d.ox, r.x + r.w));
+          const cy = Math.max(r.y, Math.min(d.oy, r.y + r.h));
+          const dist = Math.sqrt((d.ox - cx) ** 2 + (d.oy - cy) ** 2);
+          if (dist < minDist) minDist = dist;
+        }
+        // Inverse: near text → dim, far from text → bright
+        if (minDist < 30) {
+          d.prox = 0.04;
+        } else if (minDist < 200) {
+          d.prox = 0.04 + ((minDist - 30) / 170) * 0.22;
+        } else {
+          d.prox = 0.26;
+        }
+      }
+    };
+    const resize = () => {
+      const dpr = window.devicePixelRatio || 1;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      dots = [];
+      const cols = Math.ceil(w / spacing) + 1;
+      const rows = Math.ceil(h / spacing) + 1;
+      const ox = (w - (cols - 1) * spacing) / 2;
+      const oy = (h - (rows - 1) * spacing) / 2;
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const x = ox + c * spacing;
+          const y = oy + r * spacing;
+          dots.push({ ox: x, oy: y, x, y, prox: 0.15 });
+        }
+      }
+    };
+    const onMove = (e) => { mouse.x = e.clientX; mouse.y = e.clientY; };
+    const onLeave = () => { mouse.x = -1000; mouse.y = -1000; };
+    let frame = 0;
+    const draw = () => {
+      frame++;
+      if (frame % 20 === 0) { computeGridBands(); computeProximity(); }
+      const w = parseFloat(canvas.style.width);
+      const h = parseFloat(canvas.style.height);
+      ctx.clearRect(0, 0, w, h);
+      for (let i = 0; i < dots.length; i++) {
+        const d = dots[i];
+        // Only draw if in a grid band
+        if (!isInGridBand(d.oy)) {
+          d.x += (d.ox - d.x) * returnSpeed;
+          d.y += (d.oy - d.y) * returnSpeed;
+          continue;
+        }
+        const dx = mouse.x - d.ox;
+        const dy = mouse.y - d.oy;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < influenceRadius) {
+          const force = (1 - dist / influenceRadius) * pullStrength;
+          d.x += (d.ox + dx * force - d.x) * 0.15;
+          d.y += (d.oy + dy * force - d.y) * 0.15;
+        } else {
+          d.x += (d.ox - d.x) * returnSpeed;
+          d.y += (d.oy - d.y) * returnSpeed;
+        }
+        const displacement = Math.sqrt((d.x - d.ox) ** 2 + (d.y - d.oy) ** 2);
+        const alpha = d.prox + Math.min(displacement / 15, 0.4);
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, dotRadius + displacement * 0.04, 0, Math.PI * 2);
+        ctx.fillStyle = 'oklch(0.48 0.19 260 / ' + alpha + ')';
+        ctx.fill();
+      }
+      animId = requestAnimationFrame(draw);
+    };
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseleave', onLeave);
+    window.addEventListener('resize', () => { resize(); computeGridBands(); computeProximity(); });
+    scrollParent.addEventListener('scroll', () => { if (frame % 8 === 0) { computeGridBands(); computeProximity(); } }, { passive: true });
+    resize();
+    computeGridBands();
+    computeProximity();
+    draw();
+    this._cleanupGrid = () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseleave', onLeave);
+    };
+  }
+  componentWillUnmount() {
+    if (this._cleanupScroll) this._cleanupScroll();
+    if (this._cleanupGrid) this._cleanupGrid();
+  }
+  renderVals() { return {}; }
+}
+
+</script>
+</body>
+</html>

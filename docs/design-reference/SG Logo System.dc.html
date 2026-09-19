@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="design_doc_mode" content="canvas">
+<style>body{margin:0;background:#f0eee9;font-family:system-ui,sans-serif}.sec{padding:40px 44px 40px;border-bottom:1px solid rgba(0,0,0,.08)}.sec-title{font:600 15px/1.2 Outfit,sans-serif;color:#1a1a1a;margin:0 0 8px}.sec-sub{font:400 12px/1.4 system-ui,sans-serif;color:rgba(0,0,0,.45);margin:0 0 28px}.row{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-end}.item{display:flex;flex-direction:column;gap:8px}.item-label{font:500 10px/1 ui-monospace,Menlo,monospace;letter-spacing:0.06em;text-transform:uppercase;color:#999}.card{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center}.card-dark{background:#111;border-color:rgba(255,255,255,.08)}.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:20px}</style>
+</helmet>
+
+<!-- Version 1: Mark only -->
+<section class="sec">
+<h2 class="sec-title">1 — Mark only (2c style)</h2>
+<p class="sec-sub">Bottom-tangent, thick strokes. Blue #0754C7. Shown at favicon, header, and display sizes on light and dark backgrounds.</p>
+<div class="row">
+<sc-for list="{{ markSizes }}" as="m">
+<div class="item">
+  <span class="item-label">{{ m.label }}</span>
+  <div class="card" style="padding:{{ m.pad }}px;width:{{ m.cardW }}px;height:{{ m.cardH }}px;">
+    <svg width="{{ m.size }}" height="{{ m.size }}" viewBox="{{ m.vbox }}" style="display:block;">
+      <circle cx="{{ m.cx }}" cy="{{ m.cyBig }}" r="{{ m.rBig }}" fill="none" stroke="#0754C7" stroke-width="{{ m.sw }}"></circle>
+      <circle cx="{{ m.cx }}" cy="{{ m.cyMid }}" r="{{ m.rMid }}" fill="none" stroke="#0754C7" stroke-width="{{ m.sw }}"></circle>
+      <circle cx="{{ m.cx }}" cy="{{ m.cySmall }}" r="{{ m.rSmall }}" fill="none" stroke="#0754C7" stroke-width="{{ m.sw }}"></circle>
+    </svg>
+  </div>
+</div>
+</sc-for>
+</div>
+<div style="margin-top:24px">
+<div class="item-label" style="margin-bottom:10px">On dark background</div>
+<div class="row">
+<sc-for list="{{ markSizes }}" as="m">
+<div class="item">
+  <span class="item-label">{{ m.label }}</span>
+  <div class="card card-dark" style="padding:{{ m.pad }}px;width:{{ m.cardW }}px;height:{{ m.cardH }}px;">
+    <svg width="{{ m.size }}" height="{{ m.size }}" viewBox="{{ m.vbox }}" style="display:block;">
+      <circle cx="{{ m.cx }}" cy="{{ m.cyBig }}" r="{{ m.rBig }}" fill="none" stroke="#4D9AFF" stroke-width="{{ m.sw }}"></circle>
+      <circle cx="{{ m.cx }}" cy="{{ m.cyMid }}" r="{{ m.rMid }}" fill="none" stroke="#4D9AFF" stroke-width="{{ m.sw }}"></circle>
+      <circle cx="{{ m.cx }}" cy="{{ m.cySmall }}" r="{{ m.rSmall }}" fill="none" stroke="#4D9AFF" stroke-width="{{ m.sw }}"></circle>
+    </svg>
+  </div>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="margin-top:24px">
+<div class="item-label" style="margin-bottom:10px">White mark on dark</div>
+<div class="row">
+<sc-for list="{{ markSizes }}" as="m">
+<div class="item">
+  <span class="item-label">{{ m.label }}</span>
+  <div class="card card-dark" style="padding:{{ m.pad }}px;width:{{ m.cardW }}px;height:{{ m.cardH }}px;">
+    <svg width="{{ m.size }}" height="{{ m.size }}" viewBox="{{ m.vbox }}" style="display:block;">
+      <circle cx="{{ m.cx }}" cy="{{ m.cyBig }}" r="{{ m.rBig }}" fill="none" stroke="#ffffff" stroke-width="{{ m.sw }}"></circle>
+      <circle cx="{{ m.cx }}" cy="{{ m.cyMid }}" r="{{ m.rMid }}" fill="none" stroke="#ffffff" stroke-width="{{ m.sw }}"></circle>
+      <circle cx="{{ m.cx }}" cy="{{ m.cySmall }}" r="{{ m.rSmall }}" fill="none" stroke="#ffffff" stroke-width="{{ m.sw }}"></circle>
+    </svg>
+  </div>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<!-- Version 2: Logo + Scalable Governance (blue mark, black text) -->
+<section class="sec">
+<h2 class="sec-title">2 — Mark + Wordmark (blue mark, black text)</h2>
+<p class="sec-sub">Blue circles #0754C7, "Scalable" and "Governance" both in #111111. Outfit 600.</p>
+<div style="display:flex;flex-direction:column;gap:32px">
+<sc-for list="{{ logoSizes }}" as="l">
+<div class="item">
+  <span class="item-label">{{ l.label }}</span>
+  <div class="card" style="padding:{{ l.pad }}px;">
+    <svg width="{{ l.vw }}" height="{{ l.vh }}" viewBox="{{ l.vbox }}" style="display:block;max-width:100%;height:auto;">
+      <circle cx="{{ l.cx }}" cy="{{ l.cyBig }}" r="{{ l.rBig }}" fill="none" stroke="#0754C7" stroke-width="{{ l.sw }}"></circle>
+      <circle cx="{{ l.cx }}" cy="{{ l.cyMid }}" r="{{ l.rMid }}" fill="none" stroke="#0754C7" stroke-width="{{ l.sw }}"></circle>
+      <circle cx="{{ l.cx }}" cy="{{ l.cySmall }}" r="{{ l.rSmall }}" fill="none" stroke="#0754C7" stroke-width="{{ l.sw }}"></circle>
+      <text x="{{ l.tx }}" y="{{ l.by1 }}" font-family="Outfit, sans-serif" font-weight="600" font-size="{{ l.fs }}" fill="#111111">Scalable</text>
+      <text x="{{ l.tx }}" y="{{ l.by2 }}" font-family="Outfit, sans-serif" font-weight="600" font-size="{{ l.fs }}" fill="#111111">Governance</text>
+    </svg>
+  </div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<!-- Version 3: Logo + Scalable Governance + Tagline -->
+<section class="sec">
+<h2 class="sec-title">3 — Mark + Name + Tagline</h2>
+<p class="sec-sub">"Scalable Governance" in Outfit 700 black, "Applied research on AI governance" in Bitter 400 gray below.</p>
+<div style="display:flex;flex-direction:column;gap:32px">
+<sc-for list="{{ taglineSizes }}" as="t">
+<div class="item">
+  <span class="item-label">{{ t.label }}</span>
+  <div class="card" style="padding:{{ t.pad }}px;">
+    <svg width="{{ t.vw }}" height="{{ t.vh }}" viewBox="{{ t.vbox }}" style="display:block;max-width:100%;height:auto;">
+      <circle cx="{{ t.cx }}" cy="{{ t.cyBig }}" r="{{ t.rBig }}" fill="none" stroke="#0754C7" stroke-width="{{ t.sw }}"></circle>
+      <circle cx="{{ t.cx }}" cy="{{ t.cyMid }}" r="{{ t.rMid }}" fill="none" stroke="#0754C7" stroke-width="{{ t.sw }}"></circle>
+      <circle cx="{{ t.cx }}" cy="{{ t.cySmall }}" r="{{ t.rSmall }}" fill="none" stroke="#0754C7" stroke-width="{{ t.sw }}"></circle>
+      <text x="{{ t.tx }}" y="{{ t.by1 }}" font-family="Outfit, sans-serif" font-weight="700" font-size="{{ t.fs }}" fill="#111111">Scalable Governance</text>
+      <text x="{{ t.tx }}" y="{{ t.by2 }}" font-family="Bitter, serif" font-weight="400" font-size="{{ t.fs2 }}" fill="#777777">Applied research on AI governance</text>
+    </svg>
+  </div>
+</div>
+</sc-for>
+</div>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;innerCircleLift&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.06,&quot;min&quot;:0,&quot;max&quot;:0.5,&quot;step&quot;:0.02,&quot;tsType&quot;:&quot;number&quot;}}">
+
+class Component extends DCLogic {
+  PHI = 1.6180339887;
+  buildMark(rBig, swRatio) {
+    const SW = rBig * swRatio;
+    const rMid = rBig / this.PHI;
+    const rSmall = rBig / (this.PHI * this.PHI);
+    const PAD = SW * 1.5;
+    const CX = PAD + rBig;
+    const BOTTOM = PAD + rBig * 2;
+    const cyBig = BOTTOM - rBig;
+    const cyMid = BOTTOM - rMid;
+    const cySmall = BOTTOM - rSmall - rSmall * (this.props.innerCircleLift ?? 0.08);
+    const FULL = BOTTOM + PAD;
+    return { cx: CX, cyBig, cyMid, cySmall, rBig, rMid, rSmall, sw: SW, vbox: `0 0 ${FULL} ${FULL}`, full: FULL };
+  }
+  buildLogoWithText(fs, rBig, swRatio) {
+    const SW = rBig * swRatio;
+    const rMid = rBig / this.PHI;
+    const rSmall = rBig / (this.PHI * this.PHI);
+    const PAD = Math.max(SW * 1.5, 4);
+    const CX = PAD + rBig;
+    const BOTTOM = PAD + rBig * 2;
+    const cyBig = BOTTOM - rBig;
+    const cyMid = BOTTOM - rMid;
+    const cySmall = BOTTOM - rSmall - rSmall * (this.props.innerCircleLift ?? 0.08);
+    const CAP = 0.72 * fs;
+    const LEAD = CAP + fs * 0.25;
+    const TX = CX + rBig + SW + fs * 0.35;
+    const textBlockH = CAP * 2 + (LEAD - CAP);
+    const textCenter = cyBig;
+    const BY1 = textCenter - textBlockH / 2 + CAP;
+    const BY2 = BY1 + LEAD;
+    const VW = TX + fs * 8.5;
+    const VH = BOTTOM + PAD;
+    return { cx: CX, cyBig, cyMid, cySmall, rBig, rMid, rSmall, sw: SW, tx: TX, by1: BY1, by2: BY2, fs, vw: VW, vh: VH, vbox: `0 0 ${VW} ${VH}` };
+  }
+  buildTaglineLayout(fs, rBig, swRatio) {
+    const SW = rBig * swRatio;
+    const rMid = rBig / this.PHI;
+    const rSmall = rBig / (this.PHI * this.PHI);
+    const PAD = Math.max(SW * 1.5, 4);
+    const CX = PAD + rBig;
+    const BOTTOM = PAD + rBig * 2;
+    const cyBig = BOTTOM - rBig;
+    const cyMid = BOTTOM - rMid;
+    const cySmall = BOTTOM - rSmall - rSmall * (this.props.innerCircleLift ?? 0.08);
+    const CAP = 0.72 * fs;
+    const fs2 = fs * 0.75;
+    const TAG_GAP = fs * 0.35;
+    const TX = CX + rBig + SW + fs * 0.35;
+    const totalH = CAP + TAG_GAP + fs2 * 0.72;
+    const textCenter = cyBig;
+    const BY1 = textCenter - totalH / 2 + CAP;
+    const BY2 = BY1 + TAG_GAP + fs2 * 0.72;
+    const VW = TX + fs * 14;
+    const VH = BOTTOM + PAD;
+    return { cx: CX, cyBig, cyMid, cySmall, rBig, rMid, rSmall, sw: SW, tx: TX, by1: BY1, by2: BY2, fs, fs2, vw: VW, vh: VH, vbox: `0 0 ${VW} ${VH}` };
+  }
+  renderVals() {
+    const SW_RATIO = 0.08;
+    // Version 1: mark only at various sizes
+    const markConfigs = [
+      { size: 16, label: 'Favicon 16px', pad: 12, cardW: 56, cardH: 56 },
+      { size: 32, label: 'Favicon 32px', pad: 16, cardW: 80, cardH: 80 },
+      { size: 48, label: 'Header 48px', pad: 20, cardW: 100, cardH: 100 },
+      { size: 64, label: '64px', pad: 24, cardW: 120, cardH: 120 },
+      { size: 128, label: '128px', pad: 28, cardW: 200, cardH: 200 },
+      { size: 256, label: '256px', pad: 32, cardW: 340, cardH: 340 },
+    ];
+    const markSizes = markConfigs.map(c => {
+      // For small sizes, use thicker stroke ratio for visibility
+      const swR = c.size <= 32 ? 0.15 : c.size <= 64 ? 0.11 : SW_RATIO;
+      const rBig = c.size * 0.42;
+      const m = this.buildMark(rBig, swR);
+      return { ...m, size: c.size, label: c.label, pad: c.pad, cardW: c.cardW, cardH: c.cardH };
+    });
+    // Version 2: logo + two-line wordmark, blue mark, black text
+    const logoConfigs = [
+      { fs: 14, rFactor: 0.55, swOverride: 0.12, label: 'Small — nav / mobile', pad: 16 },
+      { fs: 24, rFactor: 0.6, swOverride: 0.10, label: 'Medium — header', pad: 24 },
+      { fs: 42, rFactor: 0.65, swOverride: null, label: 'Large — hero / print', pad: 32 },
+      { fs: 72, rFactor: 0.7, swOverride: null, label: 'Display — splash / signage', pad: 40 },
+    ];
+    const logoSizes = logoConfigs.map(c => {
+      const CAP = 0.72 * c.fs;
+      const textH = CAP * 2 + c.fs * 0.25;
+      const rBig = textH / 2 * c.rFactor * 1.8;
+      const sw = c.swOverride || SW_RATIO;
+      const l = this.buildLogoWithText(c.fs, rBig, sw);
+      return { ...l, label: c.label, pad: c.pad };
+    });
+    // Version 3: logo + single-line name + tagline
+    const tagConfigs = [
+      { fs: 18, rFactor: 0.65, swOverride: 0.12, label: 'Small — footer / sidebar', pad: 16 },
+      { fs: 28, rFactor: 0.68, swOverride: 0.10, label: 'Medium — header', pad: 24 },
+      { fs: 48, rFactor: 0.72, swOverride: null, label: 'Large — hero', pad: 32 },
+      { fs: 72, rFactor: 0.75, swOverride: null, label: 'Display', pad: 40 },
+    ];
+    const taglineSizes = tagConfigs.map(c => {
+      const CAP = 0.72 * c.fs;
+      const fs2 = c.fs * 0.75;
+      const totalH = CAP + c.fs * 0.35 + fs2 * 0.72;
+      const rBig = totalH / 2 * c.rFactor * 1.75;
+      const sw = c.swOverride || SW_RATIO;
+      const t = this.buildTaglineLayout(c.fs, rBig, sw);
+      return { ...t, label: c.label, pad: c.pad };
+    });
+    return { markSizes, logoSizes, taglineSizes };
+  }
+}
+
+</script>
+</body>
+</html>

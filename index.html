@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scalable Governance — Applied research on AI governance</title>
+<meta name="description" content="An applied research initiative from the TUM Professorship of Societal Computing, working on rigorous research and novel ideas for AI governance.">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='110' r='85' fill='none' stroke='%230754C7' stroke-width='16'/%3E%3Ccircle cx='100' cy='142' r='53' fill='none' stroke='%230754C7' stroke-width='14'/%3E%3Ccircle cx='100' cy='160' r='33' fill='none' stroke='%230754C7' stroke-width='13'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Bitter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="page">
+  <canvas id="dot-grid" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="Primary">
+    <div class="nav-inner">
+      <div class="nav-bar" id="navBar">
+        <div class="nav-brand">
+          <span class="nav-logo-mark" aria-hidden="true">
+            <svg id="navLogoSvg" viewBox="0 0 200 200" width="56" height="56">
+              <circle cx="100" cy="110" r="85" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="14"/>
+              <circle cx="100" cy="142" r="53" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="12"/>
+              <circle cx="100" cy="160" r="33" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="11"/>
+            </svg>
+          </span>
+          <div class="nav-brand-text">
+            <div class="nav-title" id="navTitle">Scalable Governance</div>
+            <div class="nav-tagline" id="navTagline">Applied research on AI governance</div>
+          </div>
+        </div>
+        <div class="nav-links" id="navLinks">
+          <button class="nav-link" type="button" data-target="research">Research</button>
+          <button class="nav-link" type="button" data-target="who-we-are">Who We Are</button>
+          <button class="nav-link" type="button" data-target="what-comes-next">Vision</button>
+          <button class="nav-link" type="button" data-target="contact">Contact</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main" class="content">
+
+    <!-- Hero -->
+    <section class="hero grid-band" data-grid-section aria-labelledby="hero-heading">
+      <svg class="hero-watermark" viewBox="0 0 200 200" aria-hidden="true">
+        <circle cx="100" cy="90" r="88" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="5.5"/>
+        <circle cx="100" cy="112" r="58" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="5"/>
+        <circle cx="100" cy="128" r="32" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="4.5"/>
+      </svg>
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <h1 id="hero-heading">AI development and deployment are advancing faster than governance can follow.</h1>
+          <p class="hero-lede">To match the pace, we need rigorous research and novel ideas.</p>
+          <p class="hero-affiliation">An applied research initiative from the TUM Professorship of Societal Computing</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary nav-link" type="button" data-target="research">Read our research</button>
+            <button class="btn btn-outline nav-link" type="button" data-target="contact">Get in touch</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research -->
+    <section id="research" class="research-section" aria-labelledby="research-heading">
+      <div class="section-inner">
+        <h2 class="section-heading" id="research-heading">Research</h2>
+        <p class="research-intro">Our empirical research focuses on the impact and operationalisation of AI governance in practice. Using participatory methods like collaborative expert workshops, we investigate governance challenges and strategies for building safe and compliant AI systems. Next, we map stakeholders across the emerging AI governance ecosystem consisting of consultants, lawyers, auditors, and standard-setting organisations. Currently, we are developing scalable approaches for agentic AI governance to match the pace of accelerating AI system development and high-risk deployment.</p>
+
+        <div class="research-cards">
+          <article class="research-card research-card--1">
+            <svg class="research-card-glyph" viewBox="0 0 200 200" aria-hidden="true">
+              <circle cx="100" cy="110" r="85" fill="none" stroke="oklch(0.82 0.04 270)" stroke-width="5"/>
+              <circle cx="100" cy="142" r="53" fill="none" stroke="oklch(0.82 0.04 270)" stroke-width="4.5"/>
+              <circle cx="100" cy="160" r="33" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="4.5"/>
+            </svg>
+            <div class="research-card-fade" aria-hidden="true"></div>
+            <div class="research-card-body">
+              <div class="research-card-spacer"></div>
+              <h3>Governance in practice</h3>
+              <p>How can collaborative workshops empower technical teams to integrate AI governance requirements into their daily work?</p>
+              <div class="research-card-footer">
+                <div class="research-card-venue">Paper publications at<br>FAccT '26 and EWAF '25</div>
+                <span class="btn-outline-sm">Read more</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="research-card research-card--2">
+            <svg class="research-card-glyph" viewBox="0 0 200 200" aria-hidden="true">
+              <circle cx="100" cy="110" r="85" fill="none" stroke="oklch(0.82 0.04 250)" stroke-width="5"/>
+              <circle cx="100" cy="142" r="53" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="4.5"/>
+              <circle cx="100" cy="160" r="33" fill="none" stroke="oklch(0.82 0.04 250)" stroke-width="4.5"/>
+            </svg>
+            <div class="research-card-fade" aria-hidden="true"></div>
+            <div class="research-card-body">
+              <div class="research-card-spacer"></div>
+              <h3>Who governs AI?</h3>
+              <p>Between regulator and regulated target sits a chain of actors that interpret requirements and shape what compliance means.</p>
+              <div class="research-card-footer">
+                <div class="research-card-venue">Paper publication at<br>AIES '26</div>
+                <span class="btn-outline-sm">Read more</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="research-card research-card--3">
+            <svg class="research-card-glyph" viewBox="0 0 200 200" aria-hidden="true">
+              <circle cx="100" cy="110" r="85" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="5"/>
+              <circle cx="100" cy="142" r="53" fill="none" stroke="oklch(0.82 0.04 280)" stroke-width="4.5"/>
+              <circle cx="100" cy="160" r="33" fill="none" stroke="oklch(0.82 0.04 280)" stroke-width="4.5"/>
+            </svg>
+            <div class="research-card-fade" aria-hidden="true"></div>
+            <div class="research-card-body">
+              <div class="research-card-spacer"></div>
+              <h3>Making governance scale</h3>
+              <p>Methods that reduce the cost of compliance by embedding regulatory requirements in AI development workflows.</p>
+              <div class="research-card-footer">
+                <div class="research-card-venue">Paper publications at<br>HICSS '27 and ECAF '26</div>
+                <span class="btn-outline-sm">Read more</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who we are -->
+    <section id="who-we-are" class="people-section grid-band" data-grid-section aria-labelledby="people-heading">
+      <div class="section-inner">
+        <h2 class="section-heading" id="people-heading">Who we are</h2>
+        <div class="people-grid">
+          <div class="person">
+            <div class="person-card">
+              <p class="person-name">Simon<br>Jarvers</p>
+              <div class="person-rule" aria-hidden="true"></div>
+              <div class="person-role">Initiative Lead</div>
+              <p class="person-affiliation">Researcher at TUM<br>AI Governance Officer</p>
+            </div>
+            <svg class="person-portrait" viewBox="0 0 180 220" aria-hidden="true">
+              <path d="M90 15C90 15 68 15 62 33C56 51 58 57 58 68C53 71 49 76 49 85C49 94 55 97 57 97C59 109 65 118 73 123L73 129C73 129 44 134 38 155C34 167 31 180 31 220L149 220C149 180 146 167 142 155C136 134 107 129 107 129L107 123C115 118 121 109 123 97C125 97 131 94 131 85C131 76 127 71 122 68C122 57 124 51 118 33C112 15 90 15 90 15Z" fill="oklch(0.55 0.02 250)"/>
+            </svg>
+          </div>
+          <div class="person">
+            <div class="person-card">
+              <p class="person-name">Orestis<br>Papakyriakopoulos</p>
+              <div class="person-rule" aria-hidden="true"></div>
+              <div class="person-role">Advisor</div>
+              <p class="person-affiliation">Professor of Societal Computing<br>Civic Machines Lab, TUM</p>
+            </div>
+            <svg class="person-portrait" viewBox="0 0 180 220" aria-hidden="true">
+              <path d="M90 15C90 15 68 15 62 33C56 51 58 57 58 68C53 71 49 76 49 85C49 94 55 97 57 97C59 109 65 118 73 123L73 129C73 129 44 134 38 155C34 167 31 180 31 220L149 220C149 180 146 167 142 155C136 134 107 129 107 129L107 123C115 118 121 109 123 97C125 97 131 94 131 85C131 76 127 71 122 68C122 57 124 51 118 33C112 15 90 15 90 15Z" fill="oklch(0.55 0.02 250)"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vision -->
+    <section id="what-comes-next" class="vision-section" aria-labelledby="vision-heading">
+      <div class="section-inner">
+        <h2 class="section-heading" id="vision-heading">Our Vision</h2>
+        <div class="vision-body">
+          <p class="vision-lead">Across our studies a pattern emerges. Organisations that want to comply cannot easily tell what AI regulation requires, and the compliance artefacts they produce are often built to be evaluated by an auditor rather than to inform their own decisions. We argue that this has a structural cause: auditors and authorities have no direct way to verify that governance processes genuinely protect safety, health, and fundamental rights. This credence good property of AI governance creates a systemic pull toward symbolic compliance.</p>
+
+          <div class="vision-columns">
+            <div class="vision-argument">
+              <p>AI governance usually moves from regulator to regulated target: Standard-setting organisations (i.e., CEN-CENELEC) translate legal text into technical standards; other intermediaries (e.g., lawyers and consultants) then further interpret and facilitate the regulatory requirements for AI system providers and deployers. However, independent upstream feedback is rare. <b>We want to fill this gap by carrying insights back to the regulator since we believe in evidence-based policy making to ensure compliant AI systems are indeed safe</b>.</p>
+              <div class="vision-goals-label">The initiative's goals</div>
+              <ol class="vision-goals">
+                <li>
+                  <span class="vision-goal-index" aria-hidden="true">1</span>
+                  <p>Assess more organisations' AI governance to better understand the impact of AI regulation in practice.</p>
+                </li>
+                <li>
+                  <span class="vision-goal-index" aria-hidden="true">2</span>
+                  <p>Build upward feedback streams to provide independent, scientific evidence to policymakers.</p>
+                </li>
+                <li>
+                  <span class="vision-goal-index" aria-hidden="true">3</span>
+                  <p>Develop methods that reduce the cost of compliance without delegating the judgment or accountability it requires.</p>
+                </li>
+              </ol>
+            </div>
+
+            <div class="chain-card">
+              <div class="chain-title">Regulatory chain</div>
+              <div class="chain-row">
+                <div class="chain-steps">
+                  <div class="chain-step chain-step--regulator">Regulator</div>
+                  <div class="chain-step-desc">EU AI Office, market surveillance authorities</div>
+                  <svg class="chain-arrow" width="18" height="30" viewBox="0 0 18 30" aria-hidden="true">
+                    <line x1="9" y1="0" x2="9" y2="22" stroke="oklch(0.48 0.19 260)" stroke-width="2"/>
+                    <polygon points="4,20 9,29 14,20" fill="oklch(0.48 0.19 260)"/>
+                  </svg>
+                  <div class="chain-step chain-step--intermediaries">Intermediaries</div>
+                  <div class="chain-step-desc">Auditors, consultants, standard-setters</div>
+                  <svg class="chain-arrow" width="18" height="30" viewBox="0 0 18 30" aria-hidden="true">
+                    <line x1="9" y1="0" x2="9" y2="22" stroke="oklch(0.38 0.20 280)" stroke-width="2"/>
+                    <polygon points="4,20 9,29 14,20" fill="oklch(0.38 0.20 280)"/>
+                  </svg>
+                  <div class="chain-step chain-step--target">Regulated target</div>
+                  <div class="chain-step-desc">AI providers &amp; deployers</div>
+                </div>
+                <div class="chain-feedback" aria-hidden="true">
+                  <div class="chain-feedback-bracket"></div>
+                  <div class="chain-feedback-arrowhead"></div>
+                  <div class="chain-feedback-label">Feedback</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact-section grid-band" data-grid-section aria-labelledby="contact-heading">
+      <div class="section-inner">
+        <h2 id="contact-heading">Get in contact</h2>
+        <div class="contact-bleed">
+          <div class="contact-item">
+            <div class="contact-item-title">AI system providers</div>
+            <div class="contact-item-desc">If your organisation is open to embedded research on AI regulation.</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-title">Research collaboration</div>
+            <div class="contact-item-desc">If you work on AI governance, compliance, or regulatory design.</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-title">Funding</div>
+            <div class="contact-item-desc">If you support independent research on AI governance.</div>
+          </div>
+        </div>
+        <div class="contact-actions">
+          <a class="btn btn-primary-lg" href="mailto:simon.jarvers@tum.de">Write an email</a>
+          <a class="btn btn-outline-lg" href="https://www.linkedin.com" target="_blank" rel="noopener">Contact us on LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <svg width="24" height="24" viewBox="0 0 200 200" aria-hidden="true">
+        <circle cx="100" cy="110" r="85" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="14"/>
+        <circle cx="100" cy="142" r="53" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="12"/>
+        <circle cx="100" cy="160" r="33" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="11"/>
+      </svg>
+      <span class="footer-name">Scalable Governance</span>
+      <span class="footer-tagline">An applied research initiative from the TUM Professorship of Societal Computing</span>
+    </div>
+    <div class="footer-copyright">© 2026</div>
+  </footer>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
