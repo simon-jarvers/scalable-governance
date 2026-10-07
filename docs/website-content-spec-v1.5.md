@@ -81,7 +81,7 @@ One paragraph on what we build (the *Agentic Governance Workflow*: agent skills 
 
 - Intro paragraph: we study AI governance inside the organisations that build AI systems and among the intermediaries who interpret the rules for them; most recent work focuses on making governance scale.
 - Publication browser: list of papers (venue, short title, availability) and a detail panel (full venue, title and subtitle, authors, notes, abstract, links). Default selection: HICSS 2027.
-- Abstracts are quoted **verbatim** from the papers. Checked against the PDFs in `papers/` for HICSS'27, AIES'26, ECAF'26 and EWAF'25. FAccT'26 has no PDF in the repository; its abstract comes from the design export and should be checked against the ACM version.
+- Abstracts are quoted **verbatim** from the papers and checked against the PDFs in `papers/`.
 - Each paper shows its DOI or publisher link next to the PDF where both exist. Forthcoming papers carry a "Forthcoming" badge and "DOI not yet assigned" or "Proceedings not yet published".
 
 ### Who we are
@@ -142,7 +142,7 @@ Sections: The problem (with the interactive budget split) · Governance-Driven D
 | HICSS 2027 | Human-AI Collaboration in Compliance Automation: Designing an Agentic Knowledge Base for AI Governance | Jarvers, Röthemeier, Wittges, Papakyriakopoulos | Forthcoming | DOI not yet assigned | `papers/2027-hicss-human-ai-collaboration-in-compliance-automation.pdf` |
 | AIES 2026 | Governing by Proxy: How Regulatory Intermediaries Shape EU AI Act Compliance in Practice | Jarvers, Papakyriakopoulos | Forthcoming | DOI not yet assigned | `papers/2026-aies-governing-by-proxy.pdf` |
 | ECAF 2026 (PMLR) | Governance-Driven Development: Embedding Regulatory Requirements in AI Development Workflows | Jarvers, Papakyriakopoulos | Forthcoming (proceedings not yet published) | — | `papers/2026-ecaf-governance-driven-development.pdf` |
-| FAccT 2026 | Engaged AI Governance: Addressing the Last Mile Challenge Through Internal Expert Collaboration | Jarvers, Papakyriakopoulos | Published | DOI 10.1145/3805689.3812341 | — (ACM Digital Library) |
+| FAccT 2026 | Engaged AI Governance: Addressing the Last Mile Challenge Through Internal Expert Collaboration | Jarvers, Papakyriakopoulos | Published | DOI 10.1145/3805689.3812341 (ACM Digital Library) | `papers/2026-facct-engaged-ai-governance.pdf` |
 | EWAF 2025 (PMLR vol. 294) | Uncertainty as a Primary Barrier for Trustworthy AI Under the EU AI Act: German SME Perspectives | Jarvers\*, Ullstein\*, Grossklags (\* equal contribution) | Published | https://proceedings.mlr.press/v294/jarvers25a.html | `papers/2025-ewaf-uncertainty-as-a-primary-barrier.pdf` |
 
 **Titles corrected in v1.5** against the paper PDFs: HICSS'27 (was "Human-AI Collaboration for Scalable AI Governance: An Agentic Knowledge Base Approach"), ECAF'26 subtitle (was "An AI Act-Centred Framework for AI System Design"), AIES'26 (adds "in Practice"), FAccT'26 (adds "Addressing the Last Mile Challenge").
@@ -192,7 +192,6 @@ Every substantive claim on the site, with its status. Anything not covered here 
 - Landing, "Why does it have to scale?": "AI coding agents write a growing amount of the code of AI systems", "more AI systems reach the market", and "neglecting it poses a systemic risk" (an argument not marked as one)
 - Mission, "Why this matters": frontier labs increasingly use AI to accelerate research on their own models; developers' use of coding agents brings more systems to market, faster
 - Workflow page: "Most compliance budget goes into documentation for audits, not into changes to the AI system" (AIES'26 supports this for one organisation only); "Features that took weeks now take days"; the budget slider's default 62/38 split reads as data but is illustrative
-- FAccT'26 abstract not yet checked against the published ACM version
 
 **Claims removed in v1.3** (still not to be used):
 - That intermediaries' incentives *cause* symbolic compliance (AIES'26 shows conditions under which it can emerge in good faith; no causal attribution)
@@ -227,7 +226,7 @@ Every substantive claim on the site, with its status. Anything not covered here 
 
 ## Changelog
 
-**v1.5 (2026-10-07):** Rewritten to match the implemented site (Claude Design "Landing Page Mockup v6"). Final copy now lives in the HTML; this spec keeps purpose, decisions and the Claims Register. Research-area subpages dropped; research consolidated in the landing-page publication browser. Mission statement page added (holds the former "What Comes Next" content and the single-site limitation). Agentic Governance Workflow page added, reachable by direct URL only. Contact segment "Field sites" replaced by "SME AI system providers", without a "cohort". "Open skills" replaced by "agent skills". Orestis Papakyriakopoulos listed as Professor. Paper titles and HICSS'27 author order corrected against the PDFs; publication status table added; AIES'25 no longer listed. Claims Register updated for the new copy, with open items listed.
+**v1.5 (2026-10-07):** Rewritten to match the implemented site (Claude Design "Landing Page Mockup v6"). Final copy now lives in the HTML; this spec keeps purpose, decisions and the Claims Register. Research-area subpages dropped; research consolidated in the landing-page publication browser. Mission statement page added (holds the former "What Comes Next" content and the single-site limitation). Agentic Governance Workflow page added, reachable by direct URL only. Contact segment "Field sites" replaced by "SME AI system providers", without a "cohort". "Open skills" replaced by "agent skills". Orestis Papakyriakopoulos listed as Professor. Paper titles and HICSS'27 author order corrected against the PDFs; FAccT'26 published PDF added; publication status table added; AIES'25 no longer listed. Claims Register updated for the new copy, with open items listed.
 
 **v1.4 (2026-09-13):** Research section gains a short introduction framing the three areas as one programme. "What Comes Next" moved after Who We Are.
 
