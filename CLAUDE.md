@@ -5,7 +5,7 @@ Static website for the Scalable Governance research initiative. Deployed via Git
 ## Project context
 
 - **Initiative scoping document:** `docs/scalable-governance-spec.md`
-- **Website content specification:** `docs/website-content-spec-v1.4.md`
+- **Website content specification:** `docs/website-content-spec-v1.5.md`
 
 ## Branch strategy
 
