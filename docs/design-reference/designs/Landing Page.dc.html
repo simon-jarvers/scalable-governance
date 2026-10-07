@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&amp;family=Bitter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body { margin:0; background:oklch(0.97 0.003 260); }
+a { color: oklch(0.48 0.19 260); text-decoration:none; }
+a:hover { color: oklch(0.38 0.16 260); }
+</style>
+</helmet>
+
+<div style="position:relative; min-height:100vh;">
+  <canvas id="dotGrid" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0;"></canvas>
+
+  <!-- STICKY NAV -->
+  <nav id="mainNav" style="position:fixed; top:0; left:0; right:0; z-index:100;">
+    <div id="navInner" style="max-width:1280px; margin:0 auto; padding:0 24px;">
+      <div id="navBar" style="display:flex; align-items:center; justify-content:space-between; padding:20px 36px; background:oklch(0.97 0.003 260 / 0.55); backdrop-filter:blur(24px) saturate(1.5); -webkit-backdrop-filter:blur(24px) saturate(1.5); border:1px solid oklch(0.92 0.005 260 / 0.5); border-radius:16px; box-shadow:0 2px 20px oklch(0.20 0.02 260 / 0.06); margin-top:20px; transition:all 0.35s ease;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <div id="navLogo">
+            <svg viewBox="0 10 200 200" width="56" height="56"><circle cx="100" cy="110" r="85" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="14"></circle><circle cx="100" cy="142" r="53" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="12"></circle><circle cx="100" cy="160" r="33" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="11"></circle></svg>
+          </div>
+          <div id="navText">
+            <div style="font-family: Outfit,sans-serif; font-weight: 700; font-size: 20px; color: oklch(0.15 0.02 260); line-height: 1.1; transition: font-size 0.35s ease">Scalable Governance</div>
+            <div style="font-family:Bitter,Georgia,serif; font-size:12.5px; color:oklch(0.50 0.03 260); letter-spacing:0.03em; transition:font-size 0.35s ease;">Applied research on AI governance</div>
+          </div>
+        </div>
+        <div id="navLinks" style="display:flex; gap:28px; align-items:center;">
+          <a href="Mission Statement.dc.html" style="font-family:Bitter,Georgia,serif; font-size:15px; font-weight:500; color:oklch(0.35 0.02 260); cursor:pointer; transition:all 0.35s ease;" style-hover="color:oklch(0.48 0.19 260);">Mission</a>
+          <span data-target="research" style="font-family:Bitter,Georgia,serif; font-size:15px; font-weight:500; color:oklch(0.35 0.02 260); cursor:pointer; transition:all 0.35s ease;" style-hover="color:oklch(0.48 0.19 260);">Research</span>
+          <span data-target="who-we-are" style="font-family:Bitter,Georgia,serif; font-size:15px; font-weight:500; color:oklch(0.35 0.02 260); cursor:pointer; transition:all 0.35s ease;" style-hover="color:oklch(0.48 0.19 260);">Who we are</span>
+          <span data-target="contact" style="font-family:Bitter,Georgia,serif; font-size:15px; font-weight:500; color:oklch(0.35 0.02 260); cursor:pointer; transition:all 0.35s ease;" style-hover="color:oklch(0.48 0.19 260);">Contact</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div style="position:relative; z-index:1;">
+
+    <!-- ═══════ HERO (grid visible) ═══════ -->
+    <div data-grid-section="" style="position:relative; min-height:620px; overflow:visible;">
+      <!-- Watermark — 8a style, right side -->
+      <div style="position:absolute; right:-60px; top:50%; transform:translateY(-40%); width:560px; height:560px; opacity:0.055; z-index:1; pointer-events:none;">
+        <svg viewBox="0 0 200 200" width="560" height="560"><circle cx="100" cy="90" r="88" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="5.5"></circle><circle cx="100" cy="112" r="58" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="5"></circle><circle cx="100" cy="128" r="32" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="4.5"></circle></svg>
+      </div>
+      <div style="position:relative; z-index:2; max-width:1280px; margin:0 auto; padding:150px 48px 80px;">
+        <div style="max-width: 900px">
+          <h1 style="font-family:Outfit,sans-serif; font-weight:700; font-size:clamp(32px, 4.5vw, 52px); line-height:1.1; color:oklch(0.13 0.02 260); margin:0 0 24px; letter-spacing:-0.01em;">AI is developed and deployed faster than governance can follow.</h1>
+          <p style="font-family: Bitter,Georgia,serif; font-size: 19px; line-height: 1.65; color: oklch(0.35 0.02 260); margin: 0 0 12px; max-width: 900px; text-wrap: pretty">Scalable Governance is an applied research initiative with the goal of scaling AI governance to the pace of rapidly increasing capability and volume of AI systems, without losing the human judgment and accountability that good governance requires.</p>
+          <p style="font-family:Bitter,Georgia,serif; font-size:16px; color:oklch(0.50 0.03 260); margin:0 0 36px;">We are based at the <a href="https://www.gov.sot.tum.de/en/soc/welcome/" target="_blank">TUM Professorship of Societal Computing</a>.</p>
+          <div style="border-top:1px solid oklch(0.88 0.008 260); margin-bottom:40px; max-width:720px;">
+            <div style="border-bottom:1px solid oklch(0.88 0.008 260);">
+              <div onClick="{{ ta1 }}" style="display:flex; justify-content:space-between; align-items:center; gap:16px; padding:18px 0; cursor:pointer;">
+                <div style="font-family:Outfit,sans-serif; font-weight:600; font-size:18px; color:oklch(0.13 0.02 260);">What is AI governance?</div>
+                <div style="width:28px; height:28px; border-radius:50%; border:1.5px solid oklch(0.48 0.19 260); color:oklch(0.48 0.19 260); display:flex; align-items:center; justify-content:center; font-family:Outfit,sans-serif; font-size:18px; line-height:1; flex:none;">{{ a1Sign }}</div>
+              </div>
+              <sc-if value="{{ a1 }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:0 48px 28px 0; display:flex; flex-direction:column; gap:14px;">
+                  <p style="font-family:Bitter,Georgia,serif; font-size:15px; line-height:1.65; color:oklch(0.32 0.02 260); margin:0;">By <em>AI governance</em> we mean the rules, processes and controls that make sure AI systems are safe and compliant. AI governance can be understood on different levels:</p>
+                  <ul style="margin:0; padding-left:22px; display:flex; flex-direction:column; gap:6px; font-family:Bitter,Georgia,serif; font-size:15px; line-height:1.6; color:oklch(0.32 0.02 260);">
+                    <li><b>Organisation:</b>&nbsp;Companies that develop and deploy AI systems turn regulatory requirements into policies and controls that impact the AI systems.</li>
+                    <li><b>Verification:</b>&nbsp;Auditors, notified bodies and authorities check conformity against technical standards and legal obligations.</li>
+                    <li><b>Regulation:</b>&nbsp;Legislators and policy-makers write AI regulations and keep them up to date.</li>
+                  </ul>
+                  <p style="font-family:Bitter,Georgia,serif; font-size:15px; line-height:1.65; color:oklch(0.32 0.02 260); margin:0;">Most of our research so far studies the organisational level.&nbsp;<span data-target="research" style="color: oklch(0.48 0.19 260); cursor: pointer;"><br>Read our research →</span></p></div>
+              </sc-if>
+            </div>
+            <div style="border-bottom:1px solid oklch(0.88 0.008 260);">
+              <div onClick="{{ ta2 }}" style="display:flex; justify-content:space-between; align-items:center; gap:16px; padding:18px 0; cursor:pointer;">
+                <div style="font-family:Outfit,sans-serif; font-weight:600; font-size:18px; color:oklch(0.13 0.02 260);">Why does it have to scale?</div>
+                <div style="width:28px; height:28px; border-radius:50%; border:1.5px solid oklch(0.48 0.19 260); color:oklch(0.48 0.19 260); display:flex; align-items:center; justify-content:center; font-family:Outfit,sans-serif; font-size:18px; line-height:1; flex:none;">{{ a2Sign }}</div>
+              </div>
+              <sc-if value="{{ a2 }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:0 48px 28px 0; display:flex; flex-direction:column; gap:14px;">
+                  
+                  <p style="font-family:Bitter,Georgia,serif; font-size:15px; line-height:1.65; color:oklch(0.32 0.02 260); margin:0;">AI coding agents write a growing amount of the code of AI systems. Teams build faster, and more AI systems reach the market. AI governance across all levels has to keep up with this pace. How this is going to be achieved is largely unsolved an neglecting it poses a systemic risk of AI.&nbsp;<a href="Mission Statement.dc.html"><br>Read our mission statement →</a></p></div>
+              </sc-if>
+            </div>
+          </div>
+          <div style="display:flex; gap:16px; flex-wrap:wrap;">
+            <a href="Mission Statement.dc.html" style="font-family:Outfit,sans-serif; font-weight:600; font-size:14px; color:oklch(0.995 0 0); background:oklch(0.48 0.19 260); padding:13px 28px; border-radius:6px; cursor:pointer; transition:background 0.2s, transform 0.15s;" style-hover="color:oklch(0.995 0 0); background:oklch(0.43 0.20 260); transform:translateY(-1px);">Read our mission statement</a>
+            <div data-target="research" style="font-family:Outfit,sans-serif; font-weight:600; font-size:14px; color:oklch(0.48 0.19 260); padding:12px 28px; border-radius:6px; border:1.5px solid oklch(0.48 0.19 260); cursor:pointer; transition:background 0.2s, color 0.2s, transform 0.15s;" style-hover="background:oklch(0.48 0.19 260); color:oklch(0.995 0 0); transform:translateY(-1px);">Read our research</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ MISSION TEASER ═══════ -->
+    <div id="mission" style="background:oklch(0.94 0.014 260); border-top:1px solid oklch(0.89 0.02 260);">
+      <div style="max-width:1280px; margin:0 auto; padding:88px 48px; display:flex; flex-direction:column; gap:36px; align-items:flex-start;">
+        <div style="width:100%;">
+          <h2 style="font-family:Outfit,sans-serif; font-weight:700; font-size:clamp(30px, 4vw, 48px); line-height:1.2; color:oklch(0.13 0.02 260); margin:0 0 24px; letter-spacing:-0.01em;">Mission statement</h2>
+          <p style="font-family:Bitter,Georgia,serif; font-size:19px; line-height:1.65; color:oklch(0.28 0.02 260); margin:0; text-wrap:pretty;">We are building an <b>Agentic Governance Workflow</b>: open skills that enable effective and accountable human-AI-collaboration for governance work. We research AI system developers emperically to enable evidence-based AI regulation.</p>
+        </div><a href="Mission Statement.dc.html" style="font-family:Outfit,sans-serif; font-weight:600; font-size:14px; color:oklch(0.995 0 0); background:oklch(0.48 0.19 260); padding:13px 28px; border-radius:6px; cursor:pointer; transition:background 0.2s, transform 0.15s; font-size:15px; padding:15px 32px; flex:none;" style-hover="color:oklch(0.995 0 0); background:oklch(0.43 0.20 260); transform:translateY(-1px);">Read our full mission statement</a>
+        
+      </div>
+    </div>
+
+    <!-- ═══════ RESEARCH (no grid) ═══════ -->
+    <div id="research" style="border-top:1px solid oklch(0.92 0.005 260); background:oklch(0.97 0.003 260);">
+      <div style="max-width:1280px; margin:0 auto; padding:80px 48px;">
+        <h2 style="font-family: Outfit,sans-serif; font-weight: 700; font-size: clamp(30px, 4vw, 48px); line-height: 1.2; color: oklch(0.13 0.02 260); margin: 0 0 24px; letter-spacing: -0.01em">Research</h2>
+        <p style="font-family: Bitter,Georgia,serif; font-size: 19px; line-height: 1.65; color: oklch(0.28 0.02 260); margin: 0 0 56px; max-width: 1100px; text-wrap: pretty">We study AI governance inside the organisations that build AI systems, and among the consultants, auditors and standard-setters who interpret the rules for them. Our most recent work focuses on making governance scale: methods and agentic tools that embed regulatory requirements in AI development workflows.</p>
+
+        <div style="max-width:1100px; display:grid; grid-template-columns:400px minmax(0,1fr); background:oklch(0.995 0.002 260); border:1px solid oklch(0.91 0.01 260); border-radius:14px; overflow:hidden; min-height:560px; box-shadow:0 2px 16px oklch(0 0 0 / 0.06);">
+        <div style="display:flex; flex-direction:column; border-right:1px solid oklch(0.92 0.005 260); background:oklch(0.975 0.004 260);">
+          <sc-for list="{{ md2 }}" as="p" hint-placeholder-count="5">
+            <div onClick="{{ p.pick }}" style="padding:20px 24px; border-bottom:1px solid oklch(0.92 0.005 260); cursor:pointer; background:{{ p.bg }}; display:flex; flex-direction:column; gap:4px; transition:background 0.2s;">
+              <div style="font-family:Outfit,sans-serif; font-weight:600; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:{{ p.meta }};">{{ p.venue }}</div>
+              <div style="font-family:Outfit,sans-serif; font-weight:600; font-size:17px; line-height:1.3; color:{{ p.fg }};">{{ p.title }}</div>
+              <div style="font-family:Bitter,Georgia,serif; font-size:13px; line-height:1.4; color:{{ p.meta }};">{{ p.kind }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="position:relative; overflow:hidden; isolation:isolate; padding:40px 44px; display:flex; flex-direction:column; gap:14px;">
+          <div style="position:absolute; z-index:-1; right:-150px; top:-20px; width:400px; height:400px; opacity:0.18; filter:blur(3px); transform:perspective(400px) rotateY(35deg) rotateX(12deg); pointer-events:none;"><svg viewBox="0 0 200 200" width="400" height="400"><circle cx="100" cy="110" r="85" fill="none" stroke="{{ lg.c1 }}" stroke-width="5"></circle><circle cx="100" cy="142" r="53" fill="none" stroke="{{ lg.c2 }}" stroke-width="4.5"></circle><circle cx="100" cy="160" r="33" fill="none" stroke="{{ lg.c3 }}" stroke-width="4.5"></circle></svg></div>
+          <div style="position:relative; font-family:Outfit,sans-serif; font-weight:600; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:oklch(0.38 0.20 280);">{{ sel2.venueFull }}</div>
+          <div>
+            <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:26px; line-height:1.2; color:oklch(0.13 0.02 260);">{{ sel2.title }}</div>
+            <div style="font-family:Bitter,Georgia,serif; font-size:17px; line-height:1.45; color:oklch(0.40 0.02 260); margin-top:6px; text-wrap:pretty;">{{ sel2.sub }}</div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:2px;">
+            <div style="font-family:Bitter,Georgia,serif; font-size:14px; line-height:1.5; color:oklch(0.28 0.02 260); font-weight:600;">{{ sel2.authors }}</div>
+            <div style="font-family:Bitter,Georgia,serif; font-size:13px; line-height:1.5; color:oklch(0.50 0.03 260);">{{ sel2.note }}</div>
+          </div>
+          <p style="font-family:Bitter,Georgia,serif; font-size:15px; line-height:1.7; color:oklch(0.32 0.02 260); margin:0; text-wrap:pretty;">{{ sel2.abstract }}</p>
+          <div style="display:flex; gap:12px; margin-top:8px;"><a href="{{ sel2.href }}" target="_blank" download="{{ sel2.dl }}" style="font-family:Outfit,sans-serif; font-weight:600; font-size:14px; color:oklch(0.995 0 0); background:oklch(0.48 0.19 260); padding:11px 24px; border-radius:6px;" style-hover="color:oklch(0.995 0 0); background:oklch(0.43 0.20 260);">{{ sel2.cta }}</a></div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- ═══════ PEOPLE (grid visible) ═══════ -->
+    <div id="who-we-are" data-grid-section="" style="border-top:1px solid oklch(0.92 0.005 260); border-bottom:1px solid oklch(0.92 0.005 260);">
+      <div style="max-width:1280px; margin:0 auto; padding:80px 48px 120px;">
+        <h2 style="font-family: Outfit,sans-serif; font-weight: 700; font-size: clamp(30px, 4vw, 48px); line-height: 1.2; color: oklch(0.13 0.02 260); margin: 0 0 44px; letter-spacing: -0.01em">Who we are</h2>
+        <div style="display:flex; gap:20px; margin-top:80px; flex-wrap:wrap;">
+          <div style="flex:1; min-width:min(100%, 440px); position:relative; background:oklch(0.995 0.002 260); border-radius:16px; padding:32px 32px 28px; box-shadow:0 1px 4px rgba(0,0,0,0.06); box-sizing:border-box;">
+            <div style="padding-right:140px;">
+              <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:clamp(20px, 2.4vw, 26px); color:oklch(0.13 0.02 260); line-height:1.15; overflow-wrap:anywhere;">Simon<br>Jarvers</div>
+              <div style="width:40px; height:2px; background:oklch(0.75 0.02 260); margin:14px 0;"></div>
+              <div style="font-family:Outfit,sans-serif; font-weight:600; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:oklch(0.48 0.19 260); margin-bottom:6px;">Initiative Lead</div>
+              <p style="font-family:Bitter,Georgia,serif; font-size:15px; line-height:1.65; color:oklch(0.38 0.02 260); margin:0;">Researcher at TUM<br>AI Governance Officer at an AI startup (embedded research)</p>
+            </div>
+            <div style="position:absolute; right:6px; bottom:0; width:160px; height:280px; pointer-events:none;">
+              <div style="position:absolute; bottom:6px; left:50%; transform:translateX(-50%); width:160px; height:160px; border-radius:50%; background:oklch(0.91 0.015 260);"></div>
+              <svg viewBox="0 0 180 220" width="145" height="188" style="position:absolute; bottom:0; left:50%; transform:translateX(-50%); z-index:1;"><path d="M90 15C90 15 68 15 62 33C56 51 58 57 58 68C53 71 49 76 49 85C49 94 55 97 57 97C59 109 65 118 73 123L73 129C73 129 44 134 38 155C34 167 31 180 31 220L149 220C149 180 146 167 142 155C136 134 107 129 107 129L107 123C115 118 121 109 123 97C125 97 131 94 131 85C131 76 127 71 122 68C122 57 124 51 118 33C112 15 90 15 90 15Z" fill="oklch(0.50 0.02 260)"></path></svg>
+            </div>
+          </div>
+          <div style="flex:1; min-width:min(100%, 440px); position:relative; background:oklch(0.995 0.002 260); border-radius:16px; padding:32px 32px 28px; box-shadow:0 1px 4px rgba(0,0,0,0.06); box-sizing:border-box;">
+            <div style="padding-right:140px;">
+              <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:clamp(20px, 2.4vw, 26px); color:oklch(0.13 0.02 260); line-height:1.15; overflow-wrap:anywhere;">Orestis<br>Papakyriakopoulos</div>
+              <div style="width:40px; height:2px; background:oklch(0.75 0.02 260); margin:14px 0;"></div>
+              <div style="font-family:Outfit,sans-serif; font-weight:600; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:oklch(0.48 0.19 260); margin-bottom:6px;">Advisor</div>
+              <p style="font-family:Bitter,Georgia,serif; font-size:15px; line-height:1.65; color:oklch(0.38 0.02 260); margin:0;">Professor of Societal Computing<br>Civic Machines Lab, TUM</p>
+            </div>
+            <div style="position:absolute; right:6px; bottom:0; width:160px; height:280px; pointer-events:none;">
+              <div style="position:absolute; bottom:6px; left:50%; transform:translateX(-50%); width:160px; height:160px; border-radius:50%; background:oklch(0.91 0.015 260);"></div>
+              <svg viewBox="0 0 180 220" width="145" height="188" style="position:absolute; bottom:0; left:50%; transform:translateX(-50%); z-index:1;"><path d="M90 15C90 15 68 15 62 33C56 51 58 57 58 68C53 71 49 76 49 85C49 94 55 97 57 97C59 109 65 118 73 123L73 129C73 129 44 134 38 155C34 167 31 180 31 220L149 220C149 180 146 167 142 155C136 134 107 129 107 129L107 123C115 118 121 109 123 97C125 97 131 94 131 85C131 76 127 71 122 68C122 57 124 51 118 33C112 15 90 15 90 15Z" fill="oklch(0.50 0.02 260)"></path></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ GET IN CONTACT (grid visible) ═══════ -->
+    <div id="contact" data-grid-section="" style="border-bottom:1px solid oklch(0.92 0.005 260); background:oklch(0.995 0.002 260 / 0.9);">
+      <div style="max-width:1000px; margin:0 auto; padding:130px 48px; text-align:center;">
+        <h2 style="font-family:Outfit,sans-serif; font-weight:700; font-size:clamp(30px, 4vw, 48px); line-height:1.2; color:oklch(0.13 0.02 260); margin:0 0 48px; letter-spacing:-0.01em;">Get in contact</h2>
+        <div style="display:flex; gap:48px; justify-content:center; text-align:left; flex-wrap:wrap; border-top:1px solid oklch(0.90 0.005 260); border-bottom:1px solid oklch(0.90 0.005 260); padding:32px 0;">
+          <div style="flex:1; min-width:220px; max-width:280px;">
+            <div style="font-family:Outfit,sans-serif; font-weight:600; font-size:18px; color:oklch(0.13 0.02 260); margin-bottom:6px;">SME AI system providers</div>
+            <div style="font-family:Bitter,Georgia,serif; font-size:15px; line-height:1.65; color:oklch(0.45 0.02 260);">Join our first cohort and use the agentic governance workflow on your own governance work.</div>
+          </div>
+          <div style="flex:1; min-width:220px; max-width:280px;">
+            <div style="font-family:Outfit,sans-serif; font-weight:600; font-size:18px; color:oklch(0.13 0.02 260); margin-bottom:6px;">Research collaboration</div>
+            <div style="font-family:Bitter,Georgia,serif; font-size:15px; line-height:1.65; color:oklch(0.45 0.02 260);">If you work on AI governance, compliance or regulatory design.</div>
+          </div>
+          <div style="flex:1; min-width:220px; max-width:280px;">
+            <div style="font-family:Outfit,sans-serif; font-weight:600; font-size:18px; color:oklch(0.13 0.02 260); margin-bottom:6px;">Funding</div>
+            <div style="font-family:Bitter,Georgia,serif; font-size:15px; line-height:1.65; color:oklch(0.45 0.02 260);">If you support independent research on AI governance.</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:48px;">
+          <a href="mailto:simon.jarvers@tum.de" style="display:inline-flex; align-items:center; gap:10px; font-family:Outfit,sans-serif; font-weight:600; font-size:16px; color:oklch(0.995 0 0); background:oklch(0.48 0.19 260); padding:16px 36px; border-radius:8px; transition:background 0.2s, transform 0.15s;" style-hover="background:oklch(0.43 0.20 260); transform:translateY(-1px);" style-active="transform:translateY(0px);">Write an email</a>
+          <a href="https://www.linkedin.com" target="_blank" style="display:inline-flex; align-items:center; gap:10px; font-family:Outfit,sans-serif; font-weight:600; font-size:16px; color:oklch(0.48 0.19 260); background:transparent; padding:15px 34px; border-radius:8px; border:1.5px solid oklch(0.48 0.19 260); transition:background 0.2s, color 0.2s, transform 0.15s;" style-hover="background:oklch(0.48 0.19 260); color:oklch(0.995 0 0); transform:translateY(-1px);" style-active="transform:translateY(0px);">Contact us on LinkedIn</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ FOOTER ═══════ -->
+    <div style="max-width:1280px; margin:0 auto; padding:48px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+      <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+        <svg viewBox="0 10 200 200" width="24" height="24"><circle cx="100" cy="110" r="85" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="14"></circle><circle cx="100" cy="142" r="53" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="12"></circle><circle cx="100" cy="160" r="33" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="11"></circle></svg>
+        <span style="font-family:Outfit,sans-serif; font-weight:600; font-size:13px; color:oklch(0.35 0.02 260);">Scalable Governance</span>
+        <span style="font-family:Bitter,Georgia,serif; font-size:12px; color:oklch(0.55 0.02 260); margin-left:8px;">An applied research initiative based at the TUM Professorship of Societal Computing</span>
+      </div>
+      <div style="font-family:Bitter,Georgia,serif; font-size:12px; color:oklch(0.55 0.02 260);">© 2026</div>
+    </div>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+class Component extends DCLogic {
+  state = { a1: false, a2: false, s5: null };
+  componentDidMount() {
+    this.initScrollHeader();
+    this.initDotGrid();
+    this.initNavLinks();
+  }
+  initNavLinks() {
+    const scrollParent = document.querySelector('[data-dc-root]')?.closest('[style*="overflow"]') || window;
+    const links = document.querySelectorAll('[data-target]');
+    document.addEventListener('click', (ev) => {
+      const link = ev.target.closest && ev.target.closest('[data-target]');
+      if (!link) return;
+      {
+        const target = document.getElementById(link.getAttribute('data-target'));
+        if (!target) return;
+        const navOffset = 100;
+        if (scrollParent === window) {
+          const top = target.getBoundingClientRect().top + window.scrollY - navOffset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        } else {
+          const top = target.getBoundingClientRect().top - scrollParent.getBoundingClientRect().top + scrollParent.scrollTop - navOffset;
+          scrollParent.scrollTo({ top, behavior: 'smooth' });
+        }
+      }
+    });
+  }
+  initScrollHeader() {
+    const scrollParent = document.querySelector('[data-dc-root]')?.closest('[style*="overflow"]') || window;
+    const getScrollTop = () => scrollParent === window ? (window.scrollY || 0) : scrollParent.scrollTop;
+    let ticking = false;
+    const update = () => {
+      const sy = getScrollTop();
+      const t = Math.min(sy / 100, 1);
+      const navBar = document.getElementById('navBar');
+      const navLogo = document.getElementById('navLogo');
+      const navText = document.getElementById('navText');
+      if (!navBar || !navLogo) return;
+      // Logo: 56px → 30px
+      const logoSize = 56 - t * 26;
+      const svg = navLogo.querySelector('svg');
+      svg.setAttribute('width', logoSize);
+      svg.setAttribute('height', logoSize);
+      // Margin: 20px → 8px (keep floating gap)
+      navBar.style.marginTop = (20 - t * 12) + 'px';
+      // Border radius: 16px → 10px (keep rounded)
+      navBar.style.borderRadius = (16 - t * 6) + 'px';
+      // Padding: 20px → 10px
+      const pad = 20 - t * 10;
+      navBar.style.paddingTop = pad + 'px';
+      navBar.style.paddingBottom = pad + 'px';
+      // Title: big at top, scales down with scroll (tagline keeps constant ratio to title)
+      if (navText) {
+        const titleSize = 20 - t * 5;
+        navText.children[0].style.fontSize = titleSize + 'px';
+        navText.children[1].style.fontSize = (titleSize * 15 / 24) + 'px';
+      }
+      // Nav links: scale down
+      const navLinks = document.getElementById('navLinks');
+      if (navLinks) {
+        const linkSize = 15 - t * 2;
+        const linkGap = 28 - t * 6;
+        navLinks.style.gap = linkGap + 'px';
+        for (let i = 0; i < navLinks.children.length; i++) {
+          navLinks.children[i].style.fontSize = linkSize + 'px';
+        }
+      }
+      // Background opacity
+      const bgAlpha = 0.55 + t * 0.35;
+      navBar.style.background = 'oklch(0.97 0.003 260 / ' + bgAlpha + ')';
+      const borderAlpha = 0.5 + t * 0.4;
+      navBar.style.borderColor = 'oklch(0.92 0.005 260 / ' + borderAlpha + ')';
+      ticking = false;
+    };
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+    scrollParent.addEventListener('scroll', onScroll, { passive: true });
+    update();
+    this._cleanupScroll = () => scrollParent.removeEventListener('scroll', onScroll);
+  }
+  initDotGrid() {
+    const canvas = document.getElementById('dotGrid');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const spacing = 30;
+    const dotRadius = 1.2;
+    const influenceRadius = 130;
+    const pullStrength = 0.35;
+    const returnSpeed = 0.08;
+    let dots = [];
+    let mouse = { x: -1000, y: -1000 };
+    let animId;
+    const scrollParent = document.querySelector('[data-dc-root]')?.closest('[style*="overflow"]') || window;
+    const getScrollTop = () => scrollParent === window ? (window.scrollY || 0) : scrollParent.scrollTop;
+    // Track which vertical bands (in viewport coords) should show dots
+    let gridBands = [];
+    const computeGridBands = () => {
+      gridBands = [];
+      const sections = document.querySelectorAll('[data-grid-section]');
+      sections.forEach(el => {
+        const r = el.getBoundingClientRect();
+        gridBands.push({ top: r.top, bottom: r.bottom });
+      });
+    };
+    const isInGridBand = (vy) => {
+      for (let i = 0; i < gridBands.length; i++) {
+        if (vy >= gridBands[i].top && vy <= gridBands[i].bottom) return true;
+      }
+      return false;
+    };
+    // Inverse proximity: less visible near text, more in empty space
+    const computeProximity = () => {
+      const vh = window.innerHeight, vw = window.innerWidth;
+      const rects = [];
+      const add = (r) => { if (r.width && r.height && r.bottom > -200 && r.top < vh + 200 && r.right > -200 && r.left < vw + 200) rects.push({ x: r.left, y: r.top, w: r.width, h: r.height }); };
+      // Every rendered line of text, wherever it lives (accordions, labels, buttons…)
+      const root = document.querySelector('[data-dc-root]') || document.body;
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: n => n.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT });
+      const range = document.createRange();
+      let n;
+      while ((n = walker.nextNode())) {
+        const pr = n.parentElement && n.parentElement.getBoundingClientRect();
+        if (!pr || pr.bottom < -200 || pr.top > vh + 200) continue;
+        range.selectNodeContents(n);
+        for (const r of range.getClientRects()) add(r);
+      }
+      // Cards, buttons, inputs and the nav are solid surfaces too
+      document.querySelectorAll('nav, a, button, [style*="border-radius:16px"], [style*="border-radius:18px"], [style*="border-radius:14px"]').forEach(el => { if (el.id !== 'dotGrid') add(el.getBoundingClientRect()); });
+      for (let i = 0; i < dots.length; i++) {
+        const d = dots[i];
+        let minDist = 9999;
+        for (let j = 0; j < rects.length; j++) {
+          const r = rects[j];
+          const cx = Math.max(r.x, Math.min(d.ox, r.x + r.w));
+          const cy = Math.max(r.y, Math.min(d.oy, r.y + r.h));
+          const dist = Math.sqrt((d.ox - cx) ** 2 + (d.oy - cy) ** 2);
+          if (dist < minDist) minDist = dist;
+        }
+        // Inverse: near text → dim, far from text → bright
+        d.damp = minDist < 24 ? 0.05 : minDist < 160 ? 0.05 + ((minDist - 24) / 136) * 0.95 : 1;
+        if (minDist < 30) {
+          d.prox = 0.04;
+        } else if (minDist < 200) {
+          d.prox = 0.04 + ((minDist - 30) / 170) * 0.22;
+        } else {
+          d.prox = 0.26;
+        }
+      }
+    };
+    const resize = () => {
+      const dpr = window.devicePixelRatio || 1;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      dots = [];
+      const cols = Math.ceil(w / spacing) + 1;
+      const rows = Math.ceil(h / spacing) + 1;
+      const ox = (w - (cols - 1) * spacing) / 2;
+      const oy = (h - (rows - 1) * spacing) / 2;
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const x = ox + c * spacing;
+          const y = oy + r * spacing;
+          dots.push({ ox: x, oy: y, x, y, prox: 0.15 });
+        }
+      }
+    };
+    const onMove = (e) => { mouse.x = e.clientX; mouse.y = e.clientY; };
+    const onLeave = () => { mouse.x = -1000; mouse.y = -1000; };
+    let frame = 0;
+    const draw = () => {
+      frame++;
+      if (frame % 20 === 0) { computeGridBands(); computeProximity(); }
+      const w = parseFloat(canvas.style.width);
+      const h = parseFloat(canvas.style.height);
+      ctx.clearRect(0, 0, w, h);
+      for (let i = 0; i < dots.length; i++) {
+        const d = dots[i];
+        // Only draw if in a grid band
+        if (!isInGridBand(d.oy)) {
+          d.x += (d.ox - d.x) * returnSpeed;
+          d.y += (d.oy - d.y) * returnSpeed;
+          continue;
+        }
+        const dx = mouse.x - d.ox;
+        const dy = mouse.y - d.oy;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < influenceRadius) {
+          const force = (1 - dist / influenceRadius) * pullStrength;
+          d.x += (d.ox + dx * force - d.x) * 0.15;
+          d.y += (d.oy + dy * force - d.y) * 0.15;
+        } else {
+          d.x += (d.ox - d.x) * returnSpeed;
+          d.y += (d.oy - d.y) * returnSpeed;
+        }
+        const displacement = Math.sqrt((d.x - d.ox) ** 2 + (d.y - d.oy) ** 2);
+        const damp = d.damp ?? 1;
+        const alpha = d.prox + Math.min(displacement / 15, 0.4) * damp;
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, dotRadius + displacement * 0.04 * damp, 0, Math.PI * 2);
+        ctx.fillStyle = 'oklch(0.48 0.19 260 / ' + alpha + ')';
+        ctx.fill();
+      }
+      animId = requestAnimationFrame(draw);
+    };
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseleave', onLeave);
+    window.addEventListener('resize', () => { resize(); computeGridBands(); computeProximity(); });
+    scrollParent.addEventListener('scroll', () => { if (frame % 8 === 0) { computeGridBands(); computeProximity(); } }, { passive: true });
+    resize();
+    computeGridBands();
+    computeProximity();
+    draw();
+    this._cleanupGrid = () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseleave', onLeave);
+    };
+  }
+  componentWillUnmount() {
+    if (this._cleanupScroll) this._cleanupScroll();
+    if (this._cleanupGrid) this._cleanupGrid();
+  }
+  renderVals() {
+    const s = this.state, blue = 'oklch(0.48 0.19 260)', light = 'oklch(0.82 0.04 ';
+    const themes = [
+      { id: 1, name: 'Governance inside technical teams', text: 'How can collaborative workshops empower software engineering teams to integrate AI governance requirements into their daily work?', bg: 'oklch(0.97 0.008 270)', c1: light + '270)', c2: light + '270)', c3: blue },
+      { id: 2, name: 'Who governs AI?', text: 'Between regulator and regulated target sits a chain of actors, such as consultants, lawyers and auditors, who interpret requirements and shape compliance in practice.', bg: 'oklch(0.97 0.008 250)', c1: light + '250)', c2: blue, c3: light + '250)' },
+      { id: 3, name: 'Making governance scale', text: 'Methods and agentic tools that reduce the cost of compliance by embedding regulatory requirements in AI development workflows.', bg: 'oklch(0.97 0.008 280)', c1: blue, c2: light + '280)', c3: light + '280)' }
+    ];
+    const JP = 'Simon Jarvers, Orestis Papakyriakopoulos';
+    const papers = [
+      { id: 'faccT', theme: 1, venue: 'FAccT 2026', venueFull: 'ACM Conference on Fairness, Accountability, and Transparency (FAccT 2026)', title: 'Engaged AI Governance', sub: 'Addressing the Last Mile Challenge Through Internal Expert Collaboration', authors: JP, href: 'https://doi.org/10.1145/3805689.3812341',
+        abstract: 'Under the EU AI Act, translating AI governance requirements into software development practice remains challenging. While AI governance frameworks exist at industry and organizational levels, empirical evidence of team-level implementation is scarce. We address this “Last Mile” Challenge through insider action research embedded within an AI startup. We present a legal-text-to-action pipeline that translates EU AI Act requirements into actionable strategies through internal expert collaboration. Our analysis reveals three patterns in how practitioners perceive regulatory requirements: convergence, existing practice, and disconnection. Practitioners prioritize requirements that serve end-users or their own development needs, but view verification-oriented requirements as box-ticking exercises. Expert collaboration offers a practical mechanism for transforming governance from external imposition to shared ownership.' },
+      { id: 'aies', theme: 2, venue: 'AIES 2026', venueFull: 'AAAI/ACM Conference on AI, Ethics, and Society (AIES 2026)', title: 'Governing by Proxy', sub: 'How Regulatory Intermediaries Shape EU AI Act Compliance in Practice', authors: JP, href: '#',
+        abstract: 'The EU AI Act assigns compliance obligations to defined actor roles along the AI supply chain, but how these obligations are enacted in practice remains understudied. This paper investigates the ecosystem of regulatory intermediaries (consultants, auditors, ethics advisors, certification bodies) through which an AI system provider translates regulatory requirements into organisational practice. Drawing on an embedded case study at an AI startup, the analysis maps sixteen intermediaries and shows a consistent pattern: intermediary interpretive choices construct what AI Act compliance means for the regulated organisation. We encourage more guidance from the EU and argue that the compliance ecosystem deserves the same analytical and regulatory attention currently directed at the AI supply chain.' },
+      { id: 'ecaf', theme: 3, venue: 'ECAF 2026', venueFull: 'European Conference on Algorithmic Fairness (ECAF 2026), PMLR', title: 'Governance-Driven Development', sub: 'Embedding Regulatory Requirements in AI Development Workflows', authors: JP, href: '#',
+        abstract: 'AI governance under the EU AI Act faces a structural misallocation of effort: management-based regulation, combined with the credence-good properties of governance outcomes, pushes resource-constrained organisations toward verification-facing documentation rather than the implementation it is meant to verify. We propose Governance-Driven Development (GDD), a framework that treats AI Act obligations and the requirements of supporting standards as formal specifications for software development work. AI agents perform template-driven work; humans retain interpretation and accountability. The framework is in early implementation at an AI startup.' },
+      { id: 'hicss', theme: 3, venue: 'HICSS 2027', venueFull: 'Hawaii International Conference on System Sciences (HICSS 2027)', title: 'Human-AI Collaboration in Compliance Automation', sub: 'Designing an Agentic Knowledge Base for AI Governance', authors: 'Simon Jarvers, Carolin Röthemeier, Holger Wittges, Orestis Papakyriakopoulos', href: '#',
+        abstract: 'AI governance work draws on a living body of organizational knowledge, policies, and system facts that drift and go stale as organizational and regulatory contexts change. For resource-constrained organizations under the EU AI Act and related standards, maintaining this knowledge consumes scarce compliance capacity. Through a Design Science Research study at an AI startup, we apply an artifact in which an LLM agent maintains a structured, citation-anchored knowledge base, separating a human-authoritative source layer from an agent-moderated knowledge layer. We abstract two design principles, human authority over agent moderation and traceability.' }
+    ].map(p => ({ ...p, area: themes[p.theme - 1].name }));
+
+    const full = {
+      faccT: 'Under the EU AI Act, translating AI governance requirements into software development practice remains challenging. While AI governance frameworks exist at industry and organizational levels, empirical evidence of team-level implementation is scarce. We address this “Last Mile” Challenge through insider action research embedded within an AI startup. We present a legal-text-to-action pipeline that translates EU AI Act requirements into actionable strategies through internal expert collaboration by extracting requirements from legal text, engaging practitioners in assessment and ideation, and prioritizing implementation through collective evaluation. Our analysis reveals three patterns in how practitioners perceive regulatory requirements: convergence (compliance aligns with development priorities), existing practice (current work already satisfies requirements), and disconnection (requirements perceived as administrative overhead). Based on these patterns, we discuss when governance might be treated genuinely or performatively. Practitioners prioritize requirements that serve end-users or their own development needs, but view verification-oriented requirements as box-ticking exercises. This distinction suggests a translation challenge: regulatory requirements risk superficial treatment unless practitioners understand how compliance serves system quality and user protection. Expert collaboration offers a practical mechanism for transforming governance from external imposition to shared ownership and making previously invisible governance work visible and collective.',
+      aies: 'The EU AI Act assigns compliance obligations to defined actor roles along the AI supply chain, but how these obligations are enacted in practice remains understudied. This paper investigates the ecosystem of regulatory intermediaries (consultants, auditors, ethics advisors, certification bodies) through which an AI system provider translates regulatory requirements into organisational practice. Drawing on participant observation and document analysis from an embedded case study at an AI startup, the analysis applies the Regulator-Intermediary-Target (RIT) model to map sixteen intermediaries and trace the compliance pressures that drive pre-enforcement intermediary engagement. Compliance artefacts across risk management, impact assessment, and technical documentation show a consistent pattern: intermediary interpretive choices construct what AI Act compliance means for the regulated organisation. Using Edelman’s legal endogeneity framework, which theorises how organisations’ private compliance constructions can feed back into the meaning of law itself, we discuss how legal requirements are managerialised into procedural deliverables and how compliance forms diffuse without evidence of governance efficacy. The paper contributes on two levels: it extends the RIT model to organisational-level AI governance, demonstrating that compliance intermediaries perform constitutive rather than facilitative functions, and it provides an early empirical signal for legal endogeneity in AI Act compliance. We encourage more guidance from the EU and argue that the compliance ecosystem deserves the same analytical and regulatory attention currently directed at the AI supply chain.',
+      ecaf: 'AI governance under the EU AI Act faces a structural misallocation of effort: management-based regulation, combined with the credence-good properties of governance outcomes, pushes resource-constrained organisations toward verification-facing documentation rather than the implementation it is meant to verify. We propose Governance-Driven Development (GDD), a framework that treats AI Act obligations and the requirements of supporting standards for safe AI development as formal specifications for software development work. GDD runs on two nested action cycles. A planning cycle scopes obligations against organisational context to produce specifications. An implementation cycle converts each specification into the artefact it specifies, with traceability back to the regulatory source. AI agents perform template-driven work; humans retain interpretation and accountability. The framework is in early implementation at an AI Startup, with unresolved load-bearing questions around knowledge base architecture and obligation decomposition.',
+      hicss: 'AI governance work draws on a living body of organizational knowledge, policies, and system facts that drift and go stale as organizational and regulatory contexts change. For resource-constrained organizations under the EU AI Act and related standards, maintaining this knowledge consumes scarce compliance capacity. We applied a pattern drawn from practice, in which an LLM agent maintains a structured, citation-anchored knowledge base for AI governance. Through a Design Science Research study at an AI startup, we apply the artifact to two ISO management system standards. The artifact separates a human-authoritative source layer from an agent-moderated knowledge layer in the company’s internal governance work processes. We abstract two design principles, human authority over agent moderation and traceability, which demonstrate how to responsibly leverage advancing AI capabilities for human-agent collaboration in regulated compliance settings.'
+    };
+    const files = { aies: 'AIES26_Governing_by_Proxy_JARVERS.pdf', ecaf: 'ECAF26_Governance-Driven_Development_JARVERS.pdf', hicss: 'HICSS27_Human-AI_Collaboration_JARVERS.pdf', ewaf: 'EWAFF25_Uncertainty_as_a_Primary_Barrier_JARVERS.pdf' };
+    const ewaf = { id: 'ewaf', venue: 'EWAF 2025', venueFull: 'European Workshop on Algorithmic Fairness (EWAF 2025), PMLR vol. 294', title: 'Uncertainty as a Primary Barrier for Trustworthy AI Under the EU AI Act', sub: 'German SME Perspectives', authors: 'Simon Jarvers*, Chiara Ullstein*, Jens Grossklags', note: '* Both authors contributed equally.',
+      abstract: 'The European Union’s AI regulation, the EU AI Act, represents a significant shift from voluntary ethical frameworks to binding regulation, presenting implementation challenges particularly for resource-limited SMEs. Our mixed-methods research examined the EU AI Act’s impact on SMEs through surveys of German AI SMEs (N = 21) and interviews with AI SMEs and industry stakeholders (N = 13). In this extended abstract, we summarize our motivation and methods, and focus on providing results from the interviews. Our findings reveal that company size and compliance experience significantly affect estimated implementation capabilities. SMEs face considerable resource constraints across time, finances, and staffing. Implementation uncertainties – including definitional ambiguity, unclear scope, and insufficient guidance – drive strategic responses: delaying compliance efforts, modifying products to reduce regulatory burden, and frequently seeking external compliance expertise and certification. These results indicate that uncertainty emerges as the primary implementation barrier. Researchers can help reduce uncertainty by developing best-practice guidelines that support the AI Act’s trustworthy AI objectives. We conclude with recommendations for policymakers and researchers.' };
+    const byId = Object.fromEntries(papers.map(p => [p.id, p]));
+    const sel5 = s.s5 || 'hicss';
+    const md2 = ['hicss', 'aies', 'ecaf', 'faccT', 'ewaf'].map(id => {
+      const base = id === 'ewaf' ? ewaf : { ...byId[id], abstract: full[id], note: '' };
+      const pub = { faccT: ['ACM Digital Library', 'Read on ACM Digital Library ↗', byId.faccT.href], ewaf: ['PMLR Proceedings', 'Read on PMLR ↗', 'https://proceedings.mlr.press/v294/jarvers25a.html'] }[id];
+      const pre = !pub, on = sel5 === id;
+      return { ...base, kind: pre ? 'Preprint' : pub[0], cta: pre ? 'Download preprint (PDF)' : pub[1], href: pre ? 'uploads/' + files[id] : pub[2], dl: pre ? files[id] : undefined,
+        bg: on ? blue : 'transparent', fg: on ? 'oklch(0.995 0 0)' : 'oklch(0.13 0.02 260)', meta: on ? 'oklch(0.92 0.03 260)' : 'oklch(0.45 0.02 260)', pick: () => this.setState({ s5: id }) };
+    });
+    const lg = (() => { const t = themes[{ faccT: 1, aies: 2, ecaf: 3, hicss: 3, ewaf: 1 }[sel5] - 1]; return { c1: t.c1, c2: t.c2, c3: t.c3 }; })();
+    return {
+      md2, lg, sel2: md2.find(p => p.id === sel5),
+      a1: s.a1, a2: s.a2,
+      a1Sign: s.a1 ? '−' : '+', a2Sign: s.a2 ? '−' : '+',
+      ta1: () => this.setState({ a1: !s.a1 }), ta2: () => this.setState({ a2: !s.a2 })
+    };
+  }
+}
+
+</script>
+</body>
+</html>

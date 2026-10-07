@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&amp;family=Bitter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body { margin:0; background:oklch(0.97 0.003 260); }
+a { color: oklch(0.48 0.19 260); text-decoration:none; }
+a:hover { color: oklch(0.38 0.16 260); }
+</style>
+</helmet>
+
+<div style="position:relative; min-height:100vh;">
+  <canvas id="dotGrid" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0;"></canvas>
+
+  <nav id="mainNav" style="position:fixed; top:0; left:0; right:0; z-index:100;">
+    <div id="navInner" style="max-width:1280px; margin:0 auto; padding:0 24px;">
+      <div id="navBar" style="display:flex; align-items:center; justify-content:space-between; padding:20px 36px; background:oklch(0.97 0.003 260 / 0.55); backdrop-filter:blur(24px) saturate(1.5); -webkit-backdrop-filter:blur(24px) saturate(1.5); border:1px solid oklch(0.92 0.005 260 / 0.5); border-radius:16px; box-shadow:0 2px 20px oklch(0.20 0.02 260 / 0.06); margin-top:20px; transition:all 0.35s ease;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <a href="Landing Page.dc.html" id="navLogo" style="display:flex;">
+            <svg viewBox="0 10 200 200" width="56" height="56"><circle cx="100" cy="110" r="85" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="14"></circle><circle cx="100" cy="142" r="53" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="12"></circle><circle cx="100" cy="160" r="33" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="11"></circle></svg>
+          </a>
+          <div id="navText">
+            <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:20px; color:oklch(0.15 0.02 260); line-height:1.1; transition:font-size 0.35s ease;">Scalable Governance</div>
+            <div style="font-family:Bitter,Georgia,serif; font-size:12.5px; color:oklch(0.50 0.03 260); letter-spacing:0.03em; transition:font-size 0.35s ease;">Applied research on AI governance</div>
+          </div>
+        </div>
+        <div id="navLinks" style="display:flex; gap:28px; align-items:center;">
+          <a href="Landing Page.dc.html#research" style="font-family:Bitter,Georgia,serif; font-size:15px; font-weight:600; cursor:pointer; transition:all 0.35s ease; color:oklch(0.48 0.19 260);">Research</a>
+          <a href="Mission Statement.dc.html" style="font-family:Bitter,Georgia,serif; font-size:15px; font-weight:500; color:oklch(0.35 0.02 260); cursor:pointer; transition:all 0.35s ease;" style-hover="color:oklch(0.48 0.19 260);">Mission</a>
+          <a href="Landing Page.dc.html#who-we-are" style="font-family:Bitter,Georgia,serif; font-size:15px; font-weight:500; color:oklch(0.35 0.02 260); cursor:pointer; transition:all 0.35s ease;" style-hover="color:oklch(0.48 0.19 260);">Who we are</a>
+          <a href="Landing Page.dc.html#contact" style="font-family:Bitter,Georgia,serif; font-size:15px; font-weight:500; color:oklch(0.35 0.02 260); cursor:pointer; transition:all 0.35s ease;" style-hover="color:oklch(0.48 0.19 260);">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div style="position:relative; z-index:1;">
+    <div data-grid-section="" style="border-bottom:1px solid oklch(0.92 0.005 260);">
+      <div style="max-width:1280px; margin:0 auto; padding:170px 48px 72px;">
+        <h1 style="font-family:Outfit,sans-serif; font-weight:700; font-size:clamp(36px, 5vw, 60px); line-height:1.05; color:oklch(0.13 0.02 260); margin:0 0 18px; letter-spacing:-0.015em;">Agentic Governance Workflow</h1>
+        <p style="font-family:Bitter,Georgia,serif; font-size:clamp(18px, 2vw, 22px); line-height:1.5; color:oklch(0.35 0.02 260); margin:0 0 28px;">How to make governance scale</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+          <a href="uploads/ECAF26_Governance-Driven_Development_JARVERS.pdf" target="_blank" style="font-family:Outfit,sans-serif; font-weight:600; font-size:13px; color:oklch(0.48 0.19 260); padding:6px 14px; border:1.5px solid oklch(0.48 0.19 260); border-radius:5px; background:oklch(0.97 0.003 260); transition:background 0.2s;" style-hover="background:oklch(0.95 0.02 260);">ECAF '26 ↗</a>
+          <a href="uploads/HICSS27_Human-AI_Collaboration_JARVERS.pdf" target="_blank" style="font-family:Outfit,sans-serif; font-weight:600; font-size:13px; color:oklch(0.38 0.20 280); padding:6px 14px; border:1.5px solid oklch(0.38 0.20 280); border-radius:5px; background:oklch(0.97 0.003 260); transition:background 0.2s;" style-hover="background:oklch(0.95 0.025 280);">HICSS '27 ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:oklch(0.97 0.003 260);">
+      <div style="max-width:1280px; margin:0 auto; padding:72px 48px 24px; display:flex; flex-wrap:wrap; gap:48px 72px; align-items:flex-start;">
+        
+        <article style="flex:1 1 480px; min-width:0; max-width:1100px;">
+
+        <section id="problem" data-toc-section="" style="padding:0 0 48px; margin:0 0 56px; border-bottom:1px solid oklch(0.90 0.005 260); scroll-margin-top:110px;">
+          <h2 style="font-family:Outfit,sans-serif; font-weight:700; font-size:clamp(26px, 3vw, 34px); line-height:1.2; color:oklch(0.13 0.02 260); margin:0 0 24px; letter-spacing:-0.01em;">The problem</h2>
+          <p style="font-family:Bitter,Georgia,serif; font-size:20px; line-height:1.6; color:oklch(0.18 0.02 260); text-wrap:pretty; margin:0 0 32px; max-width:900px;">Most compliance budget goes into documentation for audits, not into changes to the AI system.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:32px 56px; align-items:flex-start;"><div style="flex:1 1 380px; min-width:0;"><p style="font-family:Bitter,Georgia,serif; font-size:17px; line-height:1.75; color:oklch(0.28 0.02 260); margin:0 0 20px; text-wrap:pretty;">The EU AI Act is a management-based regulation. It mandates processes, such as risk management, documentation and monitoring, and leaves the outcomes underspecified. Governance quality is a <span style="position:relative;"><span onMouseEnter="{{ cgOn }}" onMouseLeave="{{ cgOff }}" onClick="{{ cgTog }}" style="border-bottom:1.5px dotted oklch(0.48 0.19 260); cursor:help;">credence good</span><sc-if value="{{ cg }}" hint-placeholder-val="{{ false }}"><span style="position:absolute; left:0; bottom:calc(100% + 10px); width:280px; display:block; background:oklch(0.20 0.02 260); color:oklch(0.98 0.003 260); font-family:Bitter,Georgia,serif; font-size:14px; line-height:1.5; padding:12px 14px; border-radius:8px; box-shadow:0 6px 24px oklch(0.13 0.02 260 / 0.2); z-index:5;">A good whose quality the buyer cannot assess through use or inspection.</span></sc-if></span>: auditors and authorities cannot check by inspection whether governance makes a system safer.</p>
+<p style="font-family:Bitter,Georgia,serif; font-size:17px; line-height:1.75; color:oklch(0.28 0.02 260); margin:0 0 20px; text-wrap:pretty;">Documentation is easy to inspect. Changes to the AI system are not. So the budget flows toward documentation, and compliance risks becoming symbolic: it satisfies an audit without making a system safer.</p>
+<p style="font-family:Bitter,Georgia,serif; font-size:17px; line-height:1.75; color:oklch(0.28 0.02 260); margin:0 0 20px; text-wrap:pretty;">AI coding agents add pressure. Features that took weeks now take days. Governance work is still mostly manual: people read the regulation, interpret it, draft policy and produce evidence by hand. As development speeds up, governance becomes the constraint.</p>
+<p style="font-family:Bitter,Georgia,serif; font-size:17px; line-height:1.75; color:oklch(0.28 0.02 260); margin:0 0 20px; text-wrap:pretty;">We want to redirect the budget toward implementation, and make the work itself cheaper.</p></div><div style="flex:1 1 400px; min-width:0;"><figure style="box-sizing:border-box; margin:0; padding:32px 28px 28px; background:oklch(0.995 0.002 260); border:1px solid oklch(0.92 0.005 260); border-radius:14px;">
+            <div style="font-family:Outfit,sans-serif; font-weight:600; font-size:18px; line-height:1.3; color:oklch(0.13 0.02 260); margin:0 0 24px;">Where the compliance budget goes</div>
+            <div id="budgetSlider" style="display:flex; flex-direction:column; user-select:none;">
+              <div id="sliderTrack" style="position:relative; cursor:ew-resize;">
+                <div style="display:flex; height:44px; border:2px solid oklch(0.13 0.02 260); border-radius:8px; overflow:hidden; box-sizing:border-box;">
+                  <div id="sliderLeft" style="flex:62; background:repeating-linear-gradient(135deg, oklch(0.88 0.005 260) 0 8px, oklch(0.94 0.003 260) 8px 16px);"></div>
+                  <div id="sliderRight" style="flex:38; background:repeating-linear-gradient(135deg, oklch(0.48 0.19 260) 0 8px, oklch(0.56 0.15 260) 8px 16px);"></div>
+                </div>
+                <div style="position:absolute; left:2px; right:2px; top:0; bottom:0; pointer-events:none;">
+                  <div id="sliderThumb" style="position:absolute; left:62%; top:-8px; bottom:-8px; width:44px; margin-left:-22px; background:oklch(0.99 0 0); border:2px solid oklch(0.13 0.02 260); border-radius:8px; display:flex; align-items:center; justify-content:center; gap:4px; box-shadow:0 4px 12px oklch(0 0 0 / 0.15);">
+                    <svg viewBox="0 0 24 24" style="width:12px; height:12px; flex:none;"><path d="M16 3 L6 12 L16 21 Z" fill="oklch(0.48 0.19 260)"></path></svg>
+                    <svg viewBox="0 0 24 24" style="width:12px; height:12px; flex:none;"><path d="M8 3 L18 12 L8 21 Z" fill="oklch(0.48 0.19 260)"></path></svg>
+                  </div>
+                </div>
+              </div>
+              <div id="sliderLabels" style="display:grid; grid-template-columns:61.3% 1.4% 37.3%; margin-top:16px;">
+                <div style="display:flex; flex-direction:column; gap:4px; padding-right:8px;">
+                  <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:15px; line-height:1.2; color:oklch(0.13 0.02 260);">Documentation for audits</div>
+                  <div style="font-family:Bitter,Georgia,serif; font-size:14px; line-height:1.4; color:oklch(0.42 0.02 260);">Proves that governance happened. Easy to inspect.</div>
+                </div>
+                <div></div>
+                <div style="display:flex; flex-direction:column; gap:4px;">
+                  <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:15px; line-height:1.2; color:oklch(0.48 0.19 260);">Implementation</div>
+                  <div style="font-family:Bitter,Georgia,serif; font-size:14px; line-height:1.4; color:oklch(0.42 0.02 260);">Changes what gets built. Hard to inspect.</div>
+                </div>
+              </div>
+            </div>
+          </figure></div></div>
+        </section>
+
+        <section id="gdd" data-toc-section="" style="padding:0 0 48px; margin:0 0 56px; border-bottom:1px solid oklch(0.90 0.005 260); scroll-margin-top:110px;">
+          <h2 style="font-family:Outfit,sans-serif; font-weight:700; font-size:clamp(26px, 3vw, 34px); line-height:1.2; color:oklch(0.13 0.02 260); margin:0 0 24px; letter-spacing:-0.01em;">Governance-Driven Development</h2>
+          <p style="font-family:Bitter,Georgia,serif; font-size:20px; line-height:1.6; color:oklch(0.18 0.02 260); text-wrap:pretty; margin:0 0 32px; max-width:900px;">Governance-Driven Development treats regulatory obligations as specifications for software development work.</p>
+          <p style="font-family:Bitter,Georgia,serif; font-size:17px; line-height:1.75; color:oklch(0.28 0.02 260); margin:0 0 20px; text-wrap:pretty;">In specification-driven development, a developer describes a code change in a specification that an AI coding agent then implements. Governance-Driven Development applies the same logic to regulation. An obligation is translated into a specification that a coding agent can implement and a human can verify.</p>
+          <p style="font-family:Bitter,Georgia,serif; font-size:17px; line-height:1.75; color:oklch(0.28 0.02 260); margin:0 0 20px; text-wrap:pretty;">Every obligation is traced to a change in the AI system, from the regulation through a policy and a control, with the evidence documented along the way.</p>
+          
+
+          <h3 style="font-family:Outfit,sans-serif; font-weight:700; font-size:21px; color:oklch(0.13 0.02 260); margin:40px 0 16px;">How it works</h3>
+          <p style="max-width:900px; font-family:Bitter,Georgia,serif; font-size:17px; line-height:1.75; color:oklch(0.28 0.02 260); margin:0 0 20px; text-wrap:pretty;">Each obligation passes through five steps across three domains. Agents plan, implement and document. A human verifies at both handovers.</p>
+          <figure style="margin:24px 0 36px; padding:36px 32px 32px; background:oklch(0.995 0.002 260); border:1px solid oklch(0.92 0.005 260); border-radius:14px; max-width:1100px; box-sizing:border-box;">
+<div style="display:flex; flex-direction:row; flex-wrap:wrap; align-items:center; gap:14px 28px; margin:0 0 32px;">
+              <div style="flex:1 1 240px; font-family:Outfit,sans-serif; font-weight:600; font-size:18px; line-height:1.3; color:oklch(0.13 0.02 260);">Governance-Driven Development cycle</div>
+              <div style="display:flex; align-items:center; gap:10px;">
+                <svg viewBox="0 0 124 130" style="width:34px; height:36px; flex:none;"><g transform="rotate(-5 62 68)"><path d="M48 20 L58 9" stroke="oklch(0.48 0.19 260)" stroke-width="6" stroke-linecap="round"></path><circle cx="60" cy="7.5" r="7" fill="oklch(0.48 0.19 260)"></circle><rect x="14" y="18" width="80" height="50" rx="22" fill="oklch(0.48 0.19 260)"></rect><rect x="26" y="33" width="56" height="22" rx="11" fill="#fff"></rect><circle cx="43" cy="44" r="5.4" fill="oklch(0.48 0.19 260)"></circle><circle cx="65" cy="44" r="5.4" fill="oklch(0.48 0.19 260)"></circle><rect x="6" y="80" width="10" height="26" rx="5" fill="oklch(0.48 0.19 260)"></rect><rect x="92" y="80" width="10" height="26" rx="5" fill="oklch(0.48 0.19 260)"></rect><rect x="20" y="72" width="68" height="50" rx="18" fill="oklch(0.48 0.19 260)"></rect><path d="M54 80 L67.5 85.4 V97.2 C67.5 105.6 61.5 110.5 54 113 C46.5 110.5 40.5 105.6 40.5 97.2 V85.4 Z" fill="#fff"></path></g></svg>
+                <span style="font-family:Outfit,sans-serif; font-weight:600; font-size:14px; color:oklch(0.48 0.19 260);">Governance agent</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:10px;">
+                <svg viewBox="0 0 124 130" style="width:34px; height:36px; flex:none;"><circle cx="62" cy="36" r="26" fill="oklch(0.13 0.02 260)"></circle><path d="M16 122 V96 C16 78.5 32 66 62 66 C92 66 108 78.5 108 96 V122 Z" fill="oklch(0.13 0.02 260)"></path></svg>
+                <span style="font-family:Outfit,sans-serif; font-weight:600; font-size:14px; color:oklch(0.13 0.02 260);">Human</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:10px;">
+                <svg viewBox="0 0 124 130" style="width:34px; height:36px; flex:none;"><g transform="rotate(4 62 68)"><path d="M54 20 V9" stroke="oklch(0.38 0.20 280)" stroke-width="6" stroke-linecap="round"></path><circle cx="54" cy="7" r="7" fill="oklch(0.38 0.20 280)"></circle><rect x="14" y="18" width="80" height="50" rx="22" fill="oklch(0.38 0.20 280)"></rect><rect x="26" y="33" width="56" height="22" rx="11" fill="#fff"></rect><rect x="36" y="39" width="14" height="10" rx="3.4" fill="oklch(0.38 0.20 280)"></rect><rect x="58" y="39" width="14" height="10" rx="3.4" fill="oklch(0.38 0.20 280)"></rect><rect x="6" y="80" width="10" height="26" rx="5" fill="oklch(0.38 0.20 280)"></rect><rect x="92" y="80" width="10" height="26" rx="5" fill="oklch(0.38 0.20 280)"></rect><rect x="20" y="72" width="68" height="50" rx="18" fill="oklch(0.38 0.20 280)"></rect><g fill="none" stroke="#fff" stroke-width="5.4" stroke-linecap="round" stroke-linejoin="round"><path d="M42 82 L32 95 L42 108"></path><path d="M70 82 L80 95 L70 108"></path><path d="M63 79 L49 111"></path></g></g></svg>
+                <span style="font-family:Outfit,sans-serif; font-weight:600; font-size:14px; color:oklch(0.38 0.20 280);">Coding agent</span>
+              </div>
+          </div>
+<!-- Framework: compliance chain left + three domain columns -->
+        <div style="position:relative; display:grid; grid-template-columns:160px 1fr; gap:20px; max-width:1100px; align-items:start;">
+
+          
+
+          <!-- Left: Vertical compliance chain -->
+          <div style="display:flex; flex-direction:column; gap:0;">
+            <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:10px; letter-spacing:0.06em; text-transform:uppercase; color:oklch(0.55 0.03 260); margin-bottom:16px; padding:0 4px; height:15.4px; display:flex; align-items:center;">Compliance Chain</div>
+            <!-- Obligation -->
+            <div style="display:flex; align-items:center; gap:10px;">
+              <div style="width:36px; height:36px; border-radius:50%; background:oklch(0.48 0.19 260); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <span style="font-family: Bitter; font-size: 19px; font-weight: 600; color: #fff; line-height: 1; display: block; transform: translateY(0.5px); padding-bottom: 3px">§</span>
+              </div>
+              <div>
+                <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:12px; color:oklch(0.48 0.19 260); line-height:1.1;">Obligation</div>
+                <div style="font-family:Bitter,Georgia,serif; font-size:10px; color:oklch(0.50 0.02 260); line-height:1.3;">What the regulation requires</div>
+              </div>
+            </div>
+            <div style="width:36px; height:28px; display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 20 20" style="width:14px; height:14px;"><path d="M4 6 L10 14 L16 6" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+            <!-- Policy -->
+            <div style="display:flex; align-items:center; gap:10px;">
+              <div style="width:36px; height:36px; border-radius:50%; background:oklch(0.48 0.19 260); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg viewBox="0 0 24 24" style="width:18px; height:18px;"><rect x="5" y="3" width="14" height="18" rx="2" fill="#fff"></rect><g fill="oklch(0.48 0.19 260)"><rect x="8" y="7" width="8" height="1.8"></rect><rect x="8" y="10.5" width="8" height="1.8"></rect><rect x="8" y="14" width="5" height="1.8"></rect></g></svg>
+              </div>
+              <div>
+                <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:12px; color:oklch(0.48 0.19 260); line-height:1.1;">Policy</div>
+                <div style="font-family:Bitter,Georgia,serif; font-size:10px; color:oklch(0.50 0.02 260); line-height:1.3;">What it means for the organisation</div>
+              </div>
+            </div>
+            <div style="width:36px; height:28px; display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 20 20" style="width:14px; height:14px;"><path d="M4 6 L10 14 L16 6" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+            <!-- Control -->
+            <div style="display:flex; align-items:center; gap:10px;">
+              <div style="width:36px; height:36px; border-radius:50%; background:oklch(0.48 0.19 260); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg viewBox="0 0 24 24" style="width:18px; height:18px;"><path d="M12 3 L20 7 V13 C20 18 16.5 21 12 22.5 C7.5 21 4 18 4 13 V7 Z" fill="#fff"></path><path d="M9.5 12.5 L11.5 14.5 L15 10.5" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </div>
+              <div>
+                <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:12px; color:oklch(0.48 0.19 260); line-height:1.1;">Control</div>
+                <div style="font-family:Bitter,Georgia,serif; font-size:10px; color:oklch(0.50 0.02 260); line-height:1.3;">How to implement the requirements</div>
+              </div>
+            </div>
+            <div style="width:36px; height:28px; display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 20 20" style="width:14px; height:14px;"><path d="M4 6 L10 14 L16 6" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+            <!-- Evidence -->
+            <div style="display:flex; align-items:center; gap:10px;">
+              <div style="width:36px; height:36px; border-radius:50%; background:oklch(0.48 0.19 260); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg viewBox="0 0 24 24" style="width:18px; height:18px;"><circle cx="10" cy="10" r="6.5" fill="none" stroke="#fff" stroke-width="2.4"></circle><path d="M14.5 14.5 L20 20" stroke="#fff" stroke-width="3" stroke-linecap="round"></path></svg>
+              </div>
+              <div>
+                <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:12px; color:oklch(0.48 0.19 260); line-height:1.1;">Evidence</div>
+                <div style="font-family:Bitter,Georgia,serif; font-size:10px; color:oklch(0.50 0.02 260); line-height:1.3;">Proof it was implemented</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Three domain columns -->
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0;">
+          <!-- GOVERNANCE DOMAIN -->
+          <div style="background:oklch(0.95 0.025 260); border-radius:12px 0 0 12px; padding:16px 14px 20px; display:flex; flex-direction:column; gap:14px;">
+            <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:oklch(0.48 0.19 260); padding:0 4px;">Governance Domain</div>
+            <!-- Step 1 -->
+            <div style="background:#fff; border-radius:14px; padding:0; box-shadow:0 1px 6px oklch(0.48 0.19 260 / 0.12), 0 0 0 1.5px oklch(0.48 0.19 260 / 0.15); position:relative; overflow:visible;">
+              <div style="position:absolute; left:-12px; top:-12px; width:28px; height:28px; border-radius:50%; background:oklch(0.48 0.19 260); color:#fff; font-family:Outfit,sans-serif; font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center; z-index:2; box-shadow:0 0 0 3px oklch(0.95 0.025 260);">1</div>
+              <div style="position:absolute; right:10px; top:-14px; z-index:2;">
+                <svg viewBox="0 0 124 130" style="width:34px; height:36px;"><g transform="rotate(-5 62 68)"><path d="M48 20 L58 9" stroke="oklch(0.48 0.19 260)" stroke-width="6" stroke-linecap="round"></path><circle cx="60" cy="7.5" r="7" fill="oklch(0.48 0.19 260)"></circle><rect x="14" y="18" width="80" height="50" rx="22" fill="oklch(0.48 0.19 260)"></rect><rect x="26" y="33" width="56" height="22" rx="11" fill="#fff"></rect><circle cx="43" cy="44" r="5.4" fill="oklch(0.48 0.19 260)"></circle><circle cx="65" cy="44" r="5.4" fill="oklch(0.48 0.19 260)"></circle><rect x="6" y="80" width="10" height="26" rx="5" fill="oklch(0.48 0.19 260)"></rect><rect x="92" y="80" width="10" height="26" rx="5" fill="oklch(0.48 0.19 260)"></rect><rect x="20" y="72" width="68" height="50" rx="18" fill="oklch(0.48 0.19 260)"></rect><path d="M54 80 L67.5 85.4 V97.2 C67.5 105.6 61.5 110.5 54 113 C46.5 110.5 40.5 105.6 40.5 97.2 V85.4 Z" fill="#fff"></path></g></svg>
+              </div>
+              <div style="padding:20px 16px 16px;">
+                <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:14px; color:oklch(0.13 0.02 260); line-height:1.2; margin-bottom:6px;">Plans the specification</div>
+                <div style="font-family:Bitter,Georgia,serif; font-size:12px; line-height:1.5; color:oklch(0.45 0.02 260);">Turns the obligation into a scoped, testable task with acceptance criteria</div>
+              </div>
+            </div>
+            <!-- Spacer -->
+            <div style="flex:1;"></div>
+            <!-- Step 5 -->
+            <div style="background:#fff; border-radius:14px; padding:0; box-shadow:0 1px 6px oklch(0.48 0.19 260 / 0.12), 0 0 0 1.5px oklch(0.48 0.19 260 / 0.15); position:relative; overflow:visible;">
+              <div style="position:absolute; left:-12px; top:-12px; width:28px; height:28px; border-radius:50%; background:oklch(0.48 0.19 260); color:#fff; font-family:Outfit,sans-serif; font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center; z-index:2; box-shadow:0 0 0 3px oklch(0.95 0.025 260);">5</div>
+              <div style="position:absolute; right:10px; top:-14px; z-index:2;">
+                <svg viewBox="0 0 124 130" style="width:34px; height:36px;"><g transform="rotate(-5 62 68)"><path d="M48 20 L58 9" stroke="oklch(0.48 0.19 260)" stroke-width="6" stroke-linecap="round"></path><circle cx="60" cy="7.5" r="7" fill="oklch(0.48 0.19 260)"></circle><rect x="14" y="18" width="80" height="50" rx="22" fill="oklch(0.48 0.19 260)"></rect><rect x="26" y="33" width="56" height="22" rx="11" fill="#fff"></rect><circle cx="43" cy="44" r="5.4" fill="oklch(0.48 0.19 260)"></circle><circle cx="65" cy="44" r="5.4" fill="oklch(0.48 0.19 260)"></circle><rect x="6" y="80" width="10" height="26" rx="5" fill="oklch(0.48 0.19 260)"></rect><rect x="92" y="80" width="10" height="26" rx="5" fill="oklch(0.48 0.19 260)"></rect><rect x="20" y="72" width="68" height="50" rx="18" fill="oklch(0.48 0.19 260)"></rect><path d="M54 80 L67.5 85.4 V97.2 C67.5 105.6 61.5 110.5 54 113 C46.5 110.5 40.5 105.6 40.5 97.2 V85.4 Z" fill="#fff"></path></g></svg>
+              </div>
+              <div style="padding:20px 16px 16px;">
+                <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:14px; color:oklch(0.13 0.02 260); line-height:1.2; margin-bottom:6px;">Documents the evidence</div>
+                <div style="font-family:Bitter,Georgia,serif; font-size:12px; line-height:1.5; color:oklch(0.45 0.02 260);">Records the merged change as evidence against the control</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HUMAN VERIFICATION -->
+          <div style="background:oklch(0.96 0.005 260); border-radius:0; padding:16px 14px 20px; display:flex; flex-direction:column; gap:14px;">
+            
+            <!-- Step 2 -->
+            <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:oklch(0.30 0.02 260); padding:0 4px;">Human Verification</div><div style="background:#fff; border-radius:14px; padding:0; box-shadow:0 1px 6px oklch(0 0 0 / 0.08), 0 0 0 1.5px oklch(0.48 0.19 260 / 0.12); position:relative; overflow:visible;">
+              <div style="position:absolute; left:-12px; top:-12px; width:28px; height:28px; border-radius:50%; background:oklch(0.13 0.02 260); color:#fff; font-family:Outfit,sans-serif; font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center; z-index:2; box-shadow:0 0 0 3px oklch(0.96 0.005 260);">2</div>
+              <div style="position:absolute; right:10px; top:-14px; z-index:2;">
+                <svg viewBox="0 0 124 130" style="width:34px; height:36px;"><circle cx="62" cy="36" r="26" fill="oklch(0.13 0.02 260)"></circle><path d="M16 122 V96 C16 78.5 32 66 62 66 C92 66 108 78.5 108 96 V122 Z" fill="oklch(0.13 0.02 260)"></path><path d="M62 78 L75.5 83.4 V95.2 C75.5 103.6 69.5 108.5 62 111 C54.5 108.5 48.5 103.6 48.5 95.2 V83.4 Z" fill="#fff"></path></svg>
+              </div>
+              <div style="padding:20px 16px 16px;">
+                <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:14px; color:oklch(0.13 0.02 260); line-height:1.2; margin-bottom:6px;">Verifies the specification</div>
+                <div style="font-family:Bitter,Georgia,serif; font-size:12px; line-height:1.5; color:oklch(0.45 0.02 260);">Scope, task description, obligation reference and acceptance criteria</div>
+                
+              </div>
+            </div>
+            <!-- Spacer -->
+            <div style="flex:1;"></div>
+            <!-- Step 4 -->
+            <div style="background:#fff; border-radius:14px; padding:0; box-shadow:0 1px 6px oklch(0 0 0 / 0.08), 0 0 0 1.5px oklch(0.48 0.19 260 / 0.12); position:relative; overflow:visible;">
+              <div style="position:absolute; left:-12px; top:-12px; width:28px; height:28px; border-radius:50%; background:oklch(0.13 0.02 260); color:#fff; font-family:Outfit,sans-serif; font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center; z-index:2; box-shadow:0 0 0 3px oklch(0.96 0.005 260);">4</div>
+              <div style="position:absolute; right:10px; top:-14px; z-index:2;">
+                <svg viewBox="0 0 124 130" style="width:34px; height:36px;"><circle cx="62" cy="36" r="26" fill="oklch(0.13 0.02 260)"></circle><path d="M16 122 V96 C16 78.5 32 66 62 66 C92 66 108 78.5 108 96 V122 Z" fill="oklch(0.13 0.02 260)"></path><g fill="none" stroke="#fff" stroke-width="5.4" stroke-linecap="round" stroke-linejoin="round"><path d="M48 80 L38 94 L48 108"></path><path d="M76 80 L86 94 L76 108"></path><path d="M68 77 L56 111"></path></g></svg>
+              </div>
+              <div style="padding:20px 16px 16px;">
+                <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:14px; color:oklch(0.13 0.02 260); line-height:1.2; margin-bottom:6px;">Verifies the change</div>
+                <div style="font-family:Bitter,Georgia,serif; font-size:12px; line-height:1.5; color:oklch(0.45 0.02 260);">Confirms acceptance criteria are satisfied, then merges the code</div>
+                
+              </div>
+            </div>
+          </div>
+
+          <!-- PRODUCT DOMAIN -->
+          <div style="background:oklch(0.95 0.025 280); border-radius:0 12px 12px 0; padding:16px 14px 20px; display:flex; flex-direction:column; gap:14px;">
+            <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:oklch(0.38 0.20 280); padding:0 4px;">Product Domain</div>
+            <div style="flex:1;"></div>
+            <!-- Step 3 -->
+            <div style="background:#fff; border-radius:14px; padding:0; box-shadow:0 1px 6px oklch(0.38 0.20 280 / 0.12), 0 0 0 1.5px oklch(0.38 0.20 280 / 0.15); position:relative; overflow:visible;">
+              <div style="position:absolute; left:-12px; top:-12px; width:28px; height:28px; border-radius:50%; background:oklch(0.38 0.20 280); color:#fff; font-family:Outfit,sans-serif; font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center; z-index:2; box-shadow:0 0 0 3px oklch(0.95 0.025 280);">3</div>
+              <div style="position:absolute; right:10px; top:-14px; z-index:2;">
+                <svg viewBox="0 0 124 130" style="width:34px; height:36px;"><g transform="rotate(4 62 68)"><path d="M54 20 V9" stroke="oklch(0.38 0.20 280)" stroke-width="6" stroke-linecap="round"></path><circle cx="54" cy="7" r="7" fill="oklch(0.38 0.20 280)"></circle><rect x="14" y="18" width="80" height="50" rx="22" fill="oklch(0.38 0.20 280)"></rect><rect x="26" y="33" width="56" height="22" rx="11" fill="#fff"></rect><rect x="36" y="39" width="14" height="10" rx="3.4" fill="oklch(0.38 0.20 280)"></rect><rect x="58" y="39" width="14" height="10" rx="3.4" fill="oklch(0.38 0.20 280)"></rect><rect x="6" y="80" width="10" height="26" rx="5" fill="oklch(0.38 0.20 280)"></rect><rect x="92" y="80" width="10" height="26" rx="5" fill="oklch(0.38 0.20 280)"></rect><rect x="20" y="72" width="68" height="50" rx="18" fill="oklch(0.38 0.20 280)"></rect><g fill="none" stroke="#fff" stroke-width="5.4" stroke-linecap="round" stroke-linejoin="round"><path d="M42 82 L32 95 L42 108"></path><path d="M70 82 L80 95 L70 108"></path><path d="M63 79 L49 111"></path></g></g></svg>
+              </div>
+              <div style="padding:20px 16px 16px;">
+                <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:14px; color:oklch(0.13 0.02 260); line-height:1.2; margin-bottom:6px;">Implements the change</div>
+                <div style="font-family:Bitter,Georgia,serif; font-size:12px; line-height:1.5; color:oklch(0.45 0.02 260);">Works inside the accepted scope, implements the change, and opens a pull request</div>
+                <div style="font-family:Outfit,sans-serif; font-weight:600; font-size:12px; line-height:1.3; color:oklch(0.38 0.20 280); margin-top:8px;">The obligation reaches the codebase</div>
+              </div>
+            </div>
+            <div style="flex:1;"></div>
+          </div>
+          </div>
+        </div>
+</figure>
+          <p style="font-family:Bitter,Georgia,serif; font-size:17px; line-height:1.75; color:oklch(0.28 0.02 260); margin:0 0 20px; text-wrap:pretty;">Evidence-based compliance rewards implementation over documentation. Because each change is linked to its obligation, it gives auditors a verifiable outcome to check, and makes continuous, automated checks possible.</p>
+          <p style="font-family:Bitter,Georgia,serif; font-size:17px; line-height:1.75; color:oklch(0.28 0.02 260); margin:0; text-wrap:pretty;">We propose the method in our <a href="uploads/ECAF26_Governance-Driven_Development_JARVERS.pdf" target="_blank" style="border-bottom:1px solid oklch(0.48 0.19 260 / 0.4);">ECAF '26 paper</a>, together with an early proof of concept at one AI company.</p>
+        </section>
+
+        <section id="workflow" data-toc-section="" style="padding:0 0 48px; margin:0 0 56px; border-bottom:1px solid oklch(0.90 0.005 260); scroll-margin-top:110px;">
+          <h2 style="font-family:Outfit,sans-serif; font-weight:700; font-size:clamp(26px, 3vw, 34px); line-height:1.2; color:oklch(0.13 0.02 260); margin:0 0 24px; letter-spacing:-0.01em;">Agentic Governance Workflow</h2>
+          <p style="font-family:Bitter,Georgia,serif; font-size:20px; line-height:1.6; color:oklch(0.18 0.02 260); text-wrap:pretty; margin:0 0 32px; max-width:900px;">Open skills that let AI agents do the repeatable parts of governance work, while people make the decisions.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:32px 56px; align-items:flex-start;"><div style="flex:1 1 380px; min-width:0;"><p style="font-family:Bitter,Georgia,serif; font-size:17px; line-height:1.75; color:oklch(0.28 0.02 260); margin:0 0 20px; text-wrap:pretty;">Governance does not bottleneck on judgment. It bottlenecks on the knowledge work around judgment: reading standards, extracting requirements, mapping cross-references and keeping documentation current as regulations change. The workflow targets that work. People keep the authority.</p>
+<p style="font-family:Bitter,Georgia,serif; font-size:17px; line-height:1.75; color:oklch(0.28 0.02 260); margin:0 0 20px; text-wrap:pretty;">It separates two layers. The compliance layer holds the regulation, approved policies, applied controls and the evidence record. Only people change it. The workspace is where agents work. They use skills to decompose requirements, plan specifications, document evidence and check consistency, and every skill is started by a person.</p></div><div style="flex:1 1 400px; min-width:0;"><div style="border: 2px solid oklch(0.13 0.02 260); border-radius: 16px; overflow: hidden; background: #fff; margin: 0">
+
+            <!-- COMPLIANCE -->
+            <div style="background:oklch(0.90 0.005 260); padding:20px 22px 22px;">
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:4px; flex-wrap:wrap;">
+                <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:12px; letter-spacing:0.09em; text-transform:uppercase; color:oklch(0.13 0.02 260);">Compliance</div>
+                <div style="display:flex; align-items:center; gap:7px;">
+                  <svg viewBox="0 0 124 130" style="width:20px; height:21px; flex:none;"><circle cx="62" cy="36" r="26" fill="oklch(0.13 0.02 260)"></circle><path d="M16 122 V96 C16 78.5 32 66 62 66 C92 66 108 78.5 108 96 V122 Z" fill="oklch(0.13 0.02 260)"></path></svg>
+                  <span style="font-family:Outfit,sans-serif; font-weight:600; font-size:11px; color:oklch(0.13 0.02 260);">Human-authoritative</span>
+                </div>
+              </div>
+              <div style="font-family:Bitter,Georgia,serif; font-size:12px; line-height:1.5; color:oklch(0.38 0.02 260); margin-bottom:16px;">The organisation's compliance corpus</div>
+              <div style="display:flex; align-items:flex-start; gap:6px;">
+                <div style="display:flex; flex-direction:column; align-items:center; gap:8px; flex:1; min-width:0;">
+                  <div style="width:36px; height:36px; border-radius:50%; background:oklch(0.48 0.19 260); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                    <span style="font-family:Bitter,Georgia,serif; font-size:18px; font-weight:600; color:#fff; line-height:1; padding-bottom:2px;">§</span>
+                  </div>
+                  <span style="font-family:Outfit,sans-serif; font-weight:700; font-size:11.5px; line-height:1.25; color:oklch(0.13 0.02 260); text-align:center;">Regulation &amp; Standards</span>
+                </div>
+                <div style="display:flex; align-items:center; height:36px; flex:none;"><svg viewBox="0 0 20 20" style="width:14px; height:14px;"><path d="M6 4 L14 10 L6 16" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+                <div style="display:flex; flex-direction:column; align-items:center; gap:8px; flex:1; min-width:0;">
+                  <div style="width:36px; height:36px; border-radius:50%; background:oklch(0.48 0.19 260); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                    <svg viewBox="0 0 24 24" style="width:18px; height:18px;"><rect x="5" y="3" width="14" height="18" rx="2" fill="#fff"></rect><g fill="oklch(0.48 0.19 260)"><rect x="8" y="7" width="8" height="1.8"></rect><rect x="8" y="10.5" width="8" height="1.8"></rect><rect x="8" y="14" width="5" height="1.8"></rect></g></svg>
+                  </div>
+                  <span style="font-family:Outfit,sans-serif; font-weight:700; font-size:11.5px; line-height:1.25; color:oklch(0.13 0.02 260); text-align:center;">Approved&nbsp;<br>Policies</span>
+                </div>
+                <div style="display:flex; align-items:center; height:36px; flex:none;"><svg viewBox="0 0 20 20" style="width:14px; height:14px;"><path d="M6 4 L14 10 L6 16" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+                <div style="display:flex; flex-direction:column; align-items:center; gap:8px; flex:1; min-width:0;">
+                  <div style="width:36px; height:36px; border-radius:50%; background:oklch(0.48 0.19 260); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                    <svg viewBox="0 0 24 24" style="width:18px; height:18px;"><path d="M12 3 L20 7 V13 C20 18 16.5 21 12 22.5 C7.5 21 4 18 4 13 V7 Z" fill="#fff"></path><path d="M9.5 12.5 L11.5 14.5 L15 10.5" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                  </div>
+                  <span style="font-family:Outfit,sans-serif; font-weight:700; font-size:11.5px; line-height:1.25; color:oklch(0.13 0.02 260); text-align:center;">Applied&nbsp;<br>Controls</span>
+                </div>
+                <div style="display:flex; align-items:center; height:36px; flex:none;"><svg viewBox="0 0 20 20" style="width:14px; height:14px;"><path d="M6 4 L14 10 L6 16" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+                <div style="display:flex; flex-direction:column; align-items:center; gap:8px; flex:1; min-width:0;">
+                  <div style="width:36px; height:36px; border-radius:50%; background:oklch(0.48 0.19 260); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                    <svg viewBox="0 0 24 24" style="width:18px; height:18px;"><circle cx="10" cy="10" r="6.5" fill="none" stroke="#fff" stroke-width="2.4"></circle><path d="M14.5 14.5 L20 20" stroke="#fff" stroke-width="3" stroke-linecap="round"></path></svg>
+                  </div>
+                  <span style="font-family:Outfit,sans-serif; font-weight:700; font-size:11.5px; line-height:1.25; color:oklch(0.13 0.02 260); text-align:center;">Evidence<br>Record</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- BOUNDARY -->
+            <div style="background:oklch(0.97 0.003 260); border-top:2.5px dashed oklch(0.48 0.19 260); border-bottom:2.5px dashed oklch(0.48 0.19 260); padding:14px 22px; display:flex; flex-direction:column; gap:5px;">
+              <div style="display: flex; align-items: center; gap: 8px; justify-content: center">
+                
+                <svg viewBox="0 0 24 24" style="width:16px; height:16px; flex:none;"><path d="M12 21 L6 13 H10 V3 H14 V13 H18 Z" fill="oklch(0.13 0.02 260)"></path></svg><div style="font-family:Outfit,sans-serif; font-weight:700; font-size:12px; color:oklch(0.13 0.02 260); line-height:1.2;">Human-agent collaboration</div><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; flex: none; padding-left: 0px; padding-right: 0px"><path d="M12 3 L18 11 H14 V21 H10 V11 H6 Z" fill="oklch(0.48 0.19 260)"></path></svg>
+                
+              </div>
+              <div style="font-family: Bitter,Georgia,serif; font-size: 11px; line-height: 1.45; color: oklch(0.45 0.02 260); align-self: auto; text-align: center">The agent performs repetitive and template-driven work.<br>The human steers, provides feedback, and retains accountability.</div>
+            </div>
+            
+
+            <!-- WORKSPACE -->
+            <div style="background:oklch(0.95 0.025 260); padding:20px 22px 24px;">
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:4px; flex-wrap:wrap;">
+                <div style="font-family:Outfit,sans-serif; font-weight:700; font-size:12px; letter-spacing:0.09em; text-transform:uppercase; color:oklch(0.48 0.19 260);">Workspace</div>
+                <div style="display:flex; align-items:center; gap:7px;">
+                  <svg viewBox="0 0 124 130" style="width:22px; height:23px; flex:none;"><g transform="rotate(-5 62 68)"><path d="M48 20 L58 9" stroke="oklch(0.48 0.19 260)" stroke-width="6" stroke-linecap="round"></path><circle cx="60" cy="7.5" r="7" fill="oklch(0.48 0.19 260)"></circle><rect x="14" y="18" width="80" height="50" rx="22" fill="oklch(0.48 0.19 260)"></rect><rect x="26" y="33" width="56" height="22" rx="11" fill="#fff"></rect><circle cx="43" cy="44" r="5.4" fill="oklch(0.48 0.19 260)"></circle><circle cx="65" cy="44" r="5.4" fill="oklch(0.48 0.19 260)"></circle><rect x="6" y="80" width="10" height="26" rx="5" fill="oklch(0.48 0.19 260)"></rect><rect x="92" y="80" width="10" height="26" rx="5" fill="oklch(0.48 0.19 260)"></rect><rect x="20" y="72" width="68" height="50" rx="18" fill="oklch(0.48 0.19 260)"></rect><path d="M54 80 L67.5 85.4 V97.2 C67.5 105.6 61.5 110.5 54 113 C46.5 110.5 40.5 105.6 40.5 97.2 V85.4 Z" fill="#fff"></path></g></svg>
+                  <span style="font-family:Outfit,sans-serif; font-weight:600; font-size:11px; color:oklch(0.48 0.19 260);">Agent-moderated</span>
+                </div>
+              </div>
+              <div style="font-family:Bitter,Georgia,serif; font-size:12px; line-height:1.5; color:oklch(0.40 0.02 260); margin-bottom:18px;">The agent's internal operating system. All skills are human-invoked.</div>
+              <div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:11px 24px;">
+                <div style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace; font-weight:500; font-size:12.5px; letter-spacing:-0.01em; color:oklch(0.30 0.04 260);"><span style="color:oklch(0.48 0.19 260);">/</span>decompose-requirement</div>
+                <div style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace; font-weight:500; font-size:12.5px; letter-spacing:-0.01em; color:oklch(0.30 0.04 260);"><span style="color:oklch(0.48 0.19 260);">/</span>plan-specification</div>
+                <div style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace; font-weight:500; font-size:12.5px; letter-spacing:-0.01em; color:oklch(0.30 0.04 260);"><span style="color:oklch(0.48 0.19 260);">/</span>review-product</div>
+                <div style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace; font-weight:500; font-size:12.5px; letter-spacing:-0.01em; color:oklch(0.30 0.04 260);"><span style="color:oklch(0.48 0.19 260);">/</span>document-evidence</div>
+                <div style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace; font-weight:500; font-size:12.5px; letter-spacing:-0.01em; color:oklch(0.30 0.04 260);"><span style="color:oklch(0.48 0.19 260);">/</span>check-consistency</div>
+                <div style="font-family:'JetBrains Mono',ui-monospace,Menlo,monospace; font-weight:500; font-size:12.5px; letter-spacing:-0.01em; color:oklch(0.30 0.04 260);"><span style="color:oklch(0.48 0.19 260);">/</span>answer-question</div>
+              </div>
+            </div>
+          </div></div></div>
+          <div style="height:32px;"></div><div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap:0 48px;"><p style="font-family:Bitter,Georgia,serif; font-size:17px; line-height:1.75; color:oklch(0.28 0.02 260); margin:0 0 20px; text-wrap:pretty;">The workflow builds on our <a href="uploads/HICSS27_Human-AI_Collaboration_JARVERS.pdf" target="_blank" style="border-bottom:1px solid oklch(0.48 0.19 260 / 0.4);">HICSS '27 study</a> of an agentic knowledge base for AI governance. At an AI startup, we applied it to two ISO management system standards and derived two design principles: human authority over agent moderation, and traceability.</p>
+<p style="font-family:Bitter,Georgia,serif; font-size:17px; line-height:1.75; color:oklch(0.28 0.02 260); margin:0 0 20px; text-wrap:pretty;">The workflow does not automate compliance. It is an agentic harness for governance work that values changes to the AI system over paperwork. We will release the skills and the workflow as open source.</p></div>
+        </section>
+
+        <section id="papers" data-toc-section="" style="padding:0 0 48px; margin:0 0 56px; scroll-margin-top:110px;">
+          <h2 style="font-family:Outfit,sans-serif; font-weight:700; font-size:clamp(26px, 3vw, 34px); line-height:1.2; color:oklch(0.13 0.02 260); margin:0 0 24px; letter-spacing:-0.01em;">Papers</h2>
+          <div style="border-top:1px solid oklch(0.88 0.008 260);">
+            <a href="uploads/ECAF26_Governance-Driven_Development_JARVERS.pdf" target="_blank" style="display:flex; gap:20px; align-items:flex-start; padding:22px 0; border-bottom:1px solid oklch(0.88 0.008 260); color:inherit;" style-hover="background:oklch(0.965 0.006 260);">
+              <div style="flex:none; font-family:Outfit,sans-serif; font-weight:600; font-size:13px; color:oklch(0.48 0.19 260); padding:5px 12px; border:1.5px solid oklch(0.48 0.19 260); border-radius:5px; margin-top:2px;">ECAF '26</div>
+              <div style="flex:1; min-width:0;">
+                <div style="font-family:Outfit,sans-serif; font-weight:600; font-size:18px; line-height:1.3; color:oklch(0.13 0.02 260); margin:0 0 6px; text-wrap:pretty;">Governance-Driven Development: Embedding Regulatory Requirements in AI Development Workflows</div>
+                <div style="font-family:Bitter,Georgia,serif; font-size:15px; line-height:1.5; color:oklch(0.42 0.02 260);">Jarvers &amp; Papakyriakopoulos (2026). European Conference on Algorithmic Fairness, Ghent.</div>
+              </div>
+              <div style="flex:none; font-family:Outfit,sans-serif; font-weight:600; font-size:14px; color:oklch(0.48 0.19 260); margin-top:4px;">PDF ↗</div>
+            </a>
+            <a href="uploads/HICSS27_Human-AI_Collaboration_JARVERS.pdf" target="_blank" style="display:flex; gap:20px; align-items:flex-start; padding:22px 0; border-bottom:1px solid oklch(0.88 0.008 260); color:inherit;" style-hover="background:oklch(0.965 0.006 260);">
+              <div style="flex:none; font-family:Outfit,sans-serif; font-weight:600; font-size:13px; color:oklch(0.38 0.20 280); padding:5px 12px; border:1.5px solid oklch(0.38 0.20 280); border-radius:5px; margin-top:2px;">HICSS '27</div>
+              <div style="flex:1; min-width:0;">
+                <div style="font-family:Outfit,sans-serif; font-weight:600; font-size:18px; line-height:1.3; color:oklch(0.13 0.02 260); margin:0 0 6px; text-wrap:pretty;">Human-AI Collaboration in Compliance Automation: Designing an Agentic Knowledge Base for AI Governance</div>
+                <div style="font-family:Bitter,Georgia,serif; font-size:15px; line-height:1.5; color:oklch(0.42 0.02 260);">Jarvers, Papakyriakopoulos, Röthemeier &amp; Wittges (2027). Hawaii International Conference on System Sciences.</div>
+              </div>
+              <div style="flex:none; font-family:Outfit,sans-serif; font-weight:600; font-size:14px; color:oklch(0.38 0.20 280); margin-top:4px;">PDF ↗</div>
+            </a>
+          </div>
+        </section>
+        </article>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid oklch(0.92 0.005 260);">
+    <div style="max-width:1280px; margin:0 auto; padding:48px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+      <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+        <svg viewBox="0 10 200 200" width="24" height="24"><circle cx="100" cy="110" r="85" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="14"></circle><circle cx="100" cy="142" r="53" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="12"></circle><circle cx="100" cy="160" r="33" fill="none" stroke="oklch(0.48 0.19 260)" stroke-width="11"></circle></svg>
+        <span style="font-family:Outfit,sans-serif; font-weight:600; font-size:13px; color:oklch(0.35 0.02 260);">Scalable Governance</span>
+        <span style="font-family:Bitter,Georgia,serif; font-size:12px; color:oklch(0.55 0.02 260); margin-left:8px;">An applied research initiative based at the TUM Professorship of Societal Computing</span>
+      </div>
+      <div style="font-family:Bitter,Georgia,serif; font-size:12px; color:oklch(0.55 0.02 260);">© 2026</div>
+    </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { active: 'problem', cg: false };
+  componentDidMount() {
+    this.sp = document.querySelector('[data-dc-root]')?.closest('[style*="overflow"]') || window;
+    this.initScrollHeader();
+    this.initDotGrid();
+    this.initSlider();
+  }
+  scrollTop() { return this.sp === window ? (window.scrollY || 0) : this.sp.scrollTop; }
+  initScrollHeader() {
+    let ticking = false;
+    const update = () => {
+      const t = Math.min(this.scrollTop() / 100, 1);
+      const navBar = document.getElementById('navBar');
+      const navLogo = document.getElementById('navLogo');
+      const navText = document.getElementById('navText');
+      if (!navBar || !navLogo) return;
+      const svg = navLogo.querySelector('svg');
+      const logo = 56 - t * 26;
+      svg.setAttribute('width', logo); svg.setAttribute('height', logo);
+      navBar.style.marginTop = (20 - t * 12) + 'px';
+      navBar.style.borderRadius = (16 - t * 6) + 'px';
+      const pad = 20 - t * 10;
+      navBar.style.paddingTop = pad + 'px'; navBar.style.paddingBottom = pad + 'px';
+      if (navText) {
+        const ts = 20 - t * 5;
+        navText.children[0].style.fontSize = ts + 'px';
+        navText.children[1].style.fontSize = (ts * 15 / 24) + 'px';
+      }
+      const navLinks = document.getElementById('navLinks');
+      if (navLinks) {
+        navLinks.style.gap = (28 - t * 6) + 'px';
+        for (const c of navLinks.children) c.style.fontSize = (15 - t * 2) + 'px';
+      }
+      navBar.style.background = 'oklch(0.97 0.003 260 / ' + (0.55 + t * 0.35) + ')';
+      navBar.style.borderColor = 'oklch(0.92 0.005 260 / ' + (0.5 + t * 0.4) + ')';
+      ticking = false;
+    };
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+    this.sp.addEventListener('scroll', onScroll, { passive: true });
+    update();
+    this._cleanupScroll = () => this.sp.removeEventListener('scroll', onScroll);
+  }
+  initDotGrid() {
+    const canvas = document.getElementById('dotGrid');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const spacing = 30, dotRadius = 1.2, influenceRadius = 130, pullStrength = 0.35, returnSpeed = 0.08;
+    let dots = [], mouse = { x: -1000, y: -1000 }, animId, bands = [];
+    const computeBands = () => { bands = [...document.querySelectorAll('[data-grid-section]')].map(el => { const r = el.getBoundingClientRect(); return { top: r.top, bottom: r.bottom }; }); };
+    const inBand = (y) => bands.some(b => y >= b.top && y <= b.bottom);
+    const computeProximity = () => {
+      const rects = [...document.querySelectorAll('h1, h2, h3, p, nav, a')].map(el => el.getBoundingClientRect());
+      for (const d of dots) {
+        let m = 9999;
+        for (const r of rects) {
+          const cx = Math.max(r.left, Math.min(d.ox, r.right));
+          const cy = Math.max(r.top, Math.min(d.oy, r.bottom));
+          const dist = Math.hypot(d.ox - cx, d.oy - cy);
+          if (dist < m) m = dist;
+        }
+        d.prox = m < 30 ? 0.04 : m < 200 ? 0.04 + ((m - 30) / 170) * 0.22 : 0.26;
+      }
+    };
+    const resize = () => {
+      const dpr = window.devicePixelRatio || 1, w = window.innerWidth, h = window.innerHeight;
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      dots = [];
+      const cols = Math.ceil(w / spacing) + 1, rows = Math.ceil(h / spacing) + 1;
+      const ox = (w - (cols - 1) * spacing) / 2, oy = (h - (rows - 1) * spacing) / 2;
+      for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) { const x = ox + c * spacing, y = oy + r * spacing; dots.push({ ox: x, oy: y, x, y, prox: 0.15 }); }
+    };
+    const onMove = (e) => { mouse.x = e.clientX; mouse.y = e.clientY; };
+    const onLeave = () => { mouse.x = -1000; mouse.y = -1000; };
+    const onResize = () => { resize(); computeBands(); computeProximity(); };
+    let frame = 0;
+    const draw = () => {
+      frame++;
+      if (frame % 20 === 0) { computeBands(); computeProximity(); }
+      ctx.clearRect(0, 0, parseFloat(canvas.style.width), parseFloat(canvas.style.height));
+      for (const d of dots) {
+        if (!inBand(d.oy)) { d.x += (d.ox - d.x) * returnSpeed; d.y += (d.oy - d.y) * returnSpeed; continue; }
+        const dx = mouse.x - d.ox, dy = mouse.y - d.oy, dist = Math.hypot(dx, dy);
+        if (dist < influenceRadius) {
+          const f = (1 - dist / influenceRadius) * pullStrength;
+          d.x += (d.ox + dx * f - d.x) * 0.15; d.y += (d.oy + dy * f - d.y) * 0.15;
+        } else { d.x += (d.ox - d.x) * returnSpeed; d.y += (d.oy - d.y) * returnSpeed; }
+        const disp = Math.hypot(d.x - d.ox, d.y - d.oy);
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, dotRadius + disp * 0.04, 0, Math.PI * 2);
+        ctx.fillStyle = 'oklch(0.48 0.19 260 / ' + (d.prox + Math.min(disp / 15, 0.4)) + ')';
+        ctx.fill();
+      }
+      animId = requestAnimationFrame(draw);
+    };
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseleave', onLeave);
+    window.addEventListener('resize', onResize);
+    onResize();
+    draw();
+    this._cleanupGrid = () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseleave', onLeave);
+      window.removeEventListener('resize', onResize);
+    };
+  }
+  goTo(id) {
+    const t = document.getElementById(id); if (!t) return;
+    const off = 100, sp = this.sp;
+    if (sp === window) window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - off, behavior: 'smooth' });
+    else sp.scrollTo({ top: t.getBoundingClientRect().top - sp.getBoundingClientRect().top + sp.scrollTop - off, behavior: 'smooth' });
+  }
+  initToc() {
+    const upd = () => {
+      const secs = document.querySelectorAll('[data-toc-section]');
+      let cur = secs.length ? secs[0].id : null;
+      secs.forEach(x => { if (x.getBoundingClientRect().top < 200) cur = x.id; });
+      if (cur && cur !== this.state.active) this.setState({ active: cur });
+    };
+    this.sp.addEventListener('scroll', upd, { passive: true });
+    upd();
+    this._cleanupToc = () => this.sp.removeEventListener('scroll', upd);
+  }
+  initSlider() {
+    const track = document.getElementById('sliderTrack');
+    if (!track) return;
+    let dragging = false;
+    const update = (pct) => {
+      pct = Math.max(30, Math.min(70, pct));
+      document.getElementById('sliderLeft').style.flex = pct;
+      document.getElementById('sliderRight').style.flex = 100 - pct;
+      document.getElementById('sliderThumb').style.left = pct + '%';
+      const gap = 1.4;
+      document.getElementById('sliderLabels').style.gridTemplateColumns = (pct - gap / 2).toFixed(1) + '% ' + gap + '% ' + (100 - pct - gap / 2).toFixed(1) + '%';
+    };
+    const getPct = (e) => { const r = track.getBoundingClientRect(); return (((e.touches ? e.touches[0].clientX : e.clientX) - r.left) / r.width) * 100; };
+    const onDown = (e) => { dragging = true; update(getPct(e)); };
+    const onMove = (e) => { if (dragging) { e.preventDefault(); update(getPct(e)); } };
+    const onUp = () => { dragging = false; };
+    track.addEventListener('mousedown', onDown);
+    track.addEventListener('touchstart', onDown, { passive: true });
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('touchmove', onMove, { passive: false });
+    window.addEventListener('mouseup', onUp);
+    window.addEventListener('touchend', onUp);
+    this._cleanupSlider = () => {
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('touchmove', onMove);
+      window.removeEventListener('mouseup', onUp);
+      window.removeEventListener('touchend', onUp);
+    };
+  }
+  componentWillUnmount() {
+    ['_cleanupScroll', '_cleanupGrid', '_cleanupToc', '_cleanupSlider'].forEach(k => this[k] && this[k]());
+  }
+  renderVals() {
+    const s = this.state, blue = 'oklch(0.48 0.19 260)';
+    const toc = [['problem', 'The problem'], ['gdd', 'Governance-Driven Development'], ['workflow', 'Agentic Governance Workflow'], ['papers', 'Papers']];
+    return {
+      toc: toc.map(([id, label]) => ({ id, label, go: () => this.goTo(id), color: s.active === id ? blue : 'oklch(0.45 0.02 260)', bar: s.active === id ? blue : 'oklch(0.90 0.005 260)', weight: s.active === id ? 600 : 400 })),
+      cg: s.cg, cgOn: () => this.setState({ cg: true }), cgOff: () => this.setState({ cg: false }), cgTog: () => this.setState({ cg: !s.cg })
+    };
+  }
+}
+</script>
+</body>
+</html>
