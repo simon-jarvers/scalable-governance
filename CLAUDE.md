@@ -33,7 +33,7 @@ The website design is being prototyped in Claude Design and will be implemented 
 ## Key constraints
 
 - GitHub Pages static site — no server-side functionality
-- Target domain: scalable-governance.ai (launch on GitHub Pages URL first)
+- Target domain: scalable-governance.org (launch on GitHub Pages URL first)
 - Evidential discipline: every claim traceable to a published finding or marked as the initiative's argument
 - Voice: direct, first-person plural, scholarly without being academic
 - Scope: this repository is about Scalable Governance only. Keep personal context about team members (other projects, deadlines, contracts, workload) out of all files.
