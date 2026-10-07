@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scalable Governance</title>
+<meta name="description" content="Scalable Governance is an applied research initiative at the TUM Professorship of Societal Computing, working to scale AI governance to the pace of AI development and deployment.">
+<meta property="og:title" content="Scalable Governance">
+<meta property="og:description" content="Applied research on AI governance, based at the TUM Professorship of Societal Computing.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#f4f5f7">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&amp;family=Bitter:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>document.documentElement.classList.add('js');</script>
+<script src="assets/js/main.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<canvas id="dot-grid" aria-hidden="true"></canvas>
+
+<header class="site-nav" id="site-nav">
+  <div class="site-nav__inner">
+    <div class="site-nav__bar">
+      <a class="brand" href="#top" aria-label="Scalable Governance, back to top">
+        <svg class="brand__logo" viewBox="0 10 200 200" aria-hidden="true"><circle cx="100" cy="110" r="85" stroke-width="14"/><circle cx="100" cy="142" r="53" stroke-width="12"/><circle cx="100" cy="160" r="33" stroke-width="11"/></svg>
+        <span class="brand__text">
+          <span class="brand__name">Scalable Governance</span>
+          <span class="brand__tagline">Applied research on AI governance</span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <nav aria-label="Main">
+        <ul class="nav-links" id="nav-links">
+          <li><a href="mission/">Mission</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#who-we-are">Who we are</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Hero -->
+  <section class="hero" id="top" data-grid-section>
+    <svg class="hero__watermark" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="90" r="88" stroke-width="5.5"/><circle cx="100" cy="112" r="58" stroke-width="5"/><circle cx="100" cy="128" r="32" stroke-width="4.5"/></svg>
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <h1>AI is developed and deployed faster than governance can follow.</h1>
+        <p class="lead">Scalable Governance is an applied research initiative with the goal of scaling AI governance to the pace of rapidly increasing capability and volume of AI systems, without losing the human judgment and accountability that good governance requires.</p>
+        <p class="hero__affiliation">We are based at the <a href="https://www.gov.sot.tum.de/en/soc/welcome/" target="_blank" rel="noopener">TUM Professorship of Societal Computing</a>.</p>
+
+        <div class="accordion">
+          <div class="accordion__item">
+            <h2 class="accordion__heading">
+              <button type="button" class="accordion__trigger" aria-expanded="false" aria-controls="acc-what">
+                <span>What is AI governance?</span><span class="accordion__icon" aria-hidden="true"></span>
+              </button>
+            </h2>
+            <div class="accordion__panel" id="acc-what">
+              <div class="accordion__body">
+                <p>By <em>AI governance</em> we mean the rules, processes and controls that make sure AI systems are safe and compliant. AI governance can be understood on different levels:</p>
+                <ul>
+                  <li><b>Organisation:</b> Companies that develop and deploy AI systems turn regulatory requirements into policies and controls that impact the AI systems.</li>
+                  <li><b>Verification:</b> Auditors, notified bodies and authorities check conformity against technical standards and legal obligations.</li>
+                  <li><b>Regulation:</b> Legislators and policy-makers write AI regulations and keep them up to date.</li>
+                </ul>
+                <p>Most of our research so far studies the organisational level.<br><a href="#research">Read our research →</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <h2 class="accordion__heading">
+              <button type="button" class="accordion__trigger" aria-expanded="false" aria-controls="acc-why">
+                <span>Why does it have to scale?</span><span class="accordion__icon" aria-hidden="true"></span>
+              </button>
+            </h2>
+            <div class="accordion__panel" id="acc-why">
+              <div class="accordion__body">
+                <p>AI coding agents write a growing amount of the code of AI systems. Teams build faster, and more AI systems reach the market. AI governance across all levels has to keep up with this pace. How this is going to be achieved is largely unsolved and neglecting it poses a systemic risk of AI.<br><a href="mission/">Read our mission statement →</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="button-row">
+          <a class="btn btn--primary" href="mission/">Read our mission statement</a>
+          <a class="btn btn--secondary" href="#research">Read our research</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission teaser -->
+  <section class="mission" id="mission" aria-labelledby="mission-title">
+    <div class="container mission__inner">
+      <div>
+        <h2 class="section-title" id="mission-title">Mission statement</h2>
+        <p class="lead lead--dark">We are building an <b>Agentic Governance Workflow</b>: agent skills that enable effective and accountable human-AI collaboration for governance work. We research AI system developers empirically to enable evidence-based AI regulation.</p>
+      </div>
+      <a class="btn btn--primary btn--md" href="mission/">Read our full mission statement</a>
+    </div>
+  </section>
+
+  <!-- Research -->
+  <section class="research" id="research" aria-labelledby="research-title">
+    <div class="container">
+      <h2 class="section-title" id="research-title">Research</h2>
+      <p class="lead lead--dark research__intro">We study AI governance inside the organisations that build AI systems, and among the consultants, auditors and standard-setters who interpret the rules for them. Our most recent work focuses on making governance scale: methods and agentic tools that embed regulatory requirements in AI development workflows.</p>
+
+      <div class="pubs">
+        <div class="pubs__list" role="tablist" aria-label="Publications" aria-orientation="vertical">
+          <button class="pubs__tab" role="tab" id="tab-hicss" aria-controls="paper-hicss" aria-selected="true">
+            <span class="pubs__venue">HICSS 2027</span>
+            <span class="pubs__title">Human-AI Collaboration in Compliance Automation</span>
+            <span class="pubs__kind">Preprint · Forthcoming</span>
+          </button>
+          <button class="pubs__tab" role="tab" id="tab-aies" aria-controls="paper-aies" aria-selected="false" tabindex="-1">
+            <span class="pubs__venue">AIES 2026</span>
+            <span class="pubs__title">Governing by Proxy</span>
+            <span class="pubs__kind">Preprint · Forthcoming</span>
+          </button>
+          <button class="pubs__tab" role="tab" id="tab-ecaf" aria-controls="paper-ecaf" aria-selected="false" tabindex="-1">
+            <span class="pubs__venue">ECAF 2026</span>
+            <span class="pubs__title">Governance-Driven Development</span>
+            <span class="pubs__kind">Preprint · Forthcoming</span>
+          </button>
+          <button class="pubs__tab" role="tab" id="tab-facct" aria-controls="paper-facct" aria-selected="false" tabindex="-1">
+            <span class="pubs__venue">FAccT 2026</span>
+            <span class="pubs__title">Engaged AI Governance</span>
+            <span class="pubs__kind">ACM Digital Library</span>
+          </button>
+          <button class="pubs__tab" role="tab" id="tab-ewaf" aria-controls="paper-ewaf" aria-selected="false" tabindex="-1">
+            <span class="pubs__venue">EWAF 2025</span>
+            <span class="pubs__title">Uncertainty as a Primary Barrier for Trustworthy AI Under the EU AI Act</span>
+            <span class="pubs__kind">PMLR Proceedings</span>
+          </button>
+        </div>
+
+        <div class="pubs__details">
+          <article class="paper" id="paper-hicss" role="tabpanel" aria-labelledby="tab-hicss" data-theme-ring="3">
+            <p class="paper__venue">Hawaii International Conference on System Sciences (HICSS 2027) <span class="badge">Forthcoming</span></p>
+            <h3 class="paper__title">Human-AI Collaboration in Compliance Automation<span class="paper__sub">Designing an Agentic Knowledge Base for AI Governance</span></h3>
+            <p class="paper__authors">Simon Jarvers, Carolin Röthemeier, Holger Wittges, Orestis Papakyriakopoulos</p>
+            <p class="paper__abstract">AI governance work draws on a living body of organizational knowledge, policies, and system facts that drift and go stale as organizational and regulatory contexts change. For resource-constrained organizations under the EU AI Act and related standards, maintaining this knowledge consumes scarce compliance capacity. We applied a pattern drawn from practice, in which an LLM agent maintains a structured, citation-anchored knowledge base for AI governance. Through a Design Science Research study at an AI startup, we apply the artifact to two ISO management system standards. The artifact separates a human-authoritative source layer from an agent-moderated knowledge layer in the company’s internal governance work processes. We abstract two design principles, human authority over agent moderation and traceability, which demonstrate how to responsibly leverage advancing AI capabilities for human-agent collaboration in regulated compliance settings.</p>
+            <div class="paper__actions">
+              <a class="btn btn--primary btn--sm" href="papers/2027-hicss-human-ai-collaboration-in-compliance-automation.pdf" download>Download preprint (PDF)</a>
+              <span class="paper__id">DOI not yet assigned</span>
+            </div>
+          </article>
+
+          <article class="paper" id="paper-aies" role="tabpanel" aria-labelledby="tab-aies" data-theme-ring="2">
+            <p class="paper__venue">AAAI/ACM Conference on AI, Ethics, and Society (AIES 2026) <span class="badge">Forthcoming</span></p>
+            <h3 class="paper__title">Governing by Proxy<span class="paper__sub">How Regulatory Intermediaries Shape EU AI Act Compliance in Practice</span></h3>
+            <p class="paper__authors">Simon Jarvers, Orestis Papakyriakopoulos</p>
+            <p class="paper__abstract">The EU AI Act assigns compliance obligations to defined actor roles along the AI supply chain, but how these obligations are enacted in practice remains understudied. This paper investigates the ecosystem of regulatory intermediaries (consultants, auditors, ethics advisors, certification bodies) through which an AI system provider translates regulatory requirements into organisational practice. Drawing on participant observation and document analysis from an embedded case study at an AI startup, the analysis applies the Regulator-Intermediary-Target (RIT) model to map sixteen intermediaries and trace the compliance pressures that drive pre-enforcement intermediary engagement. Compliance artefacts across risk management, impact assessment, and technical documentation show a consistent pattern: intermediary interpretive choices construct what AI Act compliance means for the regulated organisation. Using Edelman’s legal endogeneity framework, which theorises how organisations’ private compliance constructions can feed back into the meaning of law itself, we discuss how legal requirements are managerialised into procedural deliverables and how compliance forms diffuse without evidence of governance efficacy. The paper contributes on two levels: it extends the RIT model to organisational-level AI governance, demonstrating that compliance intermediaries perform constitutive rather than facilitative functions, and it provides an early empirical signal for legal endogeneity in AI Act compliance. We encourage more guidance from the EU and argue that the compliance ecosystem deserves the same analytical and regulatory attention currently directed at the AI supply chain.</p>
+            <div class="paper__actions">
+              <a class="btn btn--primary btn--sm" href="papers/2026-aies-governing-by-proxy.pdf" download>Download preprint (PDF)</a>
+              <span class="paper__id">DOI not yet assigned</span>
+            </div>
+          </article>
+
+          <article class="paper" id="paper-ecaf" role="tabpanel" aria-labelledby="tab-ecaf" data-theme-ring="3">
+            <p class="paper__venue">European Conference on Algorithmic Fairness (ECAF 2026), PMLR <span class="badge">Forthcoming</span></p>
+            <h3 class="paper__title">Governance-Driven Development<span class="paper__sub">Embedding Regulatory Requirements in AI Development Workflows</span></h3>
+            <p class="paper__authors">Simon Jarvers, Orestis Papakyriakopoulos</p>
+            <p class="paper__abstract">AI governance under the EU AI Act faces a structural misallocation of effort: management-based regulation, combined with the credence-good properties of governance outcomes, pushes resource-constrained organisations toward verification-facing documentation rather than the implementation it is meant to verify. We propose Governance-Driven Development (GDD), a framework that treats AI Act obligations and the requirements of supporting standards for safe AI development as formal specifications for software development work. GDD runs on two nested action cycles. A planning cycle scopes obligations against organisational context to produce specifications. An implementation cycle converts each specification into the artefact it specifies, with traceability back to the regulatory source. AI agents perform template-driven work; humans retain interpretation and accountability. The framework is in early implementation at an AI Startup, with unresolved load-bearing questions around knowledge base architecture and obligation decomposition.</p>
+            <div class="paper__actions">
+              <a class="btn btn--primary btn--sm" href="papers/2026-ecaf-governance-driven-development.pdf" download>Download preprint (PDF)</a>
+              <span class="paper__id">Proceedings not yet published</span>
+            </div>
+          </article>
+
+          <article class="paper" id="paper-facct" role="tabpanel" aria-labelledby="tab-facct" data-theme-ring="1">
+            <p class="paper__venue">ACM Conference on Fairness, Accountability, and Transparency (FAccT 2026)</p>
+            <h3 class="paper__title">Engaged AI Governance<span class="paper__sub">Addressing the Last Mile Challenge Through Internal Expert Collaboration</span></h3>
+            <p class="paper__authors">Simon Jarvers, Orestis Papakyriakopoulos</p>
+            <p class="paper__abstract">Under the EU AI Act, translating AI governance requirements into software development practice remains challenging. While AI governance frameworks exist at industry and organizational levels, empirical evidence of team-level implementation is scarce. We address this “Last Mile” Challenge through insider action research embedded within an AI startup. We present a legal-text-to-action pipeline that translates EU AI Act requirements into actionable strategies through internal expert collaboration by extracting requirements from legal text, engaging practitioners in assessment and ideation, and prioritizing implementation through collective evaluation. Our analysis reveals three patterns in how practitioners perceive regulatory requirements: convergence (compliance aligns with development priorities), existing practice (current work already satisfies requirements), and disconnection (requirements perceived as administrative overhead). Based on these patterns, we discuss when governance might be treated genuinely or performatively. Practitioners prioritize requirements that serve end-users or their own development needs, but view verification-oriented requirements as box-ticking exercises. This distinction suggests a translation challenge: regulatory requirements risk superficial treatment unless practitioners understand how compliance serves system quality and user protection. Expert collaboration offers a practical mechanism for transforming governance from external imposition to shared ownership and making previously invisible governance work visible and collective.</p>
+            <div class="paper__actions">
+              <a class="btn btn--primary btn--sm" href="https://doi.org/10.1145/3805689.3812341" target="_blank" rel="noopener">Read on ACM Digital Library ↗</a>
+              <a class="paper__id" href="https://doi.org/10.1145/3805689.3812341" target="_blank" rel="noopener">DOI 10.1145/3805689.3812341</a>
+            </div>
+          </article>
+
+          <article class="paper" id="paper-ewaf" role="tabpanel" aria-labelledby="tab-ewaf" data-theme-ring="1">
+            <p class="paper__venue">European Workshop on Algorithmic Fairness (EWAF 2025), PMLR vol. 294</p>
+            <h3 class="paper__title">Uncertainty as a Primary Barrier for Trustworthy AI Under the EU AI Act<span class="paper__sub">German SME Perspectives</span></h3>
+            <div>
+              <p class="paper__authors">Simon Jarvers*, Chiara Ullstein*, Jens Grossklags</p>
+              <p class="paper__note">* Both authors contributed equally.</p>
+            </div>
+            <p class="paper__abstract">The European Union’s AI regulation, the EU AI Act, represents a significant shift from voluntary ethical frameworks to binding regulation, presenting implementation challenges particularly for resource-limited SMEs. Our mixed-methods research examined the EU AI Act’s impact on SMEs through surveys of German AI SMEs (N = 21) and interviews with AI SMEs and industry stakeholders (N = 13). In this extended abstract, we summarize our motivation and methods, and focus on providing results from the interviews. Our findings reveal that company size and compliance experience significantly affect estimated implementation capabilities. SMEs face considerable resource constraints across time, finances, and staffing. Implementation uncertainties – including definitional ambiguity, unclear scope, and insufficient guidance – drive strategic responses: delaying compliance efforts, modifying products to reduce regulatory burden, and frequently seeking external compliance expertise and certification. These results indicate that uncertainty emerges as the primary implementation barrier. Researchers can help reduce uncertainty by developing best-practice guidelines that support the AI Act’s trustworthy AI objectives. We conclude with recommendations for policymakers and researchers.</p>
+            <div class="paper__actions">
+              <a class="btn btn--primary btn--sm" href="https://proceedings.mlr.press/v294/jarvers25a.html" target="_blank" rel="noopener">Read on PMLR ↗</a>
+              <a class="paper__id" href="papers/2025-ewaf-uncertainty-as-a-primary-barrier.pdf" download>Download PDF</a>
+            </div>
+          </article>
+
+          <svg class="pubs__rings" viewBox="0 0 200 200" aria-hidden="true"><circle class="ring ring--1" cx="100" cy="110" r="85" stroke-width="5"/><circle class="ring ring--2" cx="100" cy="142" r="53" stroke-width="4.5"/><circle class="ring ring--3" cx="100" cy="160" r="33" stroke-width="4.5"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who we are -->
+  <section class="people" id="who-we-are" data-grid-section aria-labelledby="people-title">
+    <div class="container people__inner">
+      <h2 class="section-title" id="people-title">Who we are</h2>
+      <div class="people__grid">
+        <article class="person">
+          <div class="person__text">
+            <h3 class="person__name">Simon<br>Jarvers</h3>
+            <p class="person__role">Initiative Lead</p>
+            <p class="person__desc">Researcher at TUM<br>AI Governance Officer at an AI startup (embedded research)</p>
+          </div>
+          <div class="person__portrait">
+            <img src="assets/img/team/simon-jarvers.webp" srcset="assets/img/team/simon-jarvers.webp 1x, assets/img/team/simon-jarvers@2x.webp 2x" width="180" height="238" alt="Portrait of Simon Jarvers" loading="lazy" decoding="async">
+          </div>
+        </article>
+        <article class="person">
+          <div class="person__text">
+            <h3 class="person__name">Orestis<br>Papakyriakopoulos</h3>
+            <p class="person__role">Advisor</p>
+            <p class="person__desc">Professor of Societal Computing<br>Civic Machines Lab, TUM</p>
+          </div>
+          <div class="person__portrait">
+            <img src="assets/img/team/orestis-papakyriakopoulos.webp" srcset="assets/img/team/orestis-papakyriakopoulos.webp 1x, assets/img/team/orestis-papakyriakopoulos@2x.webp 2x" width="180" height="238" alt="Portrait of Orestis Papakyriakopoulos" loading="lazy" decoding="async">
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact" data-grid-section aria-labelledby="contact-title">
+    <div class="contact__inner">
+      <h2 class="section-title" id="contact-title">Get in contact</h2>
+      <div class="contact__cols">
+        <div>
+          <h3>SME AI system providers</h3>
+          <p>If you build AI systems and want to test the Agentic Governance Workflow on your own governance work.</p>
+        </div>
+        <div>
+          <h3>Research collaboration</h3>
+          <p>If you work on AI governance, compliance or regulatory design.</p>
+        </div>
+        <div>
+          <h3>Funding</h3>
+          <p>If you support independent research on AI governance.</p>
+        </div>
+      </div>
+      <div class="button-row button-row--center">
+        <a class="btn btn--primary btn--lg" href="mailto:simon.jarvers@tum.de">Write an email</a>
+        <a class="btn btn--secondary btn--lg" href="https://www.linkedin.com/in/simon-jarvers/" target="_blank" rel="noopener">Contact us on LinkedIn</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__brand">
+    <svg class="site-footer__logo" viewBox="0 10 200 200" aria-hidden="true"><circle cx="100" cy="110" r="85" stroke-width="14"/><circle cx="100" cy="142" r="53" stroke-width="12"/><circle cx="100" cy="160" r="33" stroke-width="11"/></svg>
+    <span class="site-footer__name">Scalable Governance</span>
+    <span class="site-footer__line">An applied research initiative based at the TUM Professorship of Societal Computing</span>
+  </div>
+  <p class="site-footer__copy">© 2026</p>
+</footer>
+</body>
+</html>
