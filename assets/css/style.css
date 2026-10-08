@@ -193,6 +193,17 @@ main, .site-footer, .site-footer-wrap { position: relative; z-index: 1; }
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--blue); }
+.nav-links .nav-links__cta {
+  display: inline-block;
+  padding: calc(9px - 2px * var(--t)) calc(18px - 3px * var(--t));
+  border-radius: 6px;
+  background: var(--blue);
+  color: var(--on-blue);
+  font-family: var(--font-display);
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.nav-links .nav-links__cta:hover { background: var(--blue-hover); color: var(--on-blue); }
 
 .nav-toggle {
   display: none;
@@ -652,6 +663,36 @@ a.paper__id:hover { color: var(--link-hover); }
   text-align: center;
 }
 .contact .section-title { margin-bottom: 48px; }
+.contact h3 {
+  margin: 0 0 6px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--ink);
+}
+.contact__funding {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px 40px;
+  padding: 32px 36px;
+  margin-bottom: 8px;
+  text-align: left;
+  background: var(--mission-band);
+  border: 1px solid oklch(0.89 0.02 260);
+  border-radius: 16px;
+}
+.contact__funding-text { flex: 1 1 420px; min-width: 0; }
+.contact__funding h3 { font-size: 22px; }
+.contact__funding p {
+  margin: 0 0 10px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text-body);
+  max-width: 62ch;
+}
+.contact__more { font-family: var(--font-display); font-weight: 600; font-size: 15px; }
 .contact__cols {
   display: flex;
   flex-wrap: wrap;
@@ -659,24 +700,18 @@ a.paper__id:hover { color: var(--link-hover); }
   gap: 48px;
   padding: 32px 0;
   text-align: left;
-  border-top: 1px solid var(--divider);
   border-bottom: 1px solid var(--divider);
 }
-.contact__cols > div { flex: 1; min-width: 220px; max-width: 280px; }
-.contact__cols h3 {
-  margin: 0 0 6px;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 18px;
-  color: var(--ink);
-}
+.contact__cols > div { flex: 1; min-width: 220px; max-width: 360px; }
 .contact__cols p {
   margin: 0;
   font-size: 15px;
   line-height: 1.65;
   color: var(--muted);
 }
-.contact .button-row { margin-top: 48px; }
+.contact .contact-actions { margin-top: 40px; }
+.contact-actions--center { justify-content: center; }
+.contact-address--center { justify-content: center; }
 
 /* ───────── Footer ───────── */
 .site-footer {
@@ -1298,6 +1333,9 @@ html:not(.js) .term:focus-within .term__tip { display: block; }
   .contact__inner { padding-block: 80px; }
   .contact__cols { gap: 28px; }
   .contact__cols > div { min-width: 100%; max-width: none; }
+  .contact__funding { padding: 24px 20px; }
+  .contact__funding .btn--lg { width: 100%; justify-content: center; }
+  .js .nav-links .nav-links__cta { display: block; margin-top: 6px; padding: 12px 14px; text-align: center; }
   .btn--lg { width: 100%; justify-content: center; }
 
   .site-footer__line { margin-left: 0; flex-basis: 100%; }
