@@ -1,0 +1,601 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-08T21:16:29.410461+00:00",
+  "title": "Design System: Scalable Governance",
+  "extensions": {
+    "colorMeta": {
+      "primary-blue": {
+        "role": "primary",
+        "displayName": "Mission Blue",
+        "canonical": "oklch(0.48 0.19 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.19 260)",
+          "oklch(0.27 0.19 260)",
+          "oklch(0.39 0.19 260)",
+          "oklch(0.51 0.19 260)",
+          "oklch(0.63 0.19 260)",
+          "oklch(0.75 0.19 260)",
+          "oklch(0.87 0.19 260)",
+          "oklch(0.95 0.19 260)"
+        ]
+      },
+      "primary-blue-deep": {
+        "role": "primary",
+        "displayName": "Deep Mission Blue",
+        "canonical": "oklch(0.43 0.20 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.20 260)",
+          "oklch(0.27 0.20 260)",
+          "oklch(0.39 0.20 260)",
+          "oklch(0.51 0.20 260)",
+          "oklch(0.63 0.20 260)",
+          "oklch(0.75 0.20 260)",
+          "oklch(0.87 0.20 260)",
+          "oklch(0.95 0.20 260)"
+        ]
+      },
+      "link-hover": {
+        "role": "primary",
+        "displayName": "Link Ink Blue",
+        "canonical": "oklch(0.38 0.16 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.16 260)",
+          "oklch(0.27 0.16 260)",
+          "oklch(0.39 0.16 260)",
+          "oklch(0.51 0.16 260)",
+          "oklch(0.63 0.16 260)",
+          "oklch(0.75 0.16 260)",
+          "oklch(0.87 0.16 260)",
+          "oklch(0.95 0.16 260)"
+        ]
+      },
+      "research-violet": {
+        "role": "secondary",
+        "displayName": "Research Violet",
+        "canonical": "oklch(0.38 0.20 280)",
+        "tonalRamp": [
+          "oklch(0.15 0.20 280)",
+          "oklch(0.27 0.20 280)",
+          "oklch(0.39 0.20 280)",
+          "oklch(0.51 0.20 280)",
+          "oklch(0.63 0.20 280)",
+          "oklch(0.75 0.20 280)",
+          "oklch(0.87 0.20 280)",
+          "oklch(0.95 0.20 280)"
+        ]
+      },
+      "goal-indigo": {
+        "role": "tertiary",
+        "displayName": "Goal Indigo",
+        "canonical": "oklch(0.43 0.15 270)",
+        "tonalRamp": [
+          "oklch(0.15 0.15 270)",
+          "oklch(0.27 0.15 270)",
+          "oklch(0.39 0.15 270)",
+          "oklch(0.51 0.15 270)",
+          "oklch(0.63 0.15 270)",
+          "oklch(0.75 0.15 270)",
+          "oklch(0.87 0.15 270)",
+          "oklch(0.95 0.15 270)"
+        ]
+      },
+      "chip-tint": {
+        "role": "neutral",
+        "displayName": "Chip Tint",
+        "canonical": "oklch(0.95 0.02 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.02 260)",
+          "oklch(0.27 0.02 260)",
+          "oklch(0.39 0.02 260)",
+          "oklch(0.51 0.02 260)",
+          "oklch(0.63 0.02 260)",
+          "oklch(0.75 0.02 260)",
+          "oklch(0.87 0.02 260)",
+          "oklch(0.95 0.02 260)"
+        ]
+      },
+      "chip-ink": {
+        "role": "neutral",
+        "displayName": "Chip Ink",
+        "canonical": "oklch(0.30 0.10 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.10 260)",
+          "oklch(0.27 0.10 260)",
+          "oklch(0.39 0.10 260)",
+          "oklch(0.51 0.10 260)",
+          "oklch(0.63 0.10 260)",
+          "oklch(0.75 0.10 260)",
+          "oklch(0.87 0.10 260)",
+          "oklch(0.95 0.10 260)"
+        ]
+      },
+      "domain-governance": {
+        "role": "neutral",
+        "displayName": "Domain Governance",
+        "canonical": "oklch(0.95 0.025 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.025 260)",
+          "oklch(0.27 0.025 260)",
+          "oklch(0.39 0.025 260)",
+          "oklch(0.51 0.025 260)",
+          "oklch(0.63 0.025 260)",
+          "oklch(0.75 0.025 260)",
+          "oklch(0.87 0.025 260)",
+          "oklch(0.95 0.025 260)"
+        ]
+      },
+      "domain-human": {
+        "role": "neutral",
+        "displayName": "Domain Human",
+        "canonical": "oklch(0.96 0.005 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.005 260)",
+          "oklch(0.27 0.005 260)",
+          "oklch(0.39 0.005 260)",
+          "oklch(0.51 0.005 260)",
+          "oklch(0.63 0.005 260)",
+          "oklch(0.75 0.005 260)",
+          "oklch(0.87 0.005 260)",
+          "oklch(0.95 0.005 260)"
+        ]
+      },
+      "domain-product": {
+        "role": "neutral",
+        "displayName": "Domain Product",
+        "canonical": "oklch(0.95 0.025 280)",
+        "tonalRamp": [
+          "oklch(0.15 0.025 280)",
+          "oklch(0.27 0.025 280)",
+          "oklch(0.39 0.025 280)",
+          "oklch(0.51 0.025 280)",
+          "oklch(0.63 0.025 280)",
+          "oklch(0.75 0.025 280)",
+          "oklch(0.87 0.025 280)",
+          "oklch(0.95 0.025 280)"
+        ]
+      },
+      "paper-bg": {
+        "role": "neutral",
+        "displayName": "Cool Paper",
+        "canonical": "oklch(0.97 0.003 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.003 260)",
+          "oklch(0.27 0.003 260)",
+          "oklch(0.39 0.003 260)",
+          "oklch(0.51 0.003 260)",
+          "oklch(0.63 0.003 260)",
+          "oklch(0.75 0.003 260)",
+          "oklch(0.87 0.003 260)",
+          "oklch(0.95 0.003 260)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Clean Sheet",
+        "canonical": "oklch(0.995 0.002 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.002 260)",
+          "oklch(0.27 0.002 260)",
+          "oklch(0.39 0.002 260)",
+          "oklch(0.51 0.002 260)",
+          "oklch(0.63 0.002 260)",
+          "oklch(0.75 0.002 260)",
+          "oklch(0.87 0.002 260)",
+          "oklch(0.95 0.002 260)"
+        ]
+      },
+      "surface-alt": {
+        "role": "neutral",
+        "displayName": "Index Card",
+        "canonical": "oklch(0.975 0.004 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.004 260)",
+          "oklch(0.27 0.004 260)",
+          "oklch(0.39 0.004 260)",
+          "oklch(0.51 0.004 260)",
+          "oklch(0.63 0.004 260)",
+          "oklch(0.75 0.004 260)",
+          "oklch(0.87 0.004 260)",
+          "oklch(0.95 0.004 260)"
+        ]
+      },
+      "mission-band": {
+        "role": "neutral",
+        "displayName": "Mission Wash",
+        "canonical": "oklch(0.94 0.014 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.014 260)",
+          "oklch(0.27 0.014 260)",
+          "oklch(0.39 0.014 260)",
+          "oklch(0.51 0.014 260)",
+          "oklch(0.63 0.014 260)",
+          "oklch(0.75 0.014 260)",
+          "oklch(0.87 0.014 260)",
+          "oklch(0.95 0.014 260)"
+        ]
+      },
+      "divider-strong": {
+        "role": "neutral",
+        "displayName": "Divider Strong",
+        "canonical": "oklch(0.88 0.008 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.008 260)",
+          "oklch(0.27 0.008 260)",
+          "oklch(0.39 0.008 260)",
+          "oklch(0.51 0.008 260)",
+          "oklch(0.63 0.008 260)",
+          "oklch(0.75 0.008 260)",
+          "oklch(0.87 0.008 260)",
+          "oklch(0.95 0.008 260)"
+        ]
+      },
+      "divider": {
+        "role": "neutral",
+        "displayName": "Divider",
+        "canonical": "oklch(0.90 0.005 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.005 260)",
+          "oklch(0.27 0.005 260)",
+          "oklch(0.39 0.005 260)",
+          "oklch(0.51 0.005 260)",
+          "oklch(0.63 0.005 260)",
+          "oklch(0.75 0.005 260)",
+          "oklch(0.87 0.005 260)",
+          "oklch(0.95 0.005 260)"
+        ]
+      },
+      "border-light": {
+        "role": "neutral",
+        "displayName": "Border Light",
+        "canonical": "oklch(0.92 0.005 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.005 260)",
+          "oklch(0.27 0.005 260)",
+          "oklch(0.39 0.005 260)",
+          "oklch(0.51 0.005 260)",
+          "oklch(0.63 0.005 260)",
+          "oklch(0.75 0.005 260)",
+          "oklch(0.87 0.005 260)",
+          "oklch(0.95 0.005 260)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(0.13 0.02 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.02 260)",
+          "oklch(0.27 0.02 260)",
+          "oklch(0.39 0.02 260)",
+          "oklch(0.51 0.02 260)",
+          "oklch(0.63 0.02 260)",
+          "oklch(0.75 0.02 260)",
+          "oklch(0.87 0.02 260)",
+          "oklch(0.95 0.02 260)"
+        ]
+      },
+      "text-body": {
+        "role": "neutral",
+        "displayName": "Text Body",
+        "canonical": "oklch(0.28 0.02 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.02 260)",
+          "oklch(0.27 0.02 260)",
+          "oklch(0.39 0.02 260)",
+          "oklch(0.51 0.02 260)",
+          "oklch(0.63 0.02 260)",
+          "oklch(0.75 0.02 260)",
+          "oklch(0.87 0.02 260)",
+          "oklch(0.95 0.02 260)"
+        ]
+      },
+      "text-secondary": {
+        "role": "neutral",
+        "displayName": "Text Secondary",
+        "canonical": "oklch(0.35 0.02 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.02 260)",
+          "oklch(0.27 0.02 260)",
+          "oklch(0.39 0.02 260)",
+          "oklch(0.51 0.02 260)",
+          "oklch(0.63 0.02 260)",
+          "oklch(0.75 0.02 260)",
+          "oklch(0.87 0.02 260)",
+          "oklch(0.95 0.02 260)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "canonical": "oklch(0.45 0.02 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.02 260)",
+          "oklch(0.27 0.02 260)",
+          "oklch(0.39 0.02 260)",
+          "oklch(0.51 0.02 260)",
+          "oklch(0.63 0.02 260)",
+          "oklch(0.75 0.02 260)",
+          "oklch(0.87 0.02 260)",
+          "oklch(0.95 0.02 260)"
+        ]
+      },
+      "muted-2": {
+        "role": "neutral",
+        "displayName": "Muted 2",
+        "canonical": "oklch(0.50 0.03 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.03 260)",
+          "oklch(0.27 0.03 260)",
+          "oklch(0.39 0.03 260)",
+          "oklch(0.51 0.03 260)",
+          "oklch(0.63 0.03 260)",
+          "oklch(0.75 0.03 260)",
+          "oklch(0.87 0.03 260)",
+          "oklch(0.95 0.03 260)"
+        ]
+      },
+      "footer-text": {
+        "role": "neutral",
+        "displayName": "Footer Text",
+        "canonical": "oklch(0.50 0.02 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.02 260)",
+          "oklch(0.27 0.02 260)",
+          "oklch(0.39 0.02 260)",
+          "oklch(0.51 0.02 260)",
+          "oklch(0.63 0.02 260)",
+          "oklch(0.75 0.02 260)",
+          "oklch(0.87 0.02 260)",
+          "oklch(0.95 0.02 260)"
+        ]
+      },
+      "tooltip-bg": {
+        "role": "neutral",
+        "displayName": "Tooltip Night",
+        "canonical": "oklch(0.20 0.02 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.02 260)",
+          "oklch(0.27 0.02 260)",
+          "oklch(0.39 0.02 260)",
+          "oklch(0.51 0.02 260)",
+          "oklch(0.63 0.02 260)",
+          "oklch(0.75 0.02 260)",
+          "oklch(0.87 0.02 260)",
+          "oklch(0.95 0.02 260)"
+        ]
+      },
+      "on-blue": {
+        "role": "neutral",
+        "displayName": "On Blue",
+        "canonical": "oklch(0.995 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Landing hero headline only."
+      },
+      "display-subpage": {
+        "displayName": "Display (subpage)",
+        "purpose": "Title blocks of Mission and Workflow pages."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Landing section titles."
+      },
+      "headline-article": {
+        "displayName": "Headline (article)",
+        "purpose": "Article section titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Accordion triggers, publication titles, contact columns."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "First paragraph of hero, sections, articles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Article reading text, 740px measure."
+      },
+      "body-card": {
+        "displayName": "Body (card)",
+        "purpose": "Cards, accordions, captions."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Short uppercase labels only; 12px floor."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Skill names in the architecture diagram only."
+      }
+    },
+    "shadows": [
+      {
+        "name": "nav",
+        "value": "0 2px 20px oklch(0.20 0.02 260 / 0.06)",
+        "purpose": "Floating frosted nav (with 24px backdrop blur)."
+      },
+      {
+        "name": "browser-card",
+        "value": "0 2px 16px oklch(0 0 0 / 0.06)",
+        "purpose": "Publication browser."
+      },
+      {
+        "name": "person-card",
+        "value": "0 1px 4px rgba(0,0,0,0.06)",
+        "purpose": "People cards."
+      },
+      {
+        "name": "tooltip",
+        "value": "0 6px 24px oklch(0.13 0.02 260 / 0.2)",
+        "purpose": "Glossary bubbles."
+      }
+    ],
+    "motion": [
+      {
+        "name": "color-fade",
+        "value": "0.2s",
+        "purpose": "Hover colour and background changes."
+      },
+      {
+        "name": "button-lift",
+        "value": "transform 0.15s, translateY(-1px)",
+        "purpose": "Button hover lift."
+      },
+      {
+        "name": "accordion-reveal",
+        "value": "grid-template-rows 0.22s ease, opacity 0.22s ease",
+        "purpose": "Accordion open/close."
+      },
+      {
+        "name": "nav-shrink",
+        "value": "--t = min(scrollY/100, 1), rAF-throttled",
+        "purpose": "Nav shrinks on scroll."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "stack",
+        "value": "860px"
+      },
+      {
+        "name": "mobile",
+        "value": "760px"
+      },
+      {
+        "name": "small",
+        "value": "400px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main action: mission, PDF download, contact.",
+      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#\">Read our mission statement</a>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;font-family:Outfit,sans-serif;font-weight:600;font-size:14px;line-height:1.2;padding:13px 28px;border-radius:6px;cursor:pointer;border:0;transition:background .2s,color .2s,transform .15s}.ds-btn:hover{transform:translateY(-1px)}.ds-btn:focus-visible{outline:2px solid oklch(0.48 0.19 260);outline-offset:3px}.ds-btn-primary{background:oklch(0.48 0.19 260);color:#fff}.ds-btn-primary:hover{background:oklch(0.43 0.20 260)}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Second action beside a primary.",
+      "html": "<a class=\"ds-btn ds-btn-secondary\" href=\"#\">Read our research</a>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;font-family:Outfit,sans-serif;font-weight:600;font-size:14px;line-height:1.2;padding:13px 28px;border-radius:6px;cursor:pointer;border:0;transition:background .2s,color .2s,transform .15s}.ds-btn:hover{transform:translateY(-1px)}.ds-btn:focus-visible{outline:2px solid oklch(0.48 0.19 260);outline-offset:3px}.ds-btn-secondary{background:transparent;color:oklch(0.48 0.19 260);border:1.5px solid oklch(0.48 0.19 260);padding:11.5px 26.5px}.ds-btn-secondary:hover{background:oklch(0.48 0.19 260);color:#fff}"
+    },
+    {
+      "name": "Floating Nav",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Frosted, inset nav bar with logo, wordmark and links.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-brand\"><svg viewBox=\"0 10 200 200\" width=\"40\" height=\"40\" fill=\"none\" stroke=\"oklch(0.48 0.19 260)\"><circle cx=\"100\" cy=\"110\" r=\"85\" stroke-width=\"14\"/><circle cx=\"100\" cy=\"142\" r=\"53\" stroke-width=\"12\"/><circle cx=\"100\" cy=\"160\" r=\"33\" stroke-width=\"11\"/></svg><span><b>Scalable Governance</b><small>Applied research on AI governance</small></span></span><span class=\"ds-links\"><a href=\"#\">Mission</a><a href=\"#\">Research</a><a href=\"#\">Contact</a></span></nav>",
+      "css": ".ds-nav{display:flex;justify-content:space-between;align-items:center;padding:16px 28px;border-radius:16px;border:1px solid oklch(0.92 0.005 260 / .5);background:oklch(0.97 0.003 260 / .55);backdrop-filter:blur(24px) saturate(1.5);box-shadow:0 2px 20px oklch(0.20 0.02 260 / .06)}.ds-brand{display:flex;gap:12px;align-items:center}.ds-brand b{display:block;font:700 18px/1.1 Outfit,sans-serif;color:oklch(0.15 0.02 260)}.ds-brand small{font:12.5px Bitter,serif;color:oklch(0.50 0.03 260);letter-spacing:.03em}.ds-links{display:flex;gap:24px}.ds-links a{font:500 15px Bitter,serif;color:oklch(0.35 0.02 260);text-decoration:none;transition:color .2s}.ds-links a:hover,.ds-links a:focus-visible{color:oklch(0.48 0.19 260)}"
+    },
+    {
+      "name": "Compliance Chain Chips",
+      "kind": "chip",
+      "refersTo": "chip-chain",
+      "description": "Diagram chips with the emphasised step filled blue.",
+      "html": "<div class=\"ds-chain\"><span class=\"ds-chip\">Obligation</span><i>→</i><span class=\"ds-chip\">Control</span><i>→</i><span class=\"ds-chip ds-chip-on\">System impact</span><i>→</i><span class=\"ds-chip\">Evidence</span></div>",
+      "css": ".ds-chain{display:flex;align-items:center;gap:8px}.ds-chain i{font:18px Outfit,sans-serif;color:oklch(0.48 0.19 260);font-style:normal}.ds-chip{padding:12px 10px;border-radius:8px;font:600 13px Outfit,sans-serif;background:oklch(0.95 0.02 260);color:oklch(0.30 0.10 260)}.ds-chip-on{background:oklch(0.48 0.19 260);color:#fff}"
+    },
+    {
+      "name": "Person Card",
+      "kind": "card",
+      "refersTo": "card-person",
+      "description": "Team card: name, rule, role label, description.",
+      "html": "<div class=\"ds-person\"><h3>Simon<br>Jarvers</h3><hr><p class=\"ds-role\">Initiative Lead</p><p>Researcher at TUM</p></div>",
+      "css": ".ds-person{background:oklch(0.995 0.002 260);border-radius:16px;padding:32px 32px 28px;box-shadow:0 1px 4px rgba(0,0,0,.06);max-width:360px}.ds-person h3{margin:0;font:700 24px/1.2 Outfit,sans-serif;color:oklch(0.13 0.02 260)}.ds-person hr{width:40px;height:2px;border:0;background:oklch(0.75 0.02 260);margin:16px 0}.ds-role{margin:0 0 8px;font:600 12px Outfit,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:oklch(0.48 0.19 260)}.ds-person p{font:15px/1.65 Bitter,serif;color:oklch(0.38 0.02 260)}"
+    },
+    {
+      "name": "Accordion",
+      "kind": "custom",
+      "refersTo": "accordion",
+      "description": "Ruled rows with a circular +/− toggle.",
+      "html": "<div class=\"ds-acc\"><button aria-expanded=\"false\">What is AI governance?<span class=\"ds-tog\">+</span></button></div>",
+      "css": ".ds-acc{border-top:1px solid oklch(0.88 0.008 260);border-bottom:1px solid oklch(0.88 0.008 260);max-width:560px}.ds-acc button{display:flex;width:100%;justify-content:space-between;align-items:center;padding:18px 0;background:none;border:0;cursor:pointer;font:600 18px Outfit,sans-serif;color:oklch(0.13 0.02 260)}.ds-acc button:focus-visible{outline:2px solid oklch(0.48 0.19 260);outline-offset:3px}.ds-tog{width:28px;height:28px;border-radius:50%;border:1.5px solid oklch(0.48 0.19 260);color:oklch(0.48 0.19 260);display:grid;place-items:center;font:18px Outfit,sans-serif}"
+    },
+    {
+      "name": "Glossary Tooltip",
+      "kind": "custom",
+      "refersTo": "tooltip",
+      "description": "Dotted term with a dark bubble.",
+      "html": "<span class=\"ds-term\" tabindex=\"0\">credence good<span class=\"ds-tip\">Glossary definition appears here.</span></span>",
+      "css": ".ds-term{position:relative;border-bottom:1.5px dotted oklch(0.48 0.19 260);cursor:help;font:17px Bitter,serif}.ds-tip{display:none;position:absolute;left:0;bottom:calc(100% + 10px);width:280px;background:oklch(0.20 0.02 260);color:oklch(0.98 0.003 260);font:14px/1.5 Bitter,serif;padding:12px 14px;border-radius:8px;box-shadow:0 6px 24px oklch(0.13 0.02 260 / .2)}.ds-term:hover .ds-tip,.ds-term:focus-visible .ds-tip{display:block}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Impact Mission",
+    "overview": "The site carries a mission with a point: governance that keeps pace with AI and changes what actually gets built. The design gives that mission a calm, precise stage. Cool blue-tinted paper surfaces, one confident primary blue, and a geometric sans for every heading make the argument easy to follow. A slab serif gives the body text the steadiness of a research document. Nothing competes with the argument; every coloured element points at something that matters (an action, a selected paper, the step where governance reaches the system).\n\nDensity is generous and editorial: wide gutters (48px), tall section padding (80–130px), and reading measures held to 64–75 characters. The landing page leads with its signature diagram, the compliance chain, so the first screen shows how the work reaches an AI system rather than decoration. Interaction is quiet but alive. The nav shrinks as you scroll, a faint dot grid leans toward the cursor in the hero, people and contact bands, and the publication browser swaps papers in place. Motion always serves orientation and never decorates.\n\nThe confirmed anti-reference is the **generic AI aesthetic**: dark mode with neon or purple glows, glassmorphism as a style, sci-fi particles, cyan-on-black. The dot grid and the frosted nav are the only nods to texture. They stay faint and functional and must never grow into that world.\n\nReference sites the owner named as the direction to go after, not yet reviewed against this system: sampura.org, apartresearch.com, apolloresearch.ai, foresight.org.",
+    "keyCharacteristics": [
+      "Light, cool paper ground (hue 260) with layered near-white surfaces; no dark mode.",
+      "One primary blue carries action, selection and emphasis; violet and indigo are reserved for diagram roles.",
+      "Outfit (geometric sans) for headings, labels and buttons; Bitter (slab serif) for reading text and nav links.",
+      "Diagrams are first-class content: chips, chains, cycles and architecture cards built from the same tokens.",
+      "Quiet motion: scroll-shrinking nav, cursor-reactive dot grid, short accordion reveals; all disabled under reduced motion."
+    ],
+    "rules": [
+      {
+        "name": "The One Pointer Rule",
+        "body": "Mission Blue marks what to act on or what is selected. If a blue element isn't clickable, selected, or the emphasised step of a diagram, it shouldn't be blue.",
+        "section": "colors"
+      },
+      {
+        "name": "The Diagram Palette Rule",
+        "body": "Violet and indigo exist for diagram roles (intermediaries, product, goals, target). They are never used for buttons, links, or decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Voices Rule",
+        "body": "Outfit speaks for structure (headings, labels, buttons); Bitter speaks for the argument (paragraphs, nav links, captions). Don't swap them.",
+        "section": "typography"
+      },
+      {
+        "name": "The Paper-First Rule",
+        "body": "Depth comes from surface tone before shadow. A new container gets a tonal step or a 1px border first; a shadow only if it is an object the reader handles.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Calm Display Rule",
+        "body": "Headings use Outfit 600 with tight tracking, never 700+ at display sizes. Weight 700 is reserved for the wordmark and tiny uppercase labels.",
+        "section": "typography"
+      },
+      {
+        "name": "The 12px Floor Rule",
+        "body": "No text below 12px, including diagram captions and badges.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "**Do** keep Mission Blue for action, selection and the emphasised diagram step (The One Pointer Rule).",
+      "**Do** give every new container a tonal step or a 1px rule before reaching for a shadow (The Paper-First Rule).",
+      "**Do** set reading text in Bitter at 17px/1.75 within a ~740px measure, and headings in Outfit.",
+      "**Do** build new diagrams from the existing chip, figure and domain tints so they read as part of one system.",
+      "**Do** keep the dot grid faint and switch it to static dots under `prefers-reduced-motion`.",
+      "**Do** label every claim-bearing beat with its evidential status (argument, aim) when it sits outside an article.",
+      "**Do** end long reading pages with a next step (contact or funding), never with the footer alone."
+    ],
+    "donts": [
+      "**Don't** introduce the generic AI aesthetic: dark mode, neon or purple glows, glassmorphism beyond the nav, glowing particles, cyan-on-black.",
+      "**Don't** use violet or indigo for buttons, links or decoration; they belong to diagram roles.",
+      "**Don't** add gradients to buttons or text; the only gradients are the striped fills of the budget bar.",
+      "**Don't** introduce pill-shaped buttons or radii outside the 5–16px scale.",
+      "**Don't** add a third typeface for display; JetBrains Mono stays limited to skill names."
+    ]
+  }
+}

@@ -86,7 +86,7 @@ Phase 2, later, formalises the two-entity structure. A gGmbH holds the research 
 
 The MVP is not an operating entity. It is a fundable research programme with a name, an argument, and evidence, assembled largely from work already committed.
 
-The single artifact is the **website** — not a re-skin of the paper, as earlier planned, but a standalone funder-facing argument with the six papers as evidence. Its content specification (currently v1.4) governs structure and copy, and a claims register within it separates published findings from the initiative's arguments. A separate design system document governs the visual build.
+The single artifact is the **website** — not a re-skin of the paper, as earlier planned, but a standalone funder-facing argument with the six papers as evidence. Its content specification (currently v1.5) governs structure and copy, and a claims register within it separates published findings from the initiative's arguments. A separate design system document governs the visual build.
 
 The single new piece of evidence is a finding drawn from more than one organisation, seeded solo with two or three field sites and scaled later by a clinic model. The single ask is one grant application, for which the website and the evidence are the pitch. Funding, if it lands, pays for the transition out of the solo phase.
 
