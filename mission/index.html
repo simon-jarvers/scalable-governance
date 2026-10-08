@@ -35,7 +35,13 @@
       <nav aria-label="Main">
         <ul class="nav-links" id="nav-links">
           <li><a href="./" aria-current="page">Mission</a></li>
-          <li><a href="../#research">Research</a></li>
+          <li class="nav-links__group">
+            <a href="../#research">Research</a><button type="button" class="nav-sub-toggle" aria-expanded="false" aria-controls="nav-sub-research" aria-label="More research pages"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <ul class="nav-sub" id="nav-sub-research">
+              <li><a href="../#research">Publications</a></li>
+              <li><a href="../agentic-governance-workflow/">Agentic Governance Workflow</a></li>
+            </ul>
+          </li>
           <li><a href="../#who-we-are">Who we are</a></li>
           <li class="nav-links__cta-item"><a class="nav-links__cta" href="#support">Contact</a></li>
         </ul>

@@ -31,6 +31,17 @@
       links.classList.toggle('is-open', open);
     };
     toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+
+    // Research submenu (desktop): hover opens it in CSS; the chevron button opens it for keyboard and touch.
+    nav.querySelectorAll('.nav-links__group').forEach((group) => {
+      const btn = group.querySelector('.nav-sub-toggle');
+      if (!btn) return;
+      const setSub = (open) => { group.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', String(open)); };
+      btn.addEventListener('click', (e) => { e.stopPropagation(); setSub(!group.classList.contains('is-open')); });
+      group.addEventListener('focusout', (e) => { if (!group.contains(e.relatedTarget)) setSub(false); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && group.classList.contains('is-open')) { setSub(false); btn.focus(); } });
+      document.addEventListener('click', (e) => { if (!group.contains(e.target)) setSub(false); });
+    });
     links.addEventListener('click', (e) => { if (e.target.closest('a')) setOpen(false); });
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && links.classList.contains('is-open')) { setOpen(false); toggle.focus(); }

@@ -33,7 +33,7 @@ This document specifies the content of the Scalable Governance website (v1): wha
 ```
 scalable-governance.org
 ├── /                               Landing page (long scroll)
-│   ├── Nav: Mission · Research · Who we are · Contact
+│   ├── Nav: Mission · Research (submenu: Publications, Agentic Governance Workflow) · Who we are · Contact
 │   ├── Hero (+ compliance chain diagram)
 │   ├── Why governance has to scale (three labelled beats + "What is AI governance?" accordion)
 │   ├── Research (intro + publication browser)
@@ -41,7 +41,7 @@ scalable-governance.org
 │   ├── Get in contact
 │   └── Footer
 ├── /mission/                       Mission statement (linked from nav, hero and teaser)
-├── /agentic-governance-workflow/   Method explainer (NOT linked; direct URL only, noindex)
+├── /agentic-governance-workflow/   Method explainer (linked from the Research submenu and the hero diagram; still noindex)
 └── /papers/                        Preprint and paper PDFs
 ```
 
@@ -132,7 +132,7 @@ Sections: What we build first · Why this matters · What comes next (with three
 
 ## Agentic Governance Workflow (`/agentic-governance-workflow/`)
 
-**Purpose:** Method explainer for readers who receive the link directly (e.g. funders or prospective field sites). Not linked from any other page and marked `noindex`; it is only reachable by URL.
+**Purpose:** Method explainer for readers who want to see how the work is done (e.g. funders or prospective field sites). Linked from the nav's Research submenu and from the hero diagram ("How the workflow works"). Still marked `noindex` until its open Claims Register items are resolved.
 
 Sections: The problem (with the interactive budget split) · Governance-Driven Development (five-step cycle diagram) · Agentic Governance Workflow (two-layer architecture) · Papers (ECAF'26, HICSS'27).
 
@@ -216,7 +216,6 @@ Every substantive claim on the site, with its status. Anything not covered here 
 | Newsletter signup | If the audience grows beyond direct contacts |
 | Partner / funder logos | When partnerships are confirmed and partners consent to being listed |
 | Think Tank affiliation | When confirmed |
-| Link to the Workflow page | When the open items for that page are resolved |
 | Released skills / workflow | When open-sourced; then the "aim" wording can change |
 | Domain-specific email | When scalable-governance.org is purchased and configured |
 
