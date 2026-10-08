@@ -1,0 +1,424 @@
+<!-- Mockup only, not part of the site. Written as a claude.ai Artifact fragment (no <html>/<head>); open it as an artifact or wrap it in a page to view. Published preview: https://claude.ai/artifact/SRh6cYk26K2vg5w8q5fSEZ -->
+<title>Acceleration Hero Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Bitter:wght@400;500;600&display=swap">
+<style>
+/* Layout: the site's light paper world; hero = headline, acceleration chart, argument, then who we are. Single light theme, as on the site. */
+:root {
+  --bg: oklch(0.97 0.003 260);
+  --surface: oklch(0.995 0.002 260);
+  --band: oklch(0.94 0.014 260);
+  --chip: oklch(0.95 0.02 260);
+  --chip-text: oklch(0.30 0.10 260);
+  --blue: oklch(0.48 0.19 260);
+  --blue-deep: oklch(0.43 0.20 260);
+  --ink: oklch(0.13 0.02 260);
+  --body: oklch(0.28 0.02 260);
+  --secondary: oklch(0.35 0.02 260);
+  --muted: oklch(0.45 0.02 260);
+  --rule: oklch(0.90 0.005 260);
+  --rule-strong: oklch(0.88 0.008 260);
+  --grid: oklch(0.92 0.005 260);
+  --warn-bg: oklch(0.96 0.04 85);
+  --warn-ink: oklch(0.38 0.08 70);
+  --font-display: Outfit, "Helvetica Neue", Arial, sans-serif;
+  --font-body: Bitter, Georgia, "Times New Roman", serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--body); font-family: var(--font-body); }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 48px); }
+a { color: var(--blue); }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { text-wrap: balance; }
+
+.note {
+  margin: 20px 0 0;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.note b { font-family: var(--font-display); font-weight: 600; }
+
+/* Hero */
+.hero { padding-block: 56px 72px; }
+.hero h1 {
+  margin: 0 0 32px;
+  max-width: 18ch;
+  font: 600 clamp(34px, 4.8vw, 58px)/1.08 var(--font-display);
+  letter-spacing: -0.025em;
+  color: var(--ink);
+}
+
+.accel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
+  gap: 28px 40px;
+  padding: 28px;
+  background: var(--surface);
+  border: 1px solid oklch(0.92 0.005 260);
+  border-radius: 16px;
+  box-shadow: 0 2px 16px oklch(0 0 0 / 0.05);
+}
+.accel__head { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px 24px; }
+.accel__title { margin: 0; font: 600 20px/1.3 var(--font-display); color: var(--ink); }
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.tab {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--rule-strong);
+  border-radius: 8px;
+  background: transparent;
+  font: 600 14px var(--font-display);
+  color: var(--secondary);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.tab:hover { border-color: var(--blue); color: var(--blue); }
+.tab[aria-selected="true"] { background: var(--blue); border-color: var(--blue); color: #fff; }
+
+.chart { min-width: 0; position: relative; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart .axis text { font: 12px var(--font-body); fill: var(--muted); }
+.chart .grid line { stroke: var(--grid); stroke-width: 1; }
+.chart .baseline { stroke: var(--rule-strong); stroke-width: 1; }
+.chart .series { fill: none; stroke: var(--blue); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.chart .dot { fill: var(--blue); stroke: var(--surface); stroke-width: 2; }
+.chart .dot--end { fill: var(--blue); }
+.chart .lbl { font: 600 13px var(--font-display); fill: var(--ink); }
+.chart .lbl-sub { font: 12px var(--font-body); fill: var(--muted); }
+.chart .hit { fill: transparent; cursor: pointer; }
+.chart .scale-note { font: 12px var(--font-body); fill: var(--muted); }
+.tip {
+  position: absolute;
+  pointer-events: none;
+  min-width: 160px;
+  max-width: 240px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: oklch(0.20 0.02 260);
+  color: oklch(0.98 0.003 260);
+  font: 13px/1.45 var(--font-body);
+  box-shadow: 0 6px 24px oklch(0.13 0.02 260 / 0.2);
+  transform: translate(-50%, calc(-100% - 12px));
+}
+.tip b { font-family: var(--font-display); font-weight: 600; display: block; }
+
+.side { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.stat { margin: 0; font: 600 clamp(30px, 3.4vw, 40px)/1.05 var(--font-display); letter-spacing: -0.02em; color: var(--ink); }
+.stat-cap { margin: 0; font-size: 15px; line-height: 1.55; color: var(--body); }
+.src { margin: 0; font-size: 13px; line-height: 1.5; color: var(--muted); }
+.status {
+  align-self: flex-start;
+  padding: 3px 9px;
+  border-radius: 5px;
+  border: 1px solid var(--rule-strong);
+  font: 600 12px/1.3 var(--font-display);
+  color: var(--secondary);
+}
+.status--finding { color: var(--chip-text); border-color: oklch(0.48 0.19 260 / 0.35); }
+
+.argument {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 32px 56px;
+  margin-top: 44px;
+  align-items: start;
+}
+.argument h2 { margin: 10px 0 12px; font: 600 26px/1.2 var(--font-display); letter-spacing: -0.015em; color: var(--ink); }
+.argument p { margin: 0; font-size: 17px; line-height: 1.7; color: var(--body); max-width: 60ch; }
+.who p.lead { font-size: 19px; line-height: 1.65; color: var(--secondary); }
+.who .aff { margin-top: 12px; font-size: 16px; color: var(--muted); }
+.btns { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 26px; }
+.btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 28px; border-radius: 6px; font: 600 15px var(--font-display); text-decoration: none; }
+.btn--p { background: var(--blue); color: #fff; }
+.btn--p:hover { background: var(--blue-deep); }
+.btn--s { border: 1.5px solid var(--blue); color: var(--blue); }
+
+/* Section 2: what we build */
+.build { background: var(--band); border-top: 1px solid oklch(0.89 0.02 260); padding-block: 80px; }
+.build__grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(280px, 380px); gap: 40px 72px; align-items: center; }
+.build h2 { margin: 0 0 20px; font: 600 clamp(30px, 4vw, 46px)/1.15 var(--font-display); letter-spacing: -0.022em; color: var(--ink); }
+.build p { margin: 0 0 16px; font-size: 17px; line-height: 1.7; max-width: 62ch; }
+.chain { margin: 0; padding: 24px; list-style: none; display: flex; flex-direction: column; gap: 20px; background: var(--surface); border-radius: 16px; border: 1px solid oklch(0.89 0.02 260); }
+.chain li { position: relative; padding: 10px 16px; border-radius: 8px; background: var(--chip); }
+.chain li + li::before { content: ""; position: absolute; left: 50%; top: -15px; width: 2px; height: 10px; background: var(--blue); transform: translateX(-50%); }
+.chain b { display: block; font: 600 14px var(--font-display); color: var(--chip-text); }
+.chain span { font-size: 13px; color: oklch(0.38 0.06 260); }
+.chain .key { background: var(--blue); }
+.chain .key b, .chain .key span { color: #fff; }
+
+/* Sources */
+.sources { padding-block: 64px 80px; }
+.sources h2 { margin: 0 0 8px; font: 600 24px var(--font-display); color: var(--ink); }
+.sources > p { margin: 0 0 24px; font-size: 15px; color: var(--muted); max-width: 70ch; }
+.src-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.src-table th { text-align: left; font: 600 13px var(--font-display); color: var(--secondary); padding: 10px 12px 10px 0; border-bottom: 1px solid var(--rule-strong); }
+.src-table td { vertical-align: top; padding: 12px 12px 12px 0; border-bottom: 1px solid var(--rule); line-height: 1.5; }
+.table-wrap { overflow-x: auto; }
+.pill { display: inline-block; padding: 2px 8px; border-radius: 5px; font: 600 12px var(--font-display); white-space: nowrap; }
+.pill--ok { background: var(--chip); color: var(--chip-text); }
+.pill--check { background: var(--warn-bg); color: var(--warn-ink); }
+
+@media (max-width: 900px) {
+  .accel { grid-template-columns: minmax(0, 1fr); padding: 20px 16px; }
+  .argument, .build__grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <p class="note"><b>Mockup for review, not on the site.</b> Proposed merged hero: the acceleration chart becomes the first visual, followed by the governance argument and who we are; the workflow and compliance chain move to the second section. The data points come from the sources listed at the bottom and still need checking against the primary publications before any of this goes live.</p>
+</div>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>AI is developed and deployed faster than governance can follow.</h1>
+
+    <figure class="accel" aria-labelledby="accel-title" style="margin:0">
+      <div class="accel__head">
+        <figcaption class="accel__title" id="accel-title">AI is accelerating on every dimension we can measure</figcaption>
+        <div class="tabs" role="tablist" aria-label="Dimension">
+          <button class="tab" role="tab" id="t-capability" aria-selected="true">Capability</button>
+          <button class="tab" role="tab" id="t-code" aria-selected="false" tabindex="-1">Code</button>
+          <button class="tab" role="tab" id="t-models" aria-selected="false" tabindex="-1">Models</button>
+          <button class="tab" role="tab" id="t-adoption" aria-selected="false" tabindex="-1">Adoption</button>
+          <button class="tab" role="tab" id="t-cost" aria-selected="false" tabindex="-1">Cost</button>
+        </div>
+      </div>
+      <div class="chart" role="tabpanel" id="chart-panel" aria-labelledby="t-capability">
+        <svg id="chart" viewBox="0 0 640 300" role="img" aria-labelledby="chart-desc"><desc id="chart-desc"></desc></svg>
+        <div class="tip" id="tip" hidden></div>
+      </div>
+      <div class="side">
+        <span class="status status--finding" id="side-status">External data</span>
+        <p class="stat" id="side-stat"></p>
+        <p class="stat-cap" id="side-cap"></p>
+        <p class="src" id="side-src"></p>
+      </div>
+    </figure>
+
+    <div class="argument">
+      <div>
+        <span class="status">Our argument</span>
+        <h2>Governance has to keep pace</h2>
+        <p>Governance work is still mostly manual: people read the rules, interpret them and check evidence by hand. We argue that AI governance across all levels has to keep up with this pace, and that neglecting it poses a systemic risk.</p>
+      </div>
+      <div class="who">
+        <p class="lead">Scalable Governance is an applied research initiative with the goal of scaling AI governance to the pace of rapidly increasing capability and volume of AI systems, without losing the human judgment and accountability that good governance requires.</p>
+        <p class="aff">We are based at the <a href="https://www.gov.sot.tum.de/en/soc/welcome/">TUM Professorship of Societal Computing</a>.</p>
+        <div class="btns">
+          <a class="btn btn--p" href="#">Read our mission statement</a>
+          <a class="btn btn--s" href="#">Read our research</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="build">
+  <div class="wrap build__grid">
+    <div>
+      <h2>What we build</h2>
+      <p>We are building an <i>Agentic Governance Workflow</i>: agent skills that enable effective and accountable human-AI collaboration for governance work. People make the decisions; agents do the repeatable parts.</p>
+      <p>It rests on a compliance chain. Take one obligation from the EU AI Act: the workflow follows it through five steps and counts it as done only when the AI system itself has changed.</p>
+      <div class="btns"><a class="btn btn--s" href="#">How the workflow works</a></div>
+    </div>
+    <ol class="chain" aria-label="Compliance chain">
+      <li><b>Obligation</b><span>What the regulation requires</span></li>
+      <li><b>Policy</b><span>What it means for the organisation</span></li>
+      <li><b>Control</b><span>How to implement the requirement</span></li>
+      <li class="key"><b>System impact</b><span>What changes in the AI system</span></li>
+      <li><b>Evidence</b><span>Proof it was implemented</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sources">
+  <div class="wrap">
+    <h2>Candidate data sources</h2>
+    <p>What each tab would rest on. "Check" means the number in the mockup comes from secondary reporting and must be confirmed in the primary source; the chart then shows only confirmed points.</p>
+    <div class="table-wrap">
+      <table class="src-table">
+        <thead><tr><th>Dimension</th><th>Measure</th><th>Source</th><th>Status</th></tr></thead>
+        <tbody id="src-rows"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  'use strict';
+  // Data points used in the mockup. Values are approximate and partly from secondary
+  // reporting; each set lists its primary source to verify against.
+  const SETS = {
+    capability: {
+      label: 'Capability',
+      measure: 'Length of software tasks AI agents complete with 50% success (minutes of expert time, log scale)',
+      log: true, unit: (v) => v >= 60 ? Math.round(v / 60) + ' h' : v + ' min',
+      ticks: [1, 10, 60, 600],
+      points: [
+        { t: 2023.2, v: 5, name: 'GPT-4' },
+        { t: 2025.15, v: 59, name: 'Claude 3.7 Sonnet' },
+        { t: 2026.1, v: 719, name: 'Claude Opus 4.6' }
+      ],
+      stat: 'Doubling every 4–7 months',
+      cap: 'The length of tasks frontier AI agents can complete on their own has doubled roughly every seven months since 2019, and faster since 2024.',
+      src: 'METR, Measuring AI Ability to Complete Long Tasks (2025) and Time Horizon 1.1 (2026).',
+      url: 'https://metr.org/', status: 'check'
+    },
+    code: {
+      label: 'Code',
+      measure: "Share of Google's new code generated by AI, as reported by the company",
+      log: false, max: 100, unit: (v) => v + '%', ticks: [0, 25, 50, 75, 100],
+      points: [
+        { t: 2024.8, v: 25, name: 'Q3 2024 earnings call' },
+        { t: 2025.85, v: 50, name: 'Late 2025' },
+        { t: 2026.3, v: 75, name: 'Google Cloud Next 2026' }
+      ],
+      stat: '25% → 75%',
+      cap: "In 18 months, the share of Google's new code generated by AI tripled, according to the company. Self-reported, and one company only.",
+      src: 'Alphabet earnings calls and Google Cloud Next 2026, via TechSpot and Business Insider.',
+      url: 'https://www.techspot.com/news/112152-google-ai-now-generates-75-new-code-up.html', status: 'check'
+    },
+    models: {
+      label: 'Models',
+      measure: 'Public models on the Hugging Face Hub (millions)',
+      log: false, max: 3.5, unit: (v) => v + 'M', ticks: [0, 1, 2, 3],
+      points: [
+        { t: 2024.7, v: 1, name: '1 million' },
+        { t: 2025.6, v: 2, name: '2 million' },
+        { t: 2026.6, v: 3, name: '3 million' }
+      ],
+      stat: '3× in two years',
+      cap: 'The first million public models took over 1,000 days; the second took 335 days..',
+      src: 'Hugging Face Hub model counts, via Ars Technica and AI World reporting.',
+      url: 'https://huggingface.co/models', status: 'check'
+    },
+    adoption: {
+      label: 'Adoption',
+      measure: 'Organisations using AI in at least one business function (%)',
+      log: false, max: 100, unit: (v) => v + '%', ticks: [0, 25, 50, 75, 100],
+      points: [
+        { t: 2024.5, v: 78, name: 'Survey 2024' },
+        { t: 2025.5, v: 88, name: 'Survey 2025' }
+      ],
+      stat: '88% of organisations',
+      cap: 'Nearly nine in ten surveyed organisations use AI in at least one business function, up from 78% a year earlier.',
+      src: 'McKinsey, The State of AI in 2025 (survey of 1,993 respondents).',
+      url: 'https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai', status: 'ok'
+    },
+    cost: {
+      label: 'Cost',
+      measure: 'Price per million tokens for GPT-3.5-level performance (US$, log scale)',
+      log: true, unit: (v) => '$' + v, ticks: [0.05, 0.5, 5, 50],
+      points: [
+        { t: 2022.9, v: 20, name: 'Nov 2022' },
+        { t: 2024.8, v: 0.07, name: 'Oct 2024' }
+      ],
+      stat: '280× cheaper',
+      cap: 'Reaching the same benchmark level became about 280 times cheaper in two years.',
+      src: 'Stanford HAI, AI Index Report 2025, with data from Epoch AI and Artificial Analysis.',
+      url: 'https://hai.stanford.edu/ai-index', status: 'ok'
+    }
+  };
+  const ORDER = ['capability', 'code', 'models', 'adoption', 'cost'];
+
+  const svg = document.getElementById('chart');
+  const tip = document.getElementById('tip');
+  const W = 640, H = 300, M = { l: 52, r: 28, t: 24, b: 40 };
+  const NS = 'http://www.w3.org/2000/svg';
+  const el = (n, a, parent) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); (parent || svg).appendChild(e); return e; };
+
+  function draw(key) {
+    const d = SETS[key];
+    [...svg.querySelectorAll(':scope > :not(desc)')].forEach((n) => n.remove());
+    svg.querySelector('desc').textContent = d.measure + '. ' + d.points.map((p) => p.name + ': ' + d.unit(p.v)).join('; ') + '.';
+    const t0 = 2022.5, t1 = 2026.9;
+    const x = (t) => M.l + ((t - t0) / (t1 - t0)) * (W - M.l - M.r);
+    let y;
+    if (d.log) {
+      const lo = Math.log10(d.ticks[0]), hi = Math.log10(d.ticks[d.ticks.length - 1]);
+      y = (v) => H - M.b - ((Math.log10(v) - lo) / (hi - lo)) * (H - M.t - M.b);
+    } else {
+      y = (v) => H - M.b - (v / d.max) * (H - M.t - M.b);
+    }
+    const g = el('g', { class: 'grid' }), ax = el('g', { class: 'axis' });
+    d.ticks.forEach((v) => {
+      el('line', { x1: M.l, x2: W - M.r, y1: y(v), y2: y(v) }, g);
+      el('text', { x: M.l - 10, y: y(v) + 4, 'text-anchor': 'end' }, ax).textContent = d.unit(v);
+    });
+    [2023, 2024, 2025, 2026].forEach((yr) => {
+      el('line', { x1: x(yr), x2: x(yr), y1: H - M.b, y2: H - M.b + 6, stroke: 'currentColor', style: 'color: var(--rule-strong)' }, ax);
+      el('text', { x: x(yr), y: H - M.b + 24, 'text-anchor': 'middle' }, ax).textContent = yr;
+    });
+    el('line', { class: 'baseline', x1: M.l, x2: W - M.r, y1: H - M.b, y2: H - M.b });
+    if (d.log) el('text', { class: 'scale-note', x: W - M.r, y: M.t - 8, 'text-anchor': 'end' }).textContent = 'Log scale';
+    const pts = d.points.map((p) => [x(p.t), y(p.v)]);
+    el('polyline', { class: 'series', points: pts.map((p) => p.join(',')).join(' ') });
+    d.points.forEach((p, i) => {
+      const [cx, cy] = pts[i];
+      const end = i === d.points.length - 1;
+      el('circle', { class: 'dot' + (end ? ' dot--end' : ''), cx, cy, r: end ? 6 : 5 });
+      if (end || i === 0) {
+        const anchor = end ? (p.v < d.points[Math.max(0, i - 1)].v ? 'middle' : 'end') : 'start';
+        const falling = end && i > 0 && p.v < d.points[i - 1].v;
+        const dx = end ? (falling ? 0 : -12) : 12, dy = falling ? 26 : -14;
+        el('text', { class: 'lbl', x: cx + dx, y: cy + dy, 'text-anchor': anchor }).textContent = d.unit(p.v);
+      }
+      const hit = el('circle', { class: 'hit', cx, cy, r: 18, tabindex: 0, 'aria-label': p.name + ': ' + d.unit(p.v) });
+      const show = () => {
+        const r = svg.getBoundingClientRect(), s = r.width / W;
+        tip.innerHTML = '<b>' + d.unit(p.v) + '</b>' + p.name;
+        tip.style.left = cx * s + 'px';
+        tip.style.top = cy * s + 'px';
+        tip.hidden = false;
+      };
+      hit.addEventListener('mouseenter', show); hit.addEventListener('focus', show);
+      hit.addEventListener('mouseleave', () => { tip.hidden = true; }); hit.addEventListener('blur', () => { tip.hidden = true; });
+    });
+    document.getElementById('side-stat').textContent = d.stat;
+    document.getElementById('side-cap').textContent = d.cap;
+    document.getElementById('side-src').innerHTML = 'Source: <a href="' + d.url + '" target="_blank" rel="noopener">' + d.src + '</a>';
+    document.getElementById('chart-panel').setAttribute('aria-labelledby', 't-' + key);
+  }
+
+  const tabs = ORDER.map((k) => document.getElementById('t-' + k));
+  const select = (i, focus) => {
+    tabs.forEach((t, j) => { t.setAttribute('aria-selected', String(i === j)); t.tabIndex = i === j ? 0 : -1; });
+    if (focus) tabs[i].focus();
+    draw(ORDER[i]);
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => select(i, false));
+    t.addEventListener('keydown', (e) => {
+      const n = e.key === 'ArrowRight' ? (i + 1) % tabs.length : e.key === 'ArrowLeft' ? (i - 1 + tabs.length) % tabs.length : null;
+      if (n !== null) { e.preventDefault(); select(n, true); }
+    });
+  });
+  select(0, false);
+
+  const rows = document.getElementById('src-rows');
+  ORDER.forEach((k) => {
+    const d = SETS[k];
+    const tr = document.createElement('tr');
+    tr.innerHTML = '<td><b style="font-family:var(--font-display);font-weight:600">' + d.label + '</b></td><td>' + d.measure + '</td><td><a href="' + d.url + '" target="_blank" rel="noopener">' + d.src + '</a></td><td>' +
+      (d.status === 'ok' ? '<span class="pill pill--ok">Primary report</span>' : '<span class="pill pill--check">Check</span>') + '</td>';
+    rows.appendChild(tr);
+  });
+  const extra = [
+    ['Compute', 'Training compute of frontier models: 4–5× per year since 2010', 'Epoch AI, Training compute of frontier AI models grows by 4–5x per year (2024)', 'https://epoch.ai/blog/training-compute-of-frontier-ai-models-grows-by-4-5x-per-year', 'ok'],
+    ['Incidents', 'Reported AI incidents per year (rising; partly reflects more reporting)', 'AI Incident Database via Stanford AI Index / Our World in Data', 'https://ourworldindata.org/grapher/annual-reported-ai-incidents-controversies', 'ok']
+  ];
+  extra.forEach(([a, b, c, u, s]) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = '<td><b style="font-family:var(--font-display);font-weight:600">' + a + '</b></td><td>' + b + '</td><td><a href="' + u + '" target="_blank" rel="noopener">' + c + '</a></td><td><span class="pill pill--ok">Not in mockup yet</span></td>';
+    rows.appendChild(tr);
+  });
+})();
+</script>
