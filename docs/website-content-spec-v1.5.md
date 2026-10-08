@@ -91,7 +91,7 @@ Below: accordion "What is AI governance?" (definition and the three levels) and 
 
 ### Who we are
 
-Two cards, room for 3–6 without redesign. Portraits from `docs/design-reference/portraits/` (masters, not re-edited), exported to `assets/img/team/` as WebP at 1× and 2×. The circle is a background behind the portrait; the bust runs to the card's bottom edge and is clipped only by the card.
+Two cards, room for 3–6 without redesign. Portraits from `docs/design-reference/portraits/` (masters, not re-edited), exported to `assets/img/team/` as WebP at 1× (300 px wide) and 2×. The cut-out portrait breaks out of the card's top edge and sits on its bottom edge; on phones it sits on the top edge and fades out below the shoulders. Each card carries icon links to LinkedIn, email, Google Scholar and a personal website (placeholders until the real links are confirmed).
 
 | Person | Role | Description |
 |---|---|---|

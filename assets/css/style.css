@@ -721,28 +721,30 @@ a.paper__id:hover { color: var(--link-hover); }
 .people__grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 80px;
+  gap: 120px 20px;
+  margin-top: 120px;
 }
 .person {
-  --portrait-w: 180px;
+  /* The cut-out portrait breaks out of the card's top edge, as in a magazine
+     profile; the bust sits on the card's bottom edge. */
+  --portrait-w: 330px;
   position: relative;
   flex: 1;
-  min-width: min(100%, 440px);
+  min-width: min(100%, 520px);
+  min-height: 270px;
   background: var(--surface);
   border-radius: 16px;
   padding: 32px 32px 28px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-  /* The portrait is clipped by the card only. */
-  overflow: hidden;
 }
-.person__text { position: relative; z-index: 1; padding-right: 140px; }
+.person__text { position: relative; z-index: 1; padding-right: calc(var(--portrait-w) * 0.76); }
 .person__name {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(20px, 2.4vw, 26px);
+  font-size: clamp(22px, 2.4vw, 28px);
   line-height: 1.15;
+  letter-spacing: -0.015em;
   color: var(--ink);
   overflow-wrap: anywhere;
 }
@@ -769,8 +771,18 @@ a.paper__id:hover { color: var(--link-hover); }
   line-height: 1.65;
   color: var(--text-card);
 }
-/* The circle sits behind the portrait as a background shape; the bust
-   runs to the card's bottom edge and may extend past the circle. */
+.person__links { display: flex; flex-wrap: wrap; gap: 4px; margin: 18px 0 0 -10px; padding: 0; list-style: none; }
+.person__link {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  color: var(--text-secondary);
+  transition: background 0.2s, color 0.2s;
+}
+.person__link:hover { background: var(--chip); color: var(--blue); }
+.person__link svg { width: 22px; height: 22px; }
 .person__portrait {
   position: absolute;
   right: 0;
@@ -778,20 +790,9 @@ a.paper__id:hover { color: var(--link-hover); }
   width: var(--portrait-w);
   pointer-events: none;
 }
-.person__portrait::before {
-  content: "";
-  position: absolute;
-  bottom: 6px;
-  left: 56%;
-  width: calc(var(--portrait-w) * 0.89);
-  aspect-ratio: 1;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background: var(--portrait-circle);
-}
 .person__portrait img {
-  position: relative;
   width: 100%;
+  border-bottom-right-radius: 16px;
 }
 
 /* ───────── Contact ───────── */
@@ -1507,9 +1508,16 @@ html:not(.js) .term:focus-within .term__tip { display: block; }
 
   .people__inner { padding-top: 64px; padding-bottom: 80px; }
   .people .section-title { margin-bottom: 0; }
-  .people__grid { margin-top: 40px; }
-  .person { --portrait-w: 128px; padding: 24px 22px 22px; min-height: 220px; }
-  .person__text { padding-right: 104px; }
+  .people__grid { margin-top: 80px; row-gap: 80px; }
+  /* On phones the portrait sits on the card's top edge and fades out below the shoulders. */
+  .person { --portrait-w: 168px; padding: 24px 22px 18px; min-height: 0; }
+  .person__text { padding-right: 112px; }
+  .person__portrait { top: -64px; bottom: auto; right: -6px; }
+  .person__portrait img {
+    border-radius: 0;
+    -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent 92%);
+    mask-image: linear-gradient(to bottom, #000 62%, transparent 92%);
+  }
   .person__name { font-size: 20px; overflow-wrap: normal; word-break: normal; hyphens: manual; }
 
   .contact__inner { padding-block: 80px; }

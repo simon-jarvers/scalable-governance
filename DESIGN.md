@@ -271,6 +271,9 @@ Confident and plain: solid colour, no gradients, a 1px lift on hover.
 - **Shadow Strategy:** ambient only (see Elevation); figures use a 1px Border Light instead.
 - **Internal Padding:** 32px for people cards and figures; 40px × 44px in the paper detail.
 
+### Person Card
+White card (16px radius, person-card shadow) with name, short rule, blue uppercase role, description and a row of 44px icon links (LinkedIn, email, Google Scholar, website) drawn as one stroke family. The cut-out portrait is large (330px wide on desktop) and breaks out of the card's top edge while the bust sits on the bottom edge, so faces read at a real size. No circle behind the portrait. On phones the portrait sits on the top edge and fades out below the shoulders.
+
 ### Navigation
 A floating, frosted bar inset from the viewport edge (16px radius, 1px translucent border). Logo plus two-line wordmark on the left; Bitter 500 15px links on the right, hover and current page in Mission Blue. On scroll it shrinks smoothly (logo 56→30px, radius 16→10px, background opacity 0.55→0.90). Below 760px the links collapse behind an outlined "Menu" toggle.
 
