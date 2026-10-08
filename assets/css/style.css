@@ -621,6 +621,33 @@ main, .site-footer, .site-footer-wrap { position: relative; z-index: 1; }
   text-wrap: pretty;
   max-width: 75ch;
 }
+.abstract { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.paper .abstract__label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.js .abstract:not(.is-open) .paper__abstract {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+}
+.abstract__toggle {
+  display: none;
+  min-height: 44px;
+  padding: 0;
+  background: none;
+  border: 0;
+  font: 600 14px/1.2 var(--font-display);
+  color: var(--blue);
+  cursor: pointer;
+}
+.abstract__toggle:hover { color: var(--link-hover); }
+.js .abstract__toggle { display: inline-flex; align-items: center; }
 .paper__actions {
   display: flex;
   flex-wrap: wrap;

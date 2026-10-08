@@ -87,6 +87,26 @@
     });
 
     select(tabs.find((t) => t.getAttribute('aria-selected') === 'true') || tabs[0], false);
+
+    // Abstracts are clamped to a few lines until expanded; the text itself stays verbatim.
+    details.querySelectorAll('.abstract__toggle').forEach((btn) => {
+      const box = btn.closest('.abstract');
+      btn.addEventListener('click', () => {
+        const open = !box.classList.contains('is-open');
+        box.classList.toggle('is-open', open);
+        btn.setAttribute('aria-expanded', String(open));
+        btn.textContent = open ? 'Show less' : 'Show full abstract';
+      });
+    });
+
+    // On narrow screens the detail sits below the list; bring the chosen paper into view.
+    tabs.forEach((tab) => tab.addEventListener('click', () => {
+      if (!window.matchMedia('(max-width: 860px)').matches) return;
+      const panel = document.getElementById(tab.getAttribute('aria-controls'));
+      if (panel && panel.getBoundingClientRect().top > window.innerHeight * 0.6) {
+        panel.scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'start' });
+      }
+    }));
   }
 
   // ───────── Table of contents: scroll spy ─────────
