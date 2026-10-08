@@ -24,33 +24,34 @@ colors:
   text-secondary: "oklch(0.35 0.02 260)"
   muted: "oklch(0.45 0.02 260)"
   muted-2: "oklch(0.50 0.03 260)"
-  footer-text: "oklch(0.55 0.02 260)"
+  footer-text: "oklch(0.50 0.02 260)"
   tooltip-bg: "oklch(0.20 0.02 260)"
   on-blue: "oklch(0.995 0 0)"
 typography:
   display:
     fontFamily: "Outfit, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(32px, 4.5vw, 52px)"
-    fontWeight: 700
-    lineHeight: 1.1
-    letterSpacing: "-0.01em"
+    fontSize: "clamp(34px, 4.8vw, 58px)"
+    fontWeight: 600
+    lineHeight: 1.08
+    letterSpacing: "-0.025em"
   display-subpage:
     fontFamily: "Outfit, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(36px, 5vw, 60px)"
-    fontWeight: 700
-    lineHeight: 1.05
-    letterSpacing: "-0.015em"
+    fontSize: "clamp(38px, 5.2vw, 64px)"
+    fontWeight: 600
+    lineHeight: 1.04
+    letterSpacing: "-0.028em"
   headline:
     fontFamily: "Outfit, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(30px, 4vw, 48px)"
-    fontWeight: 700
-    lineHeight: 1.2
-    letterSpacing: "-0.01em"
+    fontSize: "clamp(32px, 4.2vw, 50px)"
+    fontWeight: 600
+    lineHeight: 1.15
+    letterSpacing: "-0.022em"
   headline-article:
     fontFamily: "Outfit, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(26px, 3vw, 34px)"
-    fontWeight: 700
-    lineHeight: 1.2
+    fontSize: "clamp(27px, 3.1vw, 36px)"
+    fontWeight: 600
+    lineHeight: 1.18
+    letterSpacing: "-0.02em"
   title:
     fontFamily: "Outfit, Helvetica Neue, Arial, sans-serif"
     fontSize: "18px"
@@ -137,6 +138,14 @@ components:
     backgroundColor: "{colors.primary-blue}"
     textColor: "{colors.on-blue}"
     padding: "20px 24px"
+  status-label:
+    textColor: "{colors.text-secondary}"
+    rounded: "{rounded.tag}"
+    padding: "3px 9px"
+  card-funding:
+    backgroundColor: "{colors.mission-band}"
+    rounded: "{rounded.card}"
+    padding: "32px 36px"
   tooltip:
     backgroundColor: "{colors.tooltip-bg}"
     textColor: "{colors.surface}"
@@ -153,7 +162,7 @@ components:
 
 The site carries a mission with a point: governance that keeps pace with AI and changes what actually gets built. The design gives that mission a calm, precise stage. Cool blue-tinted paper surfaces, one confident primary blue, and a geometric sans for every heading make the argument easy to follow. A slab serif gives the body text the steadiness of a research document. Nothing competes with the argument; every coloured element points at something that matters (an action, a selected paper, the step where governance reaches the system).
 
-Density is generous and editorial: wide gutters (48px), tall section padding (80–130px), and reading measures held to roughly 720–900px. Interaction is quiet but alive. The nav shrinks as you scroll, a faint dot grid leans toward the cursor in the hero, people and contact bands, and the publication browser swaps papers in place. Motion always serves orientation and never decorates.
+Density is generous and editorial: wide gutters (48px), tall section padding (80–130px), and reading measures held to 64–75 characters. The landing page leads with its signature diagram, the compliance chain, so the first screen shows how the work reaches an AI system rather than decoration. Interaction is quiet but alive. The nav shrinks as you scroll, a faint dot grid leans toward the cursor in the hero, people and contact bands, and the publication browser swaps papers in place. Motion always serves orientation and never decorates.
 
 The confirmed anti-reference is the **generic AI aesthetic**: dark mode with neon or purple glows, glassmorphism as a style, sci-fi particles, cyan-on-black. The dot grid and the frosted nav are the only nods to texture. They stay faint and functional and must never grow into that world.
 
@@ -204,15 +213,19 @@ A cool, near-monochrome blue-grey world with a single saturated blue doing all t
 **Character:** A clean geometric sans for structure and voice, paired with a sturdy slab serif that reads like a well-set working paper. The contrast signals "argument with evidence" rather than "product marketing".
 
 ### Hierarchy
-- **Display** (Outfit 700, clamp 32–52px, lh 1.1, −0.01em): the landing hero headline only. Subpages use the larger title-block display (clamp 36–60px, lh 1.05).
-- **Headline** (Outfit 700, clamp 30–48px, lh 1.2): landing section titles. Articles use clamp 26–34px.
-- **Title** (Outfit 600, 17–18px, lh 1.3): accordion triggers, publication titles, contact column titles, paper list rows. H3 in articles is Outfit 700 21px.
+- **Display** (Outfit 600, clamp 34–58px, lh 1.08, −0.025em): the landing hero headline only. Subpages use the larger title-block display (Outfit 600, clamp 38–64px, lh 1.04, −0.028em).
+- **Headline** (Outfit 600, clamp 32–50px, lh 1.15, −0.022em): landing section titles. Articles use clamp 27–36px.
+- **Title** (Outfit 600, 17–22px, lh 1.25–1.3): accordion triggers, publication titles, beat titles, contact titles, paper list rows. H3 in articles is Outfit 600 21px.
 - **Lead** (Bitter 400, 19–20px, lh 1.6–1.65): the first paragraph of hero, sections and articles.
-- **Body** (Bitter 400, 17px, lh 1.75 in articles; 15px, lh 1.65 in cards and accordions). Article measure caps at 740px.
-- **Label** (Outfit 600–700, 11–12px, 0.06–0.09em, uppercase): venues, roles, "On this page", diagram labels.
+- **Body** (Bitter 400, 17px, lh 1.75 in articles; 15–16px, lh 1.65 in cards and accordions). Measure 64–75ch; wide articles cap paragraphs at 72ch.
+- **Label** (Outfit 600–700, 12px minimum, 0.06–0.09em, uppercase only for short labels): roles, short venue tags, "On this page", diagram labels. Long names (full conference titles) stay in sentence case at 14px.
 
 ### Named Rules
 **The Two Voices Rule.** Outfit speaks for structure (headings, labels, buttons); Bitter speaks for the argument (paragraphs, nav links, captions). Don't swap them.
+
+**The Calm Display Rule.** Headings use Outfit 600 with tight tracking, never 700+ at display sizes. Weight 700 is reserved for the wordmark and tiny uppercase labels.
+
+**The 12px Floor Rule.** No text below 12px, including diagram captions and badges.
 
 ## Layout
 
@@ -237,7 +250,7 @@ Mostly flat, with tonal layering doing the work: paper ground, near-white surfac
 
 ## Shapes
 
-Gently rounded, never pill-shaped except true circles. The radius grows with the object: tags 5px, buttons 6px, chips, contact buttons and tooltips 8px, domain columns 12px, figures and the publication browser 14px, people cards, the nav and the architecture card 16px. Circles are reserved for the logo rings, accordion toggles, number badges and portrait backdrops. The three nested off-centre rings of the logo are the system's signature silhouette. They recur as the hero watermark and the blurred, perspective-tilted rings behind the paper detail, where the highlighted ring encodes the paper's research area.
+Gently rounded, never pill-shaped except true circles. The radius grows with the object: tags 5px, buttons 6px, chips, contact buttons and tooltips 8px, domain columns 12px, figures and the publication browser 14px, people cards, the nav and the architecture card 16px. Circles are reserved for the logo rings, accordion toggles, number badges and portrait backdrops. The three nested off-centre rings of the logo are the system's signature silhouette. They recur in the nav and footer logo and as the blurred, perspective-tilted rings behind the paper detail, where the highlighted ring encodes the paper's research area.
 
 ## Components
 
@@ -267,6 +280,15 @@ Rows separated by 1px strong rules. Outfit 600 18px trigger with a 28px outlined
 ### Publication Browser (signature)
 A two-pane card: a list of papers (venue label, title, availability) on Index Card, with the selected row filled Mission Blue, beside a detail pane with full venue in Research Violet, title, subtitle, authors, verbatim abstract, status badges and the primary link. Behind the detail, blurred logo rings highlight the paper's research area.
 
+### Hero Compliance Chain (signature)
+A surface card beside the hero text: a short title, five stacked chips (Obligation, Policy, Control, System impact, Evidence) joined by blue chevrons, each with a one-line description, and a note underneath. "System impact" is the only filled-blue chip. It stacks under the text below 1080px.
+
+### Evidential Status Labels
+Small outlined tags ("Our argument", "Our aim") above each beat in the "Why governance has to scale" band. They make the Claims Register's categories visible: arguments use a neutral outline, aims a faint blue outline. Never use them as decorative eyebrows above section headings.
+
+### Funding Card
+The landing Contact section opens with a Mission Wash card for funding (title, two sentences, link to the Mission page's funding aims, primary email button). The Mission page ends with the same treatment as its last article section, "Support this work", with an aims list (short blue rule markers), the email actions and the address shown as text with a copy button.
+
 ### Glossary Tooltip
 A dotted Mission Blue underline marks a glossed term; hover, focus or tap opens a 280px Tooltip Night bubble above it (Bitter 14px/1.5).
 
@@ -281,6 +303,8 @@ The compliance chain, the regulatory chain with its dashed feedback bracket, the
 - **Do** set reading text in Bitter at 17px/1.75 within a ~740px measure, and headings in Outfit.
 - **Do** build new diagrams from the existing chip, figure and domain tints so they read as part of one system.
 - **Do** keep the dot grid faint and switch it to static dots under `prefers-reduced-motion`.
+- **Do** label every claim-bearing beat with its evidential status (argument, aim) when it sits outside an article.
+- **Do** end long reading pages with a next step (contact or funding), never with the footer alone.
 
 ### Don't:
 - **Don't** introduce the generic AI aesthetic: dark mode, neon or purple glows, glassmorphism beyond the nav, glowing particles, cyan-on-black.
