@@ -115,10 +115,10 @@
 
       <div class="pubs">
         <div class="pubs__list" role="tablist" aria-label="Publications" aria-orientation="vertical">
-          <button class="pubs__tab" role="tab" id="tab-hicss" aria-controls="paper-hicss" aria-selected="true">
-            <span class="pubs__venue">HICSS 2027</span>
-            <span class="pubs__title">Human-AI Collaboration in Compliance Automation</span>
-            <span class="pubs__kind">Preprint · Forthcoming</span>
+          <button class="pubs__tab" role="tab" id="tab-facct" aria-controls="paper-facct" aria-selected="true">
+            <span class="pubs__venue">FAccT 2026</span>
+            <span class="pubs__title">Engaged AI Governance</span>
+            <span class="pubs__kind">ACM Digital Library</span>
           </button>
           <button class="pubs__tab" role="tab" id="tab-aies" aria-controls="paper-aies" aria-selected="false" tabindex="-1">
             <span class="pubs__venue">AIES 2026</span>
@@ -130,10 +130,10 @@
             <span class="pubs__title">Governance-Driven Development</span>
             <span class="pubs__kind">Preprint · Forthcoming</span>
           </button>
-          <button class="pubs__tab" role="tab" id="tab-facct" aria-controls="paper-facct" aria-selected="false" tabindex="-1">
-            <span class="pubs__venue">FAccT 2026</span>
-            <span class="pubs__title">Engaged AI Governance</span>
-            <span class="pubs__kind">ACM Digital Library</span>
+          <button class="pubs__tab" role="tab" id="tab-hicss" aria-controls="paper-hicss" aria-selected="false" tabindex="-1">
+            <span class="pubs__venue">HICSS 2027</span>
+            <span class="pubs__title">Human-AI Collaboration in Compliance Automation</span>
+            <span class="pubs__kind">Preprint · Forthcoming</span>
           </button>
           <button class="pubs__tab" role="tab" id="tab-ewaf" aria-controls="paper-ewaf" aria-selected="false" tabindex="-1">
             <span class="pubs__venue">EWAF 2025</span>
@@ -143,14 +143,15 @@
         </div>
 
         <div class="pubs__details">
-          <article class="paper" id="paper-hicss" role="tabpanel" aria-labelledby="tab-hicss" data-theme-ring="3">
-            <p class="paper__venue">Hawaii International Conference on System Sciences (HICSS 2027) <span class="badge">Forthcoming</span></p>
-            <h3 class="paper__title">Human-AI Collaboration in Compliance Automation<span class="paper__sub">Designing an Agentic Knowledge Base for AI Governance</span></h3>
-            <p class="paper__authors">Simon Jarvers, Carolin Röthemeier, Holger Wittges, Orestis Papakyriakopoulos</p>
-            <p class="paper__abstract">AI governance work draws on a living body of organizational knowledge, policies, and system facts that drift and go stale as organizational and regulatory contexts change. For resource-constrained organizations under the EU AI Act and related standards, maintaining this knowledge consumes scarce compliance capacity. We applied a pattern drawn from practice, in which an LLM agent maintains a structured, citation-anchored knowledge base for AI governance. Through a Design Science Research study at an AI startup, we apply the artifact to two ISO management system standards. The artifact separates a human-authoritative source layer from an agent-moderated knowledge layer in the company’s internal governance work processes. We abstract two design principles, human authority over agent moderation and traceability, which demonstrate how to responsibly leverage advancing AI capabilities for human-agent collaboration in regulated compliance settings.</p>
+          <article class="paper" id="paper-facct" role="tabpanel" aria-labelledby="tab-facct" data-theme-ring="1">
+            <p class="paper__venue">ACM Conference on Fairness, Accountability, and Transparency (FAccT 2026)</p>
+            <h3 class="paper__title">Engaged AI Governance<span class="paper__sub">Addressing the Last Mile Challenge Through Internal Expert Collaboration</span></h3>
+            <p class="paper__authors">Simon Jarvers, Orestis Papakyriakopoulos</p>
+            <p class="paper__abstract">Under the EU AI Act, translating AI governance requirements into software development practice remains challenging. While AI governance frameworks exist at industry and organizational levels, empirical evidence of team-level implementation is scarce. We address this “Last Mile” Challenge through insider action research embedded within an AI startup. We present a legal-text-to-action pipeline that translates EU AI Act requirements into actionable strategies through internal expert collaboration by extracting requirements from legal text, engaging practitioners in assessment and ideation, and prioritizing implementation through collective evaluation. Our analysis reveals three patterns in how practitioners perceive regulatory requirements: convergence (compliance aligns with development priorities), existing practice (current work already satisfies requirements), and disconnection (requirements perceived as administrative overhead). Based on these patterns, we discuss when governance might be treated genuinely or performatively. Practitioners prioritize requirements that serve end-users or their own development needs, but view verification-oriented requirements as box-ticking exercises. This distinction suggests a translation challenge: regulatory requirements risk superficial treatment unless practitioners understand how compliance serves system quality and user protection. Expert collaboration offers a practical mechanism for transforming governance from external imposition to shared ownership and making previously invisible governance work visible and collective.</p>
             <div class="paper__actions">
-              <a class="btn btn--primary btn--sm" href="papers/2027-hicss-human-ai-collaboration-in-compliance-automation.pdf" download>Download preprint (PDF)</a>
-              <span class="paper__id">DOI not yet assigned</span>
+              <a class="btn btn--primary btn--sm" href="https://dl.acm.org/doi/10.1145/3805689.3812341" target="_blank" rel="noopener">Read on ACM Digital Library ↗</a>
+              <a class="paper__id" href="papers/2026-facct-engaged-ai-governance.pdf" download>Download PDF</a>
+              <a class="paper__id" href="https://doi.org/10.1145/3805689.3812341" target="_blank" rel="noopener">DOI 10.1145/3805689.3812341</a>
             </div>
           </article>
 
@@ -176,15 +177,14 @@
             </div>
           </article>
 
-          <article class="paper" id="paper-facct" role="tabpanel" aria-labelledby="tab-facct" data-theme-ring="1">
-            <p class="paper__venue">ACM Conference on Fairness, Accountability, and Transparency (FAccT 2026)</p>
-            <h3 class="paper__title">Engaged AI Governance<span class="paper__sub">Addressing the Last Mile Challenge Through Internal Expert Collaboration</span></h3>
-            <p class="paper__authors">Simon Jarvers, Orestis Papakyriakopoulos</p>
-            <p class="paper__abstract">Under the EU AI Act, translating AI governance requirements into software development practice remains challenging. While AI governance frameworks exist at industry and organizational levels, empirical evidence of team-level implementation is scarce. We address this “Last Mile” Challenge through insider action research embedded within an AI startup. We present a legal-text-to-action pipeline that translates EU AI Act requirements into actionable strategies through internal expert collaboration by extracting requirements from legal text, engaging practitioners in assessment and ideation, and prioritizing implementation through collective evaluation. Our analysis reveals three patterns in how practitioners perceive regulatory requirements: convergence (compliance aligns with development priorities), existing practice (current work already satisfies requirements), and disconnection (requirements perceived as administrative overhead). Based on these patterns, we discuss when governance might be treated genuinely or performatively. Practitioners prioritize requirements that serve end-users or their own development needs, but view verification-oriented requirements as box-ticking exercises. This distinction suggests a translation challenge: regulatory requirements risk superficial treatment unless practitioners understand how compliance serves system quality and user protection. Expert collaboration offers a practical mechanism for transforming governance from external imposition to shared ownership and making previously invisible governance work visible and collective.</p>
+          <article class="paper" id="paper-hicss" role="tabpanel" aria-labelledby="tab-hicss" data-theme-ring="3">
+            <p class="paper__venue">Hawaii International Conference on System Sciences (HICSS 2027) <span class="badge">Forthcoming</span></p>
+            <h3 class="paper__title">Human-AI Collaboration in Compliance Automation<span class="paper__sub">Designing an Agentic Knowledge Base for AI Governance</span></h3>
+            <p class="paper__authors">Simon Jarvers, Carolin Röthemeier, Holger Wittges, Orestis Papakyriakopoulos</p>
+            <p class="paper__abstract">AI governance work draws on a living body of organizational knowledge, policies, and system facts that drift and go stale as organizational and regulatory contexts change. For resource-constrained organizations under the EU AI Act and related standards, maintaining this knowledge consumes scarce compliance capacity. We applied a pattern drawn from practice, in which an LLM agent maintains a structured, citation-anchored knowledge base for AI governance. Through a Design Science Research study at an AI startup, we apply the artifact to two ISO management system standards. The artifact separates a human-authoritative source layer from an agent-moderated knowledge layer in the company’s internal governance work processes. We abstract two design principles, human authority over agent moderation and traceability, which demonstrate how to responsibly leverage advancing AI capabilities for human-agent collaboration in regulated compliance settings.</p>
             <div class="paper__actions">
-              <a class="btn btn--primary btn--sm" href="https://dl.acm.org/doi/10.1145/3805689.3812341" target="_blank" rel="noopener">Read on ACM Digital Library ↗</a>
-              <a class="paper__id" href="papers/2026-facct-engaged-ai-governance.pdf" download>Download PDF</a>
-              <a class="paper__id" href="https://doi.org/10.1145/3805689.3812341" target="_blank" rel="noopener">DOI 10.1145/3805689.3812341</a>
+              <a class="btn btn--primary btn--sm" href="papers/2027-hicss-human-ai-collaboration-in-compliance-automation.pdf" download>Download preprint (PDF)</a>
+              <span class="paper__id">DOI not yet assigned</span>
             </div>
           </article>
 

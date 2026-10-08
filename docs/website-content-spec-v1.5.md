@@ -80,7 +80,7 @@ One paragraph on what we build (the *Agentic Governance Workflow*: agent skills 
 **Purpose:** Show active, multi-strand research output, with the papers themselves as evidence.
 
 - Intro paragraph: we study AI governance inside the organisations that build AI systems and among the intermediaries who interpret the rules for them; most recent work focuses on making governance scale.
-- Publication browser: list of papers (venue, short title, availability) and a detail panel (full venue, title and subtitle, authors, notes, abstract, links). Default selection: HICSS 2027.
+- Publication browser: list of papers (venue, short title, availability) and a detail panel (full venue, title and subtitle, authors, notes, abstract, links). Order: FAccT 2026, AIES 2026, ECAF 2026, HICSS 2027, EWAF 2025. Default selection: FAccT 2026, the published paper with a DOI, so a funder's first piece of evidence is peer-reviewed and citable.
 - Abstracts are quoted **verbatim** from the papers and checked against the PDFs in `papers/`.
 - Each paper shows its DOI or publisher link next to the PDF where both exist. Forthcoming papers carry a "Forthcoming" badge and "DOI not yet assigned" or "Proceedings not yet published".
 
