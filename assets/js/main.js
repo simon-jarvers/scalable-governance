@@ -99,6 +99,9 @@
       ticking = false;
       let current = sections[0];
       sections.forEach((sec) => { if (sec.getBoundingClientRect().top < 200) current = sec; });
+      // Short last sections never reach the threshold; mark them once the page bottom is reached.
+      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+      if (atBottom) current = sections[sections.length - 1];
       links.forEach((a) => {
         const on = current && a.getAttribute('href') === '#' + current.id;
         a.classList.toggle('is-active', on);
@@ -182,6 +185,23 @@
       else if (e.key === 'End') { e.preventDefault(); set(MAX); }
     });
     set(value);
+  }
+
+  // ───────── Copy email address ─────────
+  function initCopy() {
+    document.querySelectorAll('.copy-btn').forEach((btn) => {
+      const status = btn.nextElementSibling;
+      btn.addEventListener('click', async () => {
+        let ok = false;
+        try {
+          await navigator.clipboard.writeText(btn.dataset.copy);
+          ok = true;
+        } catch (e) { /* clipboard unavailable, e.g. insecure context */ }
+        if (status) status.textContent = ok ? 'Copied.' : 'Copy failed. Select the address instead.';
+        clearTimeout(btn._t);
+        btn._t = setTimeout(() => { if (status) status.textContent = ''; }, 3000);
+      });
+    });
   }
 
   // ───────── Dot grid background ─────────
@@ -358,5 +378,6 @@
   initToc();
   initTerms();
   initBudget();
+  initCopy();
   initDotGrid();
 })();

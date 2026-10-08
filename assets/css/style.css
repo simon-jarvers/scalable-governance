@@ -891,6 +891,56 @@ a.paper-tag--violet:hover { background: var(--domain-product); color: var(--viol
   font: 700 12px/1 var(--font-display);
 }
 
+/* Support this work (Mission) and shared contact actions */
+.support {
+  padding: 44px 44px 40px;
+  background: var(--mission-band);
+  border: 1px solid oklch(0.89 0.02 260);
+  border-radius: 16px;
+}
+.aims { margin: 0 0 32px; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.aims li {
+  position: relative;
+  padding-left: 26px;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--text-body);
+}
+.aims li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.62em;
+  width: 12px;
+  height: 2px;
+  background: var(--blue);
+}
+.contact-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+.contact-address {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin: 20px 0 0;
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+.article .contact-address { margin: 20px 0 0; font-size: 15px; }
+.contact-address a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.copy-btn {
+  font: 600 13px/1 var(--font-display);
+  color: var(--blue);
+  background: transparent;
+  border: 1px solid oklch(0.48 0.19 260 / 0.45);
+  border-radius: 6px;
+  padding: 7px 10px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.copy-btn:hover { background: var(--chip); border-color: var(--blue); }
+.copy-status { font-size: 14px; color: var(--muted); }
+html:not(.js) .copy-btn { display: none; }
+
 /* FAQ uses the hero accordion with slightly larger rows */
 .accordion--faq { max-width: none; margin-bottom: 0; }
 .accordion--faq .accordion__trigger { padding: 20px 0; line-height: 1.3; }
@@ -1293,6 +1343,7 @@ html:not(.js) .term:focus-within .term__tip { display: block; }
   .layers__corpus li + li::before { display: none; }
   .layers__skills { grid-template-columns: minmax(0, 1fr); }
   .accordion--faq .accordion__body { padding-right: 0; }
+  .support { padding: 28px 20px 26px; }
   .paper-row { flex-wrap: wrap; gap: 10px 16px; }
   .paper-row__body { flex-basis: 100%; order: 3; }
 }
