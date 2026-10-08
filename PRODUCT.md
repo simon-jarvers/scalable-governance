@@ -10,7 +10,7 @@ web
 
 **Primary: funders** deciding whether to support independent research on AI governance. They usually arrive from a link in a grant application, an email or an introduction, on a laptop, and give the site a few focused minutes to judge credibility: is the argument sharp, is the evidence real, who are the people behind it. Mobile is secondary but must work.
 
-**Secondary:** academic peers and potential collaborators working on AI governance, compliance or regulatory design, and SME AI system providers who might take part in the research as field sites.
+**Secondary:** academic peers and potential collaborators working on AI governance, compliance or regulatory design, and AI system providers, especially smaller ones, who might take part in the research as field sites.
 
 The initiative's wider audience (regulators, standards bodies, the research community) is served by the research itself; the website's job is securing the resources to do that work.
 

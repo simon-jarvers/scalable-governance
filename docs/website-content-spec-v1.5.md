@@ -104,7 +104,7 @@ Two cards, room for 3–6 without redesign. Portraits from `docs/design-referenc
 
 Funding leads as the primary path (its own "Email us about funding" button with a prefilled subject, and a link to the Mission statement's "Support this work" section). Two further lines of engagement follow, then "Write an email" (`mailto:simon.jarvers@tum.de`), "Contact us on LinkedIn" (https://www.linkedin.com/in/simon-jarvers/), and the address shown as text with a copy button.
 
-- **SME AI system providers:** for organisations that build AI systems and want to test the Agentic Governance Workflow on their own governance work. Aligned with the Mission statement's first goal (build and test the workflow at the organisational level). No reference to a "cohort": none has been announced.
+- **AI system providers:** for organisations that build AI systems and want to test the Agentic Governance Workflow on their own governance work. Aligned with the Mission statement's first goal (build and test the workflow at the organisational level). No reference to a "cohort": none has been announced.
 - **Research collaboration:** for people working on AI governance, compliance or regulatory design.
 - **Funding:** for funders of independent research on AI governance.
 

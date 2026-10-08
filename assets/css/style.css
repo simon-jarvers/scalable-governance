@@ -825,6 +825,14 @@ a.paper__id:hover { color: var(--link-hover); }
   line-height: 1.5;
   color: var(--text-secondary);
 }
+.page-title__jump {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16px;
+}
 .paper-tags { display: flex; flex-wrap: wrap; gap: 10px; }
 .paper-tag {
   flex: none;
