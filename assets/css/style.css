@@ -1097,7 +1097,17 @@ html:not(.js) .term:focus-within .term__tip { display: block; }
 
 /* Budget slider (Workflow) */
 .budget { padding: 32px 28px 28px; }
-.budget .figure__title { margin-bottom: 24px; }
+.budget .figure__title { margin-bottom: 10px; }
+.article .budget__note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin: 0 0 24px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
 .budget { --split: 62; }
 .budget__track { position: relative; cursor: ew-resize; touch-action: pan-y; user-select: none; }
 .budget__bar {

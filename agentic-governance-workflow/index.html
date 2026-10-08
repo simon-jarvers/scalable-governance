@@ -75,7 +75,7 @@
 
       <section class="article__section" id="problem" aria-labelledby="problem-title">
         <h2 id="problem-title">The problem</h2>
-        <p class="article__lead">Most compliance budget goes into documentation for audits, not into changes to the AI system.</p>
+        <p class="article__lead">We argue that most compliance budget goes into documentation for audits, not into changes to the AI system.</p>
         <div class="split">
           <div class="split__text">
             <p>The EU AI Act is a management-based regulation. It mandates processes, such as risk management, documentation and monitoring, and leaves the outcomes underspecified. Governance quality is a <span class="term"><button type="button" class="term__word" aria-describedby="tip-cg">credence good</button><span class="term__tip" role="tooltip" id="tip-cg">A good whose quality the buyer cannot assess through use or inspection.</span></span>: auditors and authorities cannot check by inspection whether governance makes a system safer.</p>
@@ -85,13 +85,14 @@
           </div>
           <figure class="figure split__figure budget">
             <figcaption class="figure__title" id="budget-title">Where the compliance budget goes</figcaption>
+            <p class="budget__note" id="budget-note"><span class="status">Illustrative</span> Not measured data. Drag the handle, or use the arrow keys, to shift the split.</p>
             <div class="budget__track" id="budget-track">
               <div class="budget__bar">
                 <div class="budget__docs"></div>
                 <div class="budget__impl"></div>
               </div>
               <div class="budget__thumb-rail">
-                <div class="budget__thumb" id="budget-thumb" role="slider" tabindex="0" aria-labelledby="budget-title" aria-valuemin="30" aria-valuemax="70" aria-valuenow="62" aria-valuetext="62% documentation for audits, 38% implementation">
+                <div class="budget__thumb" id="budget-thumb" role="slider" tabindex="0" aria-labelledby="budget-title" aria-describedby="budget-note" aria-valuemin="30" aria-valuemax="70" aria-valuenow="62" aria-valuetext="62% documentation for audits, 38% implementation">
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3 L6 12 L16 21 Z"/></svg>
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3 L18 12 L8 21 Z"/></svg>
                 </div>

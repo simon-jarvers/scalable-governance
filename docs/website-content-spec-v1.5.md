@@ -197,7 +197,7 @@ Every substantive claim on the site, with its status. Anything not covered here 
 **Open items** (unsourced claims currently on the site; source, reframe as argument, or remove):
 - Landing, "Why governance has to scale": "AI coding agents write a growing amount of the code of AI systems", "more AI systems reach the market", and "neglecting it poses a systemic risk". Now marked "Our argument" and "we argue"; still unsourced, so add a source when one exists
 - Mission, "Why this matters": frontier labs increasingly use AI to accelerate research on their own models; developers' use of coding agents brings more systems to market, faster
-- Workflow page: "Most compliance budget goes into documentation for audits, not into changes to the AI system" (AIES'26 supports this for one organisation only); "Features that took weeks now take days"; the budget slider's default 62/38 split reads as data but is illustrative
+- Workflow page: "Most compliance budget goes into documentation for audits, not into changes to the AI system" (now marked "we argue"; AIES'26 supports this for one organisation only); "Features that took weeks now take days"; the budget slider's 62/38 split is now captioned "Illustrative · Not measured data"
 
 **Claims removed in v1.3** (still not to be used):
 - That intermediaries' incentives *cause* symbolic compliance (AIES'26 shows conditions under which it can emerge in good faith; no causal attribution)
