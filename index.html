@@ -48,62 +48,75 @@
 
   <!-- Hero -->
   <section class="hero" id="top" data-grid-section>
-    <svg class="hero__watermark" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="90" r="88" stroke-width="5.5"/><circle cx="100" cy="112" r="58" stroke-width="5"/><circle cx="100" cy="128" r="32" stroke-width="4.5"/></svg>
     <div class="container hero__inner">
       <div class="hero__text">
         <h1>AI is developed and deployed faster than governance can follow.</h1>
         <p class="lead">Scalable Governance is an applied research initiative with the goal of scaling AI governance to the pace of rapidly increasing capability and volume of AI systems, without losing the human judgment and accountability that good governance requires.</p>
         <p class="hero__affiliation">We are based at the <a href="https://www.gov.sot.tum.de/en/soc/welcome/" target="_blank" rel="noopener">TUM Professorship of Societal Computing</a>.</p>
-
-        <div class="accordion">
-          <div class="accordion__item">
-            <h2 class="accordion__heading">
-              <button type="button" class="accordion__trigger" aria-expanded="false" aria-controls="acc-what">
-                <span>What is AI governance?</span><span class="accordion__icon" aria-hidden="true"></span>
-              </button>
-            </h2>
-            <div class="accordion__panel" id="acc-what">
-              <div class="accordion__body">
-                <p>By <em>AI governance</em> we mean the rules, processes and controls that make sure AI systems are safe and compliant. AI governance can be understood on different levels:</p>
-                <ul>
-                  <li><b>Organisation:</b> Companies that develop and deploy AI systems turn regulatory requirements into policies and controls that impact the AI systems.</li>
-                  <li><b>Verification:</b> Auditors, notified bodies and authorities check conformity against technical standards and legal obligations.</li>
-                  <li><b>Regulation:</b> Legislators and policy-makers write AI regulations and keep them up to date.</li>
-                </ul>
-                <p>Most of our research so far studies the organisational level.<br><a href="#research">Read our research →</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="accordion__item">
-            <h2 class="accordion__heading">
-              <button type="button" class="accordion__trigger" aria-expanded="false" aria-controls="acc-why">
-                <span>Why does it have to scale?</span><span class="accordion__icon" aria-hidden="true"></span>
-              </button>
-            </h2>
-            <div class="accordion__panel" id="acc-why">
-              <div class="accordion__body">
-                <p>AI coding agents write a growing amount of the code of AI systems. Teams build faster, and more AI systems reach the market. AI governance across all levels has to keep up with this pace. How this is going to be achieved is largely unsolved and neglecting it poses a systemic risk of AI.<br><a href="mission/">Read our mission statement →</a></p>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div class="button-row">
-          <a class="btn btn--primary" href="mission/">Read our mission statement</a>
-          <a class="btn btn--secondary" href="#research">Read our research</a>
+          <a class="btn btn--primary btn--md" href="mission/">Read our mission statement</a>
+          <a class="btn btn--secondary btn--md" href="#research">Read our research</a>
         </div>
       </div>
+
+      <figure class="hero-chain" aria-labelledby="hero-chain-title">
+        <figcaption class="hero-chain__title" id="hero-chain-title">Every obligation traced to a change in the AI system</figcaption>
+        <ol class="hero-chain__list">
+          <li><b>Obligation</b><span>What the regulation requires</span></li>
+          <li><b>Policy</b><span>What it means for the organisation</span></li>
+          <li><b>Control</b><span>How to implement the requirement</span></li>
+          <li class="hero-chain__key"><b>System impact</b><span>What changes in the AI system</span></li>
+          <li><b>Evidence</b><span>Proof it was implemented</span></li>
+        </ol>
+        <p class="hero-chain__note">The compliance chain our workflow follows. Governance work counts when it reaches the system.</p>
+      </figure>
     </div>
   </section>
 
-  <!-- Mission teaser -->
-  <section class="mission" id="mission" aria-labelledby="mission-title">
-    <div class="container mission__inner">
-      <div>
-        <h2 class="section-title" id="mission-title">Mission statement</h2>
-        <p class="lead lead--dark">We are building an <b>Agentic Governance Workflow</b>: agent skills that enable effective and accountable human-AI collaboration for governance work. We research AI system developers empirically to enable evidence-based AI regulation.</p>
+  <!-- Why it has to scale -->
+  <section class="why" id="mission" aria-labelledby="why-title">
+    <div class="container why__inner">
+      <h2 class="section-title" id="why-title">Why governance has to scale</h2>
+      <ol class="beats">
+        <li class="beat">
+          <span class="status status--argument">Our argument</span>
+          <h3 class="beat__title">AI is built faster</h3>
+          <p>We argue that AI coding agents write a growing amount of the code of AI systems. Teams build faster, and more AI systems reach the market.</p>
+        </li>
+        <li class="beat">
+          <span class="status status--argument">Our argument</span>
+          <h3 class="beat__title">Governance has to keep pace</h3>
+          <p>AI governance across all levels has to keep up with this pace. How is largely unsolved, and we argue that neglecting it poses a systemic risk.</p>
+        </li>
+        <li class="beat">
+          <span class="status status--aim">Our aim</span>
+          <h3 class="beat__title">What we build</h3>
+          <p>An <i>Agentic Governance Workflow</i>: agent skills that enable effective and accountable human-AI collaboration for governance work. We research AI system developers empirically to enable evidence-based AI regulation.</p>
+        </li>
+      </ol>
+
+      <div class="accordion why__accordion">
+        <div class="accordion__item">
+          <h3 class="accordion__heading">
+            <button type="button" class="accordion__trigger" aria-expanded="false" aria-controls="acc-what">
+              <span>What is AI governance?</span><span class="accordion__icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="accordion__panel" id="acc-what">
+            <div class="accordion__body">
+              <p>By <em>AI governance</em> we mean the rules, processes and controls that make sure AI systems are safe and compliant. AI governance can be understood on different levels:</p>
+              <ul>
+                <li><b>Organisation:</b> Companies that develop and deploy AI systems turn regulatory requirements into policies and controls that impact the AI systems.</li>
+                <li><b>Verification:</b> Auditors, notified bodies and authorities check conformity against technical standards and legal obligations.</li>
+                <li><b>Regulation:</b> Legislators and policy-makers write AI regulations and keep them up to date.</li>
+              </ul>
+              <p>Most of our research so far studies the organisational level.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <a class="btn btn--primary btn--md" href="mission/">Read our full mission statement</a>
+
+      <a class="btn btn--primary btn--md" href="mission/">Read our mission statement</a>
     </div>
   </section>
 

@@ -34,8 +34,8 @@ This document specifies the content of the Scalable Governance website (v1): wha
 scalable-governance.org
 ├── /                               Landing page (long scroll)
 │   ├── Nav: Mission · Research · Who we are · Contact
-│   ├── Hero (+ two explainer accordions)
-│   ├── Mission teaser
+│   ├── Hero (+ compliance chain diagram)
+│   ├── Why governance has to scale (three labelled beats + "What is AI governance?" accordion)
 │   ├── Research (intro + publication browser)
 │   ├── Who we are
 │   ├── Get in contact
@@ -65,13 +65,18 @@ scalable-governance.org
 - Headline: the pace mismatch between AI development and governance (the initiative's framing).
 - Lead: what Scalable Governance is and its goal, including keeping human judgment and accountability.
 - Institutional line with link to the TUM Professorship of Societal Computing.
-- Accordion "What is AI governance?": definition and the three levels (organisation, verification, regulation); notes that most of our research so far studies the organisational level.
-- Accordion "Why does it have to scale?": AI coding agents and the volume of AI systems; links to the Mission statement.
 - Buttons: "Read our mission statement" (to `/mission/`), "Read our research" (to `#research`).
+- Diagram: the compliance chain (Obligation → Policy → Control → System impact → Evidence), describing what the workflow follows.
 
-### Mission teaser
+### Why governance has to scale
 
-One paragraph on what we build (the *Agentic Governance Workflow*: agent skills for human-AI collaboration in governance work) and why we research AI system developers empirically. Button to the full Mission statement.
+Replaces the hero's "Why does it have to scale?" accordion and the former mission teaser. Three beats, each carrying its evidential status as a visible label:
+
+- **Our argument** — AI coding agents write a growing amount of the code of AI systems; more AI systems reach the market.
+- **Our argument** — governance has to keep pace; neglecting it poses a systemic risk.
+- **Our aim** — what we build: the *Agentic Governance Workflow* (agent skills), and why we research AI system developers empirically.
+
+Below: accordion "What is AI governance?" (definition and the three levels) and a button to the Mission statement.
 
 **Wording rule:** "agent skills", not "open skills". Nothing has been released yet; the release is stated as an aim on the Mission page.
 
@@ -97,7 +102,7 @@ Two cards, room for 3–6 without redesign. Portraits from `docs/design-referenc
 
 ### Get in contact
 
-Three lines of engagement, then buttons "Write an email" (`mailto:simon.jarvers@tum.de`) and "Contact us on LinkedIn" (https://www.linkedin.com/in/simon-jarvers/).
+Funding leads as the primary path (its own "Email us about funding" button with a prefilled subject, and a link to the Mission statement's "Support this work" section). Two further lines of engagement follow, then "Write an email" (`mailto:simon.jarvers@tum.de`), "Contact us on LinkedIn" (https://www.linkedin.com/in/simon-jarvers/), and the address shown as text with a copy button.
 
 - **SME AI system providers:** for organisations that build AI systems and want to test the Agentic Governance Workflow on their own governance work. Aligned with the Mission statement's first goal (build and test the workflow at the organisational level). No reference to a "cohort": none has been announced.
 - **Research collaboration:** for people working on AI governance, compliance or regulatory design.
@@ -115,7 +120,7 @@ Logo, "Scalable Governance", "An applied research initiative based at the TUM Pr
 
 **Purpose:** The initiative's full argument and plan for a reader who wants more than the landing page: what we build, why it matters, what comes next, our role, how we work, FAQ. It carries the content the v1.4 "What Comes Next" section held: the symbolic-compliance argument, the single-site limitation, and the agenda that justifies support.
 
-Sections: What we build first · Why this matters · What comes next (with three goals) · What is our role (regulatory chain diagram) · How we work (including "Why us" and the single-organisation limitation) · FAQ (8 questions).
+Sections: What we build first · Why this matters · What comes next (with three goals) · What is our role (regulatory chain diagram) · How we work (including "Why us" and the single-organisation limitation) · FAQ (8 questions) · Support this work (funding aims, stated as aims, and contact).
 
 **Evidential notes:**
 - "We argue" marks the credence-good / symbolic-compliance argument, the innovation argument, and the scalable-oversight analogy. Do not soften to "we find".
@@ -184,12 +189,13 @@ Every substantive claim on the site, with its status. Anything not covered here 
 - Build and test the Agentic Governance Workflow at the organisational level; evaluate it on effort reduction and demonstrable system changes
 - Release the skills and the workflow as open source (not yet released; hence "agent skills", not "open skills")
 - Extend to verification and regulation; carry evidence back to rule-makers
+- Funding aims (Mission "Support this work", landing Contact): test the workflow with more AI system providers so the evidence no longer rests on one organisation; release the skills and workflow as open source; carry evidence to regulators and standard-setters; grow from one researcher to a small team
 
 **External claims** (must cite their source on the page):
 - July 2026 incident of OpenAI agents accessing Hugging Face production systems [METR investigation, linked]
 
 **Open items** (unsourced claims currently on the site; source, reframe as argument, or remove):
-- Landing, "Why does it have to scale?": "AI coding agents write a growing amount of the code of AI systems", "more AI systems reach the market", and "neglecting it poses a systemic risk" (an argument not marked as one)
+- Landing, "Why governance has to scale": "AI coding agents write a growing amount of the code of AI systems", "more AI systems reach the market", and "neglecting it poses a systemic risk". Now marked "Our argument" and "we argue"; still unsourced, so add a source when one exists
 - Mission, "Why this matters": frontier labs increasingly use AI to accelerate research on their own models; developers' use of coding agents brings more systems to market, faster
 - Workflow page: "Most compliance budget goes into documentation for audits, not into changes to the AI system" (AIES'26 supports this for one organisation only); "Features that took weeks now take days"; the budget slider's default 62/38 split reads as data but is illustrative
 
