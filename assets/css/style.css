@@ -97,6 +97,7 @@ html { accent-color: var(--blue); }
   border-radius: 6px;
 }
 .skip-link:focus { top: 16px; color: var(--on-blue); }
+.skip-link:hover { color: var(--on-blue); }
 
 .container {
   max-width: var(--container);
@@ -882,6 +883,7 @@ a.paper-tag--violet:hover { background: var(--domain-product); color: var(--viol
   scroll-margin-top: 110px;
 }
 .article__section--last { border-bottom: 0; }
+.article__section:has(+ .support) { border-bottom: 0; padding-bottom: 0; }
 .article h2 {
   margin: 0 0 24px;
   font-family: var(--font-display);
@@ -1386,7 +1388,7 @@ html:not(.js) .term:focus-within .term__tip { display: block; }
     align-items: stretch;
     gap: 0;
     padding: 8px;
-    background: oklch(0.97 0.003 260 / 0.97);
+    background: var(--bg);
     border: 1px solid var(--border-light);
     border-radius: 12px;
     box-shadow: 0 8px 28px oklch(0.20 0.02 260 / 0.10);

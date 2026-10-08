@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-08T11:58:35.029892Z",
+  "generatedAt": "2026-10-08T21:16:29.410461+00:00",
   "title": "Design System: Scalable Governance",
   "extensions": {
     "colorMeta": {
@@ -337,7 +337,7 @@
       "footer-text": {
         "role": "neutral",
         "displayName": "Footer Text",
-        "canonical": "oklch(0.55 0.02 260)",
+        "canonical": "oklch(0.50 0.02 260)",
         "tonalRamp": [
           "oklch(0.15 0.02 260)",
           "oklch(0.27 0.02 260)",
@@ -415,7 +415,7 @@
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Uppercase venues, roles, diagram labels."
+        "purpose": "Short uppercase labels only; 12px floor."
       },
       "mono": {
         "displayName": "Mono",
@@ -541,7 +541,7 @@
   ],
   "narrative": {
     "northStar": "The Impact Mission",
-    "overview": "The site carries a mission with a point: governance that keeps pace with AI and changes what actually gets built. The design gives that mission a calm, precise stage. Cool blue-tinted paper surfaces, one confident primary blue, and a geometric sans for every heading make the argument easy to follow. A slab serif gives the body text the steadiness of a research document. Nothing competes with the argument; every coloured element points at something that matters (an action, a selected paper, the step where governance reaches the system).\n\nDensity is generous and editorial: wide gutters (48px), tall section padding (80–130px), and reading measures held to roughly 720–900px. Interaction is quiet but alive. The nav shrinks as you scroll, a faint dot grid leans toward the cursor in the hero, people and contact bands, and the publication browser swaps papers in place. Motion always serves orientation and never decorates.\n\nThe confirmed anti-reference is the **generic AI aesthetic**: dark mode with neon or purple glows, glassmorphism as a style, sci-fi particles, cyan-on-black. The dot grid and the frosted nav are the only nods to texture. They stay faint and functional and must never grow into that world.\n\nReference sites the owner named as the direction to go after, not yet reviewed against this system: sampura.org, apartresearch.com, apolloresearch.ai, foresight.org.",
+    "overview": "The site carries a mission with a point: governance that keeps pace with AI and changes what actually gets built. The design gives that mission a calm, precise stage. Cool blue-tinted paper surfaces, one confident primary blue, and a geometric sans for every heading make the argument easy to follow. A slab serif gives the body text the steadiness of a research document. Nothing competes with the argument; every coloured element points at something that matters (an action, a selected paper, the step where governance reaches the system).\n\nDensity is generous and editorial: wide gutters (48px), tall section padding (80–130px), and reading measures held to 64–75 characters. The landing page leads with its signature diagram, the compliance chain, so the first screen shows how the work reaches an AI system rather than decoration. Interaction is quiet but alive. The nav shrinks as you scroll, a faint dot grid leans toward the cursor in the hero, people and contact bands, and the publication browser swaps papers in place. Motion always serves orientation and never decorates.\n\nThe confirmed anti-reference is the **generic AI aesthetic**: dark mode with neon or purple glows, glassmorphism as a style, sci-fi particles, cyan-on-black. The dot grid and the frosted nav are the only nods to texture. They stay faint and functional and must never grow into that world.\n\nReference sites the owner named as the direction to go after, not yet reviewed against this system: sampura.org, apartresearch.com, apolloresearch.ai, foresight.org.",
     "keyCharacteristics": [
       "Light, cool paper ground (hue 260) with layered near-white surfaces; no dark mode.",
       "One primary blue carries action, selection and emphasis; violet and indigo are reserved for diagram roles.",
@@ -569,6 +569,16 @@
         "name": "The Paper-First Rule",
         "body": "Depth comes from surface tone before shadow. A new container gets a tonal step or a 1px border first; a shadow only if it is an object the reader handles.",
         "section": "elevation"
+      },
+      {
+        "name": "The Calm Display Rule",
+        "body": "Headings use Outfit 600 with tight tracking, never 700+ at display sizes. Weight 700 is reserved for the wordmark and tiny uppercase labels.",
+        "section": "typography"
+      },
+      {
+        "name": "The 12px Floor Rule",
+        "body": "No text below 12px, including diagram captions and badges.",
+        "section": "typography"
       }
     ],
     "dos": [
@@ -576,7 +586,9 @@
       "**Do** give every new container a tonal step or a 1px rule before reaching for a shadow (The Paper-First Rule).",
       "**Do** set reading text in Bitter at 17px/1.75 within a ~740px measure, and headings in Outfit.",
       "**Do** build new diagrams from the existing chip, figure and domain tints so they read as part of one system.",
-      "**Do** keep the dot grid faint and switch it to static dots under `prefers-reduced-motion`."
+      "**Do** keep the dot grid faint and switch it to static dots under `prefers-reduced-motion`.",
+      "**Do** label every claim-bearing beat with its evidential status (argument, aim) when it sits outside an article.",
+      "**Do** end long reading pages with a next step (contact or funding), never with the footer alone."
     ],
     "donts": [
       "**Don't** introduce the generic AI aesthetic: dark mode, neon or purple glows, glassmorphism beyond the nav, glowing particles, cyan-on-black.",

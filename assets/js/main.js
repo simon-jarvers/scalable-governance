@@ -98,7 +98,8 @@
     const update = () => {
       ticking = false;
       let current = sections[0];
-      sections.forEach((sec) => { if (sec.getBoundingClientRect().top < 200) current = sec; });
+      const line = Math.max(200, window.innerHeight * 0.35);
+      sections.forEach((sec) => { if (sec.getBoundingClientRect().top < line) current = sec; });
       // Short last sections never reach the threshold; mark them once the page bottom is reached.
       const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
       if (atBottom) current = sections[sections.length - 1];
