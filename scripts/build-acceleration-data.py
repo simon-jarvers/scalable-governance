@@ -57,6 +57,7 @@ capability = {
     "label": "Capability",
     "measure": "Length of software tasks (in human expert time) that frontier AI agents complete with 50% success",
     "format": "minutes",
+    "axis_label": "Task length (human expert time)", "ticks": [0, 180, 360, 540, 720],
     "headline": {
         "text": "Doubling every ~4 months",
         "value": round(dt["point_estimate"], 1), "unit": "days (doubling time)",
@@ -98,6 +99,7 @@ compute = {
     "label": "Compute",
     "measure": "Computing power of AI chips sold since 2022, all major designers combined (million H100-equivalents, cumulative)",
     "format": "millions",
+    "axis_label": "AI chip capacity (million H100-equivalents)", "ticks": [0, 10, 20, 30, 40],
     "headline": {
         "text": "3.4× more AI computing power each year",
         "value": 3.4, "unit": "× per year",
@@ -137,6 +139,7 @@ cost = {
     "label": "Cost",
     "measure": "PhD-level science questions (GPQA Diamond) answered per US$1 at 75% accuracy, using the cheapest model available; inverse of Epoch's cost per question",
     "format": "perdollar",
+    "axis_label": "PhD-level questions answered per $1", "ticks": [0, 500, 1000, 1500, 2000, 2500],
     "headline": {
         "text": f"$1 now pays for {round(cost_points[-1]['value'], -2):,.0f} PhD-level questions, up from {cost_points[0]['value']:.0f}",
         "value": cost_points[-1]["value"], "unit": "questions per US$1",
@@ -176,6 +179,7 @@ adoption = {
     "label": "Adoption",
     "measure": "EU enterprises (10+ employees) using at least one AI technology (%)",
     "format": "percent",
+    "axis_label": "EU enterprises using AI (10+ employees)", "ticks": [0, 5, 10, 15, 20, 25],
     "headline": {
         "text": f"{r1(ad_points[0]['value'])}% → {r1(ad_points[-1]['value'])}%",
         "value": ad_points[-1]["value"], "unit": "% of enterprises",
@@ -206,6 +210,7 @@ incidents = {
     "label": "Incidents",
     "measure": "AI incidents recorded in the AI Incident Database, by incident year",
     "format": "count",
+    "axis_label": "Reported AI incidents per year", "ticks": [0, 100, 200, 300, 400, 500],
     "headline": {
         "text": f"{by_year['2025']} reported incidents in 2025",
         "value": by_year["2025"], "unit": "reported incidents",
@@ -230,7 +235,7 @@ out = {
         "built": ACCESSED,
         "order": ["capability", "compute", "cost", "adoption", "incidents"],
         "window": [WINDOW_START, ACCESSED],
-        "display": "All five lines share one time axis. Each is drawn as a percentage of its own latest value (latest = 100%); actual values appear in labels and tooltips.",
+        "display": "All five lines share one time axis. The y-axis shows the selected measure in its own units (ticks per measure); the other four are drawn in grey on their own scales, for timing only.",
     },
     "capability": capability, "compute": compute, "cost": cost, "adoption": adoption, "incidents": incidents,
 }

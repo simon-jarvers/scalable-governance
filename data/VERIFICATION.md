@@ -72,9 +72,10 @@ downloaded files listed below. Nothing in the file comes from secondary reportin
 
 - All five measures share one linear time axis, January 2021 to today. The selected measure is
   blue; the other four are grey.
-- Each line is drawn as a percentage of its own latest value (latest = 100%), because the five
-  measures have different units and one chart must not carry several y-scales. Actual values
-  appear in point labels and tooltips; the note under the chart says how the lines are scaled.
+- The y-axis shows the selected measure in its own units, with ticks set per measure in the data
+  file. The grey lines are drawn on their own scales (0 to their top tick) and cannot be read
+  against the axis; the note under the chart says so. (A first version scaled every line to
+  "% of latest value"; replaced on request, 16 Oct 2026.)
 - Coverage within the window: capability from Mar 2022 (GPT-3.5 Turbo Instruct, 0.6 min, now
   included), compute from Q1 2022, cost from Jan 2025 (Epoch publishes no meaningful earlier
   series: its only earlier GPQA level is 25%, the guessing rate), adoption 2021–2025, incidents
