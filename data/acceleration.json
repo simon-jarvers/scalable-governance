@@ -194,9 +194,9 @@
   },
   "compute": {
     "label": "Compute",
-    "measure": "Publicly announced AI models estimated to have been trained with at least 10²⁵ FLOP (cumulative count)",
+    "measure": "Computing power of AI chips sold since 2022, all major designers combined (million H100-equivalents, cumulative)",
     "scale": "linear",
-    "format": "count",
+    "format": "millions",
     "max": 35,
     "ticks": [
       0,
@@ -205,26 +205,26 @@
       30
     ],
     "headline": {
-      "text": "33 models above 10²⁵ FLOP",
-      "value": 33,
-      "unit": "models",
-      "basis": "Count of rows in Epoch AI's 10²⁵ FLOP model list (CSV updated 21 Nov 2025; latest publication date 2025-05-22)."
+      "text": "3.4× more AI computing power each year",
+      "value": 3.4,
+      "unit": "× per year",
+      "basis": "Epoch AI Trends: the computing power of the total stock of AI chips has grown 3.4× per year since 2022 (90% CI 3.2× to 3.7×; doubling every 6.8 months)."
     },
-    "caption": "The first model trained with more than 10²⁵ FLOP was GPT-4 in March 2023; as of June 2025, Epoch AI counted 33. Models at this scale face additional requirements under the EU AI Act. Training compute for frontier language models has grown about 5× per year since 2020.",
+    "caption": "The AI chips sold since 2022 add up to about 31.6 million H100-equivalents by mid-2026, and this stock has grown about 3.4× per year. The figure combines Nvidia, Google, Amazon, AMD, Huawei and Cambricon; chips that have been retired are not subtracted.",
     "source": {
-      "title": "Epoch AI, Over 30 AI models have been trained at the scale of GPT-4 (Rahman, Heindrich, Owen & Emberson; updated 6 Jun 2025)",
-      "url": "https://epoch.ai/data-insights/models-over-1e25-flop",
-      "data_url": "https://epoch.ai/data/charts/1e25-models/1e25_models.csv",
-      "publisher_updated": "2025-11-21",
-      "licence": "CC BY 4.0",
+      "title": "Epoch AI, Data on AI chip sales (timelines by chip)",
+      "url": "https://epoch.ai/data/ai-chip-sales",
+      "data_url": "https://epoch.ai/data/ai_chip_sales_timelines_by_chip.csv",
+      "publisher_updated": "2026-10-14",
+      "licence": "CC BY 4.0. Cumulative totals are our sum of Epoch's quarterly median estimates across chips, as in Epoch's own cumulative view.",
       "accessed": "2026-10-16",
       "status": "primary"
     },
     "secondary_stat": {
-      "text": "5× per year since 2020",
-      "value": 5,
-      "unit": "× per year (training compute, frontier language models)",
-      "basis": "Epoch AI Trends: training compute for frontier language models has grown 5×/year since 2020 (90% CI 4× to 6×; doubling every 5.2 months).",
+      "text": "3.4× per year since 2022",
+      "value": 3.4,
+      "unit": "× per year (compute stock)",
+      "basis": "Epoch AI Trends: compute stock growth 3.4×/year, 90% CI 3.2× to 3.7×, since 2022.",
       "source": {
         "title": "Epoch AI, Trends in Artificial Intelligence",
         "url": "https://epoch.ai/trends",
@@ -234,234 +234,129 @@
     },
     "points": [
       {
-        "date": "2023-03-15",
-        "value": 1,
-        "unit": "models (cumulative)",
-        "label": "GPT-4 (OpenAI)",
+        "date": "2022-03-31",
+        "value": 0.067,
+        "unit": "million H100e (cumulative)",
+        "label": "Q1 2022",
+        "note": "Coverage starts Q1 2022; chips sold earlier are not counted."
+      },
+      {
+        "date": "2022-06-30",
+        "value": 0.138,
+        "unit": "million H100e (cumulative)",
+        "label": "Q2 2022",
         "note": ""
       },
       {
-        "date": "2023-11-06",
-        "value": 2,
-        "unit": "models (cumulative)",
-        "label": "GPT-4 Turbo (OpenAI)",
+        "date": "2022-09-30",
+        "value": 0.212,
+        "unit": "million H100e (cumulative)",
+        "label": "Q3 2022",
         "note": ""
       },
       {
-        "date": "2023-11-22",
-        "value": 3,
-        "unit": "models (cumulative)",
-        "label": "Inflection-2 (Inflection AI)",
+        "date": "2022-12-31",
+        "value": 0.303,
+        "unit": "million H100e (cumulative)",
+        "label": "Q4 2022",
+        "note": "Google TPU figures for Q4 2022 are partial (Epoch flags them incomplete)."
+      },
+      {
+        "date": "2023-03-31",
+        "value": 0.42,
+        "unit": "million H100e (cumulative)",
+        "label": "Q1 2023",
         "note": ""
       },
       {
-        "date": "2023-12-06",
-        "value": 4,
-        "unit": "models (cumulative)",
-        "label": "Gemini 1.0 Ultra (Google DeepMind)",
+        "date": "2023-06-30",
+        "value": 0.665,
+        "unit": "million H100e (cumulative)",
+        "label": "Q2 2023",
         "note": ""
       },
       {
-        "date": "2024-01-17",
-        "value": 5,
-        "unit": "models (cumulative)",
-        "label": "GLM-4 (0116) (Zhipu AI)",
+        "date": "2023-09-30",
+        "value": 1.059,
+        "unit": "million H100e (cumulative)",
+        "label": "Q3 2023",
         "note": ""
       },
       {
-        "date": "2024-02-15",
-        "value": 6,
-        "unit": "models (cumulative)",
-        "label": "Gemini 1.5 Pro (Google DeepMind)",
+        "date": "2023-12-31",
+        "value": 1.594,
+        "unit": "million H100e (cumulative)",
+        "label": "Q4 2023",
         "note": ""
       },
       {
-        "date": "2024-02-15",
-        "value": 7,
-        "unit": "models (cumulative)",
-        "label": "Sora (OpenAI)",
+        "date": "2024-03-31",
+        "value": 2.422,
+        "unit": "million H100e (cumulative)",
+        "label": "Q1 2024",
         "note": ""
       },
       {
-        "date": "2024-02-26",
-        "value": 8,
-        "unit": "models (cumulative)",
-        "label": "Mistral Large (Mistral AI)",
+        "date": "2024-06-30",
+        "value": 3.455,
+        "unit": "million H100e (cumulative)",
+        "label": "Q2 2024",
         "note": ""
       },
       {
-        "date": "2024-03-04",
-        "value": 9,
-        "unit": "models (cumulative)",
-        "label": "Aramco Metabrain AI (Saudi Aramco)",
+        "date": "2024-09-30",
+        "value": 4.763,
+        "unit": "million H100e (cumulative)",
+        "label": "Q3 2024",
         "note": ""
       },
       {
-        "date": "2024-03-04",
-        "value": 10,
-        "unit": "models (cumulative)",
-        "label": "Claude 3 Opus (Anthropic)",
+        "date": "2024-12-31",
+        "value": 6.687,
+        "unit": "million H100e (cumulative)",
+        "label": "Q4 2024",
         "note": ""
       },
       {
-        "date": "2024-03-07",
-        "value": 11,
-        "unit": "models (cumulative)",
-        "label": "Inflection-2.5 (Inflection AI)",
+        "date": "2025-03-31",
+        "value": 9.259,
+        "unit": "million H100e (cumulative)",
+        "label": "Q1 2025",
         "note": ""
       },
       {
-        "date": "2024-05-13",
-        "value": 12,
-        "unit": "models (cumulative)",
-        "label": "GPT-4o (OpenAI)",
+        "date": "2025-06-30",
+        "value": 12.187,
+        "unit": "million H100e (cumulative)",
+        "label": "Q2 2025",
         "note": ""
       },
       {
-        "date": "2024-06-14",
-        "value": 13,
-        "unit": "models (cumulative)",
-        "label": "Nemotron-4 340B (NVIDIA)",
+        "date": "2025-09-30",
+        "value": 15.89,
+        "unit": "million H100e (cumulative)",
+        "label": "Q3 2025",
         "note": ""
       },
       {
-        "date": "2024-06-20",
-        "value": 14,
-        "unit": "models (cumulative)",
-        "label": "Claude 3.5 Sonnet (Anthropic)",
+        "date": "2025-12-31",
+        "value": 20.301,
+        "unit": "million H100e (cumulative)",
+        "label": "Q4 2025",
         "note": ""
       },
       {
-        "date": "2024-07-23",
-        "value": 15,
-        "unit": "models (cumulative)",
-        "label": "Llama 3.1-405B (Meta AI)",
+        "date": "2026-03-31",
+        "value": 25.281,
+        "unit": "million H100e (cumulative)",
+        "label": "Q1 2026",
         "note": ""
       },
       {
-        "date": "2024-07-24",
-        "value": 16,
-        "unit": "models (cumulative)",
-        "label": "Mistral Large 2 (Mistral AI)",
-        "note": ""
-      },
-      {
-        "date": "2024-08-13",
-        "value": 17,
-        "unit": "models (cumulative)",
-        "label": "Grok-2 (xAI)",
-        "note": ""
-      },
-      {
-        "date": "2024-08-29",
-        "value": 18,
-        "unit": "models (cumulative)",
-        "label": "GLM-4-Plus (Zhipu AI)",
-        "note": ""
-      },
-      {
-        "date": "2024-10-28",
-        "value": 19,
-        "unit": "models (cumulative)",
-        "label": "Doubao-pro (ByteDance)",
-        "note": ""
-      },
-      {
-        "date": "2024-12-05",
-        "value": 20,
-        "unit": "models (cumulative)",
-        "label": "o1 (OpenAI)",
-        "note": ""
-      },
-      {
-        "date": "2024-12-11",
-        "value": 21,
-        "unit": "models (cumulative)",
-        "label": "Gemini 2.0 Pro (Google DeepMind)",
-        "note": ""
-      },
-      {
-        "date": "2024-12-16",
-        "value": 22,
-        "unit": "models (cumulative)",
-        "label": "Veo 2 (Google DeepMind)",
-        "note": ""
-      },
-      {
-        "date": "2024-12-20",
-        "value": 23,
-        "unit": "models (cumulative)",
-        "label": "o3 (OpenAI)",
-        "note": ""
-      },
-      {
-        "date": "2025-02-17",
-        "value": 24,
-        "unit": "models (cumulative)",
-        "label": "Grok-3 (xAI)",
-        "note": ""
-      },
-      {
-        "date": "2025-02-24",
-        "value": 25,
-        "unit": "models (cumulative)",
-        "label": "Claude 3.7 Sonnet (Anthropic)",
-        "note": ""
-      },
-      {
-        "date": "2025-02-27",
-        "value": 26,
-        "unit": "models (cumulative)",
-        "label": "GPT-4.5 (OpenAI)",
-        "note": ""
-      },
-      {
-        "date": "2025-03-25",
-        "value": 27,
-        "unit": "models (cumulative)",
-        "label": "Gemini 2.5 Pro (Google DeepMind)",
-        "note": ""
-      },
-      {
-        "date": "2025-04-05",
-        "value": 28,
-        "unit": "models (cumulative)",
-        "label": "Llama 4 Behemoth (preview) (Meta AI)",
-        "note": ""
-      },
-      {
-        "date": "2025-04-10",
-        "value": 29,
-        "unit": "models (cumulative)",
-        "label": "Pangu Ultra (Huawei)",
-        "note": ""
-      },
-      {
-        "date": "2025-04-14",
-        "value": 30,
-        "unit": "models (cumulative)",
-        "label": "GPT-4.1 (OpenAI)",
-        "note": ""
-      },
-      {
-        "date": "2025-05-21",
-        "value": 31,
-        "unit": "models (cumulative)",
-        "label": "Veo 3 (Google DeepMind)",
-        "note": ""
-      },
-      {
-        "date": "2025-05-22",
-        "value": 32,
-        "unit": "models (cumulative)",
-        "label": "Claude Opus 4 (Anthropic)",
-        "note": ""
-      },
-      {
-        "date": "2025-05-22",
-        "value": 33,
-        "unit": "models (cumulative)",
-        "label": "Claude Sonnet 4 (Anthropic)",
+        "date": "2026-06-30",
+        "value": 31.609,
+        "unit": "million H100e (cumulative)",
+        "label": "Q2 2026",
         "note": ""
       }
     ]

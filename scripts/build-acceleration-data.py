@@ -5,7 +5,7 @@ Usage: python3 scripts/build-acceleration-data.py <download-dir> data/accelerati
 
 Needs PyYAML. <download-dir> must contain (sources and dates in data/VERIFICATION.md):
   metr-site/th11.yaml                  https://metr.org/assets/benchmark_results_1_1.yaml
-  epoch/1e25_models.csv                https://epoch.ai/data/charts/1e25-models/1e25_models.csv
+  epoch/ai_chip_sales_timelines_by_chip.csv  https://epoch.ai/data/ai_chip_sales_timelines_by_chip.csv
   ic/output/slides/Figure 2.csv        git clone https://github.com/droodman/inference-cost ic
   eurostat/ai.json                     Eurostat API, isoc_eb_ai, geo=EU27_2020 (URL in the data file)
   aiid/x/mongodump_full_snapshot/      AIID snapshot backup-20261012101643.tar.bz2, extracted
@@ -74,34 +74,47 @@ capability = {
     "excluded": cap_excluded,
 }
 
-# --- Compute: Epoch AI 1e25 FLOP tracker --------------------------------------
-rows = list(csv.DictReader(open(f"{DL}/epoch/1e25_models.csv", encoding="utf-8-sig")))
-rows.sort(key=lambda r: (r["Publication date"], r["Model"]))
-comp_points = [{"date": r["Publication date"], "value": i + 1, "unit": "models (cumulative)",
-                "label": f"{r['Model']} ({r['Organization']})", "note": ""} for i, r in enumerate(rows)]
+# --- Compute: Epoch AI, Data on AI chip sales -----------------------------------
+chips = list(csv.DictReader(open(f"{DL}/epoch/ai_chip_sales_timelines_by_chip.csv", encoding="utf-8-sig")))
+LAST_FULL_QUARTER_END = "2026-06-30"  # Q3 2026 is flagged incomplete for several chips
+per_q = collections.defaultdict(float)
+for c in chips:
+    if c["End date"] <= LAST_FULL_QUARTER_END:
+        per_q[c["End date"]] += float(c["Compute estimate in H100e (median)"] or 0)
+ORDER_BY_SHARE = ["Nvidia", "Google", "Amazon", "AMD", "Huawei", "Cambricon"]
+designers = sorted({c["Chip manufacturer"] for c in chips}, key=ORDER_BY_SHARE.index)
+comp_points, total = [], 0.0
+for end in sorted(per_q):
+    total += per_q[end]
+    y, m = int(end[:4]), int(end[5:7])
+    comp_points.append({"date": end, "value": round(total / 1e6, 3), "unit": "million H100e (cumulative)",
+                        "label": f"Q{(m - 1) // 3 + 1} {y}", "note": ""})
+comp_points[0]["note"] = "Coverage starts Q1 2022; chips sold earlier are not counted."
+comp_points[3]["note"] = "Google TPU figures for Q4 2022 are partial (Epoch flags them incomplete)."
+last = comp_points[-1]
 compute = {
     "label": "Compute",
-    "measure": "Publicly announced AI models estimated to have been trained with at least 10²⁵ FLOP (cumulative count)",
-    "scale": "linear", "format": "count", "max": 35, "ticks": [0, 10, 20, 30],
+    "measure": "Computing power of AI chips sold since 2022, all major designers combined (million H100-equivalents, cumulative)",
+    "scale": "linear", "format": "millions", "max": 35, "ticks": [0, 10, 20, 30],
     "headline": {
-        "text": f"{len(rows)} models above 10²⁵ FLOP",
-        "value": len(rows), "unit": "models",
-        "basis": f"Count of rows in Epoch AI's 10²⁵ FLOP model list (CSV updated 21 Nov 2025; latest publication date {rows[-1]['Publication date']}).",
+        "text": "3.4× more AI computing power each year",
+        "value": 3.4, "unit": "× per year",
+        "basis": "Epoch AI Trends: the computing power of the total stock of AI chips has grown 3.4× per year since 2022 (90% CI 3.2× to 3.7×; doubling every 6.8 months).",
     },
-    "caption": f"The first model trained with more than 10²⁵ FLOP was GPT-4 in March 2023; as of June 2025, Epoch AI counted {len(rows)}. Models at this scale face additional requirements under the EU AI Act. Training compute for frontier language models has grown about 5× per year since 2020.",
+    "caption": f"The AI chips sold since 2022 add up to about {last['value']:.1f} million H100-equivalents by mid-2026, and this stock has grown about 3.4× per year. The figure combines {', '.join(designers[:-1])} and {designers[-1]}; chips that have been retired are not subtracted.",
     "source": {
-        "title": "Epoch AI, Over 30 AI models have been trained at the scale of GPT-4 (Rahman, Heindrich, Owen & Emberson; updated 6 Jun 2025)",
-        "url": "https://epoch.ai/data-insights/models-over-1e25-flop",
-        "data_url": "https://epoch.ai/data/charts/1e25-models/1e25_models.csv",
-        "publisher_updated": "2025-11-21",
-        "licence": "CC BY 4.0",
+        "title": "Epoch AI, Data on AI chip sales (timelines by chip)",
+        "url": "https://epoch.ai/data/ai-chip-sales",
+        "data_url": "https://epoch.ai/data/ai_chip_sales_timelines_by_chip.csv",
+        "publisher_updated": "2026-10-14",
+        "licence": "CC BY 4.0. Cumulative totals are our sum of Epoch's quarterly median estimates across chips, as in Epoch's own cumulative view.",
         "accessed": ACCESSED,
         "status": "primary",
     },
     "secondary_stat": {
-        "text": "5× per year since 2020",
-        "value": 5, "unit": "× per year (training compute, frontier language models)",
-        "basis": "Epoch AI Trends: training compute for frontier language models has grown 5×/year since 2020 (90% CI 4× to 6×; doubling every 5.2 months).",
+        "text": "3.4× per year since 2022",
+        "value": 3.4, "unit": "× per year (compute stock)",
+        "basis": "Epoch AI Trends: compute stock growth 3.4×/year, 90% CI 3.2× to 3.7×, since 2022.",
         "source": {"title": "Epoch AI, Trends in Artificial Intelligence", "url": "https://epoch.ai/trends",
                    "licence": "CC BY 4.0", "accessed": ACCESSED},
     },

@@ -9,7 +9,7 @@ downloaded files listed below. Nothing in the file comes from secondary reportin
 | Tab | Status | Primary file checked |
 |---|---|---|
 | Capability | Verified | METR `benchmark_results_1_1.yaml` (page last updated 8 Sep 2026) |
-| Compute | Verified, but **stale** (see below) | Epoch AI `1e25_models.csv` (updated 21 Nov 2025) and epoch.ai/trends |
+| Compute | Verified | Epoch AI `ai_chip_sales_timelines_by_chip.csv` (updated 14 Oct 2026) and epoch.ai/trends |
 | Cost | Verified | Epoch AI report page and its data repo, `output/slides/Figure 2.csv` at commit `9163c17` |
 | Adoption | Verified | Eurostat API, `isoc_eb_ai` (data updated 15 Jun 2026) |
 | Incidents | Verified | AIID snapshot `backup-20261012101643.tar.bz2`, `incidents.csv` (sha256 `01d0ae55…c218683`) |
@@ -19,11 +19,10 @@ downloaded files listed below. Nothing in the file comes from secondary reportin
 - **Claude Mythos Preview (early), 1,044.8 min (≈17.4 h).** Above 16 hours. METR's page states
   that "measurements above 16 hrs are unreliable with our current task suite". The point is kept
   in the data file under `capability.excluded` but is not drawn.
-- **Current count of models above 10²⁵ FLOP.** Epoch has not published one. Its tracker still
-  lists 33 models, the latest published 22 May 2025. The wider AI Models database has entries
-  above 10²⁵ FLOP up to Sep 2026 (25 with a numeric estimate), but it leaves many frontier models
-  without a compute estimate. Counting it would mix two methods and undercount, so it is not
-  used. The chart shows the tracker's 33, dated "as of June 2025".
+- **Models above 10²⁵ FLOP (earlier compute tab, replaced).** Epoch's tracker stops at 33 models
+  (latest May 2025) and Epoch has published no current count, so the tab now shows global AI
+  chip capacity instead.
+- **Q3 2026 chip sales.** Epoch flags the quarter incomplete for several chips; the series ends Q2 2026.
 - **AI Index figures** (incidents 233 / 362, cost "280×"). They were replaced by the primary data.
 
 ## Corrections to the handoff and the old mockup
@@ -35,8 +34,17 @@ downloaded files listed below. Nothing in the file comes from secondary reportin
   - Doubling time for models from 2023 onwards is 128.7 days, about 4.2 months (range 104–158 days).
   - METR's file does not say what kind of interval this range is, so we call it a "range".
   - The METR page is now marked "no longer actively updated".
-- **Compute.** The old mockup's "4–5× per year since 2010" is replaced by Epoch's current trends
-  figure: 5× per year since 2020 (90% CI 4–6×).
+- **Compute.**
+  - The tab now shows the installed computing power of AI chips sold since 2022, all designers
+    combined: 31.6 million H100e by Q2 2026, growing 3.4× per year since 2022 (90% CI 3.2–3.7×,
+    Epoch Trends).
+  - Cumulative totals are our sum of Epoch's quarterly median estimates across chips, which is
+    how Epoch's own cumulative view works. Retirements are not subtracted, as in Epoch's data.
+  - The AI Index 2026 chart of the same data shows 17.07M for Q4 2025. Epoch's current data
+    gives 20.3M for that quarter, so Epoch has revised its estimates upward since. We use the
+    current data.
+  - Q4 2022 Google TPU figures are partial (flagged incomplete by Epoch) and are included.
+  - The old mockup's "4–5× per year since 2010" (training compute) is dropped.
 - **Cost.**
   - The report's headline is confirmed: about 47% per quarter, or 13× per year, since 2023.
   - The chart series is cost per question to reach 75% on GPQA Diamond: $0.30 (31 Jan 2025) to
@@ -79,5 +87,3 @@ downloaded files listed below. Nothing in the file comes from secondary reportin
 - EU or Germany for adoption.
 - Final chart title. The mockup uses "Five measures of how fast AI is moving" as a placeholder.
   Headline wording is also open.
-- Compute: keep a count that stops in mid-2025, or switch this tab to Epoch's training-compute
-  trend (5×/year), which is current.
