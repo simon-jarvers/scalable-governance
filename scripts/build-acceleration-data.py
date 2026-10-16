@@ -17,11 +17,13 @@ import yaml
 DL = sys.argv[1]
 OUT = sys.argv[2]
 ACCESSED = "2026-10-16"
+WINDOW_START = "2021-01-01"  # shared time axis for all five lines
 csv.field_size_limit(10**9)
 
 # --- Capability: METR Time Horizon 1.1 ---------------------------------------
 metr = yaml.safe_load(open(f"{DL}/metr-site/th11.yaml"))
 NAMES = {
+    "gpt_3_5_turbo_instruct": "GPT-3.5 Turbo Instruct",
     "gpt_4": "GPT-4", "gpt_4_1106_inspect": "GPT-4 Turbo (Nov 2023)", "gpt_4o_inspect": "GPT-4o",
     "claude_3_5_sonnet_20240620_inspect": "Claude 3.5 Sonnet (Jun 2024)", "o1_preview": "o1-preview",
     "claude_3_5_sonnet_20241022_inspect": "Claude 3.5 Sonnet (Oct 2024)", "o1_inspect": "o1",
@@ -35,7 +37,7 @@ cap_points, cap_excluded = [], []
 for key, r in metr["results"].items():
     m = r["metrics"]
     d = str(r["release_date"])
-    if not m.get("is_sota") or d < "2023-01-01":
+    if not m.get("is_sota") or d < WINDOW_START:
         continue
     p50 = m["p50_horizon_length"]
     pt = {"date": d, "value": round(p50["estimate"], 2), "unit": "minutes",
@@ -53,8 +55,8 @@ months = lambda days: round(days / (365.25 / 12), 1)
 
 capability = {
     "label": "Capability",
-    "measure": "Length of software tasks (in human expert time) that frontier AI agents complete with 50% success; log scale",
-    "scale": "log", "format": "minutes", "ticks": [1, 10, 60, 600],
+    "measure": "Length of software tasks (in human expert time) that frontier AI agents complete with 50% success",
+    "format": "minutes",
     "headline": {
         "text": "Doubling every ~4 months",
         "value": round(dt["point_estimate"], 1), "unit": "days (doubling time)",
@@ -95,7 +97,7 @@ last = comp_points[-1]
 compute = {
     "label": "Compute",
     "measure": "Computing power of AI chips sold since 2022, all major designers combined (million H100-equivalents, cumulative)",
-    "scale": "linear", "format": "millions", "max": 35, "ticks": [0, 10, 20, 30],
+    "format": "millions",
     "headline": {
         "text": "3.4× more AI computing power each year",
         "value": 3.4, "unit": "× per year",
@@ -126,21 +128,21 @@ fig = list(csv.DictReader(open(f"{DL}/ic/output/slides/Figure 2.csv")))
 gp = [r for r in fig if r["bench"] == "gpqa" and r["level"] == "0.75"]
 # Shown as performance per dollar: the inverse of Epoch's cost per question, so that
 # the line rises like the other tabs. The original cost is kept on every point.
-cost_points = [{"date": r["date"], "value": round(1 / float(r["cost"]), 2), "unit": "questions per US$",
+cost_points = [{"date": r["date"], "value": round(1 / float(r["cost"]), 2), "unit": "questions per US$1",
                 "label": r["model_label"], "cost_usd_per_question": float(r["cost"]),
                 "accuracy": round(float(r["acc"]), 4), "note": ""} for r in gp]
 cost_points[0]["note"] = "Epoch's report text names this model o3 and dates it 31 Jan 2025 (the o3-mini release date); kept as published."
 fold = cost_points[0]["cost_usd_per_question"] / cost_points[-1]["cost_usd_per_question"]
 cost = {
     "label": "Cost",
-    "measure": "GPQA Diamond questions answered at a 75% score per US$, using the cheapest model available (inverse of Epoch's cost per question; log scale)",
-    "scale": "log", "format": "perdollar", "ticks": [1, 10, 100, 1000, 10000],
+    "measure": "PhD-level science questions (GPQA Diamond) answered per US$1 at 75% accuracy, using the cheapest model available; inverse of Epoch's cost per question",
+    "format": "perdollar",
     "headline": {
-        "text": "13× more for the same money each year",
-        "value": 13, "unit": "× per year",
-        "basis": "Epoch AI: the cost of achieving a given level of AI performance has fallen about 47% per quarter since 2023, or 13× per year, across five benchmarks. 13× cheaper is 13× more per unit of money, in any currency.",
+        "text": f"$1 now pays for {round(cost_points[-1]['value'], -2):,.0f} PhD-level questions, up from {cost_points[0]['value']:.0f}",
+        "value": cost_points[-1]["value"], "unit": "questions per US$1",
+        "basis": "Inverse of Epoch AI's lowest cost per question to score 75% on GPQA Diamond: $0.2989 (31 Jan 2025) and $0.000412 (9 Jul 2026).",
     },
-    "caption": f"Since 2023, the cost of a given level of AI performance has fallen about 47% per quarter, so the same money buys roughly 13× more each year (average of five benchmarks). The chart shows one of them: one US dollar bought about {cost_points[0]['value']:.0f} GPQA Diamond questions at a 75% score in January 2025 and about {round(cost_points[-1]['value'], -2):,.0f} in July 2026, {int(fold)} times as many.",
+    "caption": f"GPQA Diamond is a multiple-choice exam of PhD-level physics, chemistry and biology questions. Answering them at 75% accuracy with the cheapest available model cost about 30 cents per question in January 2025 and 0.04 cents in July 2026, so a dollar now pays for {int(fold)} times as many questions. Across five benchmarks, Epoch AI finds the cost of a given level of AI performance falling about 47% per quarter, roughly 13× per year, since 2023.",
     "source": {
         "title": "Epoch AI, The plunging price of thought (Emberson & Roodman, 22 Sep 2026)",
         "url": "https://epoch.ai/publications/the-plunging-price-of-thought",
@@ -173,7 +175,7 @@ r1 = lambda v: str(Decimal(str(v)).quantize(Decimal("0.1"), rounding=ROUND_HALF_
 adoption = {
     "label": "Adoption",
     "measure": "EU enterprises (10+ employees) using at least one AI technology (%)",
-    "scale": "linear", "format": "percent", "max": 25, "ticks": [0, 5, 10, 15, 20, 25],
+    "format": "percent",
     "headline": {
         "text": f"{r1(ad_points[0]['value'])}% → {r1(ad_points[-1]['value'])}%",
         "value": ad_points[-1]["value"], "unit": "% of enterprises",
@@ -198,12 +200,12 @@ adoption = {
 SNAP = "backup-20261012101643"
 inc = list(csv.DictReader(open(f"{DL}/aiid/x/mongodump_full_snapshot/incidents.csv", encoding="utf-8")))
 by_year = collections.Counter(r["date"][:4] for r in inc)
-inc_years = [str(y) for y in range(2016, 2026)]
+inc_years = [str(y) for y in range(int(WINDOW_START[:4]), 2026)]  # 2026 is a partial year
 inc_points = [{"date": y, "value": by_year[y], "unit": "reported incidents", "label": y, "note": ""} for y in inc_years]
 incidents = {
     "label": "Incidents",
     "measure": "AI incidents recorded in the AI Incident Database, by incident year",
-    "scale": "linear", "format": "count", "max": 500, "ticks": [0, 100, 200, 300, 400, 500],
+    "format": "count",
     "headline": {
         "text": f"{by_year['2025']} reported incidents in 2025",
         "value": by_year["2025"], "unit": "reported incidents",
@@ -227,6 +229,8 @@ out = {
         "description": "Data behind the acceleration chart in the Scalable Governance hero. Every number shown on the page resolves to an entry here. See data/VERIFICATION.md.",
         "built": ACCESSED,
         "order": ["capability", "compute", "cost", "adoption", "incidents"],
+        "window": [WINDOW_START, ACCESSED],
+        "display": "All five lines share one time axis. Each is drawn as a percentage of its own latest value (latest = 100%); actual values appear in labels and tooltips.",
     },
     "capability": capability, "compute": compute, "cost": cost, "adoption": adoption, "incidents": incidents,
 }

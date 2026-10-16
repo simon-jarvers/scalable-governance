@@ -68,6 +68,21 @@ downloaded files listed below. Nothing in the file comes from secondary reportin
   - Counts are by the incident `date` field.
   - 2026 is a partial year and is not drawn.
 
+## How the chart displays the data (decided 16 Oct 2026)
+
+- All five measures share one linear time axis, January 2021 to today. The selected measure is
+  blue; the other four are grey.
+- Each line is drawn as a percentage of its own latest value (latest = 100%), because the five
+  measures have different units and one chart must not carry several y-scales. Actual values
+  appear in point labels and tooltips; the note under the chart says how the lines are scaled.
+- Coverage within the window: capability from Mar 2022 (GPT-3.5 Turbo Instruct, 0.6 min, now
+  included), compute from Q1 2022, cost from Jan 2025 (Epoch publishes no meaningful earlier
+  series: its only earlier GPQA level is 25%, the guessing rate), adoption 2021–2025, incidents
+  2021–2025 (2016–2020 dropped from the file; 2026 is a partial year).
+- Annual values (adoption, incidents) are plotted at mid-year.
+- Adoption shows the EU total as the line and the 2025 size split as bars beside the chart.
+- Cost is framed as PhD-level science questions answered per US$1 (GPQA Diamond at 75% accuracy).
+
 ## Comparability caveats (stated on the page)
 
 - **Eurostat.**
