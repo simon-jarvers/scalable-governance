@@ -49,6 +49,11 @@ downloaded files listed below. Nothing in the file comes from secondary reportin
   - The report's headline is confirmed: about 47% per quarter, or 13× per year, since 2023.
   - The chart series is cost per question to reach 75% on GPQA Diamond: $0.30 (31 Jan 2025) to
     $0.00041 (GPT-5.6 Luna, 9 Jul 2026), which is 725×.
+  - **Shown inverted** (decided 16 Oct 2026): the chart plots questions per US$ (1 / cost), from
+    3.3 to 2,427, so the line rises like the other tabs. This is our modification and is stated
+    in the source line. Each point keeps Epoch's original `cost_usd_per_question`.
+  - Kept in US$, not converted to euros: the prices are set in dollars, a conversion would add an
+    exchange-rate choice and a second modification, and the 13× headline is currency-neutral.
   - Two labelling quirks in Epoch's data are kept as published:
     - The first point is named "o3 (high)" and dated 31 Jan 2025, which is the o3-mini release date.
     - "Gemini 2.5 Pro (Jun 2025)" is dated 25 Mar 2025.

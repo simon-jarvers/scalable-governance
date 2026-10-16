@@ -124,26 +124,29 @@ compute = {
 # --- Cost: Epoch AI, The plunging price of thought ----------------------------
 fig = list(csv.DictReader(open(f"{DL}/ic/output/slides/Figure 2.csv")))
 gp = [r for r in fig if r["bench"] == "gpqa" and r["level"] == "0.75"]
-cost_points = [{"date": r["date"], "value": float(r["cost"]), "unit": "US$ per question",
-                "label": r["model_label"], "accuracy": round(float(r["acc"]), 4), "note": ""} for r in gp]
+# Shown as performance per dollar: the inverse of Epoch's cost per question, so that
+# the line rises like the other tabs. The original cost is kept on every point.
+cost_points = [{"date": r["date"], "value": round(1 / float(r["cost"]), 2), "unit": "questions per US$",
+                "label": r["model_label"], "cost_usd_per_question": float(r["cost"]),
+                "accuracy": round(float(r["acc"]), 4), "note": ""} for r in gp]
 cost_points[0]["note"] = "Epoch's report text names this model o3 and dates it 31 Jan 2025 (the o3-mini release date); kept as published."
-fold = cost_points[0]["value"] / cost_points[-1]["value"]
+fold = cost_points[0]["cost_usd_per_question"] / cost_points[-1]["cost_usd_per_question"]
 cost = {
     "label": "Cost",
-    "measure": "Lowest cost per question to score 75% on GPQA Diamond (US$, log scale)",
-    "scale": "log", "format": "usd", "ticks": [0.0001, 0.001, 0.01, 0.1, 1],
+    "measure": "GPQA Diamond questions answered at a 75% score per US$, using the cheapest model available (inverse of Epoch's cost per question; log scale)",
+    "scale": "log", "format": "perdollar", "ticks": [1, 10, 100, 1000, 10000],
     "headline": {
-        "text": "~13× cheaper per year",
+        "text": "13× more for the same money each year",
         "value": 13, "unit": "× per year",
-        "basis": "Epoch AI: the cost of achieving a given level of AI performance has fallen about 47% per quarter since 2023, or 13× per year, across five benchmarks.",
+        "basis": "Epoch AI: the cost of achieving a given level of AI performance has fallen about 47% per quarter since 2023, or 13× per year, across five benchmarks. 13× cheaper is 13× more per unit of money, in any currency.",
     },
-    "caption": f"Since 2023, the cost of reaching a given level of AI performance has fallen about 47% per quarter, roughly 13× per year, averaged over five benchmarks. The chart shows one of them: the cheapest way to score 75% on GPQA Diamond became {int(fold)} times cheaper in under 18 months.",
+    "caption": f"Since 2023, the cost of a given level of AI performance has fallen about 47% per quarter, so the same money buys roughly 13× more each year (average of five benchmarks). The chart shows one of them: one US dollar bought about {cost_points[0]['value']:.0f} GPQA Diamond questions at a 75% score in January 2025 and about {round(cost_points[-1]['value'], -2):,.0f} in July 2026, {int(fold)} times as many.",
     "source": {
         "title": "Epoch AI, The plunging price of thought (Emberson & Roodman, 22 Sep 2026)",
         "url": "https://epoch.ai/publications/the-plunging-price-of-thought",
         "data_url": "https://github.com/droodman/inference-cost/blob/main/output/slides/Figure%202.csv",
         "data_commit": "9163c17ee7217b9f09ac51bcc71ed64c18c04bc8",
-        "licence": "CC BY 4.0 (Epoch AI publication). The linked code/data repository carries no licence file.",
+        "licence": "CC BY 4.0 (Epoch AI publication). Modified: values inverted from Epoch's cost per question. The linked code/data repository carries no licence file.",
         "accessed": ACCESSED,
         "status": "primary",
     },

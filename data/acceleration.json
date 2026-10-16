@@ -363,94 +363,102 @@
   },
   "cost": {
     "label": "Cost",
-    "measure": "Lowest cost per question to score 75% on GPQA Diamond (US$, log scale)",
+    "measure": "GPQA Diamond questions answered at a 75% score per US$, using the cheapest model available (inverse of Epoch's cost per question; log scale)",
     "scale": "log",
-    "format": "usd",
+    "format": "perdollar",
     "ticks": [
-      0.0001,
-      0.001,
-      0.01,
-      0.1,
-      1
+      1,
+      10,
+      100,
+      1000,
+      10000
     ],
     "headline": {
-      "text": "~13× cheaper per year",
+      "text": "13× more for the same money each year",
       "value": 13,
       "unit": "× per year",
-      "basis": "Epoch AI: the cost of achieving a given level of AI performance has fallen about 47% per quarter since 2023, or 13× per year, across five benchmarks."
+      "basis": "Epoch AI: the cost of achieving a given level of AI performance has fallen about 47% per quarter since 2023, or 13× per year, across five benchmarks. 13× cheaper is 13× more per unit of money, in any currency."
     },
-    "caption": "Since 2023, the cost of reaching a given level of AI performance has fallen about 47% per quarter, roughly 13× per year, averaged over five benchmarks. The chart shows one of them: the cheapest way to score 75% on GPQA Diamond became 725 times cheaper in under 18 months.",
+    "caption": "Since 2023, the cost of a given level of AI performance has fallen about 47% per quarter, so the same money buys roughly 13× more each year (average of five benchmarks). The chart shows one of them: one US dollar bought about 3 GPQA Diamond questions at a 75% score in January 2025 and about 2,400 in July 2026, 725 times as many.",
     "source": {
       "title": "Epoch AI, The plunging price of thought (Emberson & Roodman, 22 Sep 2026)",
       "url": "https://epoch.ai/publications/the-plunging-price-of-thought",
       "data_url": "https://github.com/droodman/inference-cost/blob/main/output/slides/Figure%202.csv",
       "data_commit": "9163c17ee7217b9f09ac51bcc71ed64c18c04bc8",
-      "licence": "CC BY 4.0 (Epoch AI publication). The linked code/data repository carries no licence file.",
+      "licence": "CC BY 4.0 (Epoch AI publication). Modified: values inverted from Epoch's cost per question. The linked code/data repository carries no licence file.",
       "accessed": "2026-10-16",
       "status": "primary"
     },
     "points": [
       {
         "date": "2025-01-31",
-        "value": 0.298906,
-        "unit": "US$ per question",
+        "value": 3.35,
+        "unit": "questions per US$",
         "label": "o3 (high)",
+        "cost_usd_per_question": 0.298906,
         "accuracy": 0.7576,
         "note": "Epoch's report text names this model o3 and dates it 31 Jan 2025 (the o3-mini release date); kept as published."
       },
       {
         "date": "2025-03-25",
-        "value": 0.089116,
-        "unit": "US$ per question",
+        "value": 11.22,
+        "unit": "questions per US$",
         "label": "Gemini 2.5 Pro (Jun 2025)",
+        "cost_usd_per_question": 0.089116,
         "accuracy": 0.8036,
         "note": ""
       },
       {
         "date": "2025-06-05",
-        "value": 0.012932,
-        "unit": "US$ per question",
+        "value": 77.33,
+        "unit": "questions per US$",
         "label": "Gemini 2.5 Pro (Jun 2025)",
+        "cost_usd_per_question": 0.012932,
         "accuracy": 0.7777,
         "note": ""
       },
       {
         "date": "2025-12-01",
-        "value": 0.008821,
-        "unit": "US$ per question",
+        "value": 113.37,
+        "unit": "questions per US$",
         "label": "DeepSeek-V3.2",
+        "cost_usd_per_question": 0.008821,
         "accuracy": 0.7772,
         "note": ""
       },
       {
         "date": "2026-02-13",
-        "value": 0.007102,
-        "unit": "US$ per question",
+        "value": 140.81,
+        "unit": "questions per US$",
         "label": "Qwen3.5 397B-A17B",
+        "cost_usd_per_question": 0.007102,
         "accuracy": 0.798,
         "note": ""
       },
       {
         "date": "2026-02-25",
-        "value": 0.0021805,
-        "unit": "US$ per question",
+        "value": 458.61,
+        "unit": "questions per US$",
         "label": "Qwen 3.5 Flash (hosted 35B-A3B)",
+        "cost_usd_per_question": 0.0021805,
         "accuracy": 0.7624,
         "note": ""
       },
       {
         "date": "2026-06-01",
-        "value": 0.001213,
-        "unit": "US$ per question",
+        "value": 824.4,
+        "unit": "questions per US$",
         "label": "MiniMax-M3",
+        "cost_usd_per_question": 0.001213,
         "accuracy": 0.7508,
         "note": ""
       },
       {
         "date": "2026-07-09",
-        "value": 0.000412,
-        "unit": "US$ per question",
+        "value": 2427.18,
+        "unit": "questions per US$",
         "label": "GPT-5.6 Luna (low)",
+        "cost_usd_per_question": 0.000412,
         "accuracy": 0.7525,
         "note": ""
       }
