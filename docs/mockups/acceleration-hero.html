@@ -172,7 +172,7 @@ h1, h2, h3 { text-wrap: balance; }
 </style>
 
 <div class="wrap">
-  <p class="note"><b>Mockup for review, not on the site.</b> Proposed merged hero: the acceleration chart becomes the first visual, followed by the governance argument and who we are; the workflow and compliance chain move to the second section. The data points come from the sources listed at the bottom and still need checking against the primary publications before any of this goes live.</p>
+  <p class="note"><b>Mockup for review, not on the site.</b> Proposed merged hero: the acceleration chart becomes the first visual, followed by the governance argument and who we are; the workflow and compliance chain move to the second section. The data come from <code>data/acceleration.json</code>; every number was checked against its primary source (see <code>data/VERIFICATION.md</code>). Chart title and copy are drafts.</p>
 </div>
 
 <section class="hero">
@@ -181,13 +181,13 @@ h1, h2, h3 { text-wrap: balance; }
 
     <figure class="accel" aria-labelledby="accel-title" style="margin:0">
       <div class="accel__head">
-        <figcaption class="accel__title" id="accel-title">AI is accelerating on every dimension we can measure</figcaption>
+        <figcaption class="accel__title" id="accel-title">Five measures of how fast AI is moving</figcaption>
         <div class="tabs" role="tablist" aria-label="Dimension">
           <button class="tab" role="tab" id="t-capability" aria-selected="true">Capability</button>
-          <button class="tab" role="tab" id="t-code" aria-selected="false" tabindex="-1">Code</button>
-          <button class="tab" role="tab" id="t-models" aria-selected="false" tabindex="-1">Models</button>
-          <button class="tab" role="tab" id="t-adoption" aria-selected="false" tabindex="-1">Adoption</button>
+          <button class="tab" role="tab" id="t-compute" aria-selected="false" tabindex="-1">Compute</button>
           <button class="tab" role="tab" id="t-cost" aria-selected="false" tabindex="-1">Cost</button>
+          <button class="tab" role="tab" id="t-adoption" aria-selected="false" tabindex="-1">Adoption</button>
+          <button class="tab" role="tab" id="t-incidents" aria-selected="false" tabindex="-1">Incidents</button>
         </div>
       </div>
       <div class="chart" role="tabpanel" id="chart-panel" aria-labelledby="t-capability">
@@ -240,8 +240,8 @@ h1, h2, h3 { text-wrap: balance; }
 
 <section class="sources">
   <div class="wrap">
-    <h2>Candidate data sources</h2>
-    <p>What each tab would rest on. "Check" means the number in the mockup comes from secondary reporting and must be confirmed in the primary source; the chart then shows only confirmed points.</p>
+    <h2>Data sources</h2>
+    <p>What each tab rests on. "Primary" means every number shown was checked in the publisher's own data or report (16 Oct 2026); details in <code>data/VERIFICATION.md</code>.</p>
     <div class="table-wrap">
       <table class="src-table">
         <thead><tr><th>Dimension</th><th>Measure</th><th>Source</th><th>Status</th></tr></thead>
@@ -251,174 +251,140 @@ h1, h2, h3 { text-wrap: balance; }
   </div>
 </section>
 
+<!-- acceleration-data:start (copy of data/acceleration.json; regenerate with scripts/inline-acceleration-data.py) -->
+<script type="application/json" id="acceleration-fallback">
+{"_meta":{"description":"Data behind the acceleration chart in the Scalable Governance hero. Every number shown on the page resolves to an entry here. See data/VERIFICATION.md.","built":"2026-10-16","order":["capability","compute","cost","adoption","incidents"]},"capability":{"label":"Capability","measure":"Length of software tasks (in human expert time) that frontier AI agents complete with 50% success; log scale","scale":"log","format":"minutes","ticks":[1,10,60,600],"headline":{"text":"Doubling every ~4 months","value":128.7,"unit":"days (doubling time)","basis":"METR doubling time for frontier models released from 2023 on: 129 days (≈4.2 months), range 104–158 days. METR excludes points with central estimate above 16 hours from this fit."},"caption":"Since 2023, the length of software tasks that frontier AI agents complete with 50% success has doubled about every four months (range 3.4–5.2 months). Points are the frontier models METR measured; estimates above 16 hours are left out because METR flags them as unreliable.","source":{"title":"METR, Task-Completion Time Horizons of Frontier AI Models (Time Horizon 1.1), benchmark_results_1_1.yaml","url":"https://metr.org/time-horizons/","data_url":"https://metr.org/assets/benchmark_results_1_1.yaml","publisher_updated":"2026-09-08","licence":"© METR, all rights reserved. Numbers cited; chart drawn by Scalable Governance.","accessed":"2026-10-16","status":"primary"},"points":[{"date":"2023-03-14","value":3.99,"unit":"minutes","label":"GPT-4","ci_low":1.93,"ci_high":8.0,"source_id":"gpt_4","note":""},{"date":"2023-11-06","value":4.04,"unit":"minutes","label":"GPT-4 Turbo (Nov 2023)","ci_low":1.87,"ci_high":8.44,"source_id":"gpt_4_1106_inspect","note":""},{"date":"2024-05-13","value":6.99,"unit":"minutes","label":"GPT-4o","ci_low":4.0,"ci_high":12.91,"source_id":"gpt_4o_inspect","note":""},{"date":"2024-06-20","value":11.4,"unit":"minutes","label":"Claude 3.5 Sonnet (Jun 2024)","ci_low":5.49,"ci_high":22.38,"source_id":"claude_3_5_sonnet_20240620_inspect","note":""},{"date":"2024-09-12","value":20.33,"unit":"minutes","label":"o1-preview","ci_low":11.72,"ci_high":33.38,"source_id":"o1_preview","note":""},{"date":"2024-10-22","value":20.52,"unit":"minutes","label":"Claude 3.5 Sonnet (Oct 2024)","ci_low":10.14,"ci_high":40.82,"source_id":"claude_3_5_sonnet_20241022_inspect","note":""},{"date":"2024-12-05","value":38.83,"unit":"minutes","label":"o1","ci_low":21.16,"ci_high":64.95,"source_id":"o1_inspect","note":""},{"date":"2025-02-24","value":60.39,"unit":"minutes","label":"Claude 3.7 Sonnet","ci_low":33.01,"ci_high":104.23,"source_id":"claude_3_7_sonnet_inspect","note":""},{"date":"2025-04-16","value":119.73,"unit":"minutes","label":"o3","ci_low":74.62,"ci_high":190.94,"source_id":"o3_inspect","note":""},{"date":"2025-08-07","value":203.01,"unit":"minutes","label":"GPT-5","ci_low":112.64,"ci_high":405.55,"source_id":"gpt_5_2025_08_07_inspect","note":""},{"date":"2025-11-18","value":224.33,"unit":"minutes","label":"Gemini 3 Pro","ci_low":139.57,"ci_high":379.24,"source_id":"gemini_3_pro","note":""},{"date":"2025-11-24","value":292.99,"unit":"minutes","label":"Claude Opus 4.5","ci_low":161.72,"ci_high":623.7,"source_id":"claude_opus_4_5_inspect","note":""},{"date":"2025-12-11","value":352.25,"unit":"minutes","label":"GPT-5.2","ci_low":198.07,"ci_high":815.18,"source_id":"gpt_5_2","note":""},{"date":"2026-02-05","value":718.81,"unit":"minutes","label":"Claude Opus 4.6","ci_low":316.69,"ci_high":3633.79,"source_id":"claude_opus_4_6_inspect","note":"Wide confidence interval; upper bound above 16 hours."}],"excluded":[{"date":"2026-04-07","value":1044.78,"unit":"minutes","label":"Claude Mythos Preview (early)","ci_low":508.88,"ci_high":3304.26,"source_id":"claude_mythos_preview_early_inspect","note":"Excluded: METR states that measurements above 16 hrs are unreliable with the current task suite."}]},"compute":{"label":"Compute","measure":"Publicly announced AI models estimated to have been trained with at least 10²⁵ FLOP (cumulative count)","scale":"linear","format":"count","max":35,"ticks":[0,10,20,30],"headline":{"text":"33 models above 10²⁵ FLOP","value":33,"unit":"models","basis":"Count of rows in Epoch AI's 10²⁵ FLOP model list (CSV updated 21 Nov 2025; latest publication date 2025-05-22)."},"caption":"The first model trained with more than 10²⁵ FLOP was GPT-4 in March 2023; as of June 2025, Epoch AI counted 33. Models at this scale face additional requirements under the EU AI Act. Training compute for frontier language models has grown about 5× per year since 2020.","source":{"title":"Epoch AI, Over 30 AI models have been trained at the scale of GPT-4 (Rahman, Heindrich, Owen & Emberson; updated 6 Jun 2025)","url":"https://epoch.ai/data-insights/models-over-1e25-flop","data_url":"https://epoch.ai/data/charts/1e25-models/1e25_models.csv","publisher_updated":"2025-11-21","licence":"CC BY 4.0","accessed":"2026-10-16","status":"primary"},"secondary_stat":{"text":"5× per year since 2020","value":5,"unit":"× per year (training compute, frontier language models)","basis":"Epoch AI Trends: training compute for frontier language models has grown 5×/year since 2020 (90% CI 4× to 6×; doubling every 5.2 months).","source":{"title":"Epoch AI, Trends in Artificial Intelligence","url":"https://epoch.ai/trends","licence":"CC BY 4.0","accessed":"2026-10-16"}},"points":[{"date":"2023-03-15","value":1,"unit":"models (cumulative)","label":"GPT-4 (OpenAI)","note":""},{"date":"2023-11-06","value":2,"unit":"models (cumulative)","label":"GPT-4 Turbo (OpenAI)","note":""},{"date":"2023-11-22","value":3,"unit":"models (cumulative)","label":"Inflection-2 (Inflection AI)","note":""},{"date":"2023-12-06","value":4,"unit":"models (cumulative)","label":"Gemini 1.0 Ultra (Google DeepMind)","note":""},{"date":"2024-01-17","value":5,"unit":"models (cumulative)","label":"GLM-4 (0116) (Zhipu AI)","note":""},{"date":"2024-02-15","value":6,"unit":"models (cumulative)","label":"Gemini 1.5 Pro (Google DeepMind)","note":""},{"date":"2024-02-15","value":7,"unit":"models (cumulative)","label":"Sora (OpenAI)","note":""},{"date":"2024-02-26","value":8,"unit":"models (cumulative)","label":"Mistral Large (Mistral AI)","note":""},{"date":"2024-03-04","value":9,"unit":"models (cumulative)","label":"Aramco Metabrain AI (Saudi Aramco)","note":""},{"date":"2024-03-04","value":10,"unit":"models (cumulative)","label":"Claude 3 Opus (Anthropic)","note":""},{"date":"2024-03-07","value":11,"unit":"models (cumulative)","label":"Inflection-2.5 (Inflection AI)","note":""},{"date":"2024-05-13","value":12,"unit":"models (cumulative)","label":"GPT-4o (OpenAI)","note":""},{"date":"2024-06-14","value":13,"unit":"models (cumulative)","label":"Nemotron-4 340B (NVIDIA)","note":""},{"date":"2024-06-20","value":14,"unit":"models (cumulative)","label":"Claude 3.5 Sonnet (Anthropic)","note":""},{"date":"2024-07-23","value":15,"unit":"models (cumulative)","label":"Llama 3.1-405B (Meta AI)","note":""},{"date":"2024-07-24","value":16,"unit":"models (cumulative)","label":"Mistral Large 2 (Mistral AI)","note":""},{"date":"2024-08-13","value":17,"unit":"models (cumulative)","label":"Grok-2 (xAI)","note":""},{"date":"2024-08-29","value":18,"unit":"models (cumulative)","label":"GLM-4-Plus (Zhipu AI)","note":""},{"date":"2024-10-28","value":19,"unit":"models (cumulative)","label":"Doubao-pro (ByteDance)","note":""},{"date":"2024-12-05","value":20,"unit":"models (cumulative)","label":"o1 (OpenAI)","note":""},{"date":"2024-12-11","value":21,"unit":"models (cumulative)","label":"Gemini 2.0 Pro (Google DeepMind)","note":""},{"date":"2024-12-16","value":22,"unit":"models (cumulative)","label":"Veo 2 (Google DeepMind)","note":""},{"date":"2024-12-20","value":23,"unit":"models (cumulative)","label":"o3 (OpenAI)","note":""},{"date":"2025-02-17","value":24,"unit":"models (cumulative)","label":"Grok-3 (xAI)","note":""},{"date":"2025-02-24","value":25,"unit":"models (cumulative)","label":"Claude 3.7 Sonnet (Anthropic)","note":""},{"date":"2025-02-27","value":26,"unit":"models (cumulative)","label":"GPT-4.5 (OpenAI)","note":""},{"date":"2025-03-25","value":27,"unit":"models (cumulative)","label":"Gemini 2.5 Pro (Google DeepMind)","note":""},{"date":"2025-04-05","value":28,"unit":"models (cumulative)","label":"Llama 4 Behemoth (preview) (Meta AI)","note":""},{"date":"2025-04-10","value":29,"unit":"models (cumulative)","label":"Pangu Ultra (Huawei)","note":""},{"date":"2025-04-14","value":30,"unit":"models (cumulative)","label":"GPT-4.1 (OpenAI)","note":""},{"date":"2025-05-21","value":31,"unit":"models (cumulative)","label":"Veo 3 (Google DeepMind)","note":""},{"date":"2025-05-22","value":32,"unit":"models (cumulative)","label":"Claude Opus 4 (Anthropic)","note":""},{"date":"2025-05-22","value":33,"unit":"models (cumulative)","label":"Claude Sonnet 4 (Anthropic)","note":""}]},"cost":{"label":"Cost","measure":"Lowest cost per question to score 75% on GPQA Diamond (US$, log scale)","scale":"log","format":"usd","ticks":[0.0001,0.001,0.01,0.1,1],"headline":{"text":"~13× cheaper per year","value":13,"unit":"× per year","basis":"Epoch AI: the cost of achieving a given level of AI performance has fallen about 47% per quarter since 2023, or 13× per year, across five benchmarks."},"caption":"Since 2023, the cost of reaching a given level of AI performance has fallen about 47% per quarter, roughly 13× per year, averaged over five benchmarks. The chart shows one of them: the cheapest way to score 75% on GPQA Diamond became 725 times cheaper in under 18 months.","source":{"title":"Epoch AI, The plunging price of thought (Emberson & Roodman, 22 Sep 2026)","url":"https://epoch.ai/publications/the-plunging-price-of-thought","data_url":"https://github.com/droodman/inference-cost/blob/main/output/slides/Figure%202.csv","data_commit":"9163c17ee7217b9f09ac51bcc71ed64c18c04bc8","licence":"CC BY 4.0 (Epoch AI publication). The linked code/data repository carries no licence file.","accessed":"2026-10-16","status":"primary"},"points":[{"date":"2025-01-31","value":0.298906,"unit":"US$ per question","label":"o3 (high)","accuracy":0.7576,"note":"Epoch's report text names this model o3 and dates it 31 Jan 2025 (the o3-mini release date); kept as published."},{"date":"2025-03-25","value":0.089116,"unit":"US$ per question","label":"Gemini 2.5 Pro (Jun 2025)","accuracy":0.8036,"note":""},{"date":"2025-06-05","value":0.012932,"unit":"US$ per question","label":"Gemini 2.5 Pro (Jun 2025)","accuracy":0.7777,"note":""},{"date":"2025-12-01","value":0.008821,"unit":"US$ per question","label":"DeepSeek-V3.2","accuracy":0.7772,"note":""},{"date":"2026-02-13","value":0.007102,"unit":"US$ per question","label":"Qwen3.5 397B-A17B","accuracy":0.798,"note":""},{"date":"2026-02-25","value":0.0021805,"unit":"US$ per question","label":"Qwen 3.5 Flash (hosted 35B-A3B)","accuracy":0.7624,"note":""},{"date":"2026-06-01","value":0.001213,"unit":"US$ per question","label":"MiniMax-M3","accuracy":0.7508,"note":""},{"date":"2026-07-09","value":0.000412,"unit":"US$ per question","label":"GPT-5.6 Luna (low)","accuracy":0.7525,"note":""}]},"adoption":{"label":"Adoption","measure":"EU enterprises (10+ employees) using at least one AI technology (%)","scale":"linear","format":"percent","max":25,"ticks":[0,5,10,15,20,25],"headline":{"text":"7.7% → 20.0%","value":19.95,"unit":"% of enterprises","basis":"Eurostat isoc_eb_ai, E_AI_TANY, EU27_2020, 10+ persons employed, 2021 and 2025."},"caption":"The share of EU enterprises with 10 or more employees using AI rose from 7.7% in 2021 to 20.0% in 2025. Larger firms use it more: in 2025, 17.0% of small, 30.4% of medium and 55.0% of large enterprises. No EU AI figures for 2022; the 2025 list of AI technologies adds image, video and audio generation.","source":{"title":"Eurostat, Artificial intelligence by size class of enterprise (isoc_eb_ai)","url":"https://ec.europa.eu/eurostat/databrowser/view/isoc_eb_ai/default/table","data_url":"https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/isoc_eb_ai?format=JSON&lang=EN&geo=EU27_2020","doi":"10.2908/ISOC_EB_AI","publisher_updated":"2026-06-15","licence":"© European Union, reuse authorised with acknowledgement of the source (Commission Decision 2011/833/EU). Values rounded to one decimal in display.","accessed":"2026-10-16","status":"primary"},"points":[{"date":"2021","value":7.65,"unit":"% of enterprises","label":"EU, 2021","note":""},{"date":"2023","value":8.06,"unit":"% of enterprises","label":"EU, 2023","note":""},{"date":"2024","value":13.48,"unit":"% of enterprises","label":"EU, 2024","note":""},{"date":"2025","value":19.95,"unit":"% of enterprises","label":"EU, 2025","note":"2025 list of AI technologies adds 'generating pictures, videos, sound/audio'."}],"breakdown":[{"date":"2025","size_class":"10-49","label":"Small (10–49)","value":17.0,"unit":"% of enterprises"},{"date":"2025","size_class":"50-249","label":"Medium (50–249)","value":30.36,"unit":"% of enterprises"},{"date":"2025","size_class":"GE250","label":"Large (250+)","value":55.03,"unit":"% of enterprises"}]},"incidents":{"label":"Incidents","measure":"AI incidents recorded in the AI Incident Database, by incident year","scale":"linear","format":"count","max":500,"ticks":[0,100,200,300,400,500],"headline":{"text":"457 reported incidents in 2025","value":457,"unit":"reported incidents","basis":"Count of incidents.csv rows with a 2025 incident date in AIID snapshot backup-20261012101643 (12 Oct 2026)."},"caption":"AI incidents with a 2025 incident date recorded in the AI Incident Database rose to 457, from 309 in 2024. These are reported incidents: counts reflect media attention and curation as well as occurrence, and past years are revised as incidents are added (snapshot of 12 Oct 2026).","source":{"title":"AI Incident Database, weekly snapshot backup-20261012101643 (incidents.csv)","url":"https://incidentdatabase.ai/research/snapshots/","data_url":"https://pub-72b2b2fc36ec423189843747af98f80e.r2.dev/backup-20261012101643.tar.bz2","snapshot_date":"2026-10-12","licence":"CC BY-SA 4.0. Chart redrawn from AIID data and shared under CC BY-SA 4.0.","accessed":"2026-10-16","status":"primary"},"points":[{"date":"2016","value":41,"unit":"reported incidents","label":"2016","note":""},{"date":"2017","value":51,"unit":"reported incidents","label":"2017","note":""},{"date":"2018","value":46,"unit":"reported incidents","label":"2018","note":""},{"date":"2019","value":45,"unit":"reported incidents","label":"2019","note":""},{"date":"2020","value":91,"unit":"reported incidents","label":"2020","note":""},{"date":"2021","value":80,"unit":"reported incidents","label":"2021","note":""},{"date":"2022","value":109,"unit":"reported incidents","label":"2022","note":""},{"date":"2023","value":179,"unit":"reported incidents","label":"2023","note":""},{"date":"2024","value":309,"unit":"reported incidents","label":"2024","note":""},{"date":"2025","value":457,"unit":"reported incidents","label":"2025","note":""}]}}
+</script>
+<!-- acceleration-data:end -->
+
 <script>
 (function () {
   'use strict';
-  // Data points used in the mockup. Values are approximate and partly from secondary
-  // reporting; each set lists its primary source to verify against.
-  const SETS = {
-    capability: {
-      label: 'Capability',
-      measure: 'Length of software tasks AI agents complete with 50% success (minutes of expert time, log scale)',
-      log: true, unit: (v) => v >= 60 ? Math.round(v / 60) + ' h' : v + ' min',
-      ticks: [1, 10, 60, 600],
-      points: [
-        { t: 2023.2, v: 5, name: 'GPT-4' },
-        { t: 2025.15, v: 59, name: 'Claude 3.7 Sonnet' },
-        { t: 2026.1, v: 719, name: 'Claude Opus 4.6' }
-      ],
-      stat: 'Doubling every 4–7 months',
-      cap: 'The length of tasks frontier AI agents can complete on their own has doubled roughly every seven months since 2019, and faster since 2024.',
-      src: 'METR, Measuring AI Ability to Complete Long Tasks (2025) and Time Horizon 1.1 (2026).',
-      url: 'https://metr.org/', status: 'check'
-    },
-    code: {
-      label: 'Code',
-      measure: "Share of Google's new code generated by AI, as reported by the company",
-      log: false, max: 100, unit: (v) => v + '%', ticks: [0, 25, 50, 75, 100],
-      points: [
-        { t: 2024.8, v: 25, name: 'Q3 2024 earnings call' },
-        { t: 2025.85, v: 50, name: 'Late 2025' },
-        { t: 2026.3, v: 75, name: 'Google Cloud Next 2026' }
-      ],
-      stat: '25% → 75%',
-      cap: "In 18 months, the share of Google's new code generated by AI tripled, according to the company. Self-reported, and one company only.",
-      src: 'Alphabet earnings calls and Google Cloud Next 2026, via TechSpot and Business Insider.',
-      url: 'https://www.techspot.com/news/112152-google-ai-now-generates-75-new-code-up.html', status: 'check'
-    },
-    models: {
-      label: 'Models',
-      measure: 'Public models on the Hugging Face Hub (millions)',
-      log: false, max: 3.5, unit: (v) => v + 'M', ticks: [0, 1, 2, 3],
-      points: [
-        { t: 2024.7, v: 1, name: '1 million' },
-        { t: 2025.6, v: 2, name: '2 million' },
-        { t: 2026.6, v: 3, name: '3 million' }
-      ],
-      stat: '3× in two years',
-      cap: 'The first million public models took over 1,000 days; the second took 335 days..',
-      src: 'Hugging Face Hub model counts, via Ars Technica and AI World reporting.',
-      url: 'https://huggingface.co/models', status: 'check'
-    },
-    adoption: {
-      label: 'Adoption',
-      measure: 'Organisations using AI in at least one business function (%)',
-      log: false, max: 100, unit: (v) => v + '%', ticks: [0, 25, 50, 75, 100],
-      points: [
-        { t: 2024.5, v: 78, name: 'Survey 2024' },
-        { t: 2025.5, v: 88, name: 'Survey 2025' }
-      ],
-      stat: '88% of organisations',
-      cap: 'Nearly nine in ten surveyed organisations use AI in at least one business function, up from 78% a year earlier.',
-      src: 'McKinsey, The State of AI in 2025 (survey of 1,993 respondents).',
-      url: 'https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai', status: 'ok'
-    },
-    cost: {
-      label: 'Cost',
-      measure: 'Price per million tokens for GPT-3.5-level performance (US$, log scale)',
-      log: true, unit: (v) => '$' + v, ticks: [0.05, 0.5, 5, 50],
-      points: [
-        { t: 2022.9, v: 20, name: 'Nov 2022' },
-        { t: 2024.8, v: 0.07, name: 'Oct 2024' }
-      ],
-      stat: '280× cheaper',
-      cap: 'Reaching the same benchmark level became about 280 times cheaper in two years.',
-      src: 'Stanford HAI, AI Index Report 2025, with data from Epoch AI and Artificial Analysis.',
-      url: 'https://hai.stanford.edu/ai-index', status: 'ok'
-    }
+  // Data lives in data/acceleration.json. Opened from disk (file://) the fetch fails,
+  // so the page falls back to the inlined copy above.
+  const DATA_URL = '../../data/acceleration.json';
+  const FORMATS = {
+    minutes: (v) => v < 60 ? Math.round(v) + ' min' : (v / 60 < 10 ? Math.round(v / 6) / 10 : Math.round(v / 60)) + ' h',
+    count: (v) => Math.round(v).toLocaleString('en'),
+    percent: (v) => Number.isInteger(v) ? v + '%' : (Math.round(v * 10) / 10).toFixed(1) + '%',
+    usd: (v) => '$' + Number(v.toPrecision(2))
   };
-  const ORDER = ['capability', 'code', 'models', 'adoption', 'cost'];
+  const toYear = (s) => {
+    if (/^\d{4}$/.test(s)) return +s;
+    const d = new Date(s + 'T00:00:00Z'), y = d.getUTCFullYear();
+    return y + (d - Date.UTC(y, 0, 1)) / (Date.UTC(y + 1, 0, 1) - Date.UTC(y, 0, 1));
+  };
+  const fmtDate = (s) => /^\d{4}$/.test(s) ? s : new Date(s + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 
   const svg = document.getElementById('chart');
   const tip = document.getElementById('tip');
   const W = 640, H = 300, M = { l: 52, r: 28, t: 24, b: 40 };
   const NS = 'http://www.w3.org/2000/svg';
   const el = (n, a, parent) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); (parent || svg).appendChild(e); return e; };
+  const stop = (s) => /[.)]$/.test(s) ? s : s + '.';
+  const link = (src) => { const a = document.createElement('a'); a.href = src.url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = src.title; return a; };
 
-  function draw(key) {
-    const d = SETS[key];
-    [...svg.querySelectorAll(':scope > :not(desc)')].forEach((n) => n.remove());
-    svg.querySelector('desc').textContent = d.measure + '. ' + d.points.map((p) => p.name + ': ' + d.unit(p.v)).join('; ') + '.';
-    const t0 = 2022.5, t1 = 2026.9;
-    const x = (t) => M.l + ((t - t0) / (t1 - t0)) * (W - M.l - M.r);
-    let y;
-    if (d.log) {
-      const lo = Math.log10(d.ticks[0]), hi = Math.log10(d.ticks[d.ticks.length - 1]);
-      y = (v) => H - M.b - ((Math.log10(v) - lo) / (hi - lo)) * (H - M.t - M.b);
-    } else {
-      y = (v) => H - M.b - (v / d.max) * (H - M.t - M.b);
-    }
-    const g = el('g', { class: 'grid' }), ax = el('g', { class: 'axis' });
-    d.ticks.forEach((v) => {
-      el('line', { x1: M.l, x2: W - M.r, y1: y(v), y2: y(v) }, g);
-      el('text', { x: M.l - 10, y: y(v) + 4, 'text-anchor': 'end' }, ax).textContent = d.unit(v);
-    });
-    [2023, 2024, 2025, 2026].forEach((yr) => {
-      el('line', { x1: x(yr), x2: x(yr), y1: H - M.b, y2: H - M.b + 6, stroke: 'currentColor', style: 'color: var(--rule-strong)' }, ax);
-      el('text', { x: x(yr), y: H - M.b + 24, 'text-anchor': 'middle' }, ax).textContent = yr;
-    });
-    el('line', { class: 'baseline', x1: M.l, x2: W - M.r, y1: H - M.b, y2: H - M.b });
-    if (d.log) el('text', { class: 'scale-note', x: W - M.r, y: M.t - 8, 'text-anchor': 'end' }).textContent = 'Log scale';
-    const pts = d.points.map((p) => [x(p.t), y(p.v)]);
-    el('polyline', { class: 'series', points: pts.map((p) => p.join(',')).join(' ') });
-    d.points.forEach((p, i) => {
-      const [cx, cy] = pts[i];
-      const end = i === d.points.length - 1;
-      el('circle', { class: 'dot' + (end ? ' dot--end' : ''), cx, cy, r: end ? 6 : 5 });
-      if (end || i === 0) {
-        const anchor = end ? (p.v < d.points[Math.max(0, i - 1)].v ? 'middle' : 'end') : 'start';
-        const falling = end && i > 0 && p.v < d.points[i - 1].v;
-        const dx = end ? (falling ? 0 : -12) : 12, dy = falling ? 26 : -14;
-        el('text', { class: 'lbl', x: cx + dx, y: cy + dy, 'text-anchor': anchor }).textContent = d.unit(p.v);
+  function init(DATA) {
+    const ORDER = DATA._meta.order;
+
+    function draw(key) {
+      const d = DATA[key], unit = FORMATS[d.format];
+      [...svg.querySelectorAll(':scope > :not(desc)')].forEach((n) => n.remove());
+      svg.querySelector('desc').textContent = d.measure + '. ' + d.points.map((p) => p.label + ' (' + fmtDate(p.date) + '): ' + unit(p.value)).join('; ') + '.';
+      const ts = d.points.map((p) => toYear(p.date));
+      const t0 = Math.min(Math.floor(ts[0]), ts[0] - 0.4), t1 = ts[ts.length - 1] + 0.4;
+      const x = (t) => M.l + ((t - t0) / (t1 - t0)) * (W - M.l - M.r);
+      let y;
+      if (d.scale === 'log') {
+        const lo = Math.log10(d.ticks[0]), hi = Math.log10(d.ticks[d.ticks.length - 1]);
+        y = (v) => H - M.b - ((Math.log10(v) - lo) / (hi - lo)) * (H - M.t - M.b);
+      } else {
+        y = (v) => H - M.b - (v / d.max) * (H - M.t - M.b);
       }
-      const hit = el('circle', { class: 'hit', cx, cy, r: 18, tabindex: 0, 'aria-label': p.name + ': ' + d.unit(p.v) });
-      const show = () => {
-        const r = svg.getBoundingClientRect(), s = r.width / W;
-        tip.innerHTML = '<b>' + d.unit(p.v) + '</b>' + p.name;
-        tip.style.left = cx * s + 'px';
-        tip.style.top = cy * s + 'px';
-        tip.hidden = false;
-      };
-      hit.addEventListener('mouseenter', show); hit.addEventListener('focus', show);
-      hit.addEventListener('mouseleave', () => { tip.hidden = true; }); hit.addEventListener('blur', () => { tip.hidden = true; });
+      const g = el('g', { class: 'grid' }), ax = el('g', { class: 'axis' });
+      d.ticks.forEach((v) => {
+        el('line', { x1: M.l, x2: W - M.r, y1: y(v), y2: y(v) }, g);
+        el('text', { x: M.l - 10, y: y(v) + 4, 'text-anchor': 'end' }, ax).textContent = unit(v);
+      });
+      for (let yr = Math.ceil(t0); yr <= Math.floor(t1); yr++) {
+        el('line', { x1: x(yr), x2: x(yr), y1: H - M.b, y2: H - M.b + 6, stroke: 'currentColor', style: 'color: var(--rule-strong)' }, ax);
+        el('text', { x: x(yr), y: H - M.b + 24, 'text-anchor': 'middle' }, ax).textContent = yr;
+      }
+      el('line', { class: 'baseline', x1: M.l, x2: W - M.r, y1: H - M.b, y2: H - M.b });
+      if (d.scale === 'log') el('text', { class: 'scale-note', x: W - M.r, y: M.t - 8, 'text-anchor': 'end' }).textContent = 'Log scale';
+      const pts = d.points.map((p, i) => [x(ts[i]), y(p.value)]);
+      el('polyline', { class: 'series', points: pts.map((p) => p.join(',')).join(' ') });
+      d.points.forEach((p, i) => {
+        const [cx, cy] = pts[i];
+        const end = i === d.points.length - 1;
+        el('circle', { class: 'dot' + (end ? ' dot--end' : ''), cx, cy, r: end ? 6 : 5 });
+        if (end || i === 0) {
+          const anchor = end ? (p.value < d.points[Math.max(0, i - 1)].value ? 'middle' : 'end') : 'start';
+          const falling = end && i > 0 && p.value < d.points[i - 1].value;
+          const dx = end ? (falling ? 0 : -12) : 12, dy = falling ? 26 : -14;
+          el('text', { class: 'lbl', x: cx + dx, y: cy + dy, 'text-anchor': anchor }).textContent = unit(p.value);
+        }
+        const name = p.label + ' · ' + fmtDate(p.date);
+        const hit = el('circle', { class: 'hit', cx, cy, r: 18, tabindex: 0, 'aria-label': name + ': ' + unit(p.value) });
+        const show = () => {
+          const r = svg.getBoundingClientRect(), s = r.width / W;
+          tip.replaceChildren();
+          const b = document.createElement('b'); b.textContent = unit(p.value);
+          tip.append(b, name);
+          tip.style.left = cx * s + 'px';
+          tip.style.top = cy * s + 'px';
+          tip.hidden = false;
+        };
+        hit.addEventListener('mouseenter', show); hit.addEventListener('focus', show);
+        hit.addEventListener('mouseleave', () => { tip.hidden = true; }); hit.addEventListener('blur', () => { tip.hidden = true; });
+      });
+      document.getElementById('side-stat').textContent = d.headline.text;
+      document.getElementById('side-cap').textContent = d.caption;
+      const src = document.getElementById('side-src');
+      src.replaceChildren('Source: ', link(d.source), '. ' + stop(d.source.licence));
+      if (d.secondary_stat) src.append(' Growth rate: ', link(d.secondary_stat.source), ', ' + stop(d.secondary_stat.source.licence));
+      document.getElementById('chart-panel').setAttribute('aria-labelledby', 't-' + key);
+    }
+
+    const tabs = ORDER.map((k) => document.getElementById('t-' + k));
+    const select = (i, focus) => {
+      tabs.forEach((t, j) => { t.setAttribute('aria-selected', String(i === j)); t.tabIndex = i === j ? 0 : -1; });
+      if (focus) tabs[i].focus();
+      draw(ORDER[i]);
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => select(i, false));
+      t.addEventListener('keydown', (e) => {
+        const n = e.key === 'ArrowRight' ? (i + 1) % tabs.length : e.key === 'ArrowLeft' ? (i - 1 + tabs.length) % tabs.length : null;
+        if (n !== null) { e.preventDefault(); select(n, true); }
+      });
     });
-    document.getElementById('side-stat').textContent = d.stat;
-    document.getElementById('side-cap').textContent = d.cap;
-    document.getElementById('side-src').innerHTML = 'Source: <a href="' + d.url + '" target="_blank" rel="noopener">' + d.src + '</a>';
-    document.getElementById('chart-panel').setAttribute('aria-labelledby', 't-' + key);
+    select(0, false);
+
+    const rows = document.getElementById('src-rows');
+    ORDER.forEach((k) => {
+      const d = DATA[k];
+      const tr = document.createElement('tr');
+      const cells = [document.createElement('td'), document.createElement('td'), document.createElement('td'), document.createElement('td')];
+      const b = document.createElement('b'); b.style.cssText = 'font-family:var(--font-display);font-weight:600'; b.textContent = d.label;
+      cells[0].append(b);
+      cells[1].textContent = d.measure;
+      cells[2].append(link(d.source), '. ' + stop(d.source.licence) + ' Accessed ' + fmtDate(d.source.accessed) + '.');
+      if (d.secondary_stat) cells[2].append(' Growth rate: ', link(d.secondary_stat.source), '.');
+      const pill = document.createElement('span');
+      const ok = d.source.status === 'primary';
+      pill.className = 'pill ' + (ok ? 'pill--ok' : 'pill--check');
+      pill.textContent = ok ? 'Primary' : 'Check';
+      cells[3].append(pill);
+      tr.append(...cells);
+      rows.appendChild(tr);
+    });
   }
 
-  const tabs = ORDER.map((k) => document.getElementById('t-' + k));
-  const select = (i, focus) => {
-    tabs.forEach((t, j) => { t.setAttribute('aria-selected', String(i === j)); t.tabIndex = i === j ? 0 : -1; });
-    if (focus) tabs[i].focus();
-    draw(ORDER[i]);
-  };
-  tabs.forEach((t, i) => {
-    t.addEventListener('click', () => select(i, false));
-    t.addEventListener('keydown', (e) => {
-      const n = e.key === 'ArrowRight' ? (i + 1) % tabs.length : e.key === 'ArrowLeft' ? (i - 1 + tabs.length) % tabs.length : null;
-      if (n !== null) { e.preventDefault(); select(n, true); }
-    });
-  });
-  select(0, false);
-
-  const rows = document.getElementById('src-rows');
-  ORDER.forEach((k) => {
-    const d = SETS[k];
-    const tr = document.createElement('tr');
-    tr.innerHTML = '<td><b style="font-family:var(--font-display);font-weight:600">' + d.label + '</b></td><td>' + d.measure + '</td><td><a href="' + d.url + '" target="_blank" rel="noopener">' + d.src + '</a></td><td>' +
-      (d.status === 'ok' ? '<span class="pill pill--ok">Primary report</span>' : '<span class="pill pill--check">Check</span>') + '</td>';
-    rows.appendChild(tr);
-  });
-  const extra = [
-    ['Compute', 'Training compute of frontier models: 4–5× per year since 2010', 'Epoch AI, Training compute of frontier AI models grows by 4–5x per year (2024)', 'https://epoch.ai/blog/training-compute-of-frontier-ai-models-grows-by-4-5x-per-year', 'ok'],
-    ['Incidents', 'Reported AI incidents per year (rising; partly reflects more reporting)', 'AI Incident Database via Stanford AI Index / Our World in Data', 'https://ourworldindata.org/grapher/annual-reported-ai-incidents-controversies', 'ok']
-  ];
-  extra.forEach(([a, b, c, u, s]) => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = '<td><b style="font-family:var(--font-display);font-weight:600">' + a + '</b></td><td>' + b + '</td><td><a href="' + u + '" target="_blank" rel="noopener">' + c + '</a></td><td><span class="pill pill--ok">Not in mockup yet</span></td>';
-    rows.appendChild(tr);
-  });
+  const fallback = () => JSON.parse(document.getElementById('acceleration-fallback').textContent);
+  fetch(DATA_URL, { cache: 'no-cache' })
+    .then((r) => r.ok ? r.json() : Promise.reject(new Error(r.status)))
+    .catch(fallback)
+    .then(init);
 })();
 </script>
