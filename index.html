@@ -8,18 +8,17 @@
 <meta property="og:title" content="Scalable Governance">
 <meta property="og:description" content="Applied research on AI governance, based at the TUM Professorship of Societal Computing.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#f4f5f7">
-<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0e1013">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&amp;family=Bitter:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400..600;1,7..72,400&amp;family=Schibsted+Grotesk:wght@400..800&amp;display=swap">
 <link rel="stylesheet" href="assets/css/style.css">
 <script>document.documentElement.classList.add('js');</script>
 <script src="assets/js/main.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<canvas id="dot-grid" aria-hidden="true"></canvas>
 
 <header class="site-nav" id="site-nav">
   <div class="site-nav__inner">
@@ -52,8 +51,8 @@
 
 <main id="main">
 
-  <!-- Hero -->
-  <section class="hero" id="top" data-grid-section>
+  <!-- Hero: the opening frame -->
+  <section class="hero frame" id="top">
     <div class="container hero__inner">
       <div class="hero__text">
         <h1>AI is developed and deployed faster than governance can follow.</h1>
@@ -64,6 +63,46 @@
           <a class="btn btn--secondary btn--md" href="#research">Read our research</a>
         </div>
       </div>
+
+      <!-- Reserved for the acceleration chart from feat/acceleration-chart. Replace this figure when that branch lands. -->
+      <figure class="chart-slot frame-mark" data-slot="acceleration-chart" aria-labelledby="chart-slot-note">
+        <ul class="chart-slot__tabs" aria-hidden="true">
+          <li class="is-active">Capability</li>
+          <li>Compute</li>
+          <li>Cost</li>
+          <li>Adoption</li>
+          <li>Incidents</li>
+        </ul>
+        <div class="chart-slot__plot">
+          <svg class="chart-slot__axes" viewBox="0 0 400 220" preserveAspectRatio="none" aria-hidden="true"><path d="M1 0 V219 H400" fill="none" vector-effect="non-scaling-stroke"/></svg>
+          <p class="chart-slot__note" id="chart-slot-note">Chart in preparation</p>
+        </div>
+      </figure>
+    </div>
+    <svg class="hero__rings" viewBox="0 10 200 200" aria-hidden="true"><circle cx="100" cy="110" r="85"/><circle cx="100" cy="142" r="53"/><circle cx="100" cy="160" r="33"/></svg>
+  </section>
+
+  <!-- Why it has to scale -->
+  <section class="why" id="mission" aria-labelledby="why-title">
+    <div class="container why__inner">
+      <h2 class="section-title" id="why-title">Why governance has to scale</h2>
+      <ol class="beats">
+        <li class="beat">
+          <h3 class="beat__title">AI is built faster</h3>
+          <span class="status status--argument">Our argument</span>
+          <p>We argue that AI coding agents write a growing amount of the code of AI systems. Teams build faster, and more AI systems reach the market.</p>
+        </li>
+        <li class="beat">
+          <h3 class="beat__title">Governance has to keep pace</h3>
+          <span class="status status--argument">Our argument</span>
+          <p>AI governance across all levels has to keep up with this pace. How is largely unsolved, and we argue that neglecting it poses a systemic risk.</p>
+        </li>
+        <li class="beat">
+          <h3 class="beat__title">What we build</h3>
+          <span class="status status--aim">Our aim</span>
+          <p>An <i>Agentic Governance Workflow</i>: agent skills that enable effective and accountable human-AI collaboration for governance work. We research AI system developers empirically to enable evidence-based AI regulation.</p>
+        </li>
+      </ol>
 
       <figure class="hero-chain" aria-labelledby="hero-chain-title">
         <figcaption class="hero-chain__cap">
@@ -79,53 +118,50 @@
         </ol>
         <a class="hero-chain__more" href="agentic-governance-workflow/">How the workflow works →</a>
       </figure>
+
+      <a class="btn btn--primary btn--md" href="mission/">Read our mission statement</a>
     </div>
   </section>
 
-  <!-- Why it has to scale -->
-  <section class="why" id="mission" aria-labelledby="why-title">
-    <div class="container why__inner">
-      <h2 class="section-title" id="why-title">Why governance has to scale</h2>
-      <ol class="beats">
-        <li class="beat">
-          <span class="status status--argument">Our argument</span>
-          <h3 class="beat__title">AI is built faster</h3>
-          <p>We argue that AI coding agents write a growing amount of the code of AI systems. Teams build faster, and more AI systems reach the market.</p>
-        </li>
-        <li class="beat">
-          <span class="status status--argument">Our argument</span>
-          <h3 class="beat__title">Governance has to keep pace</h3>
-          <p>AI governance across all levels has to keep up with this pace. How is largely unsolved, and we argue that neglecting it poses a systemic risk.</p>
-        </li>
-        <li class="beat">
-          <span class="status status--aim">Our aim</span>
-          <h3 class="beat__title">What we build</h3>
-          <p>An <i>Agentic Governance Workflow</i>: agent skills that enable effective and accountable human-AI collaboration for governance work. We research AI system developers empirically to enable evidence-based AI regulation.</p>
-        </li>
-      </ol>
-
-      <div class="accordion why__accordion">
-        <div class="accordion__item">
-          <h3 class="accordion__heading">
-            <button type="button" class="accordion__trigger" aria-expanded="false" aria-controls="acc-what">
-              <span>What is AI governance?</span><span class="accordion__icon" aria-hidden="true"></span>
-            </button>
-          </h3>
-          <div class="accordion__panel" id="acc-what">
-            <div class="accordion__body">
-              <p>By <em>AI governance</em> we mean the rules, processes and controls that make sure AI systems are safe and compliant. AI governance can be understood on different levels:</p>
-              <ul>
-                <li><b>Organisation:</b> Companies that develop and deploy AI systems turn regulatory requirements into policies and controls that impact the AI systems.</li>
-                <li><b>Verification:</b> Auditors, notified bodies and authorities check conformity against technical standards and legal obligations.</li>
-                <li><b>Regulation:</b> Legislators and policy-makers write AI regulations and keep them up to date.</li>
-              </ul>
-              <p>Most of our research so far studies the organisational level.</p>
-            </div>
+  <!-- The three levels: a zoom out through the logo's rings -->
+  <section class="levels frame" id="levels" aria-labelledby="levels-title">
+    <div class="container levels__intro">
+      <h2 class="section-title" id="levels-title">What is AI governance?</h2>
+      <p class="lead">By <em>AI governance</em> we mean the rules, processes and controls that make sure AI systems are safe and compliant. AI governance can be understood on different levels:</p>
+    </div>
+    <div class="levels__track">
+      <div class="levels__stage container">
+        <div class="levels__text">
+          <div class="levels__nav" role="group" aria-label="Levels of AI governance">
+            <button type="button" class="levels__btn" data-level="0" aria-pressed="true">Organisation</button>
+            <button type="button" class="levels__btn" data-level="1" aria-pressed="false">Verification</button>
+            <button type="button" class="levels__btn" data-level="2" aria-pressed="false">Regulation</button>
           </div>
+          <ol class="levels__list">
+            <li class="level is-active" data-level="0">
+              <h3 class="level__name">Organisation</h3>
+              <p>Companies that develop and deploy AI systems turn regulatory requirements into policies and controls that impact the AI systems.</p>
+              <p class="level__note">Most of our research so far studies the organisational level.</p>
+            </li>
+            <li class="level" data-level="1">
+              <h3 class="level__name">Verification</h3>
+              <p>Auditors, notified bodies and authorities check conformity against technical standards and legal obligations.</p>
+            </li>
+            <li class="level" data-level="2">
+              <h3 class="level__name">Regulation</h3>
+              <p>Legislators and policy-makers write AI regulations and keep them up to date.</p>
+            </li>
+          </ol>
+        </div>
+        <div class="levels__view frame-mark">
+          <svg class="levels__rings" viewBox="0 10 200 200" aria-hidden="true">
+            <circle class="ring" data-level="2" cx="100" cy="110" r="85"/>
+            <circle class="ring" data-level="1" cx="100" cy="142" r="53"/>
+            <circle class="ring is-active" data-level="0" cx="100" cy="160" r="33"/>
+          </svg>
+          <p class="levels__readout" aria-hidden="true"><span class="levels__readout-name">Organisation</span><span class="levels__steps"><i class="is-on"></i><i></i><i></i></span></p>
         </div>
       </div>
-
-      <a class="btn btn--primary btn--md" href="mission/">Read our mission statement</a>
     </div>
   </section>
 
@@ -243,15 +279,13 @@
               <a class="paper__id" href="papers/2025-ewaf-uncertainty-as-a-primary-barrier.pdf" download>Download PDF</a>
             </div>
           </article>
-
-          <svg class="pubs__rings" viewBox="0 0 200 200" aria-hidden="true"><circle class="ring ring--1" cx="100" cy="110" r="85" stroke-width="5"/><circle class="ring ring--2" cx="100" cy="142" r="53" stroke-width="4.5"/><circle class="ring ring--3" cx="100" cy="160" r="33" stroke-width="4.5"/></svg>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Who we are -->
-  <section class="people" id="who-we-are" data-grid-section aria-labelledby="people-title">
+  <section class="people" id="who-we-are" aria-labelledby="people-title">
     <div class="container people__inner">
       <h2 class="section-title" id="people-title">Who we are</h2>
       <div class="people__grid">
@@ -294,7 +328,7 @@
   </section>
 
   <!-- Contact -->
-  <section class="contact" id="contact" data-grid-section aria-labelledby="contact-title">
+  <section class="contact frame" id="contact" aria-labelledby="contact-title">
     <div class="contact__inner">
       <h2 class="section-title" id="contact-title">Get in contact</h2>
       <div class="contact__funding">
@@ -324,13 +358,15 @@
   </section>
 </main>
 
-<footer class="site-footer">
-  <div class="site-footer__brand">
-    <svg class="site-footer__logo" viewBox="0 10 200 200" aria-hidden="true"><circle cx="100" cy="110" r="85" stroke-width="14"/><circle cx="100" cy="142" r="53" stroke-width="12"/><circle cx="100" cy="160" r="33" stroke-width="11"/></svg>
-    <span class="site-footer__name">Scalable Governance</span>
-    <span class="site-footer__line">An applied research initiative based at the TUM Professorship of Societal Computing</span>
+<footer class="site-footer-wrap frame">
+  <div class="site-footer">
+    <div class="site-footer__brand">
+      <svg class="site-footer__logo" viewBox="0 10 200 200" aria-hidden="true"><circle cx="100" cy="110" r="85" stroke-width="14"/><circle cx="100" cy="142" r="53" stroke-width="12"/><circle cx="100" cy="160" r="33" stroke-width="11"/></svg>
+      <span class="site-footer__name">Scalable Governance</span>
+      <span class="site-footer__line">An applied research initiative based at the TUM Professorship of Societal Computing</span>
+    </div>
+    <p class="site-footer__copy">© 2026</p>
   </div>
-  <p class="site-footer__copy">© 2026</p>
 </footer>
 </body>
 </html>

@@ -1,4 +1,4 @@
-// Scalable Governance — landing page behaviour.
+// Scalable Governance — site behaviour.
 // Plain JS, no build step. Every feature degrades to readable static content.
 
 (function () {
@@ -236,172 +236,114 @@
     });
   }
 
-  // ───────── Dot grid background ─────────
-  // Dots appear only in the vertical bands of [data-grid-section] elements.
-  // They are dim next to text and surfaces, brighter in empty space, and pull
-  // toward the pointer. With reduced motion the grid is drawn static.
-  function initDotGrid() {
-    const canvas = document.getElementById('dot-grid');
-    if (!canvas || !canvas.getContext) return;
-    const ctx = canvas.getContext('2d');
+  // ───────── The three levels: scroll zooms out through the rings ─────────
+  // The camera starts on the innermost ring (organisation) and pulls back to
+  // verification, then regulation. Scale changes geometrically, as in the film.
+  // A click on a ring or a level button jumps to that level. With reduced
+  // motion the section stays a static list.
+  function initLevels() {
+    const section = document.querySelector('.levels');
+    if (!section) return;
+    const track = section.querySelector('.levels__track');
+    const svg = section.querySelector('.levels__rings');
+    const view = section.querySelector('.levels__view');
+    const rings = Array.from(section.querySelectorAll('.ring'));
+    const items = Array.from(section.querySelectorAll('.level'));
+    const buttons = Array.from(section.querySelectorAll('.levels__btn'));
+    const readout = section.querySelector('.levels__readout-name');
+    const steps = Array.from(section.querySelectorAll('.levels__steps i'));
+    if (!track || !svg || !rings.length) return;
 
-    const SPACING = 30;
-    const RADIUS = 1.2;
-    const INFLUENCE = 130;
-    const PULL = 0.35;
-    const RETURN = 0.08;
-    const COLOR = (a) => 'oklch(0.48 0.19 260 / ' + a.toFixed(3) + ')';
+    // Frames per level: centre and half-size of the square that holds each ring.
+    const geo = [0, 1, 2].map((lvl) => {
+      const c = rings.find((r) => Number(r.dataset.level) === lvl);
+      const r = Number(c.getAttribute('r'));
+      return { x: Number(c.getAttribute('cx')), y: Number(c.getAttribute('cy')), r, h: r * 1.18 };
+    });
+    // Scroll stops: hold, move, hold, move, hold.
+    const STOPS = [0.08, 0.5, 0.92];
+    const names = items.map((li) => li.querySelector('.level__name').textContent);
+    let current = -1;
 
-    let dots = [];
-    let bands = [];
-    let width = 0;
-    let height = 0;
-    const mouse = { x: -1000, y: -1000 };
-    const sections = Array.from(document.querySelectorAll('[data-grid-section]'));
-
-    const resize = () => {
-      const dpr = window.devicePixelRatio || 1;
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = Math.round(width * dpr);
-      canvas.height = Math.round(height * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      dots = [];
-      const cols = Math.ceil(width / SPACING) + 1;
-      const rows = Math.ceil(height / SPACING) + 1;
-      const ox = (width - (cols - 1) * SPACING) / 2;
-      const oy = (height - (rows - 1) * SPACING) / 2;
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          const x = ox + c * SPACING;
-          const y = oy + r * SPACING;
-          dots.push({ ox: x, oy: y, x, y, prox: 0.15, damp: 1 });
-        }
-      }
+    const setActive = (lvl) => {
+      if (lvl === current) return;
+      current = lvl;
+      items.forEach((li) => li.classList.toggle('is-active', Number(li.dataset.level) === lvl));
+      rings.forEach((r) => r.classList.toggle('is-active', Number(r.dataset.level) === lvl));
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(Number(b.dataset.level) === lvl)));
+      steps.forEach((s, i) => s.classList.toggle('is-on', i === lvl));
+      if (readout) readout.textContent = names[lvl];
     };
 
-    const computeBands = () => {
-      bands = sections.map((el) => {
-        const r = el.getBoundingClientRect();
-        return { top: r.top, bottom: r.bottom };
-      });
+    const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+    const levelAt = (p) => {
+      if (p <= STOPS[0]) return 0;
+      if (p >= STOPS[2]) return 2;
+      const seg = p < STOPS[1] ? 0 : 1;
+      const t = (p - STOPS[seg]) / (STOPS[seg + 1] - STOPS[seg]);
+      return seg + ease(Math.min(1, Math.max(0, t)));
     };
-    const inBand = (y) => bands.some((b) => y >= b.top && y <= b.bottom);
-
-    // Distance from each dot to the nearest rendered text line or surface.
-    const computeProximity = () => {
-      const rects = [];
-      const add = (r) => {
-        if (r.width && r.height && r.bottom > -200 && r.top < height + 200 && r.right > -200 && r.left < width + 200) {
-          rects.push(r);
-        }
-      };
-      const range = document.createRange();
-      const roots = sections.concat(document.getElementById('site-nav') || []);
-      roots.forEach((root) => {
-        const rr = root.getBoundingClientRect();
-        if (rr.bottom < -200 || rr.top > height + 200) return;
-        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-          acceptNode: (n) => (n.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT)
-        });
-        let n;
-        while ((n = walker.nextNode())) {
-          const pr = n.parentElement && n.parentElement.getBoundingClientRect();
-          if (!pr || pr.bottom < -200 || pr.top > height + 200) continue;
-          range.selectNodeContents(n);
-          for (const r of range.getClientRects()) add(r);
-        }
-        root.querySelectorAll('a, button, img, .person, .site-nav__bar').forEach((el) => add(el.getBoundingClientRect()));
-      });
-
-      for (const d of dots) {
-        if (!inBand(d.oy)) continue;
-        let min = 9999;
-        for (const r of rects) {
-          const cx = Math.max(r.left, Math.min(d.ox, r.right));
-          const cy = Math.max(r.top, Math.min(d.oy, r.bottom));
-          const dist = Math.hypot(d.ox - cx, d.oy - cy);
-          if (dist < min) min = dist;
-        }
-        d.damp = min < 24 ? 0.05 : min < 160 ? 0.05 + ((min - 24) / 136) * 0.95 : 1;
-        d.prox = min < 30 ? 0.04 : min < 200 ? 0.04 + ((min - 30) / 170) * 0.22 : 0.26;
-      }
+    const frameFor = (l) => {
+      const i = Math.min(1, Math.floor(l));
+      const t = l - i;
+      const a = geo[i];
+      const b = geo[i + 1];
+      const h = Math.exp(Math.log(a.h) + (Math.log(b.h) - Math.log(a.h)) * t);
+      const x = a.x + (b.x - a.x) * t;
+      const y = a.y + (b.y - a.y) * t;
+      return [x - h, y - h, 2 * h, 2 * h];
+    };
+    const progress = () => {
+      const rect = track.getBoundingClientRect();
+      const stage = section.querySelector('.levels__stage').offsetHeight;
+      const span = rect.height - stage;
+      return span > 0 ? Math.min(1, Math.max(0, -rect.top / span)) : 0;
     };
 
-    const refresh = () => { computeBands(); computeProximity(); };
-
-    const drawDot = (x, y, r, a) => {
-      ctx.beginPath();
-      ctx.arc(x, y, r, 0, Math.PI * 2);
-      ctx.fillStyle = COLOR(a);
-      ctx.fill();
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const l = levelAt(progress());
+      svg.setAttribute('viewBox', frameFor(l).map((v) => v.toFixed(2)).join(' '));
+      setActive(Math.round(l));
     };
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
 
-    // Static rendering for reduced motion.
-    const drawStatic = () => {
-      refresh();
-      ctx.clearRect(0, 0, width, height);
-      for (const d of dots) if (inBand(d.oy)) drawDot(d.ox, d.oy, RADIUS, d.prox);
+    const goTo = (lvl) => {
+      if (!section.classList.contains('is-scrolly')) { setActive(lvl); return; }
+      const top = track.getBoundingClientRect().top + window.scrollY;
+      const span = track.offsetHeight - section.querySelector('.levels__stage').offsetHeight;
+      window.scrollTo({ top: top + span * STOPS[lvl], behavior: 'smooth' });
     };
+    buttons.forEach((b) => b.addEventListener('click', () => goTo(Number(b.dataset.level))));
 
-    let frame = 0;
-    let animId = 0;
-    const animate = () => {
-      frame++;
-      if (frame % 20 === 0) refresh();
-      ctx.clearRect(0, 0, width, height);
-      for (const d of dots) {
-        if (!inBand(d.oy)) {
-          d.x += (d.ox - d.x) * RETURN;
-          d.y += (d.oy - d.y) * RETURN;
-          continue;
-        }
-        const dx = mouse.x - d.ox;
-        const dy = mouse.y - d.oy;
-        const dist = Math.hypot(dx, dy);
-        if (dist < INFLUENCE) {
-          const force = (1 - dist / INFLUENCE) * PULL;
-          d.x += (d.ox + dx * force - d.x) * 0.15;
-          d.y += (d.oy + dy * force - d.y) * 0.15;
-        } else {
-          d.x += (d.ox - d.x) * RETURN;
-          d.y += (d.oy - d.y) * RETURN;
-        }
-        const disp = Math.hypot(d.x - d.ox, d.y - d.oy);
-        drawDot(d.x, d.y, RADIUS + disp * 0.04 * d.damp, d.prox + Math.min(disp / 15, 0.4) * d.damp);
-      }
-      animId = requestAnimationFrame(animate);
-    };
+    // A click picks the smallest ring that contains the point.
+    view.addEventListener('click', (e) => {
+      if (!section.classList.contains('is-scrolly')) return;
+      const m = svg.getScreenCTM();
+      if (!m) return;
+      const pt = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse());
+      const hit = geo.findIndex((g) => Math.hypot(pt.x - g.x, pt.y - g.y) <= g.r);
+      goTo(hit === -1 ? 2 : hit);
+    });
 
-    const start = () => {
-      cancelAnimationFrame(animId);
-      resize();
-      if (reduceMotion.matches) {
-        drawStatic();
+    const apply = () => {
+      const on = !reduceMotion.matches;
+      section.classList.toggle('is-scrolly', on);
+      if (on) {
+        window.addEventListener('scroll', onScroll, { passive: true });
+        update();
       } else {
-        refresh();
-        animate();
+        window.removeEventListener('scroll', onScroll);
+        svg.setAttribute('viewBox', '0 10 200 200');
+        rings.forEach((r) => r.classList.remove('is-active'));
+        items.forEach((li) => li.classList.remove('is-active'));
+        current = -1;
       }
     };
-
-    let scrollTick = false;
-    window.addEventListener('scroll', () => {
-      if (scrollTick) return;
-      scrollTick = true;
-      requestAnimationFrame(() => {
-        scrollTick = false;
-        if (reduceMotion.matches) drawStatic(); else computeBands();
-      });
-    }, { passive: true });
-    window.addEventListener('resize', start);
-    window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
-    document.addEventListener('mouseleave', () => { mouse.x = -1000; mouse.y = -1000; });
-    if (reduceMotion.addEventListener) reduceMotion.addEventListener('change', start);
-    // Accordions and font loading change the text layout.
-    document.addEventListener('click', () => setTimeout(refresh, 260));
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
-
-    start();
+    window.addEventListener('resize', onScroll);
+    if (reduceMotion.addEventListener) reduceMotion.addEventListener('change', apply);
+    apply();
   }
 
   initNav();
@@ -411,5 +353,5 @@
   initTerms();
   initBudget();
   initCopy();
-  initDotGrid();
+  initLevels();
 })();
